@@ -68,7 +68,7 @@ main{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 20px;
+    margin: 0 auto;
 }
 .days{
     width: 100%;
@@ -84,4 +84,8 @@ main{
     width: calc(100% / 7);
     height: 110px;
 
+}
+.days .day:hover{
+    border: 1px solid lightgray;
+    background-color: rgba(241, 231, 254, 1);
 }
