@@ -10,14 +10,15 @@
     <script src="https://kit.fontawesome.com/d9005a0d59.js" crossorigin="anonymous" defer></script>
     <title>Google Calendar</title>
   </head>
+  <!--CADA UNO DEBERA TRABAJAR EN SU PROPIO ARCHIVO/S .TS, PARA LA CREACION DE MODULOS QUE LUEGO SE INCORPORARAN A UN UNICO ARCHIVO DE EJECUCION SCRIPT, COMENTEN EL CODIGO SIEMPRE QUE PUEDAN-->
   <body>
+    <!-- UNO TIENE LA TAREA DE MODIFICAR LA BARRA DE HEADER EN BASE A LO QUE CREA QUE DEBAMOS TENER, DESAROLLAR LAS FUNCIONES Y CREAR UN DIV O SECTION QUE REEMPLAZE A <div class="general-container">-->
+    <!-- ESTA SECCION DEBERA TENER DISPLAY:NONE HASTA QUE EL BOTON DEBIDO DE LA SECCION HEADER SE PRESIONE-->
     <header
       class="d-flex container flex-wrap justify-content-center py-3 mb-4 border-bottom"
     >
-      <a
-        href="/"
-        class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
-      >
+      <a href="/"
+        class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
         <span class="fs-4">Calendar</span>
       </a>
 
@@ -31,8 +32,27 @@
         <li class="nav-item"><a href="#" class="nav-link">About</a></li>
       </ul>
     </header>
-
+    <!-- Modal -->
+    <!--ALGUIEN TIENE LA TAREA DE MODIFICAR EL MODAL ACORDE A LO REQUERIDO PARA LA CREACION DE EVENTOS, PARA ACTIVAR EL MODAL EL BOTON DEBERA TENER LAS PROPIEDADES data-bs-toggle="modal" data-bs-target="#eventModal"-->
+    <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <main>
+      <!--AQUI SE DEBEN CREAR NUEVAS DIV O SECTION CON EL DISPLAY NONE PARA QUE LUEGO SEAN MOSTRADAS, USAR ETIQUETAS <DIV> O <SECTION> -->
       <div class="general-container">
           <div class="month">
             <i class="fa fa-angle-left prev"></i>
@@ -87,7 +107,7 @@
           </div>
       </div>
     </main>
-
+<!--ALGUIEN TIENE LA TAREA DE MOFICIAR EL FOOTER ACORDE A LO QUE CREA CONVENIENTE.-->
     <footer
       class="d-flex container flex-wrap justify-content-between align-items-center py-3 my-4 border-top"
     >
