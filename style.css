@@ -3,8 +3,33 @@ main{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: lightblue;
+    background-color: #d1ebf7;
 }
+
+
+
+.btn-help {
+    position: absolute;
+    display: none;
+    background-color: #f9f9f9;
+    padding: 20px;
+    list-style:none;
+    z-index: 1;
+  }
+  
+  .nav-item:hover .btn-help {
+    display: block;
+  }
+
+  .btn-help li{
+    padding: 8px;
+  }
+
+  .btn-help li:hover {
+    background-color:#e5e5ff;
+    border-radius: 5px;
+  }
+
 .general-container{
     position: relative;
     width: 90%;
