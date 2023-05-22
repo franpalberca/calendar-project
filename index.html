@@ -42,7 +42,24 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            ...
+            <form action="">
+                <ul>
+                    <li>
+                        <label for="title"></label>
+                        <input type="text" id="modal-title" name="title">
+                    </li>
+                    <li>
+                        <label for="date"></label>
+                        <input type="date" id="start-date" name="date-start">
+                    </li>
+                    <li><label for="date"></label>
+                        <input type="date" id="finish-date" name="date-finish"></li>
+                    <li>
+                        <label for="comment"></label>
+                        <input type="text" id="comment" name="comment">
+                    </li>
+                </ul>
+            </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
