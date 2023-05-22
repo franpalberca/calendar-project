@@ -42,21 +42,21 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form action="">
-                <ul>
-                    <li>
-                        <label for="title"></label>
-                        <input type="text" id="modal-title" name="title">
-                    </li>
-                    <li>
-                        <label for="date"></label>
+            <form action="" class="d-flex flex-column">
+                    <div class="d-flex mb-3 flex-column" id="form-input-title-div">
+                        <label for="modal-title"></label>
+                        <input type="text" id="modal-title" name="title" >
+                    </div>
+                    <div class="d-flex mb-3 flex-column" id="form-input-start-date-div">
+                        <label for="start-date">Start date </label>
                         <input type="date" id="start-date" name="date-start">
                     </div>
-                    <div><label for="finish-date">Finish date</label>
+                    <div class="d-flex mb-3 flex-column" id="form-input-finish-date-div">
+                      <label for="finish-date">Finish </label>
                         <input type="date" id="finish-date" name="date-finish"></div>
-                    <div>
-                        <label for="comment">Comments</label>
-                        <input type="text" id="comment" name="comment">
+                    <div class="d-flex mb-3 flex-column" id="form-input-comment-div">
+                        <label for="comment"></label>
+                        <input type="text" id="comment" name="comment" placeholder="Comments">
                     </div>
             </form>
           </div>
