@@ -101,20 +101,29 @@ main{
 
 .work-event{
     background-color: rgb(233, 93, 93);
+    cursor: pointer;
     }
 
 .family-event{
     background-color: lightblue;
+    cursor: pointer;
     }
 
 .friends-event{
     background-color: yellow;
+    cursor: pointer;
     }
 
 .doctor-event{
-    background-color: orange
+    background-color: orange;
+    cursor: pointer;
     }
 
 .private-event{
     background-color: lightgreen;
+    cursor: pointer;
     }
+
+.minute-list{
+    cursor: pointer;
+}
