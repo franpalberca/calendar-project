@@ -1,100 +1,119 @@
-main{
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: lightblue;
+main {
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: lightblue;
 }
-.general-container{
-    position: relative;
-    width: 90%;
-    height: 100%;
-    margin: auto;
-    padding: 15px;
-    color: slateblue;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-radius: 10px;
-    background-color: white;
+.general-container {
+	position: relative;
+	width: 90%;
+	height: 100%;
+	margin: auto;
+	padding: 15px;
+	color: slateblue;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	border-radius: 10px;
+	background-color: white;
 }
-.general-container:before{
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 100%;
-    width: 12px;
-    height: 97%;
-    border-radius: 0 5px 5px 0;
-    background-color: lightgray;
-    transform: translateY(-50%);
+.general-container:before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 100%;
+	width: 12px;
+	height: 97%;
+	border-radius: 0 5px 5px 0;
+	background-color: lightgray;
+	transform: translateY(-50%);
 }
 
-.general-container .month{
-    width: 100%;
-    height: 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: auto;
-    padding: 0 5px;
-    font-size: 1.5rem;
-    font-weight: 500;
-    text-transform: capitalize;
+.general-container .month {
+	width: 100%;
+	height: 50px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: auto;
+	padding: 0 5px;
+	font-size: 1.5rem;
+	font-weight: 500;
+	text-transform: capitalize;
 }
 .general-container .month .prev,
 .general-container .month .next {
-    cursor: pointer;
-    margin: 0 15px 0 15px;
+	cursor: pointer;
+	margin: 0 15px 0 15px;
 }
 .general-container .month .prev:hover,
 .general-container .month .next:hover {
-    color: black;
+	color: black;
 }
 .general-container .week {
-    width: 100%;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 15px;
-    font-size: 1rem;
-    font-weight: 500;
-    text-transform: capitalize;
+	width: 100%;
+	height: 60px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 15px;
+	font-size: 1rem;
+	font-weight: 500;
+	text-transform: capitalize;
 }
-.general-container .week div{
-    width: calc(100% / 7);
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
+.general-container .week div {
+	width: calc(100% / 7);
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0 auto;
 }
-.days{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    padding: 0 10px;
-    font-size: 1rem;
-    font-weight: 400;
-    cursor: pointer;
+.days {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	padding: 0 10px;
+	font-size: 1rem;
+	font-weight: 400;
+	cursor: pointer;
 }
 .today {
-    background-color: rgb(169, 91, 241);
-    color: rgb(28, 28, 28);
+	background-color: rgb(169, 91, 241);
+	color: rgb(28, 28, 28);
 }
 .previous-month {
-    background-color: rgb(234, 245, 255);
-    color: rgba(232, 83, 83, 0.861);
+	background-color: rgb(234, 245, 255);
+	color: rgba(232, 83, 83, 0.861);
 }
-.days .day{
-    border: 1px solid gainsboro;
-    width: calc(100% / 7);
-    height: 110px;
+.days .day {
+	border: 1px solid gainsboro;
+	width: calc(100% / 7);
+	height: 110px;
+}
+.days .day:hover {
+	border: 1px solid lightgray;
+	background-color: rgba(241, 231, 254, 1);
+}
 
-}
-.days .day:hover{
-    border: 1px solid lightgray;
-    background-color: rgba(241, 231, 254, 1);
-}
+@keyframes flight-effect {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    50% {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .fade-out-in {
+    animation: flight-effect 1s ease-in-out;
+  }
+  

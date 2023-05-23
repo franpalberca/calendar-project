@@ -13,9 +13,6 @@ writeMonth(monthNumber);
 setNewDate();
 function writeMonth(month) {
     if (daysContainer) {
-        while (daysContainer.firstChild) {
-            daysContainer.firstChild.remove();
-        }
         const previousMonthdaysContainer = getTotaldaysContainer(monthNumber - 1);
         const currentMonthdaysContainer = getTotaldaysContainer(month);
         const startDayIndex = startDay();
@@ -93,8 +90,42 @@ function setNewDate() {
     if (year) {
         year.textContent = currentYear.toString();
     }
+    if (daysContainer) {
+        daysContainer.textContent = "";
+    }
     writeMonth(monthNumber);
 }
-prevMonthDom === null || prevMonthDom === void 0 ? void 0 : prevMonthDom.addEventListener("click", () => lastMonth());
-nextMonthDom === null || nextMonthDom === void 0 ? void 0 : nextMonthDom.addEventListener("click", () => nextMonth());
+const calendar = document.querySelector("#generalContainer");
+prevMonthDom === null || prevMonthDom === void 0 ? void 0 : prevMonthDom.addEventListener("click", function () {
+    if (monthNumber !== 0) {
+        monthNumber--;
+    }
+    else {
+        monthNumber = 11;
+        currentYear--;
+    }
+    setNewDate();
+    animateTransition('fade-out-in');
+});
+nextMonthDom === null || nextMonthDom === void 0 ? void 0 : nextMonthDom.addEventListener("click", function () {
+    if (monthNumber !== 11) {
+        monthNumber++;
+    }
+    else {
+        monthNumber = 0;
+        currentYear++;
+    }
+    setNewDate();
+    animateTransition('fade-out-in');
+});
+function animateTransition(animationClass) {
+    calendar === null || calendar === void 0 ? void 0 : calendar.classList.add(animationClass);
+    setTimeout(() => {
+        calendar === null || calendar === void 0 ? void 0 : calendar.classList.add('active');
+        calendar === null || calendar === void 0 ? void 0 : calendar.classList.remove(animationClass);
+    }, 1000);
+}
+calendar === null || calendar === void 0 ? void 0 : calendar.addEventListener('animationend', function () {
+    calendar === null || calendar === void 0 ? void 0 : calendar.classList.remove('active');
+});
 //# sourceMappingURL=MonthSelector.js.map

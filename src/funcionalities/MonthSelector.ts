@@ -16,9 +16,9 @@ setNewDate();
 
 function writeMonth(month: number) {
     if (daysContainer) {
-        while (daysContainer.firstChild) {
-            daysContainer.firstChild.remove(); // Eliminar los días existentes
-        }
+        // while (daysContainer.firstChild) {
+        //     daysContainer.firstChild.remove(); // Eliminar los días existentes
+        // }
 
         const previousMonthdaysContainer = getTotaldaysContainer(monthNumber - 1);
         const currentMonthdaysContainer = getTotaldaysContainer(month);
@@ -107,13 +107,55 @@ function setNewDate(): void {
 	currentDate = new Date(currentYear, monthNumber, currentDay);
 	if (month) {
         month.textContent = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(currentDate);
+        
 	}
 	if (year) {
 		year.textContent = currentYear.toString();
 	}
-
+    if (daysContainer) {
+    daysContainer.textContent = "";
+    }
 	writeMonth(monthNumber);
 }
 
-prevMonthDom?.addEventListener("click", () => lastMonth());
-nextMonthDom?.addEventListener("click", () => nextMonth());
+// prevMonthDom?.addEventListener("click", () => lastMonth());
+// nextMonthDom?.addEventListener("click", () => nextMonth());
+
+const calendar = document.querySelector("#generalContainer");
+
+prevMonthDom?.addEventListener("click", function() {
+  if (monthNumber !== 0) {
+    monthNumber--;
+  } else {
+    monthNumber = 11;
+    currentYear--;
+  }
+  setNewDate();
+  animateTransition('fade-out-in');
+});
+
+nextMonthDom?.addEventListener("click", function() {
+  if (monthNumber !== 11) {
+    monthNumber++;
+  } else {
+    monthNumber = 0;
+    currentYear++;
+  }
+  setNewDate();
+  animateTransition('fade-out-in');
+});
+
+function animateTransition(animationClass: string): void {
+    calendar?.classList.add(animationClass);
+    setTimeout(() => {
+      calendar?.classList.add('active');
+      calendar?.classList.remove(animationClass);
+    }, 1000); // Ajusta el tiempo de espera según tus necesidades
+  }
+  
+  
+
+// Evento para limpiar la clase de animación después de que termine la animación
+calendar?.addEventListener('animationend', function() {
+  calendar?.classList.remove('active');
+});

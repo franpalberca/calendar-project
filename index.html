@@ -1,130 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="./dist/starter.js" defer></script>
+    <script src="./dist/funcionalities/MonthSelector.js" defer></script>
+    <script src="https://unpkg.com/@popperjs/core@2" defer></script>
+    <script src="./js/bootstrap.js" defer></script>
+    <script src="https://kit.fontawesome.com/d9005a0d59.js" crossorigin="anonymous" defer></script>
+    <script src="https://unpkg.com/@popperjs/core@2" defer></script>
+    <script src="./js/bootstrap.bundle.js" defer></script>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="./css/bootstrap.css" />
-  <link rel="stylesheet" href="style.css">
-  <script type="module" src="./dist/starter.js" defer></script>
-  <script src="./dist/funcionalities/MonthSelector.js" defer></script>
-  <script src="https://unpkg.com/@popperjs/core@2" defer></script>
-  <script src="./js/bootstrap.js" defer></script>
-  <script src="https://kit.fontawesome.com/d9005a0d59.js" crossorigin="anonymous" defer></script>
-  <script src="https://unpkg.com/@popperjs/core@2" defer></script>
-  <script src="./js/bootstrap.bundle.js" defer></script>
+    <title>Google Calendar</title>
+  </head>
+  <!--CADA UNO DEBERA TRABAJAR EN SU PROPIO ARCHIVO/S .TS, PARA LA CREACION DE MODULOS QUE LUEGO SE INCORPORARAN A UN UNICO ARCHIVO DE EJECUCION SCRIPT, COMENTEN EL CODIGO SIEMPRE QUE PUEDAN-->
+  <body>
+    <!-- UNO TIENE LA TAREA DE MODIFICAR LA BARRA DE HEADER EN BASE A LO QUE CREA QUE DEBAMOS TENER, DESAROLLAR LAS FUNCIONES Y CREAR UN DIV O SECTION QUE REEMPLAZE A <div class="general-container">-->
+    <!-- ESTA SECCION DEBERA TENER DISPLAY:NONE HASTA QUE EL BOTON DEBIDO DE LA SECCION HEADER SE PRESIONE-->
+    <header class="d-flex container flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+        <span class="fs-4">Calendar</span>
+      </a>
 
-  <title>Google Calendar</title>
-</head>
-<!--CADA UNO DEBERA TRABAJAR EN SU PROPIO ARCHIVO/S .TS, PARA LA CREACION DE MODULOS QUE LUEGO SE INCORPORARAN A UN UNICO ARCHIVO DE EJECUCION SCRIPT, COMENTEN EL CODIGO SIEMPRE QUE PUEDAN-->
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+          <button class="nav-link" data-bs-toggle="modal" data-bs-target="#eventModal">Events </button>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link active" aria-current="page">Home</a>
+        </li>
+        <li class="nav-item">
+         
+        </li>
+        <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+      </ul>
+    </header>
+    <!-- Modal -->
+    <!--ALGUIEN TIENE LA TAREA DE MODIFICAR EL MODAL ACORDE A LO REQUERIDO PARA LA CREACION DE EVENTOS, PARA ACTIVAR EL MODAL EL BOTON DEBERA TENER LAS PROPIEDADES data-bs-toggle="modal" data-bs-target="#eventModal"-->
+    <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="" class="container">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label for="modal-title" class="form-label">Title</label>
+                    <input type="text" id="modal-title" name="title" maxlength="60" class="form-control" />
+                  </div>
 
-<body>
-  <!-- UNO TIENE LA TAREA DE MODIFICAR LA BARRA DE HEADER EN BASE A LO QUE CREA QUE DEBAMOS TENER, DESAROLLAR LAS FUNCIONES Y CREAR UN DIV O SECTION QUE REEMPLAZE A <div class="general-container">-->
-  <!-- ESTA SECCION DEBERA TENER DISPLAY:NONE HASTA QUE EL BOTON DEBIDO DE LA SECCION HEADER SE PRESIONE-->
-  <header class="d-flex container flex-wrap justify-content-center py-3 mb-4 border-bottom">
-    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-      <span class="fs-4">Calendar</span>
-    </a>
+                  <div class="mb-3">
+                    <label for="start-date" class="form-label">Start date</label>
+                    <input type="datetime-local" id="start-date" name="date-start" class="form-control" />
+                  </div>
 
-    <ul class="nav nav-pills">
-      <li class="nav-item">
-        <button class="nav-link" data-bs-toggle="modal" data-bs-target="#eventModal">Events </button>
-      </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link active" aria-current="page">Home</a>
-      </li>
-      <li class="nav-item">
+                  <div class="mb-3 form-check">
+                    <input type="checkbox" name="End date" id="date-end" class="form-check-input" />
+                    <label for="date-end" class="form-check-label">Finish</label>
+                  </div>
 
-      </li>
-      <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
-      <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
-      <li class="nav-item"><a href="#" class="nav-link">About</a></li>
-    </ul>
-  </header>
-  <!-- Modal -->
-  <!--ALGUIEN TIENE LA TAREA DE MODIFICAR EL MODAL ACORDE A LO REQUERIDO PARA LA CREACION DE EVENTOS, PARA ACTIVAR EL MODAL EL BOTON DEBERA TENER LAS PROPIEDADES data-bs-toggle="modal" data-bs-target="#eventModal"-->
-  <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form action="" class="container">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="mb-3">
-                  <label for="modal-title" class="form-label">Title</label>
-                  <input type="text" id="modal-title" name="title" maxlength="60" class="form-control" />
+                  <div class="mb-3">
+                    <label for="finish-date" class="form-label">End date</label>
+                    <input type="datetime-local" id="finish-date" name="date-finish" class="form-control" />
+                  </div>
+
+                  <div class="mb-3 form-check">
+                    <input type="checkbox" name="Remind me when this event expires" id="date-start" class="form-check-input" />
+                    <label for="date-start" class="form-check-label">Remind me when this event expires</label>
+                  </div>
                 </div>
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea id="description" placeholder="Description" name="textarea" rows="10" cols="40" maxlength="500" class="form-control">Write something here</textarea>
+                  </div>
 
-                <div class="mb-3">
-                  <label for="start-date" class="form-label">Start date</label>
-                  <input type="datetime-local" id="start-date" name="date-start" class="form-control" />
-                </div>
-
-                <div class="mb-3 form-check">
-                  <input type="checkbox" name="End date" id="date-end" class="form-check-input" />
-                  <label for="date-end" class="form-check-label">Finish</label>
-                </div>
-
-                <div class="mb-3">
-                  <label for="finish-date" class="form-label">End date</label>
-                  <input type="datetime-local" id="finish-date" name="date-finish" class="form-control" />
-                </div>
-
-                <div class="mb-3 form-check">
-                  <input type="checkbox" name="Remind me when this event expires" id="date-start"
-                    class="form-check-input" />
-                  <label for="date-start" class="form-check-label">Remind me when this event expires</label>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="mb-3">
-                  <label for="description" class="form-label">Description</label>
-                  <textarea id="description" placeholder="Description" name="textarea" rows="10" cols="40"
-                    maxlength="500" class="form-control">Write something here</textarea>
-                </div>
-
-                <div class="mb-3">
-                  <label for="reminder-select" class="form-label">Remember me:</label>
-                  <div id="reminder-select" data-bs-toggle="dropdown" class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="remember"
-                      data-bs-toggle="dropdown" aria-expanded="false">Select Reminder</button>
-                    <ul class="dropdown-menu" aria-labelledby="remember">
-                      <li class="dropdown-item" id="five-min">5 min</li>
-                      <li class="dropdown-item" id="ten-min">10 min</li>
-                      <li class="dropdown-item" id="fifteen-min">15 min</li>
-                      <li class="dropdown-item" id="thirty-min">30 min</li>
-                      <li class="dropdown-item" id="fortyfive-min">45 min</li>
-                      <li class="dropdown-item" id="sixty-min">60 min</li>
-                    </ul>
+                  <div class="mb-3">
+                    <label for="reminder-select" class="form-label">Remember me:</label>
+                    <div id="reminder-select" data-bs-toggle="dropdown" class="dropdown">
+                      <button class="btn btn-secondary dropdown-toggle" type="button" id="remember" data-bs-toggle="dropdown" aria-expanded="false">Select Reminder</button>
+                      <ul class="dropdown-menu" aria-labelledby="remember">
+                        <li class="dropdown-item" id="five-min">5 min</li>
+                        <li class="dropdown-item" id="ten-min">10 min</li>
+                        <li class="dropdown-item" id="fifteen-min">15 min</li>
+                        <li class="dropdown-item" id="thirty-min">30 min</li>
+                        <li class="dropdown-item" id="fortyfive-min">45 min</li>
+                        <li class="dropdown-item" id="sixty-min">60 min</li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </form>
-        </div>
+            </form>
+          </div>
 
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <!-- Climate Modal -->
-  <div class="modal fade" id="climateModal" tabindex="-1" aria-labelledby="climateLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="climateModalLabel">Today's Weather</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <h4 class="mb-4 fw-semibold">Location: <span class="fw-light" id="fLocation"></span></h5>
+    <!-- Climate Modal -->
+    <div class="modal fade" id="climateModal" tabindex="-1" aria-labelledby="climateLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="climateModalLabel">Today's Weather</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <h4 class="mb-4 fw-semibold">Location: <span class="fw-light" id="fLocation"></span></h5>
             <p class="fw-semibold">Temperature: <span class="fw-light" id="fTemperature"></span></p>
             <p class="fw-semibold">Termic Sensation: <span class="fw-light" id="fTermicSensation"></span></p>
             <p class="fw-semibold">Preassure: <span class="fw-light" id="fPreasure"></span></p>
@@ -132,68 +127,64 @@
             <p class="fw-semibold">Precipitation Chance: <span class="fw-light" id="fPChance"></span></p>
 
             <p class="fw-light" style="font-size: 9px;">This data updates every 5 minutes.</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <main>
-    <!--AQUI SE DEBEN CREAR NUEVAS DIV O SECTION CON EL DISPLAY NONE PARA QUE LUEGO SEAN MOSTRADAS, USAR ETIQUETAS <DIV> O <SECTION> -->
-    <div class="general-container">
-      <div class="month">
-        <i id="prevMonth" class="fa fa-angle-left prev"></i>
-        <span id="month" class="date">MONTH</span>
-        <span id="year"></span>
-        <i id="nextMonth" class="fa fa-angle-right next"></i>
-      </div>
-      <div class="week">
-        <div>Monday</div>
-        <div>Tuesday</div>
-        <div>Wednesday</div>
-        <div>Thursday</div>
-        <div>Friday</div>
-        <div>Saturday</div>
-        <div>Sunday</div>
-      </div>
+    <main>
+      <!--AQUI SE DEBEN CREAR NUEVAS DIV O SECTION CON EL DISPLAY NONE PARA QUE LUEGO SEAN MOSTRADAS, USAR ETIQUETAS <DIV> O <SECTION> -->
+      <div id="generalContainer" class="general-container fade-out-in">
+          <div class="month">
+            <i id="prevMonth" class="fa fa-angle-left prev"></i>
+            <span id="month" class="date">MONTH</span>
+            <span id="year"></span>
+            <i id="nextMonth" class="fa fa-angle-right next"></i>
+          </div>
+          <div class="week">
+            <div>Monday</div>
+            <div>Tuesday</div>
+            <div>Wednesday</div>
+            <div>Thursday</div>
+            <div>Friday</div>
+            <div>Saturday</div>
+            <div>Sunday</div>
+          </div>
 
-      <div class="days" id="daysContainer">
-        <!-- <div class="day">1</div> -->
+          <div class="days" id="daysContainer">
+            <!-- <div class="day">1</div> -->
+          </div>
       </div>
-    </div>
-  </main>
-  <!--ALGUIEN TIENE LA TAREA DE MOFICIAR EL FOOTER ACORDE A LO QUE CREA CONVENIENTE.-->
-  <footer class="d-flex container flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-    <p class="col-md-4 mb-0 text-body-secondary"><a class="navbar-brand" href="https://assemblerinstitute.com"
-        target="_blank">
+    </main>
+<!--ALGUIEN TIENE LA TAREA DE MOFICIAR EL FOOTER ACORDE A LO QUE CREA CONVENIENTE.-->
+    <footer class="d-flex container flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+      <p class="col-md-4 mb-0 text-body-secondary"><a class="navbar-brand" href="https://assemblerinstitute.com" target="_blank">
         <img src="./resources/A-Logo.png" alt="Bootstrap" width="30" height="30"> 2023 Lovelace Squad
       </a>
-    </p>
+  </p>
 
-    <ul class="nav col-md-6 justify-content-end">
+      <ul class="nav col-md-6 justify-content-end">
 
-      <li class="nav-item">
-        <a href="#" class="nav-link px-2 text-body-secondary">Top of the Page</a>
-      </li>
-      <li class="nav-item ms-3">
-        <button class="nav-link px-2 text-body-secondary" id="weatherBtn" data-bs-toggle="modal"
-          data-bs-target="#climateModal">Today's weather</button>
-      </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link px-2 text-body-secondary">Top of the Page</a>
+        </li>
+        <li class="nav-item ms-3">
+          <button class="nav-link px-2 text-body-secondary" id="weatherBtn" data-bs-toggle="modal" data-bs-target="#climateModal">Today's weather</button>
+        </li>
 
-      <div class="btn-group dropup ms-5">
-        <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown"
-          aria-expanded="false">
-          Members of the Squad
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="https://github.com/franpalberca" target="_blank">Fran P.A.</a></li>
-          <li><a class="dropdown-item" href="https://github.com/JorgeMunarriz" target="_blank">Jorge M.</a></li>
-          <li><a class="dropdown-item" href="https://github.com/HoracioMartinez17" target="_blank">Horacio J.M.</a></li>
-          <li><a class="dropdown-item" href="https://github.com/Madpug2022" target="_blank">Matias A.C.</a></li>
-          <li><a class="dropdown-item" href="https://github.com/kevinPolania" target="_blank">Kevin P.N.</a></li>
-        </ul>
-      </div>
+        <div class="btn-group dropup ms-5">
+          <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            Members of the Squad
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="https://github.com/franpalberca" target="_blank">Fran P.A.</a></li>
+            <li><a class="dropdown-item" href="https://github.com/JorgeMunarriz" target="_blank">Jorge M.</a></li>
+            <li><a class="dropdown-item" href="https://github.com/HoracioMartinez17" target="_blank">Horacio J.M.</a></li>
+            <li><a class="dropdown-item" href="https://github.com/Madpug2022" target="_blank">Matias A.C.</a></li>
+            <li><a class="dropdown-item" href="https://github.com/kevinPolania" target="_blank">Kevin P.N.</a></li>
+          </ul>
+        </div>
 
-    </ul>
-  </footer>
-</body>
-
+      </ul>
+    </footer>
+  </body>
 </html>
