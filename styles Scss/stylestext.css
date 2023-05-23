@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+body {
+  position: relative;
+}
+body header {
+  position: absolute;
+}
+body header:hover {
+  transform: scale(1.1);
+}/*# sourceMappingURL=stylestext.css.map */
