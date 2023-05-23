@@ -89,3 +89,23 @@ main{
     border: 1px solid lightgray;
     background-color: rgba(241, 231, 254, 1);
 }
+
+.work-event{
+    background-color: rgb(233, 93, 93);
+    }
+
+.family-event{
+    background-color: lightblue;
+    }
+
+.friends-event{
+    background-color: yellow;
+    }
+
+.doctor-event{
+    background-color: orange
+    }
+
+.private-event{
+    background-color: lightgreen;
+    }
