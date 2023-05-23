@@ -1,3 +1,4 @@
+export function initializeCalendar(){
 let currentDate = new Date();
 let currentDay = currentDate.getDate();
 let monthNumber = currentDate.getMonth();
@@ -31,6 +32,9 @@ function writeMonth(month: number) {
             dayElement.classList.add("day", "previous-month");
             dayElement.textContent = i.toString();
             daysContainer.appendChild(dayElement);
+
+
+
         }
 
         // Imprimir los días del mes actual
@@ -38,8 +42,25 @@ function writeMonth(month: number) {
             const dayElement = document.createElement("div");
             dayElement.classList.add("day");
 			dayElement.setAttribute("id", "day");
-			dayElement.setAttribute("data-dayNumber", `day${i}`);
+
+
+			let paddedMonth = monthNumber + 1;
+
+			let dateAttribute = `${currentYear}-${paddedMonth}-${i}`;
+
             dayElement.textContent = i.toString();
+			const dayEventContainer = document.createElement("div");
+			dayEventContainer.classList.add("container");
+			dayEventContainer.setAttribute("data-dayNumber", dateAttribute);
+
+			dayElement.appendChild(dayEventContainer);
+//
+		//	const dayEvent = document.createElement("div");
+		//	dayEvent.setAttribute("class","row d-flex justify-content-center bg-info bg-gradient mb-1");
+		//	dayEvent.setAttribute("style","font-size: 10px; color: black;");
+		//	dayEvent.innerText = "testing";
+//
+		//	dayEventContainer.appendChild(dayEvent);
 
             if (i === currentDay && month === actualMonth) {
                 dayElement.classList.add("today");
@@ -69,7 +90,6 @@ function getTotaldaysContainer(month: number): number {
 		return isLeap() ? 29 : 28;
 	}
 }
-
 function isLeap(): boolean {
     return (
         (currentYear % 100 !== 0 && currentYear % 4 === 0) ||
@@ -140,3 +160,8 @@ function animateTransition(animationClass: string): void {
 calendar?.addEventListener('animationend', function() {
   calendar?.classList.remove('active');
 });
+
+prevMonthDom?.addEventListener("click", () => lastMonth());
+nextMonthDom?.addEventListener("click", () => nextMonth());
+}
+
