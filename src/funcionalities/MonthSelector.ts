@@ -18,9 +18,9 @@ setNewDate();
 
 function writeMonth(month: number) {
     if (daysContainer) {
-        // while (daysContainer.firstChild) {
-        //     daysContainer.firstChild.remove(); // Eliminar los días existentes
-        // }
+        while (daysContainer.firstChild) {
+          daysContainer.firstChild.remove(); // Eliminar los días existentes
+         }
 
         const previousMonthdaysContainer = getTotaldaysContainer(monthNumber - 1);
         const currentMonthdaysContainer = getTotaldaysContainer(month);
@@ -110,8 +110,8 @@ function lastMonth(): void {
 		monthNumber = 11;
 		currentYear--;
 	}
-	setNewDate();
     animateTransition('fade-out-in');
+	setNewDate();
 }
 
 function nextMonth(): void {
@@ -121,8 +121,8 @@ function nextMonth(): void {
 		monthNumber = 0;
 		currentYear++;
 	}
-	setNewDate();
     animateTransition('fade-out-in');
+	setNewDate();
 }
 
 
@@ -136,22 +136,16 @@ function setNewDate(): void {
 		year.textContent = currentYear.toString();
 	}
     if (daysContainer) {
-    daysContainer.textContent = "";
     }
 	writeMonth(monthNumber);
 }
-
- prevMonthDom?.addEventListener("click", () => lastMonth());
- nextMonthDom?.addEventListener("click", () => nextMonth());
-
-
 
 function animateTransition(animationClass: string): void {
     calendar?.classList.add(animationClass);
     setTimeout(() => {
       calendar?.classList.add('active');
       calendar?.classList.remove(animationClass);
-    }, 1000); // Ajusta el tiempo de espera según tus necesidades
+    }, 600); // Ajusta el tiempo de espera según tus necesidades
   }
   
   

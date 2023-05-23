@@ -14,6 +14,9 @@ export function initializeCalendar() {
     setNewDate();
     function writeMonth(month) {
         if (daysContainer) {
+            while (daysContainer.firstChild) {
+                daysContainer.firstChild.remove();
+            }
             const previousMonthdaysContainer = getTotaldaysContainer(monthNumber - 1);
             const currentMonthdaysContainer = getTotaldaysContainer(month);
             const startDayIndex = startDay();
@@ -76,8 +79,8 @@ export function initializeCalendar() {
             monthNumber = 11;
             currentYear--;
         }
-        setNewDate();
         animateTransition('fade-out-in');
+        setNewDate();
     }
     function nextMonth() {
         if (monthNumber !== 11) {
@@ -87,8 +90,8 @@ export function initializeCalendar() {
             monthNumber = 0;
             currentYear++;
         }
-        setNewDate();
         animateTransition('fade-out-in');
+        setNewDate();
     }
     function setNewDate() {
         currentDate = new Date(currentYear, monthNumber, currentDay);
@@ -99,18 +102,15 @@ export function initializeCalendar() {
             year.textContent = currentYear.toString();
         }
         if (daysContainer) {
-            daysContainer.textContent = "";
         }
         writeMonth(monthNumber);
     }
-    prevMonthDom === null || prevMonthDom === void 0 ? void 0 : prevMonthDom.addEventListener("click", () => lastMonth());
-    nextMonthDom === null || nextMonthDom === void 0 ? void 0 : nextMonthDom.addEventListener("click", () => nextMonth());
     function animateTransition(animationClass) {
         calendar === null || calendar === void 0 ? void 0 : calendar.classList.add(animationClass);
         setTimeout(() => {
             calendar === null || calendar === void 0 ? void 0 : calendar.classList.add('active');
             calendar === null || calendar === void 0 ? void 0 : calendar.classList.remove(animationClass);
-        }, 1000);
+        }, 600);
     }
     calendar === null || calendar === void 0 ? void 0 : calendar.addEventListener('animationend', function () {
         calendar === null || calendar === void 0 ? void 0 : calendar.classList.remove('active');
