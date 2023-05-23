@@ -66,6 +66,35 @@
                   <label for="date-end" class="form-check-label">Finish</label>
                 </div>
 
+                <div class="mb-3">
+                  <label for="finish-date" class="form-label">End date</label>
+                  <input type="datetime-local" id="finishDate" name="date-finish" class="form-control" />
+                </div>
+
+                  <div class="mb-3 form-check">
+                    <input type="checkbox" name="Remind me when this event expires" id="date-start" class="form-check-input" />
+                    <label for="date-start" class="form-check-label">Remind me when this event expires</label>
+                  </div>
+                  <div>
+                    <label for="type-event" class="form-label"></label>
+                    <div id="type-event" class="dropdown" data-bs-toggle="dropdown">
+                      <button class="btn btn-secondary dropdown-toggle d-flex" type="button" id="type-event-button"data-bs-toggle="dropdown" aria-expanded="false">Select your event type</button>
+                      <ul class="dropdown-menu" aria-labelledby="type-event-button">
+                        <li class="dropdown-item work-event">Work</li>
+                        <li class="dropdown-item family-event">Family</li>
+                        <li class="dropdown-item friends-event">Friends</li>
+                        <li class="dropdown-item doctor-event">Doctor</li>
+                        <li class="dropdown-item private-event">Private</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mb-3 form-check">
+                  <input type="checkbox" name="End date" id="dateEndCheck" class="form-check-input" />
+                  <label for="date-end" class="form-check-label">Finish</label>
+                </div>
+
                 <div class="mb-3 d-none" id="reminderBox">
                   <label for="finish-date" class="form-label">End date</label>
                   <input type="datetime-local" id="finishDate" name="date-finish" class="form-control" />
