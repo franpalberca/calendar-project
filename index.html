@@ -114,14 +114,6 @@
                     class="form-check-input" />
                   <label for="date-start" class="form-check-label">Remind me when this event expires</label>
                 </div>
-              </div>
-              <div class="col-md-6">
-                <div class="mb-3">
-                  <label for="description" class="form-label">Description</label>
-                  <textarea id="description" placeholder="Write something here" name="textarea" rows="10" cols="40"
-                    maxlength="500" class="form-control"></textarea>
-                </div>
-
                 <div class="mb-3 d-none" id="rememberWhen">
                   <label for="reminder-select" class="form-label">Remember me:</label>
                   <div id="reminder-select" data-bs-toggle="dropdown" class="dropdown">
@@ -134,6 +126,26 @@
                       <li class="dropdown-item" id="thirty-min">30 min</li>
                       <li class="dropdown-item" id="fortyfive-min">45 min</li>
                       <li class="dropdown-item" id="sixty-min">60 min</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="description" class="form-label">Description</label>
+                  <textarea id="description" placeholder="Write something here" name="textarea" rows="10" cols="40"
+                    maxlength="500" class="form-control"></textarea>
+                </div>
+                <div class="mb-3">
+                  <label for="type-event" class="form-label"></label>
+                  <div id="type-event" class="dropdown" data-bs-toggle="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle d-flex" type="button" id="type-event-button"data-bs-toggle="dropdown" aria-expanded="false">Select your event type</button>
+                    <ul class="dropdown-menu" aria-labelledby="type-event-button">
+                      <li class="dropdown-item work-event">Work</li>
+                      <li class="dropdown-item family-event">Family</li>
+                      <li class="dropdown-item friends-event">Friends</li>
+                      <li class="dropdown-item doctor-event">Doctor</li>
+                      <li class="dropdown-item private-event">Private</li>
                     </ul>
                   </div>
                 </div>
