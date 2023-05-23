@@ -9,6 +9,7 @@ const month: HTMLElement | null = document.querySelector("#month");
 const year: HTMLElement | null = document.querySelector("#year");
 const prevMonthDom: HTMLElement | null = document.querySelector("#prevMonth");
 const nextMonthDom: HTMLElement | null = document.querySelector("#nextMonth");
+const calendar: HTMLElement | null = document.querySelector("#generalContainer");
 
 writeMonth(monthNumber);
 setNewDate();
@@ -90,6 +91,7 @@ function lastMonth(): void {
 		currentYear--;
 	}
 	setNewDate();
+    animateTransition('fade-out-in');
 }
 
 function nextMonth(): void {
@@ -100,6 +102,7 @@ function nextMonth(): void {
 		currentYear++;
 	}
 	setNewDate();
+    animateTransition('fade-out-in');
 }
 
 
@@ -118,32 +121,10 @@ function setNewDate(): void {
 	writeMonth(monthNumber);
 }
 
-// prevMonthDom?.addEventListener("click", () => lastMonth());
-// nextMonthDom?.addEventListener("click", () => nextMonth());
+ prevMonthDom?.addEventListener("click", () => lastMonth());
+ nextMonthDom?.addEventListener("click", () => nextMonth());
 
-const calendar = document.querySelector("#generalContainer");
 
-prevMonthDom?.addEventListener("click", function() {
-  if (monthNumber !== 0) {
-    monthNumber--;
-  } else {
-    monthNumber = 11;
-    currentYear--;
-  }
-  setNewDate();
-  animateTransition('fade-out-in');
-});
-
-nextMonthDom?.addEventListener("click", function() {
-  if (monthNumber !== 11) {
-    monthNumber++;
-  } else {
-    monthNumber = 0;
-    currentYear++;
-  }
-  setNewDate();
-  animateTransition('fade-out-in');
-});
 
 function animateTransition(animationClass: string): void {
     calendar?.classList.add(animationClass);
