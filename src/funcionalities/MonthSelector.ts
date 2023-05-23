@@ -1,20 +1,7 @@
-// let monthNames: string[] = [
-// 	"January",
-// 	"February",
-// 	"March",
-// 	"April",
-// 	"May",
-// 	"June",
-// 	"July",
-// 	"August",
-// 	"September",
-// 	"October",
-// 	"November",
-// 	"December",
-// ];
 let currentDate = new Date();
 let currentDay = currentDate.getDate();
 let monthNumber = currentDate.getMonth();
+let actualMonth = currentDate.getMonth();
 let currentYear = currentDate.getFullYear();
 
 const daysContainer: HTMLElement | null = document.querySelector("#daysContainer");
@@ -24,7 +11,9 @@ const prevMonthDom: HTMLElement | null = document.querySelector("#prevMonth");
 const nextMonthDom: HTMLElement | null = document.querySelector("#nextMonth");
 
 writeMonth(monthNumber);
-setNewDate()
+setNewDate();
+
+
 function writeMonth(month: number) {
     if (daysContainer) {
         while (daysContainer.firstChild) {
@@ -47,9 +36,11 @@ function writeMonth(month: number) {
         for (let i = 1; i <= currentMonthdaysContainer; i++) {
             const dayElement = document.createElement("div");
             dayElement.classList.add("day");
+			dayElement.setAttribute("id", "day");
+			dayElement.setAttribute("data-dayNumber", `day${i}`);
             dayElement.textContent = i.toString();
 
-            if (i === currentDay && month === monthNumber) {
+            if (i === currentDay && month === actualMonth) {
                 dayElement.classList.add("today");
             }
 
@@ -57,8 +48,6 @@ function writeMonth(month: number) {
         }
     }
 }
-
-
 
 function getTotaldaysContainer(month: number): number {
 	if (month === -1) month = 11;
