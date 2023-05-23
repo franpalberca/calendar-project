@@ -1,181 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="./css/bootstrap.css" />
-		<link rel="stylesheet" href="style.css" />
-		<script src="./js/bootstrap.js" defer></script>
-		<script src="https://kit.fontawesome.com/d9005a0d59.js" crossorigin="anonymous" defer></script>
-		<script src="https://unpkg.com/@popperjs/core@2" defer></script>
-		<script src="./js/bootstrap.bundle.js" defer></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="./js/bootstrap.js" defer></script>
+    <script src="https://kit.fontawesome.com/d9005a0d59.js" crossorigin="anonymous" defer></script>
+    <script src="https://unpkg.com/@popperjs/core@2" defer></script>
+    <script src="./js/bootstrap.bundle.js" defer></script>
 
-		<title>Google Calendar</title>
-	</head>
-	<!--CADA UNO DEBERA TRABAJAR EN SU PROPIO ARCHIVO/S .TS, PARA LA CREACION DE MODULOS QUE LUEGO SE INCORPORARAN A UN UNICO ARCHIVO DE EJECUCION SCRIPT, COMENTEN EL CODIGO SIEMPRE QUE PUEDAN-->
-	<body>
-		<!-- UNO TIENE LA TAREA DE MODIFICAR LA BARRA DE HEADER EN BASE A LO QUE CREA QUE DEBAMOS TENER, DESAROLLAR LAS FUNCIONES Y CREAR UN DIV O SECTION QUE REEMPLAZE A <div class="general-container">-->
-		<!-- ESTA SECCION DEBERA TENER DISPLAY:NONE HASTA QUE EL BOTON DEBIDO DE LA SECCION HEADER SE PRESIONE-->
-		<header class="d-flex container flex-wrap justify-content-center py-3 mb-4 border-bottom">
-			<a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-				<span class="fs-4">Calendar</span>
-			</a>
+    <title>Google Calendar</title>
+  </head>
+  <!--CADA UNO DEBERA TRABAJAR EN SU PROPIO ARCHIVO/S .TS, PARA LA CREACION DE MODULOS QUE LUEGO SE INCORPORARAN A UN UNICO ARCHIVO DE EJECUCION SCRIPT, COMENTEN EL CODIGO SIEMPRE QUE PUEDAN-->
+  <body>
+    <!-- UNO TIENE LA TAREA DE MODIFICAR LA BARRA DE HEADER EN BASE A LO QUE CREA QUE DEBAMOS TENER, DESAROLLAR LAS FUNCIONES Y CREAR UN DIV O SECTION QUE REEMPLAZE A <div class="general-container">-->
+    <!-- ESTA SECCION DEBERA TENER DISPLAY:NONE HASTA QUE EL BOTON DEBIDO DE LA SECCION HEADER SE PRESIONE-->
+    <header class="d-flex container flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+        <span class="fs-4">Calendar</span>
+      </a>
 
-			<ul class="nav nav-pills">
-				<li class="nav-item">
-					<a href="#" class="nav-link active" aria-current="page">Home</a>
-				</li>
-				<li class="nav-item">
-					<button class="nav-link" data-bs-toggle="modal" data-bs-target="#eventModal">Modal</button>
-				</li>
-				<li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
-				<li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
-				<li class="nav-item"><a href="#" class="nav-link">About</a></li>
-			</ul>
-		</header>
-		<!-- Modal -->
-		<!--ALGUIEN TIENE LA TAREA DE MODIFICAR EL MODAL ACORDE A LO REQUERIDO PARA LA CREACION DE EVENTOS, PARA ACTIVAR EL MODAL EL BOTON DEBERA TENER LAS PROPIEDADES data-bs-toggle="modal" data-bs-target="#eventModal"-->
-		<div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-						<form action="" class="container">
-							<div class="row row-cols-1 g-2">
-								<div class="d-flex justify-content-around">
-									<label for="modal-title">Title</label>
-									<input type="text" id="modal-title" name="title" maxlength="60" />
-								</div>
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a href="#" class="nav-link active" aria-current="page">Home</a>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" data-bs-toggle="modal" data-bs-target="#eventModal">Modal</button>
+        </li>
+        <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+      </ul>
+    </header>
+    <!-- Modal -->
+    <!--ALGUIEN TIENE LA TAREA DE MODIFICAR EL MODAL ACORDE A LO REQUERIDO PARA LA CREACION DE EVENTOS, PARA ACTIVAR EL MODAL EL BOTON DEBERA TENER LAS PROPIEDADES data-bs-toggle="modal" data-bs-target="#eventModal"-->
+    <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="" class="container">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label for="modal-title" class="form-label">Title</label>
+                    <input type="text" id="modal-title" name="title" maxlength="60" class="form-control" />
+                  </div>
 
-								<div class="d-flex justify-content-around">
-									<label for="start-date">Start date </label>
-									<input type="datetime-local" id="start-date" name="date-start" />
-								</div>
-								<div class="d-flex justify-content-between">
-									<label for="date-end">Finish </label>
-									<input type="checkbox" name="End date" id="date-end" class="mr-5" />
-								</div>
-								<div class="d-flex justify-content-around">
-									<label for="date-end" class="ml-5">End date</label>
-									<input type="datetime-local" id="finish-date" name="date-finish" />
-								</div>
-								<div class="d-flex justify-content-around">
-									<input type="checkbox" name="Remind me when this event expires" id="date-start" />
-								</div>
-								<div class="d-flex justify-content-around">
-									<textarea id="description" placeholder="Description" name="textarea" rows="8" cols="40" maxlength="500">Write something here</textarea>
-								</div>
+                  <div class="mb-3">
+                    <label for="start-date" class="form-label">Start date</label>
+                    <input type="datetime-local" id="start-date" name="date-start" class="form-control" />
+                  </div>
 
-								
-								<div id="reminder-select" data-bs-toggle="dropdown" class="d-flex align-items-center justify-content-center dropdown-toggle active" aria-expanded="false">
-                  <p class="" id="remember">Remember me:</p>
-									<ul class="dropdown-menu">
-										<li class="dropdown-item" id="five-min">5 min</li>
-										<li class="dropdown-item" id="ten-min">10 min</li>
-										<li class="dropdown-item" id="fifteen-min">15 min</li>
-										<li class="dropdown-item" id="thirty-min">30 min</li>
-										<li class="dropdown-item" id="fortyfive-min">45 min</li>
-										<li class="dropdown-item" id="sixty-min">60 min</li>
-									</ul>
-								</div>
-							</div>
-						</form>
-					</div>
+                  <div class="mb-3 form-check">
+                    <input type="checkbox" name="End date" id="date-end" class="form-check-input" />
+                    <label for="date-end" class="form-check-label">Finish</label>
+                  </div>
 
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Save changes</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<main>
-			<!--AQUI SE DEBEN CREAR NUEVAS DIV O SECTION CON EL DISPLAY NONE PARA QUE LUEGO SEAN MOSTRADAS, USAR ETIQUETAS <DIV> O <SECTION> -->
-			<div class="general-container">
-				<div class="month">
-					<i class="fa fa-angle-left prev"></i>
-					<span class="date">MONTH</span>
-					<i class="fa fa-angle-right next"></i>
-				</div>
-				<div class="week">
-					<div>Sunday</div>
-					<div>Monday</div>
-					<div>Tuesday</div>
-					<div>Wednesday</div>
-					<div>Thursday</div>
-					<div>Friday</div>
-					<div>Saturday</div>
-				</div>
-				<div class="days">
-					<div class="day">1</div>
-					<div class="day">2</div>
-					<div class="day">3</div>
-					<div class="day">4</div>
-					<div class="day">5</div>
-					<div class="day">6</div>
-					<div class="day">7</div>
-					<div class="day">8</div>
-					<div class="day">9</div>
-					<div class="day">10</div>
-					<div class="day">11</div>
-					<div class="day">12</div>
-					<div class="day">13</div>
-					<div class="day">14</div>
-					<div class="day">15</div>
-					<div class="day">16</div>
-					<div class="day">17</div>
-					<div class="day">18</div>
-					<div class="day">19</div>
-					<div class="day">20</div>
-					<div class="day">21</div>
-					<div class="day">22</div>
-					<div class="day">23</div>
-					<div class="day">24</div>
-					<div class="day">25</div>
-					<div class="day">26</div>
-					<div class="day">27</div>
-					<div class="day">28</div>
-					<div class="day">29</div>
-					<div class="day">30</div>
-					<div class="day">31</div>
-					<div class="day"></div>
-					<div class="day"></div>
-					<div class="day"></div>
-					<div class="day"></div>
-				</div>
-			</div>
-		</main>
-		<!--ALGUIEN TIENE LA TAREA DE MOFICIAR EL FOOTER ACORDE A LO QUE CREA CONVENIENTE.-->
-		<footer class="d-flex container flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-			<p class="col-md-4 mb-0 text-body-secondary">© 2023 Company, Inc</p>
+                  <div class="mb-3">
+                    <label for="finish-date" class="form-label">End date</label>
+                    <input type="datetime-local" id="finish-date" name="date-finish" class="form-control" />
+                  </div>
 
-			<a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-				<svg class="bi me-2" width="40" height="32">
-					<use xlink:href="#bootstrap"></use>
-				</svg>
-			</a>
+                  <div class="mb-3 form-check">
+                    <input type="checkbox" name="Remind me when this event expires" id="date-start" class="form-check-input" />
+                    <label for="date-start" class="form-check-label">Remind me when this event expires</label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea id="description" placeholder="Description" name="textarea" rows="8" cols="40" maxlength="500" class="form-control">Write something here</textarea>
+                  </div>
 
-			<ul class="nav col-md-4 justify-content-end">
-				<li class="nav-item">
-					<a href="#" class="nav-link px-2 text-body-secondary">Home</a>
-				</li>
-				<li class="nav-item">
-					<a href="#" class="nav-link px-2 text-body-secondary">Features</a>
-				</li>
-				<li class="nav-item">
-					<a href="#" class="nav-link px-2 text-body-secondary">Pricing</a>
-				</li>
-				<li class="nav-item">
-					<a href="#" class="nav-link px-2 text-body-secondary">FAQs</a>
-				</li>
-				<li class="nav-item">
-					<a href="#" class="nav-link px-2 text-body-secondary">About</a>
-				</li>
-			</ul>
-		</footer>
-	</body>
+                  <div class="mb-3">
+                    <label for="reminder-select" class="form-label">Remember me:</label>
+                    <div id="reminder-select" data-bs-toggle="dropdown" class="dropdown">
+                      <button class="btn btn-secondary dropdown-toggle" type="button" id="remember" data-bs-toggle="dropdown" aria-expanded="false">Select Reminder</button>
+                      <ul class="dropdown-menu" aria-labelledby="remember">
+                        <li class="dropdown-item" id="five-min">5 min</li>
+                        <li class="dropdown-item" id="ten-min">10 min</li>
+                        <li class="dropdown-item" id="fifteen-min">15 min</li>
+                        <li class="dropdown-item" id="thirty-min">30 min</li>
+                        <li class="dropdown-item" id="fortyfive-min">45 min</li>
+                        <li class="dropdown-item" id="sixty-min">60 min</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <main>
+      <!--AQUI SE DEBEN CREAR NUEVAS DIV O SECTION CON EL DISPLAY NONE PARA QUE LUEGO SEAN MOSTRADAS, USAR ETIQUETAS <DIV> O <SECTION> -->
+      <div class="general-container">
+        <div class="month">
+          <i class="fa fa-angle-left prev"></i>
+          <span class="date">MONTH</span>
+          <i class="fa fa-angle-right next"></i>
+        </div>
+        <div class="week">
+          <div>Sunday</div>
+          <div>Monday</div>
+          <div>Tuesday</div>
+          <div>Wednesday</div>
+          <div>Thursday</div>
+          <div>Friday</div>
+          <div>Saturday</div>
+        </div>
+        <div class="days">
+          <div class="day">1</div>
+          <div class="day">2</div>
+          <div class="day">3</div>
+          <div class="day">4</div>
+          <div class="day">5</div>
+          <div class="day">6</div>
+          <div class="day">7</div>
+          <div class="day">8</div>
+          <div class="day">9</div>
+          <div class="day">10</div>
+          <div class="day">11</div>
+          <div class="day">12</div>
+          <div class="day">13</div>
+          <div class="day">14</div>
+          <div class="day">15</div>
+          <div class="day">16</div>
+          <div class="day">17</div>
+          <div class="day">18</div>
+          <div class="day">19</div>
+          <div class="day">20</div>
+          <div class="day">21</div>
+          <div class="day">22</div>
+          <div class="day">23</div>
+          <div class="day">24</div>
+          <div class="day">25</div>
+          <div class="day">26</div>
+          <div class="day">27</div>
+          <div class="day">28</div>
+          <div class="day">29</div>
+          <div class="day">30</div>
+          <div class="day">31</div>
+          <div class="day"></div>
+          <div class="day"></div>
+          <div class="day"></div>
+          <div class="day"></div>
+        </div>
+      </div>
+    </main>
+    <!--ALGUIEN TIENE LA TAREA DE MOFICIAR EL FOOTER ACORDE A LO QUE CREA CONVENIENTE.-->
+    <footer class="d-flex container flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+      <p class="col-md-4 mb-0 text-body-secondary">© 2023 Company, Inc</p>
+
+      <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+        <svg class="bi me-2" width="40" height="32">
+          <use xlink:href="#bootstrap"></use>
+        </svg>
+      </a>
+
+      <ul class="nav col-md-4 justify-content-end">
+        <li class="nav-item">
+          <a href="#" class="nav-link px-2 text-body-secondary">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link px-2 text-body-secondary">Features</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link px-2 text-body-secondary">Pricing</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link px-2 text-body-secondary">FAQs</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link px-2 text-body-secondary">About</a>
+        </li>
+      </ul>
+    </footer>
+  </body>
 </html>
