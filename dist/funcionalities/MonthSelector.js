@@ -2,6 +2,7 @@
 let currentDate = new Date();
 let currentDay = currentDate.getDate();
 let monthNumber = currentDate.getMonth();
+let actualMonth = currentDate.getMonth();
 let currentYear = currentDate.getFullYear();
 const daysContainer = document.querySelector("#daysContainer");
 const month = document.querySelector("#month");
@@ -27,8 +28,10 @@ function writeMonth(month) {
         for (let i = 1; i <= currentMonthdaysContainer; i++) {
             const dayElement = document.createElement("div");
             dayElement.classList.add("day");
+            dayElement.setAttribute("id", "day");
+            dayElement.setAttribute("data-dayNumber", `day${i}`);
             dayElement.textContent = i.toString();
-            if (i === currentDay && month === monthNumber) {
+            if (i === currentDay && month === actualMonth) {
                 dayElement.classList.add("today");
             }
             daysContainer.appendChild(dayElement);
