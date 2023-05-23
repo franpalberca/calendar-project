@@ -41,10 +41,16 @@ function writeMonth(month: number) {
             const dayElement = document.createElement("div");
             dayElement.classList.add("day");
 			dayElement.setAttribute("id", "day");
-			dayElement.setAttribute("data-dayNumber", `day${i}`);
+
+
+			let paddedMonth = monthNumber + 1;
+
+			let dateAttribute = `${currentYear}-${paddedMonth}-${i}`;
+
             dayElement.textContent = i.toString();
 			const dayEventContainer = document.createElement("div");
 			dayEventContainer.classList.add("container");
+			dayEventContainer.setAttribute("data-dayNumber", dateAttribute);
 
 			dayElement.appendChild(dayEventContainer);
 //
