@@ -1,3 +1,4 @@
+export function initializeCalendar(){
 let currentDate = new Date();
 let currentDay = currentDate.getDate();
 let monthNumber = currentDate.getMonth();
@@ -30,6 +31,9 @@ function writeMonth(month: number) {
             dayElement.classList.add("day", "previous-month");
             dayElement.textContent = i.toString();
             daysContainer.appendChild(dayElement);
+
+
+
         }
 
         // Imprimir los días del mes actual
@@ -39,6 +43,17 @@ function writeMonth(month: number) {
 			dayElement.setAttribute("id", "day");
 			dayElement.setAttribute("data-dayNumber", `day${i}`);
             dayElement.textContent = i.toString();
+			const dayEventContainer = document.createElement("div");
+			dayEventContainer.classList.add("container");
+
+			dayElement.appendChild(dayEventContainer);
+//
+		//	const dayEvent = document.createElement("div");
+		//	dayEvent.setAttribute("class","row d-flex justify-content-center bg-info bg-gradient mb-1");
+		//	dayEvent.setAttribute("style","font-size: 10px; color: black;");
+		//	dayEvent.innerText = "testing";
+//
+		//	dayEventContainer.appendChild(dayEvent);
 
             if (i === currentDay && month === actualMonth) {
                 dayElement.classList.add("today");
@@ -68,7 +83,6 @@ function getTotaldaysContainer(month: number): number {
 		return isLeap() ? 29 : 28;
 	}
 }
-
 function isLeap(): boolean {
     return (
         (currentYear % 100 !== 0 && currentYear % 4 === 0) ||
@@ -117,3 +131,4 @@ function setNewDate(): void {
 
 prevMonthDom?.addEventListener("click", () => lastMonth());
 nextMonthDom?.addEventListener("click", () => nextMonth());
+}
