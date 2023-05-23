@@ -79,6 +79,14 @@ main{
     font-size: 1rem;
     font-weight: 400;
 }
+.today {
+    background-color: rgb(169, 91, 241);
+    color: rgb(28, 28, 28);
+}
+.previous-month {
+    background-color: rgb(234, 245, 255);
+    color: rgba(232, 83, 83, 0.861);
+}
 .days .day{
     border: 1px solid gainsboro;
     width: calc(100% / 7);
