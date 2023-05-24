@@ -4,6 +4,7 @@ export function initializeCalendar() {
     let monthNumber = currentDate.getMonth();
     let actualMonth = currentDate.getMonth();
     let currentYear = currentDate.getFullYear();
+    let actualYear = currentDate.getFullYear();
     const daysContainer = document.querySelector("#daysContainer");
     const month = document.querySelector("#month");
     const year = document.querySelector("#year");
@@ -31,11 +32,14 @@ export function initializeCalendar() {
                 dayElement.setAttribute("id", "day");
                 let paddedMonth = monthNumber + 1;
                 let dateAttribute = `${currentYear}-${paddedMonth}-${i}`;
+                const toISODate = new Date(dateAttribute).toISOString().slice(0, 10);
                 dayElement.textContent = i.toString();
                 const dayEventContainer = document.createElement("div");
                 dayEventContainer.classList.add("container");
-                dayEventContainer.setAttribute("data-dayNumber", dateAttribute);
+                dayEventContainer.setAttribute("data-dayNumber", toISODate);
                 dayElement.appendChild(dayEventContainer);
+                const targetYear = year === null || year === void 0 ? void 0 : year.innerText;
+                const todayYear = actualYear.toString();
                 const addButtonDiv = document.createElement("div");
                 addButtonDiv.classList.add("add-button-container");
                 dayElement.appendChild(addButtonDiv);
@@ -48,7 +52,7 @@ export function initializeCalendar() {
                 addButtonSpan.setAttribute("data-bs-target", "#eventModal");
                 addButtonSpan.textContent = "+";
                 addButton.appendChild(addButtonSpan);
-                if (i === currentDay && month === actualMonth) {
+                if (i === currentDay && month === actualMonth && todayYear === targetYear) {
                     dayElement.classList.add("today");
                 }
                 daysContainer.appendChild(dayElement);

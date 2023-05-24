@@ -1,4 +1,4 @@
-import { setEvent } from './retrieveEventData.js';
+import { setEvent } from './createEvent.js';
 
 export function setEventBtn(){
     const createEventForm = document.querySelector('#createEventForm');

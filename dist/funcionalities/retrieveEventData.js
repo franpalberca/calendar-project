@@ -1,16 +1,4 @@
-export function setEvent() {
-    const eventData = retrieveEventData();
-    const eventDate = `${eventData.eventYear}-${eventData.eventMonth}-${eventData.eventDay}`;
-    const targetDay = document.querySelector(`[data-daynumber="${eventDate}"]`);
-    if (targetDay) {
-        const dayEvent = document.createElement("div");
-        dayEvent.setAttribute("class", "row d-flex justify-content-center bg-info bg-gradient mb-1");
-        dayEvent.setAttribute("style", "font-size: 10px; color: black;");
-        dayEvent.innerText = `${eventData.name}`;
-        targetDay.appendChild(dayEvent);
-    }
-}
-function retrieveEventData() {
+export function retrieveEventData() {
     const eventTitle = document.querySelector('#modalTitle');
     const eventName = eventTitle === null || eventTitle === void 0 ? void 0 : eventTitle.value;
     const startDate = document.querySelector('#startDate');
@@ -29,8 +17,12 @@ function retrieveEventData() {
     const eventDayF = parseInt(fparts[2]);
     const eventHourF = parseInt(fparts[3]);
     const eventMinutesF = parseInt(fparts[4]);
+    const remindMeOpt = document.querySelector('#remindMeOpt');
+    const reminder = remindMeOpt === null || remindMeOpt === void 0 ? void 0 : remindMeOpt.value;
     const eventDescription = document.querySelector('#description');
     const description = eventDescription.value;
+    const eventTypeOpt = document.querySelector('#eventTypeOpt');
+    const eventType = eventTypeOpt.value;
     const eventObject = {
         name: eventName,
         eventYear: eventYear,
@@ -43,7 +35,9 @@ function retrieveEventData() {
         eventDayF: eventDayF,
         eventHourF: eventHourF,
         eventMinutesF: eventMinutesF,
+        reminder: reminder,
         description: description,
+        eventType: eventType,
     };
     console.log(eventObject);
     const eventObjectJSON = JSON.stringify(eventObject);
