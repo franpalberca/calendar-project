@@ -79,8 +79,11 @@ export function initializeCalendar() {
             monthNumber = 11;
             currentYear--;
         }
-        animateTransition('fade-out-in');
         setNewDate();
+        calendar === null || calendar === void 0 ? void 0 : calendar.classList.add('rotate-effect');
+        setTimeout(() => {
+            calendar === null || calendar === void 0 ? void 0 : calendar.classList.remove('rotate-effect');
+        }, 600);
     }
     function nextMonth() {
         if (monthNumber !== 11) {
@@ -90,8 +93,11 @@ export function initializeCalendar() {
             monthNumber = 0;
             currentYear++;
         }
-        animateTransition('fade-out-in');
         setNewDate();
+        calendar === null || calendar === void 0 ? void 0 : calendar.classList.add('rotate-effect');
+        setTimeout(() => {
+            calendar === null || calendar === void 0 ? void 0 : calendar.classList.remove('rotate-effect');
+        }, 600);
     }
     function setNewDate() {
         currentDate = new Date(currentYear, monthNumber, currentDay);
@@ -105,16 +111,6 @@ export function initializeCalendar() {
         }
         writeMonth(monthNumber);
     }
-    function animateTransition(animationClass) {
-        calendar === null || calendar === void 0 ? void 0 : calendar.classList.add(animationClass);
-        setTimeout(() => {
-            calendar === null || calendar === void 0 ? void 0 : calendar.classList.add('active');
-            calendar === null || calendar === void 0 ? void 0 : calendar.classList.remove(animationClass);
-        }, 600);
-    }
-    calendar === null || calendar === void 0 ? void 0 : calendar.addEventListener('animationend', function () {
-        calendar === null || calendar === void 0 ? void 0 : calendar.classList.remove('active');
-    });
     prevMonthDom === null || prevMonthDom === void 0 ? void 0 : prevMonthDom.addEventListener("click", () => lastMonth());
     nextMonthDom === null || nextMonthDom === void 0 ? void 0 : nextMonthDom.addEventListener("click", () => nextMonth());
 }

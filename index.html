@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/bootstrap.css" />
-    <link rel="stylesheet" href="style.css">
-    <script type="module" src="./dist/starter.js" defer></script>
-    <script src="https://unpkg.com/@popperjs/core@2" defer></script>
-    <script src="./js/bootstrap.js" defer></script>
-    <script src="https://kit.fontawesome.com/d9005a0d59.js" crossorigin="anonymous" defer></script>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/bootstrap.css" />
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="./dist/starter.js" defer></script>
+  <script src="https://unpkg.com/@popperjs/core@2" defer></script>
+  <script src="./js/bootstrap.js" defer></script>
+  <script src="https://kit.fontawesome.com/d9005a0d59.js" crossorigin="anonymous" defer></script>
 
   <title>Google Calendar</title>
 </head>
@@ -23,38 +24,36 @@
       <span class="fs-4">Calendar</span>
     </a>
 
-      <ul class="nav nav-pills">
-        <li class="nav-item">
-          <button class="nav-link" data-bs-toggle="modal" data-bs-target="#eventModal">Events </button>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link active" aria-current="page">Home</a>
-        </li>
-        <li class="nav-item">
+    <ul class="nav nav-pills">
+     
+      <li class="nav-item">
+        <a href="#" class="nav-link active" aria-current="page">Home</a>
+      </li>
+      <li class="nav-item">
 
-        </li>
-        <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">About</a></li>
-      </ul>
-    </header>
-    <!-- Modal -->
-    <!--ALGUIEN TIENE LA TAREA DE MODIFICAR EL MODAL ACORDE A LO REQUERIDO PARA LA CREACION DE EVENTOS, PARA ACTIVAR EL MODAL EL BOTON DEBERA TENER LAS PROPIEDADES data-bs-toggle="modal" data-bs-target="#eventModal"-->
-    <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Create Event</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form action="" class="container" id="createEventForm">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="mb-3">
-                    <label for="modal-title" class="form-label">Title</label>
-                    <input type="text" id="modalTitle" name="title" maxlength="60" class="form-control" />
-                  </div>
+      </li>
+      <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+    </ul>
+  </header>
+  <!-- Modal -->
+  <!--ALGUIEN TIENE LA TAREA DE MODIFICAR EL MODAL ACORDE A LO REQUERIDO PARA LA CREACION DE EVENTOS, PARA ACTIVAR EL MODAL EL BOTON DEBERA TENER LAS PROPIEDADES data-bs-toggle="modal" data-bs-target="#eventModal"-->
+  <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Create Event</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="" class="container" id="createEventForm">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="modal-title" class="form-label">Title</label>
+                  <input type="text" id="modalTitle" name="title" maxlength="60" class="form-control" />
+                </div>
 
                 <div class="mb-3">
                   <label for="start-date" class="form-label">Start date</label>
@@ -101,7 +100,8 @@
                 <div class="mb-3">
                   <label for="type-event" class="form-label"></label>
                   <div id="type-event" class="dropdown" data-bs-toggle="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle d-flex" type="button" id="type-event-button"data-bs-toggle="dropdown" aria-expanded="false">Select your event type</button>
+                    <button class="btn btn-secondary dropdown-toggle d-flex" type="button" id="type-event-button"
+                      data-bs-toggle="dropdown" aria-expanded="false">Select your event type</button>
                     <ul class="dropdown-menu p-0" aria-labelledby="type-event-button">
                       <li class="dropdown-item work-event">Work</li>
                       <li class="dropdown-item family-event">Family</li>
@@ -141,36 +141,51 @@
             <p class="fw-semibold">Precipitation Chance: <span class="fw-light" id="fPChance"></span></p>
 
             <p class="fw-light" style="font-size: 9px;">This data updates every 5 minutes.</p>
-          </div>
         </div>
       </div>
     </div>
-    <main>
-      <!--AQUI SE DEBEN CREAR NUEVAS DIV O SECTION CON EL DISPLAY NONE PARA QUE LUEGO SEAN MOSTRADAS, USAR ETIQUETAS <DIV> O <SECTION> -->
-      <div id="generalContainer" class="general-container .fade-out-in">
-          <div class="month">
-            <i id="prevMonth" class="fa fa-angle-left prev"></i>
-            <span id="month" class="date">MONTH</span>
-            <span id="year"></span>
-            <i id="nextMonth" class="fa fa-angle-right next"></i>
-          </div>
-          <div class="week">
-            <div>Monday</div>
-            <div>Tuesday</div>
-            <div>Wednesday</div>
-            <div>Thursday</div>
-            <div>Friday</div>
-            <div>Saturday</div>
-            <div>Sunday</div>
-          </div>
-          <div class="days" id="daysContainer">
-            <!-- <div class="day">1</div> -->
-          </div>
+  </div>
+  <main>
+    <!--AQUI SE DEBEN CREAR NUEVAS DIV O SECTION CON EL DISPLAY NONE PARA QUE LUEGO SEAN MOSTRADAS, USAR ETIQUETAS <DIV> O <SECTION> -->
+    <div id="generalContainer" class="general-container .fade-out-in">
+      <div class="month">
+        <i id="prevMonth" class="fa fa-angle-left prev"></i>
+        <span id="month" class="date">MONTH</span>
+        <span id="year"></span>
+        <i id="nextMonth" class="fa fa-angle-right next"></i>
       </div>
-    </main>
-<!--ALGUIEN TIENE LA TAREA DE MOFICIAR EL FOOTER ACORDE A LO QUE CREA CONVENIENTE.-->
-    <footer class="d-flex container flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-      <p class="col-md-4 mb-0 text-body-secondary"><a class="navbar-brand" href="https://assemblerinstitute.com" target="_blank">
+      <div class="week">
+        <div class="div-text-week">
+          <p>Monday</p>
+        </div>
+        <div class="div-text-week">
+          <p>Tuesday</p>
+        </div>
+        <div class="div-text-week">
+          <p>Wednesday</p>
+        </div>
+        <div class="div-text-week">
+          <p>Thursday</p>
+        </div>
+        <div class="div-text-week">
+          <p>Friday</p>
+        </div>
+        <div class="div-text-week">
+          <p>Saturday</p>
+        </div>
+        <div class="div-text-week">
+          <p>Sunday</p>
+        </div>
+      </div>
+      <div class="days" id="daysContainer">
+        <!-- <div class="day">1</div> -->
+      </div>
+    </div>
+  </main>
+  <!--ALGUIEN TIENE LA TAREA DE MOFICIAR EL FOOTER ACORDE A LO QUE CREA CONVENIENTE.-->
+  <footer class="d-flex container flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <p class="col-md-4 mb-0 text-body-secondary"><a class="navbar-brand" href="https://assemblerinstitute.com"
+        target="_blank">
         <img src="./resources/A-Logo.png" alt="Bootstrap" width="30" height="30"> 2023 Lovelace Squad
       </a>
     </p>

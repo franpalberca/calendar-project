@@ -102,29 +102,38 @@ function startDay(): number {
     return start.getDay() === 0 ? 6 : start.getDay() - 1;
 }
 
-
-function lastMonth(): void {
-	if (monthNumber !== 0) {
-		monthNumber--;
-	} else {
-		monthNumber = 11;
-		currentYear--;
-	}
-    animateTransition('fade-out-in');
-	setNewDate();
-}
-
-function nextMonth(): void {
-	if (monthNumber !== 11) {
-		monthNumber++;
-	} else {
-		monthNumber = 0;
-		currentYear++;
-	}
-    animateTransition('fade-out-in');
-	setNewDate();
-}
-
+function lastMonth() {
+    if (monthNumber !== 0) {
+      monthNumber--;
+    } else {
+      monthNumber = 11;
+      currentYear--;
+    }
+    setNewDate();
+    calendar?.classList.add('rotate-effect');
+  
+    setTimeout(() => {
+      calendar?.classList.remove('rotate-effect');
+    }, 600);
+  }
+  
+  function nextMonth() {
+    if (monthNumber !== 11) {
+      monthNumber++;
+    } else {
+      monthNumber = 0;
+      currentYear++;
+    }
+    setNewDate();
+    calendar?.classList.add('rotate-effect');
+  
+    setTimeout(() => {
+      calendar?.classList.remove('rotate-effect');
+    }, 600);
+  }
+  
+  
+  
 
 function setNewDate(): void {
 	currentDate = new Date(currentYear, monthNumber, currentDay);
@@ -140,22 +149,8 @@ function setNewDate(): void {
 	writeMonth(monthNumber);
 }
 
-function animateTransition(animationClass: string): void {
-    calendar?.classList.add(animationClass);
-    setTimeout(() => {
-      calendar?.classList.add('active');
-      calendar?.classList.remove(animationClass);
-    }, 600); // Ajusta el tiempo de espera según tus necesidades
-  }
-  
-  
-
-// Evento para limpiar la clase de animación después de que termine la animación
-calendar?.addEventListener('animationend', function() {
-  calendar?.classList.remove('active');
-});
-
 prevMonthDom?.addEventListener("click", () => lastMonth());
 nextMonthDom?.addEventListener("click", () => nextMonth());
+
 }
 
