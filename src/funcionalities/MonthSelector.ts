@@ -53,6 +53,22 @@ function writeMonth(month: number) {
 			dayEventContainer.setAttribute("data-dayNumber", dateAttribute);
 
 			dayElement.appendChild(dayEventContainer);
+
+			const addButtonDiv = document.createElement("div");
+			addButtonDiv.classList.add("add-button-container");
+			dayElement.appendChild(addButtonDiv);
+
+			const addButton = document.createElement("button");
+			addButton.classList.add("hover-button");
+			addButtonDiv.appendChild(addButton);
+
+			const addButtonSpan = document.createElement("span");
+			addButtonSpan.classList.add("plus-icon");
+			addButtonSpan.setAttribute("data-bs-toggle", "modal");
+			addButtonSpan.setAttribute("data-bs-target", "#eventModal")
+			addButtonSpan.textContent = "+";
+			addButton.appendChild(addButtonSpan);
+
 //
 		//	const dayEvent = document.createElement("div");
 		//	dayEvent.setAttribute("class","row d-flex justify-content-center bg-info bg-gradient mb-1");

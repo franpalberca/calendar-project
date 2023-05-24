@@ -36,6 +36,18 @@ export function initializeCalendar() {
                 dayEventContainer.classList.add("container");
                 dayEventContainer.setAttribute("data-dayNumber", dateAttribute);
                 dayElement.appendChild(dayEventContainer);
+                const addButtonDiv = document.createElement("div");
+                addButtonDiv.classList.add("add-button-container");
+                dayElement.appendChild(addButtonDiv);
+                const addButton = document.createElement("button");
+                addButton.classList.add("hover-button");
+                addButtonDiv.appendChild(addButton);
+                const addButtonSpan = document.createElement("span");
+                addButtonSpan.classList.add("plus-icon");
+                addButtonSpan.setAttribute("data-bs-toggle", "modal");
+                addButtonSpan.setAttribute("data-bs-target", "#eventModal");
+                addButtonSpan.textContent = "+";
+                addButton.appendChild(addButtonSpan);
                 if (i === currentDay && month === actualMonth) {
                     dayElement.classList.add("today");
                 }
