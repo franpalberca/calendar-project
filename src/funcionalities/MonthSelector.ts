@@ -4,6 +4,7 @@ let currentDay = currentDate.getDate();
 let monthNumber = currentDate.getMonth();
 let actualMonth = currentDate.getMonth();
 let currentYear = currentDate.getFullYear();
+let actualYear = currentDate.getFullYear();
 
 const daysContainer: HTMLElement | null = document.querySelector("#daysContainer");
 const month: HTMLElement | null = document.querySelector("#month");
@@ -46,11 +47,12 @@ function writeMonth(month: number) {
 			let paddedMonth = monthNumber + 1;
 
 			let dateAttribute = `${currentYear}-${paddedMonth}-${i}`;
+			const toISODate: string = new Date(dateAttribute).toISOString().slice(0, 10);
 
             dayElement.textContent = i.toString();
 			const dayEventContainer = document.createElement("div");
 			dayEventContainer.classList.add("container");
-			dayEventContainer.setAttribute("data-dayNumber", dateAttribute);
+			dayEventContainer.setAttribute("data-dayNumber", toISODate);
 
 			dayElement.appendChild(dayEventContainer);
 //
@@ -60,8 +62,9 @@ function writeMonth(month: number) {
 		//	dayEvent.innerText = "testing";
 //
 		//	dayEventContainer.appendChild(dayEvent);
-
-            if (i === currentDay && month === actualMonth) {
+			const targetYear = year?.innerText;
+			const todayYear = actualYear.toString();
+            if (i === currentDay && month === actualMonth && todayYear === targetYear) {
                 dayElement.classList.add("today");
             }
 
