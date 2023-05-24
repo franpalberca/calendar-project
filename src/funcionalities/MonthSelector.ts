@@ -1,8 +1,10 @@
+export function initializeCalendar(){
 let currentDate = new Date();
 let currentDay = currentDate.getDate();
 let monthNumber = currentDate.getMonth();
 let actualMonth = currentDate.getMonth();
 let currentYear = currentDate.getFullYear();
+let actualYear = currentDate.getFullYear();
 
 const daysContainer: HTMLElement | null = document.querySelector("#daysContainer");
 const month: HTMLElement | null = document.querySelector("#month");
@@ -30,6 +32,9 @@ function writeMonth(month: number) {
             dayElement.classList.add("day", "previous-month");
             dayElement.textContent = i.toString();
             daysContainer.appendChild(dayElement);
+
+
+
         }
 
         // Imprimir los días del mes actual
@@ -37,10 +42,45 @@ function writeMonth(month: number) {
             const dayElement = document.createElement("div");
             dayElement.classList.add("day");
 			dayElement.setAttribute("id", "day");
-			dayElement.setAttribute("data-dayNumber", `day${i}`);
-            dayElement.textContent = i.toString();
 
-            if (i === currentDay && month === actualMonth) {
+
+			let paddedMonth = monthNumber + 1;
+
+			let dateAttribute = `${currentYear}-${paddedMonth}-${i}`;
+			const toISODate: string = new Date(dateAttribute).toISOString().slice(0, 10);
+
+            dayElement.textContent = i.toString();
+			const dayEventContainer = document.createElement("div");
+			dayEventContainer.classList.add("container");
+			dayEventContainer.setAttribute("data-dayNumber", toISODate);
+
+			dayElement.appendChild(dayEventContainer);
+
+			const addButtonDiv = document.createElement("div");
+			addButtonDiv.classList.add("add-button-container");
+			dayElement.appendChild(addButtonDiv);
+
+			const addButton = document.createElement("button");
+			addButton.classList.add("hover-button");
+			addButtonDiv.appendChild(addButton);
+
+			const addButtonSpan = document.createElement("span");
+			addButtonSpan.classList.add("plus-icon");
+			addButtonSpan.setAttribute("data-bs-toggle", "modal");
+			addButtonSpan.setAttribute("data-bs-target", "#eventModal")
+			addButtonSpan.textContent = "+";
+			addButton.appendChild(addButtonSpan);
+
+//
+		//	const dayEvent = document.createElement("div");
+		//	dayEvent.setAttribute("class","row d-flex justify-content-center bg-info bg-gradient mb-1");
+		//	dayEvent.setAttribute("style","font-size: 10px; color: black;");
+		//	dayEvent.innerText = "testing";
+//
+		//	dayEventContainer.appendChild(dayEvent);
+			const targetYear = year?.innerText;
+			const todayYear = actualYear.toString();
+            if (i === currentDay && month === actualMonth && todayYear === targetYear) {
                 dayElement.classList.add("today");
             }
 
@@ -68,7 +108,6 @@ function getTotaldaysContainer(month: number): number {
 		return isLeap() ? 29 : 28;
 	}
 }
-
 function isLeap(): boolean {
     return (
         (currentYear % 100 !== 0 && currentYear % 4 === 0) ||
@@ -117,3 +156,4 @@ function setNewDate(): void {
 
 prevMonthDom?.addEventListener("click", () => lastMonth());
 nextMonthDom?.addEventListener("click", () => nextMonth());
+}
