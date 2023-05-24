@@ -4,13 +4,13 @@ let currentDay = currentDate.getDate();
 let monthNumber = currentDate.getMonth();
 let actualMonth = currentDate.getMonth();
 let currentYear = currentDate.getFullYear();
+let actualYear = currentDate.getFullYear();
 
 const daysContainer: HTMLElement | null = document.querySelector("#daysContainer");
 const month: HTMLElement | null = document.querySelector("#month");
 const year: HTMLElement | null = document.querySelector("#year");
 const prevMonthDom: HTMLElement | null = document.querySelector("#prevMonth");
 const nextMonthDom: HTMLElement | null = document.querySelector("#nextMonth");
-const calendar: HTMLElement | null = document.querySelector("#generalContainer");
 
 writeMonth(monthNumber);
 setNewDate();
@@ -19,8 +19,8 @@ setNewDate();
 function writeMonth(month: number) {
     if (daysContainer) {
         while (daysContainer.firstChild) {
-          daysContainer.firstChild.remove(); // Eliminar los días existentes
-         }
+            daysContainer.firstChild.remove(); // Eliminar los días existentes
+        }
 
         const previousMonthdaysContainer = getTotaldaysContainer(monthNumber - 1);
         const currentMonthdaysContainer = getTotaldaysContainer(month);
@@ -47,11 +47,12 @@ function writeMonth(month: number) {
 			let paddedMonth = monthNumber + 1;
 
 			let dateAttribute = `${currentYear}-${paddedMonth}-${i}`;
+			const toISODate: string = new Date(dateAttribute).toISOString().slice(0, 10);
 
             dayElement.textContent = i.toString();
 			const dayEventContainer = document.createElement("div");
 			dayEventContainer.classList.add("container");
-			dayEventContainer.setAttribute("data-dayNumber", dateAttribute);
+			dayEventContainer.setAttribute("data-dayNumber", toISODate);
 
 			dayElement.appendChild(dayEventContainer);
 //
@@ -61,8 +62,9 @@ function writeMonth(month: number) {
 		//	dayEvent.innerText = "testing";
 //
 		//	dayEventContainer.appendChild(dayEvent);
-
-            if (i === currentDay && month === actualMonth) {
+			const targetYear = year?.innerText;
+			const todayYear = actualYear.toString();
+            if (i === currentDay && month === actualMonth && todayYear === targetYear) {
                 dayElement.classList.add("today");
             }
 
@@ -133,19 +135,16 @@ function lastMonth() {
   }
   
   
-  
 
 function setNewDate(): void {
 	currentDate = new Date(currentYear, monthNumber, currentDay);
 	if (month) {
         month.textContent = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(currentDate);
-        
 	}
 	if (year) {
 		year.textContent = currentYear.toString();
 	}
-    if (daysContainer) {
-    }
+
 	writeMonth(monthNumber);
 }
 
@@ -153,4 +152,3 @@ prevMonthDom?.addEventListener("click", () => lastMonth());
 nextMonthDom?.addEventListener("click", () => nextMonth());
 
 }
-

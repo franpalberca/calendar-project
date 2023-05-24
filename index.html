@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="./css/bootstrap.css" />
-  <link rel="stylesheet" href="style.css">
-  <script type="module" src="./dist/starter.js" defer></script>
-  <script src="https://unpkg.com/@popperjs/core@2" defer></script>
-  <script src="./js/bootstrap.js" defer></script>
-  <script src="https://kit.fontawesome.com/d9005a0d59.js" crossorigin="anonymous" defer></script>
-
+  <head>
+    <meta charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <link rel="stylesheet" href="./css/bootstrap.css" >
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="./dist/starter.js"></script>
+    <script src="https://unpkg.com/@popperjs/core@2" defer></script>
+    <script src="./js/bootstrap.js" defer></script>
+    <script src="https://kit.fontawesome.com/d9005a0d59.js" crossorigin="anonymous" defer></script>
   <title>Google Calendar</title>
 </head>
 <!--CADA UNO DEBERA TRABAJAR EN SU PROPIO ARCHIVO/S .TS, PARA LA CREACION DE MODULOS QUE LUEGO SE INCORPORARAN A UN UNICO ARCHIVO DE EJECUCION SCRIPT, COMENTEN EL CODIGO SIEMPRE QUE PUEDAN-->
@@ -23,73 +21,88 @@
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
       <span class="fs-4">Calendar</span>
     </a>
-
-    <ul class="nav nav-pills">
-     
-      <li class="nav-item">
-        <a href="#" class="nav-link active" aria-current="page">Home</a>
-      </li>
-      <li class="nav-item">
-
-      </li>
-      <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
-      <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
-      <li class="nav-item"><a href="#" class="nav-link">About</a></li>
-    </ul>
-  </header>
-  <!-- Modal -->
-  <!--ALGUIEN TIENE LA TAREA DE MODIFICAR EL MODAL ACORDE A LO REQUERIDO PARA LA CREACION DE EVENTOS, PARA ACTIVAR EL MODAL EL BOTON DEBERA TENER LAS PROPIEDADES data-bs-toggle="modal" data-bs-target="#eventModal"-->
-  <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Create Event</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form action="" class="container" id="createEventForm">
-            <div class="row">
-              <div class="col-md-6">
+      <ul class="nav nav-pills header-btn" >
+        <li class="nav-item">
+          <button class="nav-link" data-bs-toggle="modal" data-bs-target="#eventModal">Events </button>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link active" aria-current="page">Today
+          </a>
+        </li>
+        <li class="nav-item"><a href="#" class="nav-link">Sign In</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Help</a>
+        <ul class="btn-help">
+          <li id="create-events" class="event-item">Create and Manage Events</li>
+          <li id="delete-events" class="event-item">Delete Events</li>
+          <li id="search-events" class="event-item">Search an Event</li>
+        </ul>
+        </li>
+        <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+      </ul>
+    </header>
+    <!-- Modal -->
+    <!--ALGUIEN TIENE LA TAREA DE MODIFICAR EL MODAL ACORDE A LO REQUERIDO PARA LA CREACION DE EVENTOS, PARA ACTIVAR EL MODAL EL BOTON DEBERA TENER LAS PROPIEDADES data-bs-toggle="modal" data-bs-target="#eventModal"-->
+    <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Create Event</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form class="container" id="createEventForm">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label for="modalTitle" class="form-label">Title</label>
+                    <input type="text" id="modalTitle" name="title" maxlength="60" class="form-control">
+                  </div>
                 <div class="mb-3">
-                  <label for="modal-title" class="form-label">Title</label>
-                  <input type="text" id="modalTitle" name="title" maxlength="60" class="form-control" />
-                </div>
-
-                <div class="mb-3">
-                  <label for="start-date" class="form-label">Start date</label>
-                  <input type="datetime-local" id="startDate" name="date-start" class="form-control" />
+                  <label for="startDate" class="form-label">Start date</label>
+                  <input type="datetime-local" id="startDate" name="date-start" class="form-control">
                 </div>
 
                 <div class="mb-3 form-check">
-                  <input type="checkbox" name="End date" id="dateEndCheck" class="form-check-input" />
-                  <label for="date-end" class="form-check-label">Finish</label>
+                  <input type="checkbox" name="End date" id="dateEndCheck" class="form-check-input">
+                  <label for="dateEndCheck" class="form-check-label">Finish</label>
                 </div>
 
                 <div class="mb-3 d-none" id="reminderBox">
-                  <label for="finish-date" class="form-label">End date</label>
-                  <input type="datetime-local" id="finishDate" name="date-finish" class="form-control" />
+                  <label for="finishDate" class="form-label">End date</label>
+                  <input type="datetime-local" id="finishDate" name="date-finish" class="form-control">
                 </div>
 
                 <div class="mb-3 form-check">
                   <input type="checkbox" name="Remind me when this event expires" id="reminderCheck"
-                    class="form-check-input" />
-                  <label for="date-start" class="form-check-label">Remind me when this event expires</label>
+                    class="form-check-input">
+                  <label for="reminderCheck" class="form-check-label">Remind me when this event expires</label>
                 </div>
-                <div class="mb-3 d-none" id="rememberWhen">
+                <div class="input-group mb-3 d-none" id="rememberWhen">
+                  <select class="form-select" id="remindMeOpt">
+                    <option value="default" selected>Remind me in...</option>
+                    <option value="5min">5 minutes</option>
+                    <option value="10min">10 minutes</option>
+                    <option value="15min">15 minutes</option>
+                    <option value="30min">30 minutes</option>
+                    <option value="45min">45 minutes</option>
+                    <option value="60min">1 hour</option>
+                  </select>
+                </div>
+                <!--<div class="mb-3 d-none" id="rememberWhen">
                   <label for="reminder-select" class="form-label">Remember me:</label>
                   <div id="reminder-select" data-bs-toggle="dropdown" class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="remember"
                       data-bs-toggle="dropdown" aria-expanded="false">Select Reminder</button>
                     <ul class="dropdown-menu" aria-labelledby="remember">
-                      <li class="dropdown-item" id="five-min">5 min</li>
-                      <li class="dropdown-item" id="ten-min">10 min</li>
-                      <li class="dropdown-item" id="fifteen-min">15 min</li>
-                      <li class="dropdown-item" id="thirty-min">30 min</li>
-                      <li class="dropdown-item" id="fortyfive-min">45 min</li>
-                      <li class="dropdown-item" id="sixty-min">60 min</li>
+                      <li class="dropdown-item minute-list" id="fiveMin">5 min</li>
+                      <li class="dropdown-item minute-list" id="ten-min">10 min</li>
+                      <li class="dropdown-item minute-list" id="fifteen-min">15 min</li>
+                      <li class="dropdown-item minute-list" id="thirty-min">30 min</li>
+                      <li class="dropdown-item minute-list" id="fortyfive-min">45 min</li>
+                      <li class="dropdown-item minute-list" id="sixty-min">60 min</li>
                     </ul>
                   </div>
-                </div>
+                </div> -->
               </div>
               <div class="col-md-6">
                 <div class="mb-3">
@@ -97,11 +110,24 @@
                   <textarea id="description" placeholder="Write something here" name="textarea" rows="10" cols="40"
                     maxlength="500" class="form-control"></textarea>
                 </div>
-                <div class="mb-3">
+                <div class="input-group mb-3">
+                  <select class="form-select" id="eventTypeOpt">
+                    <option value="default" selected>Select event type...</option>
+                    <option value="work" class="work-event">Work</option>
+                    <option value="family" class="family-event">Family</option>
+                    <option value="friends" class="friends-event">Friends</option>
+                    <option value="doctor" class="doctor-event">Doctor</option>
+                    <option value="private" class="private-event">Private</option>
+                  </select>
+                </div>
+                <!--<div class="mb-3">
                   <label for="type-event" class="form-label"></label>
                   <div id="type-event" class="dropdown" data-bs-toggle="dropdown">
                     <button class="btn btn-secondary dropdown-toggle d-flex" type="button" id="type-event-button"
                       data-bs-toggle="dropdown" aria-expanded="false">Select your event type</button>
+
+                    <button class="btn btn-secondary dropdown-toggle d-flex align-items-center" type="button" id="type-event-button" data-bs-toggle="dropdown" aria-expanded="false">Select your event type</button>
+
                     <ul class="dropdown-menu p-0" aria-labelledby="type-event-button">
                       <li class="dropdown-item work-event">Work</li>
                       <li class="dropdown-item family-event">Family</li>
@@ -110,7 +136,7 @@
                       <li class="dropdown-item private-event">Private</li>
                     </ul>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
             <div class="modal-footer">
@@ -125,7 +151,7 @@
     </div>
   </div>
   <!-- Climate Modal -->
-  <div class="modal fade" id="climateModal" tabindex="-1" aria-labelledby="climateLabel" aria-hidden="true">
+  <div class="modal fade" id="climateModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -133,7 +159,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <h4 class="mb-4 fw-semibold">Location: <span class="fw-light" id="fLocation"></span></h5>
+          <h4 class="mb-4 fw-semibold">Location: <span class="fw-light" id="fLocation"></span></h4>
             <p class="fw-semibold">Temperature: <span class="fw-light" id="fTemperature"></span></p>
             <p class="fw-semibold">Termic Sensation: <span class="fw-light" id="fTermicSensation"></span></p>
             <p class="fw-semibold">Preassure: <span class="fw-light" id="fPreasure"></span></p>
@@ -200,19 +226,19 @@
           data-bs-target="#climateModal">Today's weather</button>
       </li>
 
-      <div class="btn-group dropup ms-5">
+      <li class="btn-group dropup ms-5">
         <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown"
           aria-expanded="false">
           Members of the Squad
         </button>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="https://github.com/franpalberca" target="_blank">Fran P.A.</a></li>
-          <li><a class="dropdown-item" href="https://github.com/JorgeMunarriz" target="_blank">Jorge M.</a></li>
+          <li><a class="dropdown-item" href="https://github.com/JorgeMunarriz" target="_blank">Jorge M.G</a></li>
           <li><a class="dropdown-item" href="https://github.com/HoracioMartinez17" target="_blank">Horacio J.M.</a></li>
           <li><a class="dropdown-item" href="https://github.com/Madpug2022" target="_blank">Matias A.C.</a></li>
           <li><a class="dropdown-item" href="https://github.com/kevinPolania" target="_blank">Kevin P.N.</a></li>
         </ul>
-      </div>
+      </li>
 
     </ul>
   </footer>
