@@ -1,12 +1,15 @@
 
 
 /* - - - M A I N   S E L E C T O R  - - - - */
-main{
+.main-container{
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #d1ebf7;
+    background: linear-gradient(transparent, rgba(0, 0, 255, 0.493)50%, transparent);
+}
+.main-container.dark {
+    background: linear-gradient(transparent, rgba(5, 5, 133, 0.493)50%, transparent);
 }
 
 
