@@ -3,9 +3,7 @@ export function recreateEvents() {
     const eventsData = retrieveLocalStorage();
     eventsData.forEach((element) => {
         const eventDate = new Date(`${element.eventYear}-${element.eventMonth}-${element.eventDay}`).toISOString().slice(0, 10);
-        console.log(eventDate);
         const targetDate = document.querySelector(`[data-daynumber="${eventDate}"]`);
-        console.log(targetDate);
         if (targetDate) {
             let eventColor = '';
             switch (element.eventType) {

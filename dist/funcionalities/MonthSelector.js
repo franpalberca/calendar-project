@@ -4,6 +4,7 @@ export function initializeCalendar() {
     let monthNumber = currentDate.getMonth();
     let actualMonth = currentDate.getMonth();
     let currentYear = currentDate.getFullYear();
+    let actualYear = currentDate.getFullYear();
     const daysContainer = document.querySelector("#daysContainer");
     const month = document.querySelector("#month");
     const year = document.querySelector("#year");
@@ -37,7 +38,9 @@ export function initializeCalendar() {
                 dayEventContainer.classList.add("container");
                 dayEventContainer.setAttribute("data-dayNumber", toISODate);
                 dayElement.appendChild(dayEventContainer);
-                if (i === currentDay && month === actualMonth) {
+                const targetYear = year === null || year === void 0 ? void 0 : year.innerText;
+                const todayYear = actualYear.toString();
+                if (i === currentDay && month === actualMonth && todayYear === targetYear) {
                     dayElement.classList.add("today");
                 }
                 daysContainer.appendChild(dayElement);
