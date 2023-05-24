@@ -10,5 +10,7 @@ export interface EventData {
     eventDayF: number;
     eventHourF: number;
     eventMinutesF: number;
+    reminder: string;
     description: string;
+    eventType: string;
 }

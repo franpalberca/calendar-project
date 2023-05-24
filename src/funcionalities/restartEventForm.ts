@@ -16,4 +16,10 @@ export function restartEventForm(){
 
     const reminderCheck = document.querySelector('#reminderCheck') as HTMLInputElement;
     reminderCheck.checked = false;
+
+    const eventTypeOpt = document.querySelector('#eventTypeOpt') as HTMLInputElement;
+    eventTypeOpt.value = 'default';
+
+    const remindMeOpt = document.querySelector('#remindMeOpt') as HTMLInputElement;
+    remindMeOpt.value = 'default';
 }

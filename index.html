@@ -76,7 +76,18 @@
                     class="form-check-input" />
                   <label for="date-start" class="form-check-label">Remind me when this event expires</label>
                 </div>
-                <div class="mb-3 d-none" id="rememberWhen">
+                <div class="input-group mb-3 d-none" id="rememberWhen">
+                  <select class="form-select" id="remindMeOpt">
+                    <option value="default" selected>Remind me in...</option>
+                    <option value="5min">5 minutes</option>
+                    <option value="10min">10 minutes</option>
+                    <option value="15min">15 minutes</option>
+                    <option value="30min">30 minutes</option>
+                    <option value="45min">45 minutes</option>
+                    <option value="60min">1 hour</option>
+                  </select>
+                </div>
+                <!--<div class="mb-3 d-none" id="rememberWhen">
                   <label for="reminder-select" class="form-label">Remember me:</label>
                   <div id="reminder-select" data-bs-toggle="dropdown" class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="remember"
@@ -90,7 +101,7 @@
                       <li class="dropdown-item minute-list" id="sixty-min">60 min</li>
                     </ul>
                   </div>
-                </div>
+                </div> -->
               </div>
               <div class="col-md-6">
                 <div class="mb-3">
@@ -98,7 +109,17 @@
                   <textarea id="description" placeholder="Write something here" name="textarea" rows="10" cols="40"
                     maxlength="500" class="form-control"></textarea>
                 </div>
-                <div class="mb-3">
+                <div class="input-group mb-3">
+                  <select class="form-select" id="eventTypeOpt">
+                    <option value="default" selected>Select event type...</option>
+                    <option value="work" class="work-event">Work</option>
+                    <option value="family" class="family-event">Family</option>
+                    <option value="friends" class="friends-event">Friends</option>
+                    <option value="doctor" class="doctor-event">Doctor</option>
+                    <option value="private" class="private-event">Private</option>
+                  </select>
+                </div>
+                <!--<div class="mb-3">
                   <label for="type-event" class="form-label"></label>
                   <div id="type-event" class="dropdown" data-bs-toggle="dropdown">
                     <button class="btn btn-secondary dropdown-toggle d-flex" type="button" id="type-event-button"data-bs-toggle="dropdown" aria-expanded="false">Select your event type</button>
@@ -110,7 +131,7 @@
                       <li class="dropdown-item private-event">Private</li>
                     </ul>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
             <div class="modal-footer">
