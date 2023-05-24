@@ -10,6 +10,7 @@ export function initializeCalendar() {
     const year = document.querySelector("#year");
     const prevMonthDom = document.querySelector("#prevMonth");
     const nextMonthDom = document.querySelector("#nextMonth");
+    const calendar = document.querySelector("#generalContainer");
     writeMonth(monthNumber);
     setNewDate();
     function writeMonth(month) {
@@ -83,9 +84,9 @@ export function initializeCalendar() {
             currentYear--;
         }
         setNewDate();
-        calendar === null || calendar === void 0 ? void 0 : calendar.classList.add('rotate-effect');
+        calendar === null || calendar === void 0 ? void 0 : calendar.classList.add('tearing-effect-lastMont');
         setTimeout(() => {
-            calendar === null || calendar === void 0 ? void 0 : calendar.classList.remove('rotate-effect');
+            calendar === null || calendar === void 0 ? void 0 : calendar.classList.remove('tearing-effect-lastMont');
         }, 600);
     }
     function nextMonth() {
@@ -97,9 +98,9 @@ export function initializeCalendar() {
             currentYear++;
         }
         setNewDate();
-        calendar === null || calendar === void 0 ? void 0 : calendar.classList.add('rotate-effect');
+        calendar === null || calendar === void 0 ? void 0 : calendar.classList.add('tearing-effect-nextMonth');
         setTimeout(() => {
-            calendar === null || calendar === void 0 ? void 0 : calendar.classList.remove('rotate-effect');
+            calendar === null || calendar === void 0 ? void 0 : calendar.classList.remove('tearing-effect-nextMonth');
         }, 600);
     }
     function setNewDate() {

@@ -11,6 +11,7 @@ const month: HTMLElement | null = document.querySelector("#month");
 const year: HTMLElement | null = document.querySelector("#year");
 const prevMonthDom: HTMLElement | null = document.querySelector("#prevMonth");
 const nextMonthDom: HTMLElement | null = document.querySelector("#nextMonth");
+const calendar:  HTMLElement | null = document.querySelector("#generalContainer");
 
 writeMonth(monthNumber);
 setNewDate();
@@ -112,10 +113,10 @@ function lastMonth() {
       currentYear--;
     }
     setNewDate();
-    calendar?.classList.add('rotate-effect');
+    calendar?.classList.add('tearing-effect-lastMont');
   
     setTimeout(() => {
-      calendar?.classList.remove('rotate-effect');
+      calendar?.classList.remove('tearing-effect-lastMont');
     }, 600);
   }
   
@@ -127,10 +128,10 @@ function lastMonth() {
       currentYear++;
     }
     setNewDate();
-    calendar?.classList.add('rotate-effect');
+    calendar?.classList.add('tearing-effect-nextMonth');
   
     setTimeout(() => {
-      calendar?.classList.remove('rotate-effect');
+      calendar?.classList.remove('tearing-effect-nextMonth');
     }, 600);
   }
   

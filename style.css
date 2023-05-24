@@ -106,7 +106,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    
     padding: 0 10px;
     font-size: 1rem;
     font-weight: 400;
@@ -123,34 +122,13 @@
 .days .day {
 	border: 1px solid gainsboro;
 	width: calc(100% / 7);
-	height: 110px;
+	height: clamp(1px, 6rem + 1vh, 110px);
+	/* flex-basis:  20%; */
 }
 .days .day:hover {
 	border: 1px solid lightgray;
 	background-color: rgba(241, 231, 254, 1);
 }
-
-
-@keyframes flight-effect {
-    0% {
-      transform: translateY(0);
-      opacity: 1;
-    }
-    50% {
-      transform: translateY(-50px);
-      opacity: 0;
-    }
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-  
-  .fade-out-in {
-    animation: flight-effect 0.6s ease-in-out;
-  }
-  
-
 
 .days .day:hover{
     border: 1px solid lightgray;
@@ -180,3 +158,41 @@
     cursor: pointer;
     }
 
+	@keyframes tearing-effect-nextMonth {
+		0% {
+			transform: rotateZ(0deg) scale(1) skewX(0deg);
+			transform-origin: top left;
+		  }
+		  50% {
+			transform: rotateZ(20deg) scale(0.8, 1.2) skewX(10deg);
+			transform-origin: top bottom;
+		  }
+		  100% {
+			transform: rotateZ(0deg) scale(1) skewX(0deg);
+			transform-origin: top right;
+		  }
+		}
+	  
+	@keyframes tearing-effect-lastMont {
+		0% {
+			transform: rotateZ(0deg) scale(1) skewX(0deg);
+			transform-origin: top right;
+		  }
+		  50% {
+			transform: rotateZ(-20deg) scale(0.8, 1.2) skewX(-10deg);
+			transform-origin: top bottom;
+		  }
+		  100% {
+			transform: rotateZ(0deg) scale(1) skewX(0deg);
+			transform-origin: top left;
+		  }
+		
+	  }
+	  
+	  .tearing-effect-nextMonth {
+		animation: tearing-effect-nextMonth .6s ease-in-out;
+	  }
+	  .tearing-effect-lastMont {
+		animation: tearing-effect-lastMont .6s ease-in-out;
+	  }
+	  
