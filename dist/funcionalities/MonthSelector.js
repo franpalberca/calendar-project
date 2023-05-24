@@ -39,8 +39,6 @@ export function initializeCalendar() {
                 dayEventContainer.classList.add("container");
                 dayEventContainer.setAttribute("data-dayNumber", toISODate);
                 dayElement.appendChild(dayEventContainer);
-                const targetYear = year === null || year === void 0 ? void 0 : year.innerText;
-                const todayYear = actualYear.toString();
                 const addButtonDiv = document.createElement("div");
                 addButtonDiv.classList.add("add-button-container");
                 dayElement.appendChild(addButtonDiv);
@@ -53,6 +51,8 @@ export function initializeCalendar() {
                 addButtonSpan.setAttribute("data-bs-target", "#eventModal");
                 addButtonSpan.textContent = "+";
                 addButton.appendChild(addButtonSpan);
+                const targetYear = year === null || year === void 0 ? void 0 : year.innerText;
+                const todayYear = actualYear.toString();
                 if (i === currentDay && month === actualMonth && todayYear === targetYear) {
                     dayElement.classList.add("today");
                 }

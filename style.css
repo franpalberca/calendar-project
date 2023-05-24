@@ -1,4 +1,16 @@
 
+/* - - - M A I N   S E L E C T O R  - - - - */
+.main-container{
+    height: clamp(3rem, 20vh, 70% );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(transparent, rgba(0, 0, 255, 0.493)50%, transparent);
+}
+.main-container.dark {
+    background: linear-gradient(transparent, rgba(5, 5, 133, 0.493)50%, transparent);
+}
+
 /*  - - - - - - - H E A D E R  - - - - - - -  */
 .btn-help {
     position: absolute;
@@ -55,7 +67,21 @@
     justify-content: center;
     border-radius: 10px;
     background-color: white;
+    box-shadow: 45px 31px 15px -14px rgba(8,0,0,0.2);
 }
+
+ /* .general-container:before{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    width: 12px;
+    height: 97%;
+    border-radius: 0 5px 5px 0;
+    background-color: lightgray;
+    transform: translateY(-50%);
+}  */
+
 
 .general-container .month {
 	width: 100%;
@@ -122,8 +148,7 @@
 .days .day {
 	border: 1px solid gainsboro;
 	width: calc(100% / 7);
-	height: clamp(1rem, 6rem + 1vh, 110px);
-	/* flex-basis:  20%; */
+	height: clamp(1rem, 10px + 15vh, 110px);
 }
 .days .day:hover {
 	border: 1px solid lightgray;
@@ -228,15 +253,22 @@
   
   @media only screen and (max-device-width: 480px) {
 	/* Estilos específicos para dispositivos móviles */
+	.general-container .month {
+		width: 70%;
+		font-size: 1.3rem;
+		color: #431a7bfb;
+	}
 	.days .day{
 		height: 3rem;
+
 	  }
   }
   
 
-  @media screen and (max-width: 768px) {
+  /* @media only screen and (max-device-width: 768px) {
 	.days .day{
 	  height: 3.5rem;
+	  background-color: aqua;
 	}
   }
-  
+   */

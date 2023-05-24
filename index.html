@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" id="html" data-theme="black">
+<html lang="en" id="htmlTheme" data-bs-theme="auto">
   <head>
     <meta charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge" >
@@ -14,7 +14,7 @@
 </head>
 <!--CADA UNO DEBERA TRABAJAR EN SU PROPIO ARCHIVO/S .TS, PARA LA CREACION DE MODULOS QUE LUEGO SE INCORPORARAN A UN UNICO ARCHIVO DE EJECUCION SCRIPT, COMENTEN EL CODIGO SIEMPRE QUE PUEDAN-->
 
-<body>
+<body >
   <!-- UNO TIENE LA TAREA DE MODIFICAR LA BARRA DE HEADER EN BASE A LO QUE CREA QUE DEBAMOS TENER, DESAROLLAR LAS FUNCIONES Y CREAR UN DIV O SECTION QUE REEMPLAZE A <div class="general-container">-->
   <!-- ESTA SECCION DEBERA TENER DISPLAY:NONE HASTA QUE EL BOTON DEBIDO DE LA SECCION HEADER SE PRESIONE-->
   <header class="d-flex container flex-wrap justify-content-center py-3 mb-4 border-bottom header-css">
@@ -171,9 +171,9 @@
       </div>
     </div>
   </div>
-  <main>
+  <main  class="main-container" id="mainContainer">
     <!--AQUI SE DEBEN CREAR NUEVAS DIV O SECTION CON EL DISPLAY NONE PARA QUE LUEGO SEAN MOSTRADAS, USAR ETIQUETAS <DIV> O <SECTION> -->
-    <div id="generalContainer" class="general-container .fade-out-in">
+    <div id="generalContainer" class="general-container">
       <div class="month">
         <i id="prevMonth" class="fa fa-angle-left prev"></i>
         <span id="month" class="date">MONTH</span>
@@ -210,8 +210,6 @@
   </main>
   <!--ALGUIEN TIENE LA TAREA DE MOFICIAR EL FOOTER ACORDE A LO QUE CREA CONVENIENTE.-->
   <footer class="d-flex container flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-    <p class="col-md-4 mb-0 text-body-secondary"><a class="navbar-brand" href="https://assemblerinstitute.com"
-        target="_blank">
       <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
         <symbol id="check2" viewBox="0 0 16 16">
           <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"></path>
@@ -231,7 +229,7 @@
         </symbol>
       </svg>
       <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
-        <button class="btn btn-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
+        <button class="btn btn-primary py-2 dropdown-toggle d-flex align-items-center" id="autoBtnActive" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
           <svg class="bi my-1 theme-icon-dark" width="1em" height="1em">
             <use href="#circle-half"></use>
           </svg>
@@ -239,7 +237,7 @@
         </button>
         <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
           <li>
-            <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+            <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false" id="lightBtnActive">
               <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em">
                 <use href="#sun-fill"></use>
               </svg>
@@ -250,7 +248,7 @@
             </button>
           </li>
           <li>
-            <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+            <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false" id="darkBtnActive">
               <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em">
                 <use href="#moon-stars-fill"></use>
               </svg>
@@ -273,9 +271,6 @@
           </li>
         </ul>
       </div>
-    </main>
-<!--ALGUIEN TIENE LA TAREA DE MOFICIAR EL FOOTER ACORDE A LO QUE CREA CONVENIENTE.-->
-    <footer class="d-flex container flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
       <p class="col-md-4 mb-0 text-body-secondary"><a class="navbar-brand" href="https://assemblerinstitute.com" target="_blank">
         <img src="./resources/A-Logo.png" alt="Bootstrap" width="30" height="30"> 2023 Lovelace Squad
       </a>
@@ -291,7 +286,7 @@
           data-bs-target="#climateModal">Today's weather</button>
       </li>
 
-      <li class="btn-group dropup ms-5">
+      <li class="btn-group dropup ms-5 z-2">
         <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown"
           aria-expanded="false">
           Members of the Squad
