@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <meta charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <link rel="stylesheet" href="./css/bootstrap.css" >
     <link rel="stylesheet" href="style.css">
-    <script type="module" src="./dist/starter.js" defer></script>
+    <script type="module" src="./dist/starter.js"></script>
     <script src="https://unpkg.com/@popperjs/core@2" defer></script>
     <script src="./js/bootstrap.js" defer></script>
     <script src="https://kit.fontawesome.com/d9005a0d59.js" crossorigin="anonymous" defer></script>
@@ -53,22 +53,22 @@
                 <div class="col-md-6">
                   <div class="mb-3">
                     <label for="modal-title" class="form-label">Title</label>
-                    <input type="text" id="modalTitle" name="title" maxlength="60" class="form-control" />
+                    <input type="text" id="modalTitle" name="title" maxlength="60" class="form-control">
                   </div>
 
                 <div class="mb-3">
                   <label for="start-date" class="form-label">Start date</label>
-                  <input type="datetime-local" id="startDate" name="date-start" class="form-control" />
+                  <input type="datetime-local" id="startDate" name="date-start" class="form-control">
                 </div>
 
                 <div class="mb-3 form-check">
-                  <input type="checkbox" name="End date" id="dateEndCheck" class="form-check-input" />
+                  <input type="checkbox" name="End date" id="dateEndCheck" class="form-check-input">
                   <label for="date-end" class="form-check-label">Finish</label>
                 </div>
 
                 <div class="mb-3 d-none" id="reminderBox">
                   <label for="finish-date" class="form-label">End date</label>
-                  <input type="datetime-local" id="finishDate" name="date-finish" class="form-control" />
+                  <input type="datetime-local" id="finishDate" name="date-finish" class="form-control">
                 </div>
 
                 <div class="mb-3 form-check">
@@ -101,7 +101,7 @@
                 <div class="mb-3">
                   <label for="type-event" class="form-label"></label>
                   <div id="type-event" class="dropdown" data-bs-toggle="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle d-flex" type="button" id="type-event-button"data-bs-toggle="dropdown" aria-expanded="false">Select your event type</button>
+                    <button class="btn btn-secondary dropdown-toggle d-flex" type="button" id="type-event-button" data-bs-toggle="dropdown" aria-expanded="false">Select your event type</button>
                     <ul class="dropdown-menu p-0" aria-labelledby="type-event-button">
                       <li class="dropdown-item work-event">Work</li>
                       <li class="dropdown-item family-event">Family</li>
@@ -133,7 +133,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <h4 class="mb-4 fw-semibold">Location: <span class="fw-light" id="fLocation"></span></h5>
+          <h4 class="mb-4 fw-semibold">Location: <span class="fw-light" id="fLocation"></span></h4>
             <p class="fw-semibold">Temperature: <span class="fw-light" id="fTemperature"></span></p>
             <p class="fw-semibold">Termic Sensation: <span class="fw-light" id="fTermicSensation"></span></p>
             <p class="fw-semibold">Preassure: <span class="fw-light" id="fPreasure"></span></p>
