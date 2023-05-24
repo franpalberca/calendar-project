@@ -21,7 +21,7 @@
     background-color:#e5e5ff;
     border-radius: 5px;
   }
-
+/*  */
 .popup {
     position: fixed;
     top: 50%;
@@ -42,7 +42,7 @@
     font-weight: bold;
   }
   
-/* - - - M A I N   S E L E C T O R S  C A L E N D A R - - - - */
+/*  *//* - - - M A I N   S E L E C T O R S  C A L E N D A R - - - - */
 .general-container{
     position: relative;
     width: 90%;
@@ -157,42 +157,72 @@
     background-color: lightgreen;
     cursor: pointer;
     }
+	
+.minute-list{
+    cursor: pointer;
+}
 
-	@keyframes tearing-effect-nextMonth {
-		0% {
-			transform: rotateZ(0deg) scale(1) skewX(0deg);
-			transform-origin: top left;
-		  }
-		  50% {
-			transform: rotateZ(20deg) scale(0.8, 1.2) skewX(10deg);
-			transform-origin: top bottom;
-		  }
-		  100% {
-			transform: rotateZ(0deg) scale(1) skewX(0deg);
-			transform-origin: top right;
-		  }
-		}
-	  
-	@keyframes tearing-effect-lastMont {
-		0% {
-			transform: rotateZ(0deg) scale(1) skewX(0deg);
-			transform-origin: top right;
-		  }
-		  50% {
-			transform: rotateZ(-20deg) scale(0.8, 1.2) skewX(-10deg);
-			transform-origin: top bottom;
-		  }
-		  100% {
-			transform: rotateZ(0deg) scale(1) skewX(0deg);
-			transform-origin: top left;
-		  }
-		
+.add-button-container{
+	position: relative;
+	width: 20px;
+	height: 20px;
+}
+
+.hover-button{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: transparent;
+	border: none;
+	outline: none;
+	cursor: pointer;
+}
+
+.plus-icon{
+	font-size: 40px;
+	color: transparent;
+	transition: color 0.5s;
+}
+
+.hover-button:hover .plus-icon{
+	color: grey;
+}
+
+@keyframes tearing-effect-nextMonth {
+	0% {
+		transform: rotateZ(0deg) scale(1) skewX(0deg);
+		transform-origin: top left;
 	  }
-	  
-	  .tearing-effect-nextMonth {
-		animation: tearing-effect-nextMonth .6s ease-in-out;
+	  50% {
+		transform: rotateZ(20deg) scale(0.8, 1.2) skewX(10deg);
+		transform-origin: top bottom;
 	  }
-	  .tearing-effect-lastMont {
-		animation: tearing-effect-lastMont .6s ease-in-out;
+	  100% {
+		transform: rotateZ(0deg) scale(1) skewX(0deg);
+		transform-origin: top right;
 	  }
-	  
+	}
+  
+@keyframes tearing-effect-lastMont {
+	0% {
+		transform: rotateZ(0deg) scale(1) skewX(0deg);
+		transform-origin: top right;
+	  }
+	  50% {
+		transform: rotateZ(-20deg) scale(0.8, 1.2) skewX(-10deg);
+		transform-origin: top bottom;
+	  }
+	  100% {
+		transform: rotateZ(0deg) scale(1) skewX(0deg);
+		transform-origin: top left;
+	  }
+	
+  }
+  
+  .tearing-effect-nextMonth {
+	animation: tearing-effect-nextMonth .6s ease-in-out;
+  }
+  .tearing-effect-lastMont {
+	animation: tearing-effect-lastMont .6s ease-in-out;
+  }
+  
