@@ -46,11 +46,12 @@ function writeMonth(month: number) {
 			let paddedMonth = monthNumber + 1;
 
 			let dateAttribute = `${currentYear}-${paddedMonth}-${i}`;
+			const toISODate: string = new Date(dateAttribute).toISOString().slice(0, 10);
 
             dayElement.textContent = i.toString();
 			const dayEventContainer = document.createElement("div");
 			dayEventContainer.classList.add("container");
-			dayEventContainer.setAttribute("data-dayNumber", dateAttribute);
+			dayEventContainer.setAttribute("data-dayNumber", toISODate);
 
 			dayElement.appendChild(dayEventContainer);
 //

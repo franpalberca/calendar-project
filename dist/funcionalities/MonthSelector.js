@@ -31,10 +31,11 @@ export function initializeCalendar() {
                 dayElement.setAttribute("id", "day");
                 let paddedMonth = monthNumber + 1;
                 let dateAttribute = `${currentYear}-${paddedMonth}-${i}`;
+                const toISODate = new Date(dateAttribute).toISOString().slice(0, 10);
                 dayElement.textContent = i.toString();
                 const dayEventContainer = document.createElement("div");
                 dayEventContainer.classList.add("container");
-                dayEventContainer.setAttribute("data-dayNumber", dateAttribute);
+                dayEventContainer.setAttribute("data-dayNumber", toISODate);
                 dayElement.appendChild(dayEventContainer);
                 if (i === currentDay && month === actualMonth) {
                     dayElement.classList.add("today");
