@@ -122,7 +122,7 @@
 .days .day {
 	border: 1px solid gainsboro;
 	width: calc(100% / 7);
-	height: clamp(1px, 6rem + 1vh, 110px);
+	height: clamp(1rem, 6rem + 1vh, 110px);
 	/* flex-basis:  20%; */
 }
 .days .day:hover {
@@ -224,5 +224,19 @@
   }
   .tearing-effect-lastMont {
 	animation: tearing-effect-lastMont .6s ease-in-out;
+  }
+  
+  @media only screen and (max-device-width: 480px) {
+	/* Estilos específicos para dispositivos móviles */
+	.days .day{
+		height: 3rem;
+	  }
+  }
+  
+
+  @media screen and (max-width: 768px) {
+	.days .day{
+	  height: 3.5rem;
+	}
   }
   
