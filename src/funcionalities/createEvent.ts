@@ -35,10 +35,13 @@ export function setEvent(){
             dayEvent.innerText = `${eventData.name}`;
 
             // Data attributes (Puedes usar esto para hacer el modal o el hover, extra)
+            dayEvent.setAttribute("data-day", eventDate);
+            dayEvent.setAttribute("data-name", eventData.name);
             dayEvent.setAttribute("data-startHour",`${eventData.eventHour}:${eventData.eventMinutes}`);
             dayEvent.setAttribute("data-endHour",`${eventData.eventHourF}:${eventData.eventMinutesF}`);
             dayEvent.setAttribute("data-description", `${eventData.description}`);
             dayEvent.setAttribute("data-eventType", `${eventData.eventType}`);
+            dayEvent.setAttribute("data-reminder",`${eventData.reminder}`);
 
             targetDay.appendChild(dayEvent);
         }
@@ -52,10 +55,13 @@ export function setEvent(){
                 dayEvent.innerText = `${eventData.name}`;
 
                 // Data attributes (Puedes usar esto para hacer el modal o el hover, extra)
+                dayEvent.setAttribute("data-day", eventDate);
+                dayEvent.setAttribute("data-name", eventData.name);
                 dayEvent.setAttribute("data-startHour",`${eventData.eventHour}:${eventData.eventMinutes}`);
                 dayEvent.setAttribute("data-endHour",`${eventData.eventHourF}:${eventData.eventMinutesF}`);
                 dayEvent.setAttribute("data-description", `${eventData.description}`);
                 dayEvent.setAttribute("data-eventType", `${eventData.eventType}`);
+                dayEvent.setAttribute("data-reminder",`${eventData.reminder}`);
 
                 targetDay.appendChild(dayEvent);
             }

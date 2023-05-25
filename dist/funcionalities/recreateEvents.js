@@ -6,7 +6,6 @@ export function recreateEvents() {
         const eventDate = new Date(`${element.eventYear}-${element.eventMonth}-${element.eventDay}`).toISOString().slice(0, 10);
         const eventDateFinish = `${element.eventYearF}-${element.eventMonthF}-${element.eventDayF}`;
         const dateArray = getDatesInRange(eventDate, eventDateFinish);
-        console.log(dateArray);
         let eventColor = '';
         switch (element.eventType) {
             case 'work':
@@ -32,10 +31,13 @@ export function recreateEvents() {
                 dayEvent.setAttribute("class", `row d-flex justify-content-center ${eventColor} bg-gradient mb-1`);
                 dayEvent.setAttribute("style", "font-size: 12px; color: black;");
                 dayEvent.innerText = `${element.name}`;
+                dayEvent.setAttribute("data-day", eventDate);
+                dayEvent.setAttribute("data-name", element.name);
                 dayEvent.setAttribute("data-startHour", `${element.eventHour}:${element.eventMinutes}`);
                 dayEvent.setAttribute("data-endHour", `${element.eventHourF}:${element.eventMinutesF}`);
                 dayEvent.setAttribute("data-description", `${element.description}`);
                 dayEvent.setAttribute("data-eventType", `${element.eventType}`);
+                dayEvent.setAttribute("data-reminder", `${element.reminder}`);
                 targetDate.appendChild(dayEvent);
             }
         }
@@ -47,10 +49,13 @@ export function recreateEvents() {
                     dayEvent.setAttribute("class", `row d-flex justify-content-center ${eventColor} bg-gradient mb-1`);
                     dayEvent.setAttribute("style", "font-size: 12px; color: black;");
                     dayEvent.innerText = `${element.name}`;
+                    dayEvent.setAttribute("data-day", eventDate);
+                    dayEvent.setAttribute("data-name", element.name);
                     dayEvent.setAttribute("data-startHour", `${element.eventHour}:${element.eventMinutes}`);
                     dayEvent.setAttribute("data-endHour", `${element.eventHourF}:${element.eventMinutesF}`);
                     dayEvent.setAttribute("data-description", `${element.description}`);
                     dayEvent.setAttribute("data-eventType", `${element.eventType}`);
+                    dayEvent.setAttribute("data-reminder", `${element.reminder}`);
                     targetDay.appendChild(dayEvent);
                 }
             });

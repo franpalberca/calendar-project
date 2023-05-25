@@ -5,6 +5,7 @@ import { setEventBtn } from './funcionalities/setEventBtn.js';
 import { restartEventForm } from './funcionalities/restartEventForm.js';
 import { recreateEvents } from './funcionalities/recreateEvents.js';
 import { changeThemeAddEvent } from './changesTheme/changeTheme.js';
+import { checkReminders } from './funcionalities/checkReminder.js';
 window.onload = () => {
     setClimate();
     setInterval(setClimate, 300000);
@@ -14,5 +15,6 @@ window.onload = () => {
     restartEventForm();
     recreateEvents();
     changeThemeAddEvent();
+    setInterval(checkReminders, 10000);
 };
 //# sourceMappingURL=starter.js.map

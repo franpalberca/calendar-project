@@ -9,7 +9,6 @@ export function recreateEvents(): void{
         const eventDateFinish = `${element.eventYearF}-${element.eventMonthF}-${element.eventDayF}`;
 
         const dateArray = getDatesInRange(eventDate, eventDateFinish);
-        console.log(dateArray);
 
         let eventColor = '';
         switch (element.eventType) {
@@ -38,10 +37,13 @@ export function recreateEvents(): void{
                 dayEvent.innerText = `${element.name}`;
 
                 // Data attributes (Puedes usar esto para hacer el modal o el hover, extra)
+                dayEvent.setAttribute("data-day", eventDate);
+                dayEvent.setAttribute("data-name", element.name);
                 dayEvent.setAttribute("data-startHour",`${element.eventHour}:${element.eventMinutes}`);
                 dayEvent.setAttribute("data-endHour",`${element.eventHourF}:${element.eventMinutesF}`);
                 dayEvent.setAttribute("data-description", `${element.description}`);
                 dayEvent.setAttribute("data-eventType", `${element.eventType}`);
+                dayEvent.setAttribute("data-reminder",`${element.reminder}`);
 
                 targetDate.appendChild(dayEvent);
             }
@@ -55,10 +57,13 @@ export function recreateEvents(): void{
                 dayEvent.innerText = `${element.name}`;
 
                 // Data attributes (Puedes usar esto para hacer el modal o el hover, extra)
+                dayEvent.setAttribute("data-day", eventDate);
+                dayEvent.setAttribute("data-name", element.name);
                 dayEvent.setAttribute("data-startHour",`${element.eventHour}:${element.eventMinutes}`);
                 dayEvent.setAttribute("data-endHour",`${element.eventHourF}:${element.eventMinutesF}`);
                 dayEvent.setAttribute("data-description", `${element.description}`);
                 dayEvent.setAttribute("data-eventType", `${element.eventType}`);
+                dayEvent.setAttribute("data-reminder",`${element.reminder}`);
 
                 targetDay.appendChild(dayEvent);
             }

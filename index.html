@@ -16,11 +16,11 @@
 
 <body >
   <!-- UNO TIENE LA TAREA DE MODIFICAR LA BARRA DE HEADER EN BASE A LO QUE CREA QUE DEBAMOS TENER, DESAROLLAR LAS FUNCIONES Y CREAR UN DIV O SECTION QUE REEMPLAZE A <div class="general-container">-->
-  <!-- ESTA SECCION DEBERA TENER DISPLAY:NONE HASTA QUE EL BOTON DEBIDO DE LA SECCION HEADER SE PRESIONE-->
   <header class="d-flex container flex-wrap justify-content-center py-3 mb-4 border-bottom header-css">
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none link-calendar-btn">
       <h1 class="fs-4 title-page">Calendar</h1>
     </a>
+
       <ul class="nav nav-pills header-btn pe-5" >
         <li class="nav-item">
           <button class="nav-link" data-bs-toggle="modal" data-bs-target="#eventModal">Events </button>
@@ -88,21 +88,6 @@
                     <option value="60min">1 hour</option>
                   </select>
                 </div>
-                <!--<div class="mb-3 d-none" id="rememberWhen">
-                  <label for="reminder-select" class="form-label">Remember me:</label>
-                  <div id="reminder-select" data-bs-toggle="dropdown" class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="remember"
-                      data-bs-toggle="dropdown" aria-expanded="false">Select Reminder</button>
-                    <ul class="dropdown-menu" aria-labelledby="remember">
-                      <li class="dropdown-item minute-list" id="fiveMin">5 min</li>
-                      <li class="dropdown-item minute-list" id="ten-min">10 min</li>
-                      <li class="dropdown-item minute-list" id="fifteen-min">15 min</li>
-                      <li class="dropdown-item minute-list" id="thirty-min">30 min</li>
-                      <li class="dropdown-item minute-list" id="fortyfive-min">45 min</li>
-                      <li class="dropdown-item minute-list" id="sixty-min">60 min</li>
-                    </ul>
-                  </div>
-                </div> -->
               </div>
               <div class="col-md-6">
                 <div class="mb-3">
@@ -120,23 +105,6 @@
                     <option value="private" class="private-event">Private</option>
                   </select>
                 </div>
-                <!--<div class="mb-3">
-                  <label for="type-event" class="form-label"></label>
-                  <div id="type-event" class="dropdown" data-bs-toggle="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle d-flex" type="button" id="type-event-button"
-                      data-bs-toggle="dropdown" aria-expanded="false">Select your event type</button>
-
-                    <button class="btn btn-secondary dropdown-toggle d-flex align-items-center" type="button" id="type-event-button" data-bs-toggle="dropdown" aria-expanded="false">Select your event type</button>
-
-                    <ul class="dropdown-menu p-0" aria-labelledby="type-event-button">
-                      <li class="dropdown-item work-event">Work</li>
-                      <li class="dropdown-item family-event">Family</li>
-                      <li class="dropdown-item friends-event">Friends</li>
-                      <li class="dropdown-item doctor-event">Doctor</li>
-                      <li class="dropdown-item private-event">Private</li>
-                    </ul>
-                  </div>
-                </div> -->
               </div>
             </div>
             <div class="modal-footer">
@@ -172,8 +140,11 @@
     </div>
   </div>
   <main  class="main-container" id="mainContainer">
-    <!--AQUI SE DEBEN CREAR NUEVAS DIV O SECTION CON EL DISPLAY NONE PARA QUE LUEGO SEAN MOSTRADAS, USAR ETIQUETAS <DIV> O <SECTION> -->
+
     <div id="generalContainer" class="general-container">
+
+    <!--AQUI SE DEBEN CREAR NUEVAS DIV O SECTION CON EL DISPLAY NONE PARA QUE LUEGO SEAN MOSTRADAS, USAR ETIQUETAS <DIV> O <SECTION> -->
+
       <div class="month">
         <i id="prevMonth" class="fa fa-angle-left prev"></i>
         <span id="month" class="date">MONTH</span>
