@@ -6,8 +6,7 @@ export function recreateEvents() {
         const eventDate = new Date(`${element.eventYear}-${element.eventMonth}-${element.eventDay}`).toISOString().slice(0, 10);
         const eventDateFinish = `${element.eventYearF}-${element.eventMonthF}-${element.eventDayF}`;
         const dateArray = getDatesInRange(eventDate, eventDateFinish);
-        console.log(dateArray);
-        let eventColor = "";
+        let eventColor = '';
         switch (element.eventType) {
             case "work":
                 eventColor = "bg-danger";
@@ -49,6 +48,7 @@ export function recreateEvents() {
 }
 function createDayEvent(element, eventColor, targetDay) {
     const dayEvent = document.createElement("div");
+
     dayEvent.setAttribute("id", "dayEvent");
     dayEvent.setAttribute("class", `row d-flex justify-content-center ${eventColor} bg-gradient mb-1 day-event-dropdown`);
     dayEvent.setAttribute("style", "font-size: 12px; color: black;");
@@ -62,6 +62,9 @@ function createDayEvent(element, eventColor, targetDay) {
 }
 function showContentDetailsHover(dayEvent, element) {
     console.log(dayEvent, element);
+    dayEvent.setAttribute("data-day", eventDate);
+    dayEvent.setAttribute("data-name", element.name);
+    dayEvent.setAttribute("data-reminder", `${element.reminder}`)
     const eventHoverDetails = document.createElement("div");
     eventHoverDetails.setAttribute("class", "d-flex flex-column justify-content-start align-items-between");
     dayEvent.appendChild(eventHoverDetails);
