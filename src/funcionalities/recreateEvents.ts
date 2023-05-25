@@ -83,7 +83,7 @@ export function recreateEvents(): void{
                 eventHoverDetails.setAttribute("class", "d-flex flex-column justify-content-start align-items-between");
                 dayEvent.appendChild(eventHoverDetails);
                 const eventDetailsEventStart = document.createElement("p") as HTMLParagraphElement;
-                eventDetailsEventStart.textContent= `${element.eventDay}, ${element.eventHour}:${element.eventMinutes}`;
+                eventDetailsEventStart.textContent= `Starts on the: ${element.eventDay}th, ${element.eventHour}:${element.eventMinutes}`;
                 eventDetailsEventStart.setAttribute("class", "d-flex event-hover-hour-start")
                 eventHoverDetails.appendChild(eventDetailsEventStart);                
                 const eventDetailsEventFinish = document.createElement("p") as HTMLParagraphElement;
