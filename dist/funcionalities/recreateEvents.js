@@ -30,15 +30,6 @@ export function recreateEvents() {
             if (targetDate) {
                 const dayEvent = createDayEvent(element, eventColor, targetDate);
                 showContentDetailsHover(dayEvent, element);
-                dayEvent.setAttribute("id", "dayEvent");
-                dayEvent.setAttribute("class", `row d-flex justify-content-center ${eventColor} bg-gradient mb-1 day-event-dropdown overflow-hidden`);
-                dayEvent.setAttribute("style", "font-size: 12px; color: black;");
-                dayEvent.innerText = `${element.name}`;
-                dayEvent.setAttribute("data-startHour", `${element.eventHour}:${element.eventMinutes}`);
-                dayEvent.setAttribute("data-endHour", `${element.eventHourF}:${element.eventMinutesF}`);
-                dayEvent.setAttribute("data-description", `${element.description}`);
-                dayEvent.setAttribute("data-eventType", `${element.eventType}`);
-                targetDate.appendChild(dayEvent);
             }
         }
         else if (dateArray.length > 0) {
@@ -70,7 +61,7 @@ function createDayEvent(element, eventColor, targetDay) {
     return dayEvent;
 }
 function showContentDetailsHover(dayEvent, element) {
-    console.log(element);
+    console.log(dayEvent, element);
     const eventHoverDetails = document.createElement("div");
     eventHoverDetails.setAttribute("class", "d-flex flex-column justify-content-start align-items-between");
     dayEvent.appendChild(eventHoverDetails);
@@ -83,7 +74,7 @@ function showContentDetailsHover(dayEvent, element) {
     eventDetailsEventFinish.setAttribute("class", "d-flex event-hover-hour-finish");
     eventHoverDetails.appendChild(eventDetailsEventFinish);
     const eventDetailsDescription = document.createElement("p");
-    eventDetailsDescription.textContent = element.description;
+    eventDetailsDescription.textContent = `Description: ${element.description}`;
     eventDetailsDescription.setAttribute("class", "d-flex event-hover-details");
     eventHoverDetails.appendChild(eventDetailsDescription);
 }
