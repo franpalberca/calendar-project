@@ -1,10 +1,10 @@
-export function initializeCalendar(){
-let currentDate = new Date();
-let currentDay = currentDate.getDate();
-let monthNumber = currentDate.getMonth();
-let actualMonth = currentDate.getMonth();
-let currentYear = currentDate.getFullYear();
-let actualYear = currentDate.getFullYear();
+export function initializeCalendar() {
+  let currentDate = new Date();
+  let currentDay = currentDate.getDate();
+  let monthNumber = currentDate.getMonth();
+  let actualMonth = currentDate.getMonth();
+  let currentYear = currentDate.getFullYear();
+  let actualYear = currentDate.getFullYear();
 
 const daysContainer: HTMLElement | null = document.querySelector("#daysContainer");
 const month: HTMLElement | null = document.querySelector("#month");
@@ -13,11 +13,10 @@ const prevMonthDom: HTMLElement | null = document.querySelector("#prevMonth");
 const nextMonthDom: HTMLElement | null = document.querySelector("#nextMonth");
 const calendar:  HTMLElement | null = document.querySelector("#generalContainer");
 
-writeMonth(monthNumber);
-setNewDate();
+  writeMonth(monthNumber);
+  setNewDate();
 
-
-function writeMonth(month: number) {
+  function writeMonth(month: number) {
     if (daysContainer) {
         while (daysContainer.firstChild) {
             daysContainer.firstChild.remove(); // TO ELIMINATE EXISTING DAYS
@@ -81,38 +80,27 @@ function writeMonth(month: number) {
             daysContainer.appendChild(dayElement);
         }
     }
-}
+  }
 
-function getTotaldaysContainer(month: number): number {
-	if (month === -1) month = 11;
+  function getTotaldaysContainer(month: number): number {
+    if (month === -1) month = 11;
 
-	if (
-		month == 0 ||
-		month == 2 ||
-		month == 4 ||
-		month == 6 ||
-		month == 7 ||
-		month == 9 ||
-		month == 11
-	) {
-		return 31;
-	} else if (month == 3 || month == 5 || month == 8 || month == 10) {
-		return 30;
-	} else {
-		return isLeap() ? 29 : 28;
-	}
-}
-function isLeap(): boolean {
-    return (
-        (currentYear % 100 !== 0 && currentYear % 4 === 0) ||
-        currentYear % 400 === 0
-    );
-}
+    if (month == 0 || month == 2 || month == 4 || month == 6 || month == 7 || month == 9 || month == 11) {
+      return 31;
+    } else if (month == 3 || month == 5 || month == 8 || month == 10) {
+      return 30;
+    } else {
+      return isLeap() ? 29 : 28;
+    }
+  }
+  function isLeap(): boolean {
+    return (currentYear % 100 !== 0 && currentYear % 4 === 0) || currentYear % 400 === 0;
+  }
 
-function startDay(): number {
+  function startDay(): number {
     const start = new Date(currentYear, monthNumber, 1);
     return start.getDay() === 0 ? 6 : start.getDay() - 1;
-}
+  }
 
 function lastMonth() {
     if (monthNumber !== 0) {
@@ -153,10 +141,10 @@ function setNewDate(): void {
 		year.textContent = currentYear.toString();
 	}
 
-	writeMonth(monthNumber);
-}
+    writeMonth(monthNumber);
+  }
 
-prevMonthDom?.addEventListener("click", () => lastMonth());
-nextMonthDom?.addEventListener("click", () => nextMonth());
+  prevMonthDom?.addEventListener("click", () => lastMonth());
+  nextMonthDom?.addEventListener("click", () => nextMonth());
 
 }
