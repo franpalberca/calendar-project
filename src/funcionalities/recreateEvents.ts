@@ -37,7 +37,7 @@ export function recreateEvents(): void{
                 dayEvent.setAttribute("style","font-size: 12px; color: black;");
                 dayEvent.innerText = `${element.name}`;
 
-                // Data attributes (Puedes usar esto para hacer el modal o el hover, extra)
+                // DATA ATTRIBUTES (WE CAN USE THIS TO CREATE THE MODAL OR HOVER AS AN EXTRA)
                 dayEvent.setAttribute("data-startHour",`${element.eventHour}:${element.eventMinutes}`);
                 dayEvent.setAttribute("data-endHour",`${element.eventHourF}:${element.eventMinutesF}`);
                 dayEvent.setAttribute("data-description", `${element.description}`);
@@ -54,7 +54,7 @@ export function recreateEvents(): void{
                 dayEvent.setAttribute("style","font-size: 12px; color: black;");
                 dayEvent.innerText = `${element.name}`;
 
-                // Data attributes (Puedes usar esto para hacer el modal o el hover, extra)
+                // DATA ATTRIBUTES (WE CAN USE THIS TO CREATE THE MODAL OR HOVER AS AN EXTRA)
                 dayEvent.setAttribute("data-startHour",`${element.eventHour}:${element.eventMinutes}`);
                 dayEvent.setAttribute("data-endHour",`${element.eventHourF}:${element.eventMinutesF}`);
                 dayEvent.setAttribute("data-description", `${element.description}`);

@@ -8,7 +8,8 @@ export function setEvent(){
     const eventFinishDate = `${eventData.eventYearF}-${eventData.eventMonthF}-${eventData.eventDayF}`
 
     const dateArray: string[] = getDatesInRange(eventDate, eventFinishDate);
-//Color selectors
+
+    //Color selectors
     switch (eventData.eventType) {
         case 'work':
             eventColor = "bg-danger";
@@ -34,7 +35,7 @@ export function setEvent(){
             dayEvent.setAttribute("style","font-size: 12px; color: black;");
             dayEvent.innerText = `${eventData.name}`;
 
-            // Data attributes (Puedes usar esto para hacer el modal o el hover, extra)
+            // DATA ATTRIBUTES (WE CAN USE THIS TO CREATE THE MODAL OR HOVER AS AN EXTRA)
             dayEvent.setAttribute("data-startHour",`${eventData.eventHour}:${eventData.eventMinutes}`);
             dayEvent.setAttribute("data-endHour",`${eventData.eventHourF}:${eventData.eventMinutesF}`);
             dayEvent.setAttribute("data-description", `${eventData.description}`);
@@ -51,7 +52,7 @@ export function setEvent(){
                 dayEvent.setAttribute("style","font-size: 12px; color: black;");
                 dayEvent.innerText = `${eventData.name}`;
 
-                // Data attributes (Puedes usar esto para hacer el modal o el hover, extra)
+                // DATA ATTRIBUTES (WE CAN USE THIS TO CREATE THE MODAL OR HOVER AS AN EXTRA)
                 dayEvent.setAttribute("data-startHour",`${eventData.eventHour}:${eventData.eventMinutes}`);
                 dayEvent.setAttribute("data-endHour",`${eventData.eventHourF}:${eventData.eventMinutesF}`);
                 dayEvent.setAttribute("data-description", `${eventData.description}`);

@@ -20,14 +20,14 @@ setNewDate();
 function writeMonth(month: number) {
     if (daysContainer) {
         while (daysContainer.firstChild) {
-            daysContainer.firstChild.remove(); // Eliminar los días existentes
+            daysContainer.firstChild.remove(); // TO ELIMINATE EXISTING DAYS
         }
 
         const previousMonthdaysContainer = getTotaldaysContainer(monthNumber - 1);
         const currentMonthdaysContainer = getTotaldaysContainer(month);
         const startDayIndex = startDay();
 
-        // Imprimir los días anteriores al primer día del mes actual
+        // PRINT THE PREVIOUS DAYS INTO THE FIRST DAY OF CURRENT MONTH
         for (let i = previousMonthdaysContainer - startDayIndex + 1; i <= previousMonthdaysContainer; i++) {
             const dayElement = document.createElement("div");
             dayElement.classList.add("day", "previous-month");
@@ -38,7 +38,7 @@ function writeMonth(month: number) {
 
         }
 
-        // Imprimir los días del mes actual
+        // PRINT EVERY DAY OF CURRENT MONTH
         for (let i = 1; i <= currentMonthdaysContainer; i++) {
             const dayElement = document.createElement("div");
             dayElement.classList.add("day");
@@ -72,13 +72,6 @@ function writeMonth(month: number) {
 			addButtonSpan.textContent = "+";
 			addButton.appendChild(addButtonSpan);
 
-//
-		//	const dayEvent = document.createElement("div");
-		//	dayEvent.setAttribute("class","row d-flex justify-content-center bg-info bg-gradient mb-1");
-		//	dayEvent.setAttribute("style","font-size: 10px; color: black;");
-		//	dayEvent.innerText = "testing";
-//
-		//	dayEventContainer.appendChild(dayEvent);
 			const targetYear = year?.innerText;
 			const todayYear = actualYear.toString();
             if (i === currentDay && month === actualMonth && todayYear === targetYear) {
@@ -130,12 +123,12 @@ function lastMonth() {
     }
     setNewDate();
     calendar?.classList.add('tearing-effect-lastMont');
-  
+
     setTimeout(() => {
       calendar?.classList.remove('tearing-effect-lastMont');
     }, 600);
   }
-  
+
   function nextMonth() {
     if (monthNumber !== 11) {
       monthNumber++;
@@ -145,13 +138,11 @@ function lastMonth() {
     }
     setNewDate();
     calendar?.classList.add('tearing-effect-nextMonth');
-  
+
     setTimeout(() => {
       calendar?.classList.remove('tearing-effect-nextMonth');
     }, 600);
   }
-  
-  
 
 function setNewDate(): void {
 	currentDate = new Date(currentYear, monthNumber, currentDay);

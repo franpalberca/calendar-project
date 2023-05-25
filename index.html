@@ -1,308 +1,255 @@
 <!DOCTYPE html>
 <html lang="en" id="htmlTheme" data-bs-theme="auto">
-  <head>
-    <meta charset="UTF-8" >
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-    <link rel="stylesheet" href="./css/bootstrap.css" >
-    <link rel="stylesheet" href="style.css">
-    <script type="module" src="./dist/starter.js"></script>
-    <script src="https://unpkg.com/@popperjs/core@2" defer></script>
-    <script src="./js/bootstrap.js" defer></script>
-    <script src="https://kit.fontawesome.com/d9005a0d59.js" crossorigin="anonymous" defer></script>
-  <title>Google Calendar</title>
-</head>
-<!--CADA UNO DEBERA TRABAJAR EN SU PROPIO ARCHIVO/S .TS, PARA LA CREACION DE MODULOS QUE LUEGO SE INCORPORARAN A UN UNICO ARCHIVO DE EJECUCION SCRIPT, COMENTEN EL CODIGO SIEMPRE QUE PUEDAN-->
-
-<body >
-  <!-- UNO TIENE LA TAREA DE MODIFICAR LA BARRA DE HEADER EN BASE A LO QUE CREA QUE DEBAMOS TENER, DESAROLLAR LAS FUNCIONES Y CREAR UN DIV O SECTION QUE REEMPLAZE A <div class="general-container">-->
-  <!-- ESTA SECCION DEBERA TENER DISPLAY:NONE HASTA QUE EL BOTON DEBIDO DE LA SECCION HEADER SE PRESIONE-->
-  <header class="d-flex container flex-wrap justify-content-center py-3 mb-4 border-bottom header-css">
-    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none link-calendar-btn">
-      <h1 class="fs-4 title-page">Calendar</h1>
-    </a>
-      <ul class="nav nav-pills header-btn" >
-        <li class="nav-item">
-          <button class="nav-link" data-bs-toggle="modal" data-bs-target="#eventModal">Events </button>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link active" aria-current="page">Today
-          </a>
-        </li>
-        <li class="nav-item"><a href="#" class="nav-link">Sign In</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Help</a>
-        <ul class="btn-help">
-          <li id="create-events" class="event-item">Create and Manage Events</li>
-          <li id="delete-events" class="event-item">Delete Events</li>
-          <li id="search-events" class="event-item">Search an Event</li>
-        </ul>
-        </li>
-        <li class="nav-item"><a href="#" class="nav-link">About</a></li>
-      </ul>
-    </header>
-    <!-- Modal -->
-    <!--ALGUIEN TIENE LA TAREA DE MODIFICAR EL MODAL ACORDE A LO REQUERIDO PARA LA CREACION DE EVENTOS, PARA ACTIVAR EL MODAL EL BOTON DEBERA TENER LAS PROPIEDADES data-bs-toggle="modal" data-bs-target="#eventModal"-->
-    <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Create Event</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form class="container" id="createEventForm">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="mb-3">
-                    <label for="modalTitle" class="form-label">Title</label>
-                    <input type="text" id="modalTitle" name="title" maxlength="60" class="form-control">
-                  </div>
-                <div class="mb-3">
-                  <label for="startDate" class="form-label">Start date</label>
-                  <input type="datetime-local" id="startDate" name="date-start" class="form-control">
-                </div>
-
-                <div class="mb-3 form-check">
-                  <input type="checkbox" name="End date" id="dateEndCheck" class="form-check-input">
-                  <label for="dateEndCheck" class="form-check-label">Finish</label>
-                </div>
-
-                <div class="mb-3 d-none" id="reminderBox">
-                  <label for="finishDate" class="form-label">End date</label>
-                  <input type="datetime-local" id="finishDate" name="date-finish" class="form-control">
-                </div>
-
-                <div class="mb-3 form-check">
-                  <input type="checkbox" name="Remind me when this event expires" id="reminderCheck"
-                    class="form-check-input">
-                  <label for="reminderCheck" class="form-check-label">Remind me when this event expires</label>
-                </div>
-                <div class="input-group mb-3 d-none" id="rememberWhen">
-                  <select class="form-select" id="remindMeOpt">
-                    <option value="default" selected>Remind me in...</option>
-                    <option value="5min">5 minutes</option>
-                    <option value="10min">10 minutes</option>
-                    <option value="15min">15 minutes</option>
-                    <option value="30min">30 minutes</option>
-                    <option value="45min">45 minutes</option>
-                    <option value="60min">1 hour</option>
-                  </select>
-                </div>
-                <!--<div class="mb-3 d-none" id="rememberWhen">
-                  <label for="reminder-select" class="form-label">Remember me:</label>
-                  <div id="reminder-select" data-bs-toggle="dropdown" class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="remember"
-                      data-bs-toggle="dropdown" aria-expanded="false">Select Reminder</button>
-                    <ul class="dropdown-menu" aria-labelledby="remember">
-                      <li class="dropdown-item minute-list" id="fiveMin">5 min</li>
-                      <li class="dropdown-item minute-list" id="ten-min">10 min</li>
-                      <li class="dropdown-item minute-list" id="fifteen-min">15 min</li>
-                      <li class="dropdown-item minute-list" id="thirty-min">30 min</li>
-                      <li class="dropdown-item minute-list" id="fortyfive-min">45 min</li>
-                      <li class="dropdown-item minute-list" id="sixty-min">60 min</li>
-                    </ul>
-                  </div>
-                </div> -->
-              </div>
-              <div class="col-md-6">
-                <div class="mb-3">
-                  <label for="description" class="form-label">Description</label>
-                  <textarea id="description" placeholder="Write something here" name="textarea" rows="10" cols="40"
-                    maxlength="500" class="form-control"></textarea>
-                </div>
-                <div class="input-group mb-3">
-                  <select class="form-select" id="eventTypeOpt">
-                    <option value="default" selected>Select event type...</option>
-                    <option value="work" class="work-event">Work</option>
-                    <option value="family" class="family-event">Family</option>
-                    <option value="friends" class="friends-event">Friends</option>
-                    <option value="doctor" class="doctor-event">Doctor</option>
-                    <option value="private" class="private-event">Private</option>
-                  </select>
-                </div>
-                <!--<div class="mb-3">
-                  <label for="type-event" class="form-label"></label>
-                  <div id="type-event" class="dropdown" data-bs-toggle="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle d-flex" type="button" id="type-event-button"
-                      data-bs-toggle="dropdown" aria-expanded="false">Select your event type</button>
-
-                    <button class="btn btn-secondary dropdown-toggle d-flex align-items-center" type="button" id="type-event-button" data-bs-toggle="dropdown" aria-expanded="false">Select your event type</button>
-
-                    <ul class="dropdown-menu p-0" aria-labelledby="type-event-button">
-                      <li class="dropdown-item work-event">Work</li>
-                      <li class="dropdown-item family-event">Family</li>
-                      <li class="dropdown-item friends-event">Friends</li>
-                      <li class="dropdown-item doctor-event">Doctor</li>
-                      <li class="dropdown-item private-event">Private</li>
-                    </ul>
-                  </div>
-                </div> -->
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeBtn">Close</button>
-              <button type="submit" class="btn btn-primary">Save changes</button>
-            </div>
-          </form>
-        </div>
-
-
-      </div>
-    </div>
-  </div>
-  <!-- Climate Modal -->
-  <div class="modal fade" id="climateModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="climateModalLabel">Today's Weather</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <h4 class="mb-4 fw-semibold">Location: <span class="fw-light" id="fLocation"></span></h4>
-            <p class="fw-semibold">Temperature: <span class="fw-light" id="fTemperature"></span></p>
-            <p class="fw-semibold">Termic Sensation: <span class="fw-light" id="fTermicSensation"></span></p>
-            <p class="fw-semibold">Preassure: <span class="fw-light" id="fPreasure"></span></p>
-            <p class="fw-semibold">Humidity: <span class="fw-light" id="fHumidity"></span></p>
-            <p class="fw-semibold">Precipitation Chance: <span class="fw-light" id="fPChance"></span></p>
-
-            <p class="fw-light" style="font-size: 9px;">This data updates every 5 minutes.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <main  class="main-container" id="mainContainer">
-    <!--AQUI SE DEBEN CREAR NUEVAS DIV O SECTION CON EL DISPLAY NONE PARA QUE LUEGO SEAN MOSTRADAS, USAR ETIQUETAS <DIV> O <SECTION> -->
-    <div id="generalContainer" class="general-container">
-      <div class="month">
-        <i id="prevMonth" class="fa fa-angle-left prev"></i>
-        <span id="month" class="date">MONTH</span>
-        <span id="year"></span>
-        <i id="nextMonth" class="fa fa-angle-right next"></i>
-      </div>
-      <div class="week">
-        <div class="div-text-week">
-          <p>Monday</p>
-        </div>
-        <div class="div-text-week">
-          <p>Tuesday</p>
-        </div>
-        <div class="div-text-week">
-          <p>Wednesday</p>
-        </div>
-        <div class="div-text-week">
-          <p>Thursday</p>
-        </div>
-        <div class="div-text-week">
-          <p>Friday</p>
-        </div>
-        <div class="div-text-week">
-          <p>Saturday</p>
-        </div>
-        <div class="div-text-week">
-          <p>Sunday</p>
-        </div>
-      </div>
-      <div class="days" id="daysContainer">
-        <!-- <div class="day">1</div> -->
-      </div>
-    </div>
-  </main>
-  <!--ALGUIEN TIENE LA TAREA DE MOFICIAR EL FOOTER ACORDE A LO QUE CREA CONVENIENTE.-->
-  <footer class="d-flex container flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-      <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
-        <symbol id="check2" viewBox="0 0 16 16">
-          <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"></path>
-        </symbol>
-        <symbol id="circle-half" viewBox="0 0 16 16">
-          <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"></path>
-        </symbol>
-        <symbol id="moon-stars-fill" viewBox="0 0 16 16">
-          <path
-            d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"></path>
-          <path
-            d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"></path>
-        </symbol>
-        <symbol id="sun-fill" viewBox="0 0 16 16">
-          <path
-            d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"></path>
-        </symbol>
-      </svg>
-      <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
-        <button class="btn btn-primary py-2 dropdown-toggle d-flex align-items-center" id="autoBtnActive" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
-          <svg class="bi my-1 theme-icon-dark" width="1em" height="1em">
-            <use href="#circle-half"></use>
-          </svg>
-          <span class="visually" id="bd-theme-text">Theme</span>
-        </button>
-        <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
-          <li>
-            <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false" id="lightBtnActive">
-              <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em">
-                <use href="#sun-fill"></use>
-              </svg>
-              Light
-              <svg class="bi ms-auto d-none" width="1em" height="1em">
-                <use href="#check2"></use>
-              </svg>
-            </button>
-          </li>
-          <li>
-            <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false" id="darkBtnActive">
-              <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em">
-                <use href="#moon-stars-fill"></use>
-              </svg>
-              Dark
-              <svg class="bi ms-auto d-none" width="1em" height="1em">
-                <use href="#check2"></use>
-              </svg>
-            </button>
-          </li>
-          <li>
-            <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
-              <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em">
-                <use href="#circle-half"></use>
-              </svg>
-              Auto
-              <svg class="bi ms-auto d-none" width="1em" height="1em">
-                <use href="#check2"></use>
-              </svg>
-            </button>
-          </li>
-        </ul>
-      </div>
-      <p class="col-md-4 mb-0 text-body-secondary"><a class="navbar-brand" href="https://assemblerinstitute.com" target="_blank">
-        <img src="./resources/A-Logo.png" alt="Bootstrap" width="30" height="30"> 2023 Lovelace Squad
-      </a>
-    </p>
-
-    <ul class="nav col-md-6 justify-content-end">
-
-      <li class="nav-item">
-        <a href="#" class="nav-link px-2 text-body-secondary">Top of the Page</a>
-      </li>
-      <li class="nav-item ms-3">
-        <button class="nav-link px-2 text-body-secondary" id="weatherBtn" data-bs-toggle="modal"
-          data-bs-target="#climateModal">Today's weather</button>
-      </li>
-
-      <li class="btn-group dropup ms-5 z-2">
-        <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown"
-          aria-expanded="false">
-          Members of the Squad
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="https://github.com/franpalberca" target="_blank">Fran P.A.</a></li>
-          <li><a class="dropdown-item" href="https://github.com/JorgeMunarriz" target="_blank">Jorge M.G</a></li>
-          <li><a class="dropdown-item" href="https://github.com/HoracioMartinez17" target="_blank">Horacio J.M.</a></li>
-          <li><a class="dropdown-item" href="https://github.com/Madpug2022" target="_blank">Matias A.C.</a></li>
-          <li><a class="dropdown-item" href="https://github.com/kevinPolania" target="_blank">Kevin P.N.</a></li>
-        </ul>
-      </li>
-
-    </ul>
-
-  </footer>
-</body>
-
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./css/bootstrap.css" />
+		<link rel="stylesheet" href="style.css" />
+		<script type="module" src="./dist/starter.js"></script>
+		<script src="https://unpkg.com/@popperjs/core@2" defer></script>
+		<script src="./js/bootstrap.js" defer></script>
+		<script src="https://kit.fontawesome.com/d9005a0d59.js" crossorigin="anonymous" defer></script>
+		<title>Google Calendar</title>
+	</head>
+	<!--EVERYONE WILL HAVE TO WORK ON THEIR OWN FILE(S).TS IN ORDER TO CREATE MODULES. AFTER THAT WE WILL UPLOAD THEM INTO A UNIQUE SCRIPT EXECUTION FILE. COMMENT YOUR CODE EVERYTIME YOU CAN-->
+	<body>
+		<!-- SOMEBODY NEEDS TO MODIFY THE HEADER CHECKING THE REQUIREMENTS, DEVELOP THE FUNCTIONS AND CREATE A DIV OR SECTION THAT REPLACE <div class="general-container">-->
+		<header class="d-flex container flex-wrap justify-content-center py-3 mb-4 border-bottom header-css">
+			<a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none link-calendar-btn">
+				<h1 class="fs-4 title-page">Calendar</h1>
+			</a>
+			<ul class="nav nav-pills header-btn">
+				<li class="nav-item">
+					<button class="nav-link" data-bs-toggle="modal" data-bs-target="#eventModal">Events</button>
+				</li>
+				<li class="nav-item">
+					<a href="#" class="nav-link active" aria-current="page">Today </a>
+				</li>
+				<li class="nav-item"><a href="#" class="nav-link">Sign In</a></li>
+				<li class="nav-item">
+					<a href="#" class="nav-link">Help</a>
+					<ul class="btn-help">
+						<li id="create-events" class="event-item">Create and Manage Events</li>
+						<li id="delete-events" class="event-item">Delete Events</li>
+						<li id="search-events" class="event-item">Search an Event</li>
+					</ul>
+				</li>
+				<li class="nav-item"><a href="#" class="nav-link">About</a></li>
+			</ul>
+		</header>
+		<!-- Modal -->
+		<!--SOMEBODY NEEDS TO MODIFY THE MODAL CHECKING THE GENERAL REQUERIMENTS. tO ACTIVATE THE MODAL, THE BUTTON SHOULD HAVE THE PROPIERTIES data-bs-toggle="modal" AND data-bs-target="#eventModal"-->
+		<div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h1 class="modal-title fs-5" id="exampleModalLabel">Create Event</h1>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<form class="container" id="createEventForm">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label for="modalTitle" class="form-label">Title</label>
+										<input type="text" id="modalTitle" name="title" maxlength="60" class="form-control" />
+									</div>
+									<div class="mb-3">
+										<label for="startDate" class="form-label">Start date</label>
+										<input type="datetime-local" id="startDate" name="date-start" class="form-control" />
+									</div>
+									<div class="mb-3 form-check">
+										<input type="checkbox" name="End date" id="dateEndCheck" class="form-check-input" />
+										<label for="dateEndCheck" class="form-check-label">Finish</label>
+									</div>
+									<div class="mb-3 d-none" id="reminderBox">
+										<label for="finishDate" class="form-label">End date</label>
+										<input type="datetime-local" id="finishDate" name="date-finish" class="form-control" />
+									</div>
+									<div class="mb-3 form-check">
+										<input type="checkbox" name="Remind me when this event expires" id="reminderCheck" class="form-check-input" />
+										<label for="reminderCheck" class="form-check-label">Remind me when this event expires</label>
+									</div>
+									<div class="input-group mb-3 d-none" id="rememberWhen">
+										<select class="form-select" id="remindMeOpt">
+											<option value="default" selected>Remind me in...</option>
+											<option value="5min">5 minutes</option>
+											<option value="10min">10 minutes</option>
+											<option value="15min">15 minutes</option>
+											<option value="30min">30 minutes</option>
+											<option value="45min">45 minutes</option>
+											<option value="60min">1 hour</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label for="description" class="form-label">Description</label>
+										<textarea id="description" placeholder="Write something here" name="textarea" rows="10" cols="40" maxlength="500" class="form-control"></textarea>
+									</div>
+									<div class="input-group mb-3">
+										<select class="form-select" id="eventTypeOpt">
+											<option value="default" selected>Select event type...</option>
+											<option value="work" class="work-event">Work</option>
+											<option value="family" class="family-event">Family</option>
+											<option value="friends" class="friends-event">Friends</option>
+											<option value="doctor" class="doctor-event">Doctor</option>
+											<option value="private" class="private-event">Private</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeBtn">Close</button>
+								<button type="submit" class="btn btn-primary">Save changes</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Climate Modal -->
+		<div class="modal fade" id="climateModal" tabindex="-1" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h1 class="modal-title fs-5" id="climateModalLabel">Today's Weather</h1>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<h4 class="mb-4 fw-semibold">Location: <span class="fw-light" id="fLocation"></span></h4>
+						<p class="fw-semibold">Temperature: <span class="fw-light" id="fTemperature"></span></p>
+						<p class="fw-semibold">Termic Sensation: <span class="fw-light" id="fTermicSensation"></span></p>
+						<p class="fw-semibold">Preassure: <span class="fw-light" id="fPreasure"></span></p>
+						<p class="fw-semibold">Humidity: <span class="fw-light" id="fHumidity"></span></p>
+						<p class="fw-semibold">Precipitation Chance: <span class="fw-light" id="fPChance"></span></p>
+						<p class="fw-light" style="font-size: 9px">This data updates every 5 minutes.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<main class="main-container" id="mainContainer">
+			<!--HERE WE MUST CREATE NEW DIVS OR SECTION WITH DISPLAY:NONE SO AFTER THAT WE WILL SHOW THEM -->
+			<div id="generalContainer" class="general-container">
+				<div class="month">
+					<i id="prevMonth" class="fa fa-angle-left prev"></i>
+					<span id="month" class="date">MONTH</span>
+					<span id="year"></span>
+					<i id="nextMonth" class="fa fa-angle-right next"></i>
+				</div>
+				<div class="week">
+					<div class="div-text-week">
+						<p>Monday</p>
+					</div>
+					<div class="div-text-week">
+						<p>Tuesday</p>
+					</div>
+					<div class="div-text-week">
+						<p>Wednesday</p>
+					</div>
+					<div class="div-text-week">
+						<p>Thursday</p>
+					</div>
+					<div class="div-text-week">
+						<p>Friday</p>
+					</div>
+					<div class="div-text-week">
+						<p>Saturday</p>
+					</div>
+					<div class="div-text-week">
+						<p>Sunday</p>
+					</div>
+				</div>
+				<div class="days" id="daysContainer">
+					<!-- <div class="day">1</div> -->
+				</div>
+			</div>
+		</main>
+		<!--HERE SOMEONE HAVE TO MODIFY THE FOOTER WITH THE GENERAL REQUERIMENTS (AND EXTRAS IF WANTS TO) -->
+		<footer class="d-flex container flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+			<svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+				<symbol id="check2" viewBox="0 0 16 16">
+					<path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"></path>
+				</symbol>
+				<symbol id="circle-half" viewBox="0 0 16 16">
+					<path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"></path>
+				</symbol>
+				<symbol id="moon-stars-fill" viewBox="0 0 16 16">
+					<path
+						d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"></path>
+					<path
+						d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"></path>
+				</symbol>
+				<symbol id="sun-fill" viewBox="0 0 16 16">
+					<path
+						d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"></path>
+				</symbol>
+			</svg>
+			<div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+				<button class="btn btn-primary py-2 dropdown-toggle d-flex align-items-center" id="autoBtnActive" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
+					<svg class="bi my-1 theme-icon-dark" width="1em" height="1em">
+						<use href="#circle-half"></use>
+					</svg>
+					<span class="visually" id="bd-theme-text">Theme</span>
+				</button>
+				<ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
+					<li>
+						<button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false" id="lightBtnActive">
+							<svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em">
+								<use href="#sun-fill"></use>
+							</svg>
+							Light
+							<svg class="bi ms-auto d-none" width="1em" height="1em">
+								<use href="#check2"></use>
+							</svg>
+						</button>
+					</li>
+					<li>
+						<button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false" id="darkBtnActive">
+							<svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em">
+								<use href="#moon-stars-fill"></use>
+							</svg>
+							Dark
+							<svg class="bi ms-auto d-none" width="1em" height="1em">
+								<use href="#check2"></use>
+							</svg>
+						</button>
+					</li>
+					<li>
+						<button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+							<svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em">
+								<use href="#circle-half"></use>
+							</svg>
+							Auto
+							<svg class="bi ms-auto d-none" width="1em" height="1em">
+								<use href="#check2"></use>
+							</svg>
+						</button>
+					</li>
+				</ul>
+			</div>
+			<p class="col-md-4 mb-0 text-body-secondary">
+				<a class="navbar-brand" href="https://assemblerinstitute.com" target="_blank"> <img src="./resources/A-Logo.png" alt="Bootstrap" width="30" height="30" /> 2023 Lovelace Squad </a>
+			</p>
+			<ul class="nav col-md-6 justify-content-end">
+				<li class="nav-item">
+					<a href="#" class="nav-link px-2 text-body-secondary">Top of the Page</a>
+				</li>
+				<li class="nav-item ms-3">
+					<button class="nav-link px-2 text-body-secondary" id="weatherBtn" data-bs-toggle="modal" data-bs-target="#climateModal">Today's weather</button>
+				</li>
+				<li class="btn-group dropup ms-5 z-2">
+					<button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Members of the Squad</button>
+					<ul class="dropdown-menu">
+						<li><a class="dropdown-item" href="https://github.com/franpalberca" target="_blank">Fran P.A.</a></li>
+						<li><a class="dropdown-item" href="https://github.com/JorgeMunarriz" target="_blank">Jorge M.G</a></li>
+						<li><a class="dropdown-item" href="https://github.com/HoracioMartinez17" target="_blank">Horacio J.M.</a></li>
+						<li><a class="dropdown-item" href="https://github.com/Madpug2022" target="_blank">Matias A.C.</a></li>
+						<li><a class="dropdown-item" href="https://github.com/kevinPolania" target="_blank">Kevin P.N.</a></li>
+					</ul>
+				</li>
+			</ul>
+		</footer>
+	</body>
 </html>
