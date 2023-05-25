@@ -1,87 +1,73 @@
-
 /* - - - M A I N   S E L E C T O R  - - - - */
-.main-container{
+.main-container {
 	min-height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(transparent, rgba(0, 0, 255, 0.493)50%, transparent);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: linear-gradient(transparent, rgba(0, 0, 255, 0.493) 50%, transparent);
 }
 .main-container.dark {
-    background: linear-gradient(transparent, rgba(5, 5, 133, 0.493)50%, transparent);
+	background: linear-gradient(transparent, rgba(5, 5, 133, 0.493) 50%, transparent);
 }
 
 /*  - - - - - - - H E A D E R  - - - - - - -  */
 .btn-help {
-    position: absolute;
-    display: none;
-    background-color: #f9f9f9;
-    padding: 20px;
-    list-style:none;
-    z-index: 1;
-  }
-  
-  .nav-item:hover .btn-help {
-    display: block;
-  }
-
-  .btn-help li{
-    padding: 8px;
-  }
-
-  .btn-help li:hover {
-    background-color:#e5e5ff;
-    border-radius: 5px;
-  }
-/*  */
-.popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 20px;
-    border: 1px solid #ccc;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    z-index: 9999;
-  }
-  
-  .popup-close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  
-/*  *//* - - - M A I N   S E L E C T O R S  C A L E N D A R - - - - */
-.general-container{
-    position: relative;
-    width: 90%;
-    height: 100%;
-    margin: auto;
-    padding: 15px;
-    color: slateblue;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-radius: 10px;
-    background-color: white;
-    box-shadow: 45px 31px 15px -14px rgba(8,0,0,0.2);
+	position: absolute;
+	display: none;
+	background-color: #f9f9f9;
+	padding: 20px;
+	list-style: none;
+	z-index: 1;
 }
 
- /* .general-container:before{
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 100%;
-    width: 12px;
-    height: 97%;
-    border-radius: 0 5px 5px 0;
-    background-color: lightgray;
-    transform: translateY(-50%);
-}  */
+.nav-item:hover .btn-help {
+	display: block;
+}
 
+.btn-help li {
+	padding: 8px;
+}
+
+.btn-help li:hover {
+	background-color: #e5e5ff;
+	border-radius: 5px;
+}
+/*  */
+.popup {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: white;
+	padding: 20px;
+	border: 1px solid #ccc;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	z-index: 9999;
+}
+
+.popup-close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+/*  */ /* - - - M A I N   S E L E C T O R S  C A L E N D A R - - - - */
+.general-container {
+	position: relative;
+	width: 90%;
+	height: 100%;
+	margin: auto;
+	padding: 15px;
+	color: slateblue;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	border-radius: 10px;
+	background-color: white;
+	box-shadow: 45px 31px 15px -14px rgba(8, 0, 0, 0.2);
+}
 
 .general-container .month {
 	width: 100%;
@@ -97,12 +83,12 @@
 }
 .general-container .month .prev,
 .general-container .month .next {
-    cursor: pointer;
-    margin: 0 15px 0 15px;
+	cursor: pointer;
+	margin: 0 15px 0 15px;
 }
 .general-container .month .prev:hover,
 .general-container .month .next:hover {
-    color: black;
+	color: black;
 }
 .general-container .week {
 	width: 100%;
@@ -117,33 +103,33 @@
 }
 
 .general-container .week .div-text-week {
-	flex: 1; /* Permite que los días de la semana se expandan para ocupar el espacio disponible */
+	flex: 1; /* IT ALLOWS EVERY DAY OF THE WEEK TO EXPAND SO THEY CAN FILL THE AVAILABLE SPACE */
 	text-align: center;
-  }
-  .general-container .week .div-text-week p {
-	font-size: clamp(.5rem, 5px + 1vw, 1rem);
+}
+.general-container .week .div-text-week p {
+	font-size: clamp(0.5rem, 5px + 1vw, 1rem);
 	margin: 0;
 	font-weight: 500;
 	text-transform: capitalize;
-  }
+}
 
-.days{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    padding: 0 10px;
-    font-size: 1rem;
-    font-weight: 400;
-    cursor: pointer;    
+.days {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	padding: 0 10px;
+	font-size: 1rem;
+	font-weight: 400;
+	cursor: pointer;
 }
 .today {
-    background-color: rgb(169, 91, 241);
-    color: rgb(28, 28, 28);
+	background-color: rgb(169, 91, 241);
+	color: rgb(28, 28, 28);
 }
 .previous-month {
-    background-color: rgb(234, 245, 255);
-    color: rgba(232, 83, 83, 0.861);
+	background-color: rgb(234, 245, 255);
+	color: rgba(232, 83, 83, 0.861);
 }
 .days .day {
 	border: 1px solid gainsboro;
@@ -155,45 +141,66 @@
 	background-color: rgba(241, 231, 254, 1);
 }
 
-.days .day:hover{
-    border: 1px solid lightgray;
-    background-color: rgba(241, 231, 254, 1);
+.days .day:hover {
+	border: 1px solid lightgray;
+	background-color: rgba(241, 231, 254, 1);
+}
+.day-event-dropdown{
+    display: flex;
+    height: 18px;
+    overflow: hidden;
+    transition: 0.3s ease;
+
+}
+.day-event-dropdown:hover{
+    position: absolute;
+    width: 20vw;
+    height: 20vh;
+    border-radius: 15px;
+    color: rgb(216, 216, 219);
+    z-index: 10000;
+    transform: scale(1.1);
+
+}
+.event-hover-details{
+    color: #ccc;
 }
 
-.work-event{
-    background-color: rgb(233, 93, 93);
-    }
 
-.family-event{
-    background-color: lightblue;
-    }
-	
-	.friends-event{
-    background-color: yellow;
-    cursor: pointer;
-    }
-
-.doctor-event{
-    background-color: orange;
-    cursor: pointer;
-    }
-
-.private-event{
-    background-color: lightgreen;
-    cursor: pointer;
-    }
-	
-.minute-list{
-    cursor: pointer;
+.work-event {
+	background-color: rgb(233, 93, 93);
 }
 
-.add-button-container{
+.family-event {
+	background-color: lightblue;
+}
+
+.friends-event {
+	background-color: yellow;
+	cursor: pointer;
+}
+
+.doctor-event {
+	background-color: orange;
+	cursor: pointer;
+}
+
+.private-event {
+	background-color: lightgreen;
+	cursor: pointer;
+}
+
+.minute-list {
+	cursor: pointer;
+}
+
+.add-button-container {
 	position: relative;
 	width: 20px;
 	height: 20px;
 }
 
-.hover-button{
+.hover-button {
 	position: absolute;
 	width: 100%;
 	height: 100%;
@@ -203,13 +210,13 @@
 	cursor: pointer;
 }
 
-.plus-icon{
+.plus-icon {
 	font-size: 40px;
 	color: transparent;
 	transition: color 0.5s;
 }
 
-.hover-button:hover .plus-icon{
+.hover-button:hover .plus-icon {
 	color: grey;
 }
 
@@ -217,56 +224,53 @@
 	0% {
 		transform: rotateZ(0deg) scale(1) skewX(0deg);
 		transform-origin: top left;
-	  }
-	  50% {
+	}
+	50% {
 		transform: rotateZ(20deg) scale(0.8, 1.2) skewX(10deg);
 		transform-origin: top bottom;
-	  }
-	  100% {
+	}
+	100% {
 		transform: rotateZ(0deg) scale(1) skewX(0deg);
 		transform-origin: top right;
-	  }
 	}
-  
+}
+
 @keyframes tearing-effect-lastMont {
 	0% {
 		transform: rotateZ(0deg) scale(1) skewX(0deg);
 		transform-origin: top right;
-	  }
-	  50% {
+	}
+	50% {
 		transform: rotateZ(-20deg) scale(0.8, 1.2) skewX(-10deg);
 		transform-origin: top bottom;
-	  }
-	  100% {
+	}
+	100% {
 		transform: rotateZ(0deg) scale(1) skewX(0deg);
 		transform-origin: top left;
-	  }
-	
-  }
-  
-  .tearing-effect-nextMonth {
-	animation: tearing-effect-nextMonth .6s ease-in-out;
-  }
-  .tearing-effect-lastMont {
-	animation: tearing-effect-lastMont .6s ease-in-out;
-  }
-  
-  @media only screen and (max-width: 480px) {
-	/* Estilos específicos para dispositivos móviles */
+	}
+}
+
+.tearing-effect-nextMonth {
+	animation: tearing-effect-nextMonth 0.6s ease-in-out;
+}
+.tearing-effect-lastMont {
+	animation: tearing-effect-lastMont 0.6s ease-in-out;
+}
+
+@media only screen and (max-width: 480px) {
+	/* SPECIFIC STYLES FOR MOBILE DEVICES */
 	.general-container .month {
 		width: 70%;
 		font-size: 1.3rem;
 		color: #431a7bfb;
 	}
-	.days .day{
+	.days .day {
 		height: 3rem;
-    font-size: .7rem;
+		font-size: 0.7rem;
+	}
+}
 
-	  }
-  }
-  
-
-  /* @media only screen and (max-device-width: 768px) {
+/* @media only screen and (max-device-width: 768px) {
 	.days .day{
 	  height: 3.5rem;
 	  background-color: aqua;
