@@ -65,12 +65,17 @@ export function initializeCalendar() {
 			addButtonSpan.textContent = "+";
 			addButton.appendChild(addButtonSpan);
 
-			const targetYear = year.innerText;
-			const todayYear = actualYear.toString();
-            if (i === currentDay && month === actualMonth && todayYear === targetYear) {
-                dayElement.classList.add("today");
-            }
-
+        //	const dayEvent = document.createElement("div");
+        //	dayEvent.setAttribute("class","row d-flex justify-content-center bg-info bg-gradient mb-1");
+        //	dayEvent.setAttribute("style","font-size: 10px; color: black;");
+        //	dayEvent.innerText = "testing";
+        //
+        //	dayEventContainer.appendChild(dayEvent);
+        const targetYear = year.innerText;
+        const todayYear = actualYear.toString();
+        if (i === currentDay && month === actualMonth && todayYear === targetYear) {
+          dayElement.classList.add("today");
+        }
             daysContainer.appendChild(dayElement);
         }
     }
