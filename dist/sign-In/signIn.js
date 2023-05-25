@@ -84,25 +84,25 @@ function logIn() {
     signOutBtn.addEventListener("click", handleLogout);
     showPassBtn.addEventListener("click", togglePasswordVisibility1);
     showPassBtn1.addEventListener("click", togglePasswordVisibility2);
-    let boxItem = document.getElementById('user');
-    let boxItemEmail = document.getElementById('email');
-    let boxItemPass = document.getElementById('password');
-    let boxItemPass1 = document.getElementById('confirmPass');
-    const errorUser = document.createElement('div');
+    let boxItem = document.getElementById("user");
+    let boxItemEmail = document.getElementById("email");
+    let boxItemPass = document.getElementById("password");
+    let boxItemPass1 = document.getElementById("confirmPass");
+    const errorUser = document.createElement("div");
     errorUser.textContent = "This field should be complete";
-    errorUser.className = 'error';
+    errorUser.className = "error";
     const userMsgError = errorUser;
-    const errorEmail = document.createElement('div');
+    const errorEmail = document.createElement("div");
     errorEmail.textContent = "This field is not properly formatted";
-    errorEmail.className = 'error-input';
+    errorEmail.className = "error-input";
     const emailMsgError = errorEmail;
-    const errorPass = document.createElement('div');
-    errorPass.className = 'error-input';
+    const errorPass = document.createElement("div");
+    errorPass.className = "error-input";
     errorPass.textContent = "This field is not properly formatted";
     const passMsgError = errorPass;
-    const errorPass1 = document.createElement('div');
+    const errorPass1 = document.createElement("div");
     errorPass1.textContent = "This fields doesn't match";
-    errorPass1.className = 'error-input';
+    errorPass1.className = "error-input";
     const confPassMsgError = errorPass1;
     function validateEmail(email) {
         let emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
@@ -112,7 +112,7 @@ function logIn() {
         let passReg = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/;
         return passReg.test(passwordInput1);
     }
-    userInput.addEventListener('input', function () {
+    userInput.addEventListener("input", function () {
         let strRer = /\s/;
         let str = userInput.value;
         let total = Number(str.length);
@@ -123,7 +123,6 @@ function logIn() {
         else {
             if (userMsgError && total > 4 && userMsgError.parentNode === boxItem) {
                 boxItem.removeChild(userMsgError);
-                ;
             }
             return true;
         }

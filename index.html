@@ -24,18 +24,18 @@
 					<button class="nav-link" data-bs-toggle="modal" data-bs-target="#eventModal">Events</button>
 				</li>
 				<li class="nav-item">
-					<a href="#" class="nav-link active" aria-current="page">Today </a>
+					<button data-bs-target="#todaySearch" class="nav-link active" aria-current="page">Today </button>
 				</li>
-				<li class="nav-item"><a href="#" class="nav-link" id="signInBtn">Sign In</a></li>
+				<li class="nav-item"><button type="button" class="nav-link" id="signInBtn" data-bs-toggle="modal" data-bs-target="#modalSignIn">Sign In</button></li>
 				<li class="nav-item">
-					<a href="#" class="nav-link">Help</a>
+					<button data-bs-target="" class="nav-link">Help</button>
 					<ul class="btn-help">
 						<li id="create-events" class="event-item">Create and Manage Events</li>
 						<li id="delete-events" class="event-item">Delete Events</li>
 						<li id="search-events" class="event-item">Search an Event</li>
 					</ul>
 				</li>
-				<li class="nav-item"><a href="#" class="nav-link">About</a></li>
+				<li class="nav-item"><button data-bs-target="" class="nav-link">About</button></li>
 			</ul>
 		</header>
 		<!-- Modal -->
@@ -129,6 +129,79 @@
 				</div>
 			</div>
 		</div>
+    <div class="modal fade" tabindex="-1" role="dialog" id="modalSignin" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content rounded-4 shadow">
+          <div class="modal-header p-5 pb-4 border-bottom-0">
+            <h1 class="fw-bold mb-0 fs-2">Sign up for free</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+    
+          <div class="modal-body p-5 pt-0">
+            <form class="">
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com">
+                <label for="floatingInput">Email address</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword">Password</label>
+              </div>
+              <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Sign up</button>
+              <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small>
+              <hr class="my-4">
+              <h2 class="fs-5 fw-bold mb-3">Or use a third-party</h2>
+              <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="submit">
+                <svg class="bi me-1" width="16" height="16"><use xlink:href="#twitter"></use></svg>
+                Sign up with Twitter
+              </button>
+              <button class="w-100 py-2 mb-2 btn btn-outline-primary rounded-3" type="submit">
+                <svg class="bi me-1" width="16" height="16"><use xlink:href="#facebook"></use></svg>
+                Sign up with Facebook
+              </button>
+              <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="submit">
+                <svg class="bi me-1" width="16" height="16"><use xlink:href="#github"></use></svg>
+                Sign up with GitHub
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="sign-in-display w-100 m-1 form-div" id="formSignInDiv">
+      <form id="loginForm" class="form-center" method="get">
+        <img alt="" class="mb-4" src="" id="login-img" />
+        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+        <div class="form-item d-flex align-items-center" id="user">
+          <label for="userName">UserName</label>
+          <input type="text" id="userName" required minlength="5" maxlength="20" placeholder="Username" class="form-control" />
+        </div>
+        <div class="form-item d-flex align-items-center" id="email">
+          <label for="floatingInput">Email address</label>
+          <input type="email" class="form-control" id="floatingInput" required maxlength="50" placeholder="name@example.com" />
+        </div>
+        <div class="form-item d-flex align-items-center" id="password">
+          <label for="floatingPassword1">Password</label>
+          <input type="password" class="form-control" id="floatingPassword1" placeholder="Password" />
+          <span id="show-password1">
+            <i class="bi bi-eye-slash" id="eye1"></i>
+          </span>
+        </div>
+        <div class="form-item d-flex align-items-center" id="confirmPass">
+          <label for="floatingPassword2">Confirm Password</label>
+          <input type="password" id="floatingPassword2" class="form-control" placeholder="Confirm Password" required minlength="8" maxlength="20" />
+          <span id="show-password2">
+            <i class="bi bi-eye-slash" id="eye2"></i>
+          </span>
+        </div>
+  
+        <div class="checkbox mb-3">
+          <label> <input type="checkbox" value="remember-me" /> Remember me </label>
+        </div>
+        <button class="w-50 btn btn-lg btn-primary" type="button" id="signInBtn">Sign in</button>
+        <p class="mt-5 mb-3 text-body-secondary">© 2023 Jorge Munárriz, Inc. All rights reserved.</p>
+      </form>
+    </div> -->
 		<main class="main-container" id="mainContainer">
 			<!--HERE WE MUST CREATE NEW DIVS OR SECTION WITH DISPLAY:NONE SO AFTER THAT WE WILL SHOW THEM -->
 			<div id="generalContainer" class="general-container">
