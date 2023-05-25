@@ -49,9 +49,6 @@ function logIn() {
     const passwordInput2 = document.getElementById("floatingPassword2");
     const signInBtn = document.getElementById("signInBtn");
     const signOutBtn = document.getElementById("signOutBtn");
-    const headerContainer = document.getElementById("headerContainer");
-    const sideBar = document.getElementById("sideBarBig");
-    const containerFooter = document.getElementById("containerFooter");
     const formSignInDiv = document.getElementById("formSignInDiv");
     const showPassBtn = document.getElementById("eye1");
     const showPassBtn1 = document.getElementById("eye2");

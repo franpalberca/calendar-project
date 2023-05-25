@@ -58,13 +58,7 @@ function logIn(): void {
     const passwordInput1 = document.getElementById("floatingPassword1") as HTMLInputElement;
     const passwordInput2 = document.getElementById("floatingPassword2") as HTMLInputElement;
     const signInBtn = document.getElementById("signInBtn") as HTMLButtonElement;
-    const signOutBtn = document.getElementById("signOutBtn") as HTMLButtonElement;
-  
-    const headerContainer = document.getElementById("headerContainer") as HTMLElement;
-    const sideBar = document.getElementById("sideBarBig") as HTMLElement;
-    
-    
-    const containerFooter = document.getElementById("containerFooter") as HTMLDivElement;
+    const signOutBtn = document.getElementById("signOutBtn") as HTMLButtonElement; 
     const formSignInDiv = document.getElementById("formSignInDiv") as HTMLDivElement;
     const showPassBtn = document.getElementById("eye1") as HTMLElement;
     const showPassBtn1 = document.getElementById("eye2") as HTMLElement;
