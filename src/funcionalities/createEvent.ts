@@ -31,7 +31,7 @@ export function setEvent(){
         const targetDay = document.querySelector(`[data-daynumber="${eventDate}"]`);
         if (targetDay) {
             const dayEvent = document.createElement("div");
-            dayEvent.setAttribute("class",`row d-flex justify-content-center ${eventColor} bg-gradient mb-1`);
+            dayEvent.setAttribute("class",`row d-flex justify-content-center ${eventColor} bg-gradient mb-1 day-event-dropdown`);
             dayEvent.setAttribute("style","font-size: 12px; color: black;");
             dayEvent.innerText = `${eventData.name}`;
 
@@ -48,7 +48,7 @@ export function setEvent(){
             const targetDay = document.querySelector(`[data-daynumber="${day}"]`);
             if (targetDay) {
                 const dayEvent = document.createElement("div");
-                dayEvent.setAttribute("class",`row d-flex justify-content-center ${eventColor} bg-gradient mb-1`);
+                dayEvent.setAttribute("class",`row d-flex justify-content-center ${eventColor} bg-gradient mb-1 day-event-dropdown`);
                 dayEvent.setAttribute("style","font-size: 12px; color: black;");
                 dayEvent.innerText = `${eventData.name}`;
 
