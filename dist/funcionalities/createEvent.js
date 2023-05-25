@@ -5,7 +5,6 @@ export function setEvent() {
     const eventDate = new Date(`${eventData.eventYear}-${eventData.eventMonth}-${eventData.eventDay}`).toISOString().slice(0, 10);
     const eventFinishDate = `${eventData.eventYearF}-${eventData.eventMonthF}-${eventData.eventDayF}`;
     const dateArray = getDatesInRange(eventDate, eventFinishDate);
-    console.log(dateArray);
     switch (eventData.eventType) {
         case 'work':
             eventColor = "bg-danger";
@@ -24,7 +23,6 @@ export function setEvent() {
             break;
     }
     if (dateArray.length === 0) {
-        console.log("we are here");
         const targetDay = document.querySelector(`[data-daynumber="${eventDate}"]`);
         if (targetDay) {
             const dayEvent = document.createElement("div");
@@ -39,7 +37,6 @@ export function setEvent() {
         }
     }
     else if (dateArray.length > 0) {
-        console.log("We should be here");
         dateArray.forEach((day) => {
             const targetDay = document.querySelector(`[data-daynumber="${day}"]`);
             if (targetDay) {
@@ -55,11 +52,14 @@ export function setEvent() {
             }
         });
     }
+    const closeBtn = document.querySelector('#closeBtn');
+    if (closeBtn) {
+        closeBtn.click();
+    }
 }
-function getDatesInRange(startDate, endDate) {
+export function getDatesInRange(startDate, endDate) {
     const dateArray = [];
     const currentDate = new Date(startDate);
-    console.log(currentDate.toISOString());
     const finishDate = new Date(endDate);
     while (currentDate <= finishDate) {
         dateArray.push(currentDate.toISOString().slice(0, 10));

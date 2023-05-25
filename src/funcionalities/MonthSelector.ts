@@ -6,11 +6,12 @@ export function initializeCalendar() {
   let currentYear = currentDate.getFullYear();
   let actualYear = currentDate.getFullYear();
 
-  const daysContainer: HTMLElement | null = document.querySelector("#daysContainer");
-  const month: HTMLElement | null = document.querySelector("#month");
-  const year: HTMLElement | null = document.querySelector("#year");
-  const prevMonthDom: HTMLElement | null = document.querySelector("#prevMonth");
-  const nextMonthDom: HTMLElement | null = document.querySelector("#nextMonth");
+const daysContainer: HTMLElement | null = document.querySelector("#daysContainer");
+const month: HTMLElement | null = document.querySelector("#month");
+const year: HTMLElement | null = document.querySelector("#year");
+const prevMonthDom: HTMLElement | null = document.querySelector("#prevMonth");
+const nextMonthDom: HTMLElement | null = document.querySelector("#nextMonth");
+const calendar:  HTMLElement | null = document.querySelector("#generalContainer");
 
   writeMonth(monthNumber);
   setNewDate();
@@ -104,7 +105,7 @@ export function initializeCalendar() {
     return start.getDay() === 0 ? 6 : start.getDay() - 1;
   }
 
-  function lastMonth(): void {
+function lastMonth() {
     if (monthNumber !== 0) {
       monthNumber--;
     } else {
@@ -112,9 +113,14 @@ export function initializeCalendar() {
       currentYear--;
     }
     setNewDate();
+    calendar?.classList.add('tearing-effect-lastMont');
+  
+    setTimeout(() => {
+      calendar?.classList.remove('tearing-effect-lastMont');
+    }, 600);
   }
-
-  function nextMonth(): void {
+  
+  function nextMonth() {
     if (monthNumber !== 11) {
       monthNumber++;
     } else {
@@ -122,20 +128,28 @@ export function initializeCalendar() {
       currentYear++;
     }
     setNewDate();
+    calendar?.classList.add('tearing-effect-nextMonth');
+  
+    setTimeout(() => {
+      calendar?.classList.remove('tearing-effect-nextMonth');
+    }, 600);
   }
+  
+  
 
-  function setNewDate(): void {
-    currentDate = new Date(currentYear, monthNumber, currentDay);
-    if (month) {
-      month.textContent = new Intl.DateTimeFormat("en-US", { month: "long" }).format(currentDate);
-    }
-    if (year) {
-      year.textContent = currentYear.toString();
-    }
+function setNewDate(): void {
+	currentDate = new Date(currentYear, monthNumber, currentDay);
+	if (month) {
+        month.textContent = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(currentDate);
+	}
+	if (year) {
+		year.textContent = currentYear.toString();
+	}
 
     writeMonth(monthNumber);
   }
 
   prevMonthDom?.addEventListener("click", () => lastMonth());
   nextMonthDom?.addEventListener("click", () => nextMonth());
+
 }

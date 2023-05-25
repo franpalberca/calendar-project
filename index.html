@@ -10,7 +10,6 @@
     <script src="https://unpkg.com/@popperjs/core@2" defer></script>
     <script src="./js/bootstrap.js" defer></script>
     <script src="https://kit.fontawesome.com/d9005a0d59.js" crossorigin="anonymous" defer></script>
-
   <title>Google Calendar</title>
 </head>
 <!--CADA UNO DEBERA TRABAJAR EN SU PROPIO ARCHIVO/S .TS, PARA LA CREACION DE MODULOS QUE LUEGO SE INCORPORARAN A UN UNICO ARCHIVO DE EJECUCION SCRIPT, COMENTEN EL CODIGO SIEMPRE QUE PUEDAN-->
@@ -22,7 +21,6 @@
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none link-calendar-btn">
       <h1 class="fs-4 title-page" id="titlePage">Calendar</h1>
     </a>
-
       <ul class="nav nav-pills header-btn" >
         <li class="nav-item">
           <button class="nav-link" data-bs-toggle="modal" data-bs-target="#eventModal">Events </button>
@@ -59,7 +57,6 @@
                     <label for="modalTitle" class="form-label">Title</label>
                     <input type="text" id="modalTitle" name="title" maxlength="60" class="form-control">
                   </div>
-
                 <div class="mb-3">
                   <label for="startDate" class="form-label">Start date</label>
                   <input type="datetime-local" id="startDate" name="date-start" class="form-control">
@@ -126,7 +123,11 @@
                 <!--<div class="mb-3">
                   <label for="type-event" class="form-label"></label>
                   <div id="type-event" class="dropdown" data-bs-toggle="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle d-flex" type="button" id="type-event-button"
+                      data-bs-toggle="dropdown" aria-expanded="false">Select your event type</button>
+
                     <button class="btn btn-secondary dropdown-toggle d-flex align-items-center" type="button" id="type-event-button" data-bs-toggle="dropdown" aria-expanded="false">Select your event type</button>
+
                     <ul class="dropdown-menu p-0" aria-labelledby="type-event-button">
                       <li class="dropdown-item work-event">Work</li>
                       <li class="dropdown-item family-event">Family</li>
@@ -139,7 +140,7 @@
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeBtn">Close</button>
               <button type="submit" class="btn btn-primary">Save changes</button>
             </div>
           </form>
@@ -166,32 +167,49 @@
             <p class="fw-semibold">Precipitation Chance: <span class="fw-light" id="fPChance"></span></p>
 
             <p class="fw-light" style="font-size: 9px;">This data updates every 5 minutes.</p>
-          </div>
         </div>
       </div>
     </div>
-    <main  class="main-container" id="mainContainer">
-      <!--AQUI SE DEBEN CREAR NUEVAS DIV O SECTION CON EL DISPLAY NONE PARA QUE LUEGO SEAN MOSTRADAS, USAR ETIQUETAS <DIV> O <SECTION> -->
-      <div class="general-container">
-          <div class="month">
-            <i id="prevMonth" class="fa fa-angle-left prev"></i>
-            <span id="month" class="date">MONTH</span>
-            <span id="year"></span>
-            <i id="nextMonth" class="fa fa-angle-right next"></i>
-          </div>
-          <div class="week">
-            <div>Monday</div>
-            <div>Tuesday</div>
-            <div>Wednesday</div>
-            <div>Thursday</div>
-            <div>Friday</div>
-            <div>Saturday</div>
-            <div>Sunday</div>
-          </div>
-          <div class="days" id="daysContainer">
-            <!-- <div class="day">1</div> -->
-          </div>
+  </div>
+  <main  class="main-container" id="mainContainer">
+    <!--AQUI SE DEBEN CREAR NUEVAS DIV O SECTION CON EL DISPLAY NONE PARA QUE LUEGO SEAN MOSTRADAS, USAR ETIQUETAS <DIV> O <SECTION> -->
+    <div id="generalContainer" class="general-container">
+      <div class="month">
+        <i id="prevMonth" class="fa fa-angle-left prev"></i>
+        <span id="month" class="date">MONTH</span>
+        <span id="year"></span>
+        <i id="nextMonth" class="fa fa-angle-right next"></i>
       </div>
+      <div class="week">
+        <div class="div-text-week">
+          <p>Monday</p>
+        </div>
+        <div class="div-text-week">
+          <p>Tuesday</p>
+        </div>
+        <div class="div-text-week">
+          <p>Wednesday</p>
+        </div>
+        <div class="div-text-week">
+          <p>Thursday</p>
+        </div>
+        <div class="div-text-week">
+          <p>Friday</p>
+        </div>
+        <div class="div-text-week">
+          <p>Saturday</p>
+        </div>
+        <div class="div-text-week">
+          <p>Sunday</p>
+        </div>
+      </div>
+      <div class="days" id="daysContainer">
+        <!-- <div class="day">1</div> -->
+      </div>
+    </div>
+  </main>
+  <!--ALGUIEN TIENE LA TAREA DE MOFICIAR EL FOOTER ACORDE A LO QUE CREA CONVENIENTE.-->
+  <footer class="d-flex container flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
       <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
         <symbol id="check2" viewBox="0 0 16 16">
           <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"></path>
@@ -253,9 +271,6 @@
           </li>
         </ul>
       </div>
-    </main>
-<!--ALGUIEN TIENE LA TAREA DE MOFICIAR EL FOOTER ACORDE A LO QUE CREA CONVENIENTE.-->
-    <footer class="d-flex container flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
       <p class="col-md-4 mb-0 text-body-secondary"><a class="navbar-brand" href="https://assemblerinstitute.com" target="_blank">
         <img src="./resources/A-Logo.png" alt="Bootstrap" width="30" height="30"> 2023 Lovelace Squad
       </a>
@@ -271,7 +286,7 @@
           data-bs-target="#climateModal">Today's weather</button>
       </li>
 
-      <li class="btn-group dropup ms-5">
+      <li class="btn-group dropup ms-5 z-2">
         <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown"
           aria-expanded="false">
           Members of the Squad
@@ -286,7 +301,7 @@
       </li>
 
     </ul>
-    
+
   </footer>
 </body>
 
