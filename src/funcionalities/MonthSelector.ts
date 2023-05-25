@@ -11,6 +11,7 @@ const month: HTMLElement | null = document.querySelector("#month");
 const year: HTMLElement | null = document.querySelector("#year");
 const prevMonthDom: HTMLElement | null = document.querySelector("#prevMonth");
 const nextMonthDom: HTMLElement | null = document.querySelector("#nextMonth");
+const calendar:  HTMLElement | null = document.querySelector("#generalContainer");
 
 writeMonth(monthNumber);
 setNewDate();
@@ -120,27 +121,37 @@ function startDay(): number {
     return start.getDay() === 0 ? 6 : start.getDay() - 1;
 }
 
-
-function lastMonth(): void {
-	if (monthNumber !== 0) {
-		monthNumber--;
-	} else {
-		monthNumber = 11;
-		currentYear--;
-	}
-	setNewDate();
-}
-
-function nextMonth(): void {
-	if (monthNumber !== 11) {
-		monthNumber++;
-	} else {
-		monthNumber = 0;
-		currentYear++;
-	}
-	setNewDate();
-}
-
+function lastMonth() {
+    if (monthNumber !== 0) {
+      monthNumber--;
+    } else {
+      monthNumber = 11;
+      currentYear--;
+    }
+    setNewDate();
+    calendar?.classList.add('tearing-effect-lastMont');
+  
+    setTimeout(() => {
+      calendar?.classList.remove('tearing-effect-lastMont');
+    }, 600);
+  }
+  
+  function nextMonth() {
+    if (monthNumber !== 11) {
+      monthNumber++;
+    } else {
+      monthNumber = 0;
+      currentYear++;
+    }
+    setNewDate();
+    calendar?.classList.add('tearing-effect-nextMonth');
+  
+    setTimeout(() => {
+      calendar?.classList.remove('tearing-effect-nextMonth');
+    }, 600);
+  }
+  
+  
 
 function setNewDate(): void {
 	currentDate = new Date(currentYear, monthNumber, currentDay);
@@ -156,4 +167,5 @@ function setNewDate(): void {
 
 prevMonthDom?.addEventListener("click", () => lastMonth());
 nextMonthDom?.addEventListener("click", () => nextMonth());
+
 }

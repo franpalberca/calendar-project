@@ -10,6 +10,7 @@ export function initializeCalendar() {
     const year = document.querySelector("#year");
     const prevMonthDom = document.querySelector("#prevMonth");
     const nextMonthDom = document.querySelector("#nextMonth");
+    const calendar = document.querySelector("#generalContainer");
     writeMonth(monthNumber);
     setNewDate();
     function writeMonth(month) {
@@ -38,8 +39,6 @@ export function initializeCalendar() {
                 dayEventContainer.classList.add("container");
                 dayEventContainer.setAttribute("data-dayNumber", toISODate);
                 dayElement.appendChild(dayEventContainer);
-                const targetYear = year === null || year === void 0 ? void 0 : year.innerText;
-                const todayYear = actualYear.toString();
                 const addButtonDiv = document.createElement("div");
                 addButtonDiv.classList.add("add-button-container");
                 dayElement.appendChild(addButtonDiv);
@@ -52,6 +51,8 @@ export function initializeCalendar() {
                 addButtonSpan.setAttribute("data-bs-target", "#eventModal");
                 addButtonSpan.textContent = "+";
                 addButton.appendChild(addButtonSpan);
+                const targetYear = year === null || year === void 0 ? void 0 : year.innerText;
+                const todayYear = actualYear.toString();
                 if (i === currentDay && month === actualMonth && todayYear === targetYear) {
                     dayElement.classList.add("today");
                 }
@@ -95,6 +96,10 @@ export function initializeCalendar() {
             currentYear--;
         }
         setNewDate();
+        calendar === null || calendar === void 0 ? void 0 : calendar.classList.add('tearing-effect-lastMont');
+        setTimeout(() => {
+            calendar === null || calendar === void 0 ? void 0 : calendar.classList.remove('tearing-effect-lastMont');
+        }, 600);
     }
     function nextMonth() {
         if (monthNumber !== 11) {
@@ -105,6 +110,10 @@ export function initializeCalendar() {
             currentYear++;
         }
         setNewDate();
+        calendar === null || calendar === void 0 ? void 0 : calendar.classList.add('tearing-effect-nextMonth');
+        setTimeout(() => {
+            calendar === null || calendar === void 0 ? void 0 : calendar.classList.remove('tearing-effect-nextMonth');
+        }, 600);
     }
     function setNewDate() {
         currentDate = new Date(currentYear, monthNumber, currentDay);

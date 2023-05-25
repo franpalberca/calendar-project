@@ -1,14 +1,15 @@
 
-
 /* - - - M A I N   S E L E C T O R  - - - - */
-main{
-    min-height: 100vh;
+.main-container{
+    height: clamp(3rem, 20vh, 70% );
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #d1ebf7;
+    background: linear-gradient(transparent, rgba(0, 0, 255, 0.493)50%, transparent);
 }
-
+.main-container.dark {
+    background: linear-gradient(transparent, rgba(5, 5, 133, 0.493)50%, transparent);
+}
 
 /*  - - - - - - - H E A D E R  - - - - - - -  */
 .btn-help {
@@ -66,8 +67,10 @@ main{
     justify-content: center;
     border-radius: 10px;
     background-color: white;
+    box-shadow: 45px 31px 15px -14px rgba(8,0,0,0.2);
 }
-.general-container:before{
+
+ /* .general-container:before{
     content: "";
     position: absolute;
     top: 50%;
@@ -77,20 +80,20 @@ main{
     border-radius: 0 5px 5px 0;
     background-color: lightgray;
     transform: translateY(-50%);
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.8), inset 0 2px 4px rgba(0,5,5, 0.4);
-}
+}  */
 
-.general-container .month{
-    width: 100%;
-    height: 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: auto;
-    padding: 0 5px;
-    font-size: 1.5rem;
-    font-weight: 500;
-    text-transform: capitalize;
+
+.general-container .month {
+	width: 100%;
+	height: 50px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: auto;
+	padding: 0 5px;
+	font-size: 1.5rem;
+	font-weight: 500;
+	text-transform: capitalize;
 }
 .general-container .month .prev,
 .general-container .month .next {
@@ -102,30 +105,33 @@ main{
     color: black;
 }
 .general-container .week {
-    width: 100%;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 15px;
-    font-size: 1rem;
-    font-weight: 500;
-    text-transform: capitalize;
+	width: 100%;
+	height: 60px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 15px;
+	font-size: 1rem;
+	font-weight: 500;
+	text-transform: capitalize;
 }
-.general-container .week div{
-    width: calc(100% / 7);
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-}
+
+.general-container .week .div-text-week {
+	flex: 1; /* Permite que los días de la semana se expandan para ocupar el espacio disponible */
+	text-align: center;
+  }
+  .general-container .week .div-text-week p {
+	font-size: clamp(.5rem, 5px + 1vw, 1rem);
+	margin: 0;
+	font-weight: 500;
+	text-transform: capitalize;
+  }
+
 .days{
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    
     padding: 0 10px;
     font-size: 1rem;
     font-weight: 400;
@@ -139,13 +145,16 @@ main{
     background-color: rgb(234, 245, 255);
     color: rgba(232, 83, 83, 0.861);
 }
-.days .day{
-    border: 1px solid gainsboro;
-    width: calc(100% / 7);
-    height: 110px;
-    border-radius: 5px;
-
+.days .day {
+	border: 1px solid gainsboro;
+	width: calc(100% / 7);
+	height: clamp(1rem, 10px + 15vh, 110px);
 }
+.days .day:hover {
+	border: 1px solid lightgray;
+	background-color: rgba(241, 231, 254, 1);
+}
+
 .days .day:hover{
     border: 1px solid lightgray;
     background-color: rgba(241, 231, 254, 1);
@@ -153,15 +162,13 @@ main{
 
 .work-event{
     background-color: rgb(233, 93, 93);
-    cursor: pointer;
     }
 
 .family-event{
     background-color: lightblue;
-    cursor: pointer;
     }
-
-.friends-event{
+	
+	.friends-event{
     background-color: yellow;
     cursor: pointer;
     }
@@ -175,7 +182,7 @@ main{
     background-color: lightgreen;
     cursor: pointer;
     }
-
+	
 .minute-list{
     cursor: pointer;
 }
@@ -206,3 +213,62 @@ main{
 	color: grey;
 }
 
+@keyframes tearing-effect-nextMonth {
+	0% {
+		transform: rotateZ(0deg) scale(1) skewX(0deg);
+		transform-origin: top left;
+	  }
+	  50% {
+		transform: rotateZ(20deg) scale(0.8, 1.2) skewX(10deg);
+		transform-origin: top bottom;
+	  }
+	  100% {
+		transform: rotateZ(0deg) scale(1) skewX(0deg);
+		transform-origin: top right;
+	  }
+	}
+  
+@keyframes tearing-effect-lastMont {
+	0% {
+		transform: rotateZ(0deg) scale(1) skewX(0deg);
+		transform-origin: top right;
+	  }
+	  50% {
+		transform: rotateZ(-20deg) scale(0.8, 1.2) skewX(-10deg);
+		transform-origin: top bottom;
+	  }
+	  100% {
+		transform: rotateZ(0deg) scale(1) skewX(0deg);
+		transform-origin: top left;
+	  }
+	
+  }
+  
+  .tearing-effect-nextMonth {
+	animation: tearing-effect-nextMonth .6s ease-in-out;
+  }
+  .tearing-effect-lastMont {
+	animation: tearing-effect-lastMont .6s ease-in-out;
+  }
+  
+  @media only screen and (max-device-width: 480px) {
+	/* Estilos específicos para dispositivos móviles */
+	.general-container .month {
+		width: 70%;
+		font-size: 1.3rem;
+		color: #431a7bfb;
+	}
+	.days .day{
+		height: 3rem;
+
+	  }
+  }
+  
+
+  /* @media only screen and (max-device-width: 768px) {
+	.days .day{
+	  height: 3.5rem;
+	  background-color: aqua;
+	}
+  }
+   */
