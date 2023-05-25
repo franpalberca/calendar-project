@@ -6,12 +6,12 @@ export function initializeCalendar() {
   let currentYear = currentDate.getFullYear();
   let actualYear = currentDate.getFullYear();
 
-const daysContainer: HTMLElement | null = document.querySelector("#daysContainer");
-const month: HTMLElement | null = document.querySelector("#month");
-const year: HTMLElement | null = document.querySelector("#year");
-const prevMonthDom: HTMLElement | null = document.querySelector("#prevMonth");
-const nextMonthDom: HTMLElement | null = document.querySelector("#nextMonth");
-const calendar:  HTMLElement | null = document.querySelector("#generalContainer");
+  const daysContainer = document.querySelector("#daysContainer") as HTMLElement;
+  const month = document.querySelector("#month") as HTMLTimeElement;
+  const year  = document.querySelector("#year") as HTMLTimeElement;
+  const prevMonthDom = document.querySelector("#prevMonth") as HTMLButtonElement;
+  const nextMonthDom = document.querySelector("#nextMonth") as HTMLButtonElement;
+  const calendar = document.querySelector("#generalContainer") as HTMLDivElement;
 
   writeMonth(monthNumber);
   setNewDate();
@@ -21,7 +21,6 @@ const calendar:  HTMLElement | null = document.querySelector("#generalContainer"
         while (daysContainer.firstChild) {
             daysContainer.firstChild.remove(); // TO ELIMINATE EXISTING DAYS
         }
-
         const previousMonthdaysContainer = getTotaldaysContainer(monthNumber - 1);
         const currentMonthdaysContainer = getTotaldaysContainer(month);
         const startDayIndex = startDay();
@@ -32,9 +31,6 @@ const calendar:  HTMLElement | null = document.querySelector("#generalContainer"
             dayElement.classList.add("day", "previous-month");
             dayElement.textContent = i.toString();
             daysContainer.appendChild(dayElement);
-
-
-
         }
 
         // PRINT EVERY DAY OF CURRENT MONTH
@@ -42,8 +38,6 @@ const calendar:  HTMLElement | null = document.querySelector("#generalContainer"
             const dayElement = document.createElement("div");
             dayElement.classList.add("day");
 			dayElement.setAttribute("id", "day");
-
-
 			let paddedMonth = monthNumber + 1;
 
 			let dateAttribute = `${currentYear}-${paddedMonth}-${i}`;
@@ -71,7 +65,7 @@ const calendar:  HTMLElement | null = document.querySelector("#generalContainer"
 			addButtonSpan.textContent = "+";
 			addButton.appendChild(addButtonSpan);
 
-			const targetYear = year?.innerText;
+			const targetYear = year.innerText;
 			const todayYear = actualYear.toString();
             if (i === currentDay && month === actualMonth && todayYear === targetYear) {
                 dayElement.classList.add("today");
@@ -102,7 +96,7 @@ const calendar:  HTMLElement | null = document.querySelector("#generalContainer"
     return start.getDay() === 0 ? 6 : start.getDay() - 1;
   }
 
-function lastMonth() {
+  function lastMonth() {
     if (monthNumber !== 0) {
       monthNumber--;
     } else {
@@ -110,10 +104,10 @@ function lastMonth() {
       currentYear--;
     }
     setNewDate();
-    calendar?.classList.add('tearing-effect-lastMont');
+    calendar.classList.add("tearing-effect-lastMont");
 
     setTimeout(() => {
-      calendar?.classList.remove('tearing-effect-lastMont');
+      calendar.classList.remove("tearing-effect-lastMont");
     }, 600);
   }
 
@@ -125,26 +119,25 @@ function lastMonth() {
       currentYear++;
     }
     setNewDate();
-    calendar?.classList.add('tearing-effect-nextMonth');
+    calendar.classList.add("tearing-effect-nextMonth");
 
     setTimeout(() => {
-      calendar?.classList.remove('tearing-effect-nextMonth');
+      calendar.classList.remove("tearing-effect-nextMonth");
     }, 600);
   }
 
-function setNewDate(): void {
-	currentDate = new Date(currentYear, monthNumber, currentDay);
-	if (month) {
-        month.textContent = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(currentDate);
-	}
-	if (year) {
-		year.textContent = currentYear.toString();
-	}
+  function setNewDate(): void {
+    currentDate = new Date(currentYear, monthNumber, currentDay);
+    if (month) {
+      month.textContent = new Intl.DateTimeFormat("en-US", { month: "long" }).format(currentDate);
+    }
+    if (year) {
+      year.textContent = currentYear.toString();
+    }
 
     writeMonth(monthNumber);
   }
 
-  prevMonthDom?.addEventListener("click", () => lastMonth());
-  nextMonthDom?.addEventListener("click", () => nextMonth());
-
+  prevMonthDom.addEventListener("click", () => lastMonth());
+  nextMonthDom.addEventListener("click", () => nextMonth());
 }

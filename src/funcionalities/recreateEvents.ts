@@ -33,7 +33,7 @@ export function recreateEvents(): void{
             const targetDate = document.querySelector(`[data-daynumber="${eventDate}"]`)
             if (targetDate) {
                 const dayEvent = document.createElement("div");
-                dayEvent.setAttribute("class",`row d-flex justify-content-center ${eventColor} bg-gradient mb-1`);
+                dayEvent.setAttribute("class",`row d-flex justify-content-center ${eventColor} bg-gradient mb-1 day-event-dropdown overflow-hidden`);
                 dayEvent.setAttribute("style","font-size: 12px; color: black;");
                 dayEvent.innerText = `${element.name}`;
 
@@ -44,13 +44,31 @@ export function recreateEvents(): void{
                 dayEvent.setAttribute("data-eventType", `${element.eventType}`);
 
                 targetDate.appendChild(dayEvent);
+
+                const eventHoverDetails = document.createElement("div") as HTMLDivElement;
+                eventHoverDetails.setAttribute("class", "d-flex flex-column justify-content-start align-items-between");
+                dayEvent.appendChild(eventHoverDetails);
+                const eventDetailsEventStart = document.createElement("p") as HTMLParagraphElement;
+                eventDetailsEventStart.textContent= `${element.eventHour}:${element.eventMinutes}`;
+                eventDetailsEventStart.setAttribute("class", "d-flex event-hover-hour-start")
+                eventHoverDetails.appendChild(eventDetailsEventStart);                
+                const eventDetailsEventFinish = document.createElement("p") as HTMLParagraphElement;
+                eventDetailsEventFinish.textContent= `${element.eventHourF}:${element.eventMinutesF}`;
+                eventDetailsEventFinish.setAttribute("class", "d-flex event-hover-hour-finish")
+                eventHoverDetails.appendChild(eventDetailsEventFinish);
+                console.log(eventDetailsEventFinish);
+                const eventDetailsDescription = document.createElement("p") as HTMLParagraphElement;
+                eventDetailsDescription.textContent= `${element.description}`;
+                eventDetailsDescription.setAttribute("class", "d-flex event-hover-details")
+                eventHoverDetails.appendChild(eventDetailsDescription);
+                console.log(eventDetailsDescription);
             }
         } else if (dateArray.length > 0) {
             dateArray.forEach((day:string) => {
             const targetDay = document.querySelector(`[data-daynumber="${day}"]`);
             if (targetDay) {
                 const dayEvent = document.createElement("div");
-                dayEvent.setAttribute("class",`row d-flex justify-content-center ${eventColor} bg-gradient mb-1`);
+                dayEvent.setAttribute("class",`row d-flex justify-content-center ${eventColor} bg-gradient mb-1 day-event-dropdown`);
                 dayEvent.setAttribute("style","font-size: 12px; color: black;");
                 dayEvent.innerText = `${element.name}`;
 
@@ -61,6 +79,23 @@ export function recreateEvents(): void{
                 dayEvent.setAttribute("data-eventType", `${element.eventType}`);
 
                 targetDay.appendChild(dayEvent);
+                const eventHoverDetails = document.createElement("div") as HTMLDivElement;
+                eventHoverDetails.setAttribute("class", "d-flex flex-column justify-content-start align-items-between");
+                dayEvent.appendChild(eventHoverDetails);
+                const eventDetailsEventStart = document.createElement("p") as HTMLParagraphElement;
+                eventDetailsEventStart.textContent= `Starts on the: ${element.eventDay}th, ${element.eventHour}:${element.eventMinutes}`;
+                eventDetailsEventStart.setAttribute("class", "d-flex event-hover-hour-start")
+                eventHoverDetails.appendChild(eventDetailsEventStart);                
+                const eventDetailsEventFinish = document.createElement("p") as HTMLParagraphElement;
+                eventDetailsEventFinish.textContent= `${element.eventHourF}:${element.eventMinutesF}`;
+                eventDetailsEventFinish.setAttribute("class", "d-flex event-hover-hour-finish")
+                eventHoverDetails.appendChild(eventDetailsEventFinish);
+                console.log(eventDetailsEventFinish);
+                const eventDetailsDescription = document.createElement("p") as HTMLParagraphElement;
+                eventDetailsDescription.textContent= `${element.description}`;
+                eventDetailsDescription.setAttribute("class", "d-flex event-hover-details")
+                eventHoverDetails.appendChild(eventDetailsDescription);
+                console.log(eventDetailsDescription);
             }
             })
         }
