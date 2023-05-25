@@ -51,7 +51,7 @@ export function initializeCalendar() {
                 addButtonSpan.setAttribute("data-bs-target", "#eventModal");
                 addButtonSpan.textContent = "+";
                 addButton.appendChild(addButtonSpan);
-                const targetYear = year === null || year === void 0 ? void 0 : year.innerText;
+                const targetYear = year.innerText;
                 const todayYear = actualYear.toString();
                 if (i === currentDay && month === actualMonth && todayYear === targetYear) {
                     dayElement.classList.add("today");
@@ -89,9 +89,9 @@ export function initializeCalendar() {
             currentYear--;
         }
         setNewDate();
-        calendar === null || calendar === void 0 ? void 0 : calendar.classList.add('tearing-effect-lastMont');
+        calendar.classList.add("tearing-effect-lastMont");
         setTimeout(() => {
-            calendar === null || calendar === void 0 ? void 0 : calendar.classList.remove('tearing-effect-lastMont');
+            calendar.classList.remove("tearing-effect-lastMont");
         }, 600);
     }
     function nextMonth() {
@@ -103,22 +103,22 @@ export function initializeCalendar() {
             currentYear++;
         }
         setNewDate();
-        calendar === null || calendar === void 0 ? void 0 : calendar.classList.add('tearing-effect-nextMonth');
+        calendar.classList.add("tearing-effect-nextMonth");
         setTimeout(() => {
-            calendar === null || calendar === void 0 ? void 0 : calendar.classList.remove('tearing-effect-nextMonth');
+            calendar.classList.remove("tearing-effect-nextMonth");
         }, 600);
     }
     function setNewDate() {
         currentDate = new Date(currentYear, monthNumber, currentDay);
         if (month) {
-            month.textContent = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(currentDate);
+            month.textContent = new Intl.DateTimeFormat("en-US", { month: "long" }).format(currentDate);
         }
         if (year) {
             year.textContent = currentYear.toString();
         }
         writeMonth(monthNumber);
     }
-    prevMonthDom === null || prevMonthDom === void 0 ? void 0 : prevMonthDom.addEventListener("click", () => lastMonth());
-    nextMonthDom === null || nextMonthDom === void 0 ? void 0 : nextMonthDom.addEventListener("click", () => nextMonth());
+    prevMonthDom.addEventListener("click", () => lastMonth());
+    nextMonthDom.addEventListener("click", () => nextMonth());
 }
 //# sourceMappingURL=MonthSelector.js.map

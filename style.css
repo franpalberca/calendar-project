@@ -159,6 +159,27 @@
     border: 1px solid lightgray;
     background-color: rgba(241, 231, 254, 1);
 }
+.day-event-dropdown{
+    display: flex;
+    height: 18px;
+    overflow: hidden;
+    transition: 0.3s ease;
+
+}
+.day-event-dropdown:hover{
+    position: absolute;
+    width: 20vw;
+    height: 20vh;
+    border-radius: 15px;
+    color: rgb(216, 216, 219);
+    z-index: 10000;
+    transform: scale(1.1);
+
+}
+.event-hover-details{
+    color: #ccc;
+}
+
 
 .work-event{
     background-color: rgb(233, 93, 93);
