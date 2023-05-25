@@ -52,6 +52,10 @@ export function setEvent() {
             }
         });
     }
+    const closeBtn = document.querySelector('#closeBtn');
+    if (closeBtn) {
+        closeBtn.click();
+    }
 }
 export function getDatesInRange(startDate, endDate) {
     const dateArray = [];

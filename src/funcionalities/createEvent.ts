@@ -61,6 +61,10 @@ export function setEvent(){
             }
         })
     }
+    const closeBtn = document.querySelector('#closeBtn') as HTMLButtonElement;
+    if (closeBtn){
+    closeBtn.click();
+    }
 }
 
 export function getDatesInRange(startDate: string, endDate: string): string[] {
