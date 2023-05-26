@@ -44,6 +44,18 @@ export function initializeCalendar() {
                 dayElement.appendChild(addButtonDiv);
                 const addButton = document.createElement("button");
                 addButton.classList.add("hover-button");
+                addButton.setAttribute("data-today", toISODate);
+                addButton.addEventListener("click", (event) => {
+                    if (event.target) {
+                        const targetDay = event.currentTarget;
+                        const dayData = targetDay.getAttribute('data-today');
+                        console.log(dayData);
+                        const startDate = document.querySelector('#startDate');
+                        if (startDate) {
+                            startDate.value = `${dayData}T12:00`;
+                        }
+                    }
+                });
                 addButtonDiv.appendChild(addButton);
                 const addButtonSpan = document.createElement("span");
                 addButtonSpan.classList.add("plus-icon");

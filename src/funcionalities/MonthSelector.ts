@@ -58,6 +58,17 @@ export function initializeCalendar() {
 
         const addButton = document.createElement("button");
         addButton.classList.add("hover-button");
+        addButton.setAttribute("data-today", toISODate);
+        addButton.addEventListener("click", (event: MouseEvent) => {
+          if (event.target) {
+          const targetDay = event.currentTarget as HTMLElement;
+          const dayData = targetDay.getAttribute('data-today') as string;
+          const startDate = document.querySelector('#startDate') as HTMLInputElement;
+          if (startDate){
+          startDate.value = `${dayData}T12:00`;
+        }
+          }
+        })
         addButtonDiv.appendChild(addButton);
 
         const addButtonSpan = document.createElement("span");
