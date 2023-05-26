@@ -131,6 +131,11 @@
 	background-color: rgb(234, 245, 255);
 	color: rgba(232, 83, 83, 0.861);
 }
+.next-month {
+	background-color: rgba(183, 239, 250, 0.662);
+	color: rgba(33, 209, 6, 0.897);
+	font-weight: 470;
+}
 .days .day {
 	border: 1px solid gainsboro;
 	width: calc(100% / 7);
