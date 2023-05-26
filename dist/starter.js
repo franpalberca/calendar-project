@@ -13,8 +13,8 @@ window.onload = () => {
     setCheckers();
     setEventBtn();
     restartEventForm();
-    recreateEvents();
-    changeThemeAddEvent();
     logInBtnClick();
+    changeThemeAddEvent();
+    recreateEvents();
 };
 //# sourceMappingURL=starter.js.map

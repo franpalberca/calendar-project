@@ -2,10 +2,10 @@ import { EventData } from '../types/eventData';
 
 export function retrieveEventData(): EventData {
     const eventTitle = document.querySelector('#modalTitle') as HTMLInputElement;
-    const eventName = eventTitle?.value;
+    const eventName = eventTitle.value;
 
     const startDate = document.querySelector('#startDate') as HTMLInputElement;
-    const dateString = startDate?.value;
+    const dateString = startDate.value;
 
     const parts = dateString.split(/[-T:]/);
 

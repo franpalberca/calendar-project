@@ -8,7 +8,7 @@ export function initializeCalendar() {
 
   const daysContainer = document.querySelector("#daysContainer") as HTMLElement;
   const month = document.querySelector("#month") as HTMLTimeElement;
-  const year  = document.querySelector("#year") as HTMLTimeElement;
+  const year = document.querySelector("#year") as HTMLTimeElement;
   const prevMonthDom = document.querySelector("#prevMonth") as HTMLButtonElement;
   const nextMonthDom = document.querySelector("#nextMonth") as HTMLButtonElement;
   const calendar = document.querySelector("#generalContainer") as HTMLDivElement;
@@ -18,58 +18,54 @@ export function initializeCalendar() {
 
   function writeMonth(month: number) {
     if (daysContainer) {
-        while (daysContainer.firstChild) {
-            daysContainer.firstChild.remove(); // TO ELIMINATE EXISTING DAYS
-        }
+      while (daysContainer.firstChild) {
+        daysContainer.firstChild.remove(); // TO ELIMINATE EXISTING DAYS
+      }
 
-        const previousMonthdaysContainer = getTotaldaysContainer(monthNumber - 1);
-        const currentMonthdaysContainer = getTotaldaysContainer(month);
-        const startDayIndex = startDay();
+      const previousMonthdaysContainer = getTotaldaysContainer(monthNumber - 1);
+      const currentMonthdaysContainer = getTotaldaysContainer(month);
+      const startDayIndex = startDay();
 
-        // PRINT THE PREVIOUS DAYS INTO THE FIRST DAY OF CURRENT MONTH
-        for (let i = previousMonthdaysContainer - startDayIndex + 1; i <= previousMonthdaysContainer; i++) {
-            const dayElement = document.createElement("div");
-            dayElement.classList.add("day", "previous-month");
-            dayElement.textContent = i.toString();
-            daysContainer.appendChild(dayElement);
+      // PRINT THE PREVIOUS DAYS INTO THE FIRST DAY OF CURRENT MONTH
+      for (let i = previousMonthdaysContainer - startDayIndex + 1; i <= previousMonthdaysContainer; i++) {
+        const dayElement = document.createElement("div");
+        dayElement.classList.add("day", "previous-month");
+        dayElement.textContent = i.toString();
+        daysContainer.appendChild(dayElement);
+      }
 
+      // PRINT EVERY DAY OF CURRENT MONTH
+      for (let i = 1; i <= currentMonthdaysContainer; i++) {
+        const dayElement = document.createElement("div");
+        dayElement.classList.add("day");
+        dayElement.setAttribute("id", "day");
 
+        let paddedMonth = monthNumber + 1;
 
-        }
+        let dateAttribute = `${currentYear}-${paddedMonth}-${i}`;
+        const toISODate: string = new Date(dateAttribute).toISOString().slice(0, 10);
 
-        // PRINT EVERY DAY OF CURRENT MONTH
-        for (let i = 1; i <= currentMonthdaysContainer; i++) {
-            const dayElement = document.createElement("div");
-            dayElement.classList.add("day");
-			dayElement.setAttribute("id", "day");
+        dayElement.textContent = i.toString();
+        const dayEventContainer = document.createElement("div");
+        dayEventContainer.classList.add("container");
+        dayEventContainer.setAttribute("data-dayNumber", toISODate);
 
+        dayElement.appendChild(dayEventContainer);
 
-			let paddedMonth = monthNumber + 1;
+        const addButtonDiv = document.createElement("div");
+        addButtonDiv.classList.add("add-button-container");
+        dayElement.appendChild(addButtonDiv);
 
-			let dateAttribute = `${currentYear}-${paddedMonth}-${i}`;
-			const toISODate: string = new Date(dateAttribute).toISOString().slice(0, 10);
+        const addButton = document.createElement("button");
+        addButton.classList.add("hover-button");
+        addButtonDiv.appendChild(addButton);
 
-            dayElement.textContent = i.toString();
-			const dayEventContainer = document.createElement("div");
-			dayEventContainer.classList.add("container");
-			dayEventContainer.setAttribute("data-dayNumber", toISODate);
-
-			dayElement.appendChild(dayEventContainer);
-
-			const addButtonDiv = document.createElement("div");
-			addButtonDiv.classList.add("add-button-container");
-			dayElement.appendChild(addButtonDiv);
-
-			const addButton = document.createElement("button");
-			addButton.classList.add("hover-button");
-			addButtonDiv.appendChild(addButton);
-
-			const addButtonSpan = document.createElement("span");
-			addButtonSpan.classList.add("plus-icon");
-			addButtonSpan.setAttribute("data-bs-toggle", "modal");
-			addButtonSpan.setAttribute("data-bs-target", "#eventModal")
-			addButtonSpan.textContent = "+";
-			addButton.appendChild(addButtonSpan);
+        const addButtonSpan = document.createElement("span");
+        addButtonSpan.classList.add("plus-icon");
+        addButtonSpan.setAttribute("data-bs-toggle", "modal");
+        addButtonSpan.setAttribute("data-bs-target", "#eventModal");
+        addButtonSpan.textContent = "+";
+        addButton.appendChild(addButtonSpan);
 
         //
         //	const dayEvent = document.createElement("div");
@@ -84,8 +80,8 @@ export function initializeCalendar() {
           dayElement.classList.add("today");
         }
 
-            daysContainer.appendChild(dayElement);
-        }
+        daysContainer.appendChild(dayElement);
+      }
     }
   }
 

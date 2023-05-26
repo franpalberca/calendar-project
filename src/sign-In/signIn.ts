@@ -1,53 +1,90 @@
 export function logInBtnClick() {
+  const signInOutLi = document.getElementById('signInOutLi') as HTMLLIElement;
+
+  const signInButton = document.createElement("button") as HTMLButtonElement;
+  signInButton.id = "signInBtn";
+  signInButton.innerText = "Sign In";
+  signInButton.setAttribute("type", "button");
+  signInButton.setAttribute("class", " nav-link btn btn-outline-primary btn-sm");
+  signInButton.setAttribute("data-bs-toggle", "modal")
+  signInButton.setAttribute("data-bs-target", "#modalSignIn");
+  signInOutLi.appendChild(signInButton);
+  const signOutButton = document.createElement("button") as HTMLButtonElement;
+  signOutButton.id = "signOutBtn";
+  signOutButton.setAttribute("type", "button");
+  signOutButton.setAttribute("class", " nav-link btn btn-outline-primary btn-sm");
+  signOutButton.setAttribute("data-bs-toggle", "modal")
+  signOutButton.setAttribute("data-bs-target", "#modalSignOut");
+  signInOutLi.appendChild(signOutButton);
+
+  
   const signInBtn = document.getElementById("signInBtn") as HTMLButtonElement;
   signInBtn.addEventListener("click", logIn);
 }
 
-function logIn(): void {
-  console.log("sign-in procces");
-  // function clearConsole (){
-  //   console.clear();
-  // }
-  // setTimeout(clearConsole, 200)
+export function logIn(): void {
+  console.log("sign-in process");
+
   const containerMain = document.getElementById("generalContainer") as HTMLDivElement;
   containerMain.setAttribute("class", "container d-flex justify-content-center align-items-center");
   const formDiv = document.createElement("div") as HTMLDivElement;
-  containerMain.appendChild(formDiv);
-  formDiv.innerHTML = `
-    <div class="sign-in-display w-100 m-1 form-div" id="formSignInDiv">
-    <form id="loginForm" class="form-center" method="get">
-      <img alt="" class="mb-4" src="" id="login-img" />
-      <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-      <div class="form-item d-flex align-items-center" id="user">
-        <label for="userName">UserName</label>
-        <input type="text" id="userName" required minlength="5" maxlength="20" placeholder="Username" class="form-control" />
+  formDiv.innerHTML=`
+  <div class="modal fade" tabindex="-1" role="dialog" id="modalSignIn" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content rounded-4 shadow">
+          <div class="modal-header p-5 pb-4 border-bottom-0">
+            <h1 class="fw-bold mb-0 fs-2">Sign up for free</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+    
+          <div class="modal-body p-5 pt-0">
+            <form class="">
+				<div class="form-floating mb-3">
+					<input type="text" autocomplete="username" class="form-control rounded-3" id="userName" placeholder="Assembler" required minlength="5" maxlength="20" >
+					<label for="userName">User</label>
+				  </div>
+              <div class="form-floating mb-3">
+                <input type="email" autocomplete="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com" required minlength="8" maxlength="50">
+                <label for="floatingInput">Email address</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="password" autocomplete="new-password" class="form-control rounded-3" id="floatingPassword1" placeholder="Password" required minlength="8" maxlength="20">
+				<span id="show-password1"><i class="bi bi-eye-slash" id="eye1"></i>
+				</span>
+                <label for="floatingPassword1">Password </label>
+              </div>
+			  <div class="form-floating mb-3">
+                <input type="password" autocomplete="current-password" class="form-control rounded-3" id="floatingPassword2" placeholder="Password" required minlength="8" maxlength="20">
+                <label for="floatingPassword2">Confirm password</label>
+				<span id="show-password2">
+					<i class="bi bi-eye-slash" id="eye2"></i>
+				</span>
+				
+              </div>
+              <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Sign up</button>
+              <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small>
+              <hr class="my-4">
+              <h2 class="fs-5 fw-bold mb-3">Or use a third-party</h2>
+              <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="submit">
+                <svg class="bi me-1" width="16" height="16"><use xlink:href="#google"></use></svg>
+                Sign up with Twitter
+              </button>
+              <button class="w-100 py-2 mb-2 btn btn-outline-primary rounded-3" type="submit">
+                <svg class="bi me-1" width="16" height="16"><use xlink:href="#facebook"></use></svg>
+                Sign up with Facebook
+              </button>
+              <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="submit">
+                <svg class="bi me-1" width="16" height="16"><use xlink:href="#github"></use></svg>
+                Sign up with GitHub
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
-      <div class="form-item d-flex align-items-center" id="email">
-        <label for="floatingInput">Email address</label>
-        <input type="email" class="form-control" id="floatingInput" required maxlength="50" placeholder="name@example.com" />
-      </div>
-      <div class="form-item d-flex align-items-center" id="password">
-        <label for="floatingPassword1">Password</label>
-        <input type="password" class="form-control" id="floatingPassword1" placeholder="Password" />
-        <span id="show-password1">
-          <i class="bi bi-eye-slash" id="eye1"></i>
-        </span>
-      </div>
-      <div class="form-item d-flex align-items-center" id="confirmPass">
-        <label for="floatingPassword2">Confirm Password</label>
-        <input type="password" id="floatingPassword2" class="form-control" placeholder="Confirm Password" required minlength="8" maxlength="20" />
-        <span id="show-password2">
-          <i class="bi bi-eye-slash" id="eye2"></i>
-        </span>
-      </div>
-
-      <div class="checkbox mb-3">
-        <label> <input type="checkbox" value="remember-me" /> Remember me </label>
-      </div>
-      <button class="w-50 btn btn-lg btn-primary" type="button" id="signInBtn">Sign in</button>
-      <p class="mt-5 mb-3 text-body-secondary">© 2023 Jorge Munárriz, Inc. All rights reserved.</p>
-    </form>
-  </div>`;
+    </div>
+  `;
+  
+  containerMain.appendChild(formDiv);  
 
   const userInput = document.getElementById("userName") as HTMLInputElement;
   const emailInput = document.getElementById("floatingInput") as HTMLInputElement;
@@ -59,18 +96,73 @@ function logIn(): void {
   const showPassBtn = document.getElementById("eye1") as HTMLElement;
   const showPassBtn1 = document.getElementById("eye2") as HTMLElement;
 
-  // Hide the main elements and show the login form
-  const showLoginForm = (): void => {
-    formSignInDiv.style.display = "flex";
-  };
+  const errorUser = createErrorMessage("This field should be complete");
+  const errorEmail = createErrorMessage("This field is not properly formatted");
+  const errorPass = createErrorMessage("This field is not properly formatted");
+  const errorPass1 = createErrorMessage("These fields don't match");
 
-  // Show the main elements and hide the login form
-  const showMainContent = (): void => {
-    formSignInDiv.style.display = "none";
-  };
+  const boxItem = document.getElementById("user") as HTMLDivElement;
+  const boxItemEmail = document.getElementById("email") as HTMLDivElement;
+  const boxItemPass = document.getElementById("password") as HTMLDivElement;
+  const boxItemPass1 = document.getElementById("confirmPass") as HTMLDivElement;
+
+  // Function to create an error message element
+  function createErrorMessage(message: string): HTMLDivElement {
+    const errorDiv = document.createElement("div");
+    errorDiv.textContent = message;
+    errorDiv.className = "error-input";
+    return errorDiv;
+  }
+
+  // Function to check if a field value is valid
+  function isFieldValid(value: string, minLength: number, maxLength: number, regex: RegExp): boolean {
+    return value.trim().length >= minLength && value.trim().length <= maxLength && regex.test(value);
+  }
+
+  // Function to validate the email format
+  function validateEmail(email: string): boolean {
+    const emailRegex = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+    return emailRegex.test(email);
+  }
+
+  // Function to validate the password format
+  function validatePassword(password: string): boolean {
+    const passwordRegex = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/;
+    return passwordRegex.test(password);
+  }
+
+  // Function to validate the form
+  function validateForm(): void {
+    const userName = userInput.value;
+    const email = emailInput.value;
+    const password = passwordInput1.value;
+    const passwordConfirm = passwordInput2.value;
+
+    const isUserNameValid = isFieldValid(userName, 5, 20, /\s/);
+    const isEmailValid = validateEmail(email);
+    const isPasswordValid = validatePassword(password);
+    const doPasswordsMatch = password === passwordConfirm;
+
+    signInBtn.disabled = !(isUserNameValid && isEmailValid && isPasswordValid && doPasswordsMatch);
+
+    // Update error messages
+    updateErrorMessage(isUserNameValid, boxItem, errorUser);
+    updateErrorMessage(isEmailValid, boxItemEmail, errorEmail);
+    updateErrorMessage(isPasswordValid, boxItemPass, errorPass);
+    updateErrorMessage(doPasswordsMatch, boxItemPass1, errorPass1);
+  }
+
+  // Function to update the error message display
+  function updateErrorMessage(isValid: boolean, container: HTMLDivElement, errorMessage: HTMLDivElement): void {
+    if (!isValid) {
+      container.appendChild(errorMessage);
+    } else if (errorMessage.parentNode === container) {
+      container.removeChild(errorMessage);
+    }
+  }
 
   // Function to handle the login event
-  const handleLogin = (event: Event): void => {
+  function handleLogin(event: Event): void {
     event.preventDefault();
     const userName = userInput.value;
     const email = emailInput.value;
@@ -83,130 +175,25 @@ function logIn(): void {
     }
     localStorage.setItem("userName", userName);
     localStorage.setItem("email", email);
-    localStorage.setItem("password", password);
     const userButton = document.getElementById("User") as HTMLButtonElement;
     if (userButton) {
       userButton.textContent = userName;
     }
 
-    showMainContent();
-  };
+    // showMainContent();
+  }
 
   // Function to handle the logout event
-  const handleLogout = (): void => {
+  function handleLogout(): void {
     // Show login form after logoff
-    showLoginForm();
-  };
-
-  showLoginForm();
+    // showLoginForm();
+  }
 
   // AddeventListeners
   signInBtn.addEventListener("click", handleLogin);
   signOutBtn.addEventListener("click", handleLogout);
   showPassBtn.addEventListener("click", togglePasswordVisibility1);
   showPassBtn1.addEventListener("click", togglePasswordVisibility2);
-
-  let boxItem = document.getElementById("user") as HTMLDivElement;
-  let boxItemEmail = document.getElementById("email") as HTMLDivElement;
-  let boxItemPass = document.getElementById("password") as HTMLDivElement;
-  let boxItemPass1 = document.getElementById("confirmPass") as HTMLDivElement;
-  const errorUser = document.createElement("div") as HTMLDivElement;
-  errorUser.textContent = "This field should be complete";
-  errorUser.className = "error";
-  const userMsgError = errorUser;
-
-  const errorEmail = document.createElement("div") as HTMLDivElement;
-  errorEmail.textContent = "This field is not properly formatted";
-  errorEmail.className = "error-input";
-  const emailMsgError = errorEmail;
-
-  const errorPass = document.createElement("div") as HTMLDivElement;
-  errorPass.className = "error-input";
-  errorPass.textContent = "This field is not properly formatted";
-  const passMsgError = errorPass;
-
-  const errorPass1 = document.createElement("div") as HTMLDivElement;
-  errorPass1.textContent = "This fields doesn't match";
-  errorPass1.className = "error-input";
-  const confPassMsgError = errorPass1;
-  function validateEmail(email: string) {
-    let emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-    return emailReg.test(email);
-  }
-  function validatePass(passwordInput1: string) {
-    let passReg = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/;
-    return passReg.test(passwordInput1);
-  }
-
-  userInput.addEventListener("input", function () {
-    let strRer = /\s/;
-    let str = userInput.value;
-    let total = Number(str.length);
-    if (total <= 4 || total == 0 || total == undefined || str === "" || strRer.test(str)) {
-      boxItem.appendChild(userMsgError);
-      return false;
-    } else {
-      if (userMsgError && total > 4 && userMsgError.parentNode === boxItem) {
-        boxItem.removeChild(userMsgError);
-      }
-      return true;
-    }
-  });
-
-  emailInput.addEventListener("input", function () {
-    let email = emailInput.value;
-    if (!validateEmail(email)) {
-      boxItemEmail.appendChild(emailMsgError);
-      return false;
-    } else {
-      if (emailMsgError && emailMsgError.parentNode === boxItemEmail) {
-        boxItemEmail.removeChild(emailMsgError);
-      }
-      return true;
-    }
-  });
-
-  passwordInput1.addEventListener("input", function () {
-    let pass1 = passwordInput1.value;
-
-    if (!validatePass(pass1)) {
-      boxItemPass.appendChild(passMsgError);
-      return false;
-    } else {
-      if (passMsgError && passMsgError.parentNode === boxItemPass) {
-        boxItemPass.removeChild(passMsgError);
-      }
-      return true;
-    }
-  });
-
-  passwordInput2.addEventListener("input", function verifyPasswords() {
-    const password1 = passwordInput1.value;
-    const password2 = passwordInput2.value;
-    if (password1 !== password2) {
-      boxItemPass1.appendChild(confPassMsgError);
-      return false;
-    } else {
-      if (confPassMsgError && confPassMsgError.parentNode === boxItemPass1) {
-        boxItemPass1.removeChild(confPassMsgError);
-      }
-      return true;
-    }
-  });
-
-  const validateForm = (): void => {
-    const userName = userInput.value;
-    const email = emailInput.value;
-    const password = passwordInput1.value;
-    const passwordConfirm = passwordInput2.value;
-
-    const isUserNameValid = userName.trim().length > 4;
-    const isEmailValid = validateEmail(email);
-    const isPasswordValid = validatePass(password);
-    const doPasswordsMatch = password === passwordConfirm;
-
-    signInBtn.disabled = !(isUserNameValid && isEmailValid && isPasswordValid && doPasswordsMatch);
-  };
 
   userInput.addEventListener("input", validateForm);
   emailInput.addEventListener("input", validateForm);

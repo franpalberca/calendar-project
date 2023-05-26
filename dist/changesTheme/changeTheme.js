@@ -2,17 +2,20 @@ export function changeThemeAddEvent() {
     const lightBtn = document.querySelector('[data-bs-theme-value="light');
     const darkBtn = document.querySelector('[data-bs-theme-value="dark');
     const autoBtn = document.querySelector('[data-bs-theme-value="auto');
-    const mainTheme = document.getElementById('mainContainer');
+    const bodyTheme = document.getElementById('bodyContainer');
+    const generalContainer = document.getElementById('generalContainer');
     lightBtn.addEventListener("click", () => {
         changeTheme("light");
-        mainTheme.classList.remove("dark");
+        bodyTheme.classList.remove("dark");
+        generalContainer.classList.remove("dark");
         lightBtn.classList.add("active");
         darkBtn.classList.remove("active");
         autoBtn.classList.remove("active");
     });
     darkBtn.addEventListener("click", () => {
         changeTheme("dark");
-        mainTheme.classList.add("dark");
+        bodyTheme.classList.add("dark");
+        generalContainer.classList.add("dark");
         lightBtn.classList.remove("active");
         darkBtn.classList.add("active");
         autoBtn.classList.remove("active");
