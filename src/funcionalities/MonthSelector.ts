@@ -8,7 +8,7 @@ export function initializeCalendar() {
 
   const daysContainer = document.querySelector("#daysContainer") as HTMLElement;
   const month = document.querySelector("#month") as HTMLTimeElement;
-  const year  = document.querySelector("#year") as HTMLTimeElement;
+  const year = document.querySelector("#year") as HTMLTimeElement;
   const prevMonthDom = document.querySelector("#prevMonth") as HTMLButtonElement;
   const nextMonthDom = document.querySelector("#nextMonth") as HTMLButtonElement;
   const calendar = document.querySelector("#generalContainer") as HTMLDivElement;
@@ -19,14 +19,14 @@ export function initializeCalendar() {
   function writeMonth(month: number) {
     if (daysContainer) {
       while (daysContainer.firstChild) {
-        daysContainer.firstChild.remove(); // Eliminar los días existentes
+        daysContainer.firstChild.remove(); // TO ELIMINATE EXISTING DAYS
       }
 
       const previousMonthdaysContainer = getTotaldaysContainer(monthNumber - 1);
       const currentMonthdaysContainer = getTotaldaysContainer(month);
       const startDayIndex = startDay();
 
-      // Imprimir los días anteriores al primer día del mes actual
+      // PRINT THE PREVIOUS DAYS INTO THE FIRST DAY OF CURRENT MONTH
       for (let i = previousMonthdaysContainer - startDayIndex + 1; i <= previousMonthdaysContainer; i++) {
         const dayElement = document.createElement("div");
         dayElement.classList.add("day", "previous-month");
@@ -34,7 +34,7 @@ export function initializeCalendar() {
         daysContainer.appendChild(dayElement);
       }
 
-      // Imprimir los días del mes actual
+      // PRINT EVERY DAY OF CURRENT MONTH
       for (let i = 1; i <= currentMonthdaysContainer; i++) {
         const dayElement = document.createElement("div");
         dayElement.classList.add("day");

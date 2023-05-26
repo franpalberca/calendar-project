@@ -6,7 +6,6 @@ export function recreateEvents() {
         const eventDate = new Date(`${element.eventYear}-${element.eventMonth}-${element.eventDay}`).toISOString().slice(0, 10);
         const eventDateFinish = `${element.eventYearF}-${element.eventMonthF}-${element.eventDayF}`;
         const dateArray = getDatesInRange(eventDate, eventDateFinish);
-        console.log(dateArray);
         let eventColor = "";
         switch (element.eventType) {
             case "work":
@@ -52,9 +51,9 @@ export function recreateEvents() {
         }
     });
     const prevMonth = document.querySelector("#prevMonth");
-    prevMonth === null || prevMonth === void 0 ? void 0 : prevMonth.addEventListener("click", recreateEvents);
+    prevMonth.addEventListener("click", recreateEvents);
     const nextMonth = document.querySelector("#nextMonth");
-    nextMonth === null || nextMonth === void 0 ? void 0 : nextMonth.addEventListener("click", recreateEvents);
+    nextMonth.addEventListener("click", recreateEvents);
 }
 function createDayEvent(element, eventColor, targetDay) {
     const dayEvent = document.createElement("div");
@@ -70,7 +69,6 @@ function createDayEvent(element, eventColor, targetDay) {
     return dayEvent;
 }
 function showContentDetailsHover(dayEvent, element) {
-    console.log(element);
     const eventHoverDetails = document.createElement("div");
     eventHoverDetails.setAttribute("class", "d-flex flex-column justify-content-start align-items-between");
     dayEvent.appendChild(eventHoverDetails);
@@ -83,7 +81,7 @@ function showContentDetailsHover(dayEvent, element) {
     eventDetailsEventFinish.setAttribute("class", "d-flex event-hover-hour-finish");
     eventHoverDetails.appendChild(eventDetailsEventFinish);
     const eventDetailsDescription = document.createElement("p");
-    eventDetailsDescription.textContent = element.description;
+    eventDetailsDescription.textContent = `Description: ${element.description}`;
     eventDetailsDescription.setAttribute("class", "d-flex event-hover-details");
     eventHoverDetails.appendChild(eventDetailsDescription);
 }

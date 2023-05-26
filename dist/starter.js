@@ -5,6 +5,7 @@ import { setEventBtn } from './funcionalities/setEventBtn.js';
 import { restartEventForm } from './funcionalities/restartEventForm.js';
 import { recreateEvents } from './funcionalities/recreateEvents.js';
 import { changeThemeAddEvent } from './changesTheme/changeTheme.js';
+import { logInBtnClick } from './sign-In/signIn.js';
 window.onload = () => {
     setClimate();
     setInterval(setClimate, 300000);
@@ -12,7 +13,8 @@ window.onload = () => {
     setCheckers();
     setEventBtn();
     restartEventForm();
-    recreateEvents();
+    logInBtnClick();
     changeThemeAddEvent();
+    recreateEvents();
 };
 //# sourceMappingURL=starter.js.map
