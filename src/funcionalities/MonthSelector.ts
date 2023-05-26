@@ -1,3 +1,5 @@
+import { EventData } from "../types/eventData.js";
+
 export function initializeCalendar() {
   let currentDate = new Date();
   let currentDay = currentDate.getDate();
@@ -37,7 +39,7 @@ export function initializeCalendar() {
       // PRINT EVERY DAY OF CURRENT MONTH
       for (let i = 1; i <= currentMonthdaysContainer; i++) {
         const dayElement = document.createElement("div");
-        dayElement.classList.add("day");
+        dayElement.classList.add("day", "overflow-auto");
         dayElement.setAttribute("id", "day");
 
         let paddedMonth = monthNumber + 1;
@@ -78,19 +80,19 @@ export function initializeCalendar() {
         if (i === currentDay && month === actualMonth && todayYear === targetYear) {
           dayElement.classList.add("today");
         }
-            daysContainer.appendChild(dayElement);
-        }
-        // PRINT THE NEXT DAYS AT THE END OF THE CALENDAR
-        const remainingNextDays = 7 -(startDayIndex + currentMonthdaysContainer) % 7;
+        daysContainer.appendChild(dayElement);
+      }
+      // PRINT THE NEXT DAYS AT THE END OF THE CALENDAR
+      const remainingNextDays = 7 - ((startDayIndex + currentMonthdaysContainer) % 7);
 
-        for(let i= 1; i <= remainingNextDays; i++) {
-          const dayElement = document.createElement("div");
-  dayElement.classList.add("day", "next-month");
-  dayElement.textContent = i.toString();
-  daysContainer.appendChild(dayElement);
-        }
+      for (let i = 1; i <= remainingNextDays; i++) {
+        const dayElement = document.createElement("div");
+        dayElement.classList.add("day", "next-month");
+        dayElement.textContent = i.toString();
+        daysContainer.appendChild(dayElement);
       }
     }
+  }
 
   function getTotaldaysContainer(month: number): number {
     if (month === -1) month = 11;

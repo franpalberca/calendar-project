@@ -25,68 +25,13 @@ export function logIn() {
     console.log("sign-in process");
     const containerMain = document.getElementById("bodyContainer");
     const formDiv = document.createElement("div");
-    formDiv.innerHTML = `
-  <div class="modal fade" tabindex="-1" role="dialog" id="modalSignIn" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content rounded-4 shadow">
-          <div class="modal-header p-5 pb-4 border-bottom-0">
-            <h1 class="fw-bold mb-0 fs-2">Sign up for free</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-    
-          <div class="modal-body p-5 pt-0">
-            <form class="">
-				<div class="form-floating mb-3">
-					<input type="text" autocomplete="username" class="form-control rounded-3" id="userName" placeholder="Assembler" required minlength="5" maxlength="20" >
-					<label for="userName">User</label>
-				  </div>
-              <div class="form-floating mb-3">
-                <input type="email" autocomplete="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com" required minlength="8" maxlength="50">
-                <label for="floatingInput">Email address</label>
-              </div>
-              <div class="form-floating mb-3">
-                <input type="password" autocomplete="new-password" class="form-control rounded-3" id="floatingPassword1" placeholder="Password" required minlength="8" maxlength="20">
-				<span id="show-password1"><i class="bi bi-eye-slash" id="eye1"></i>
-				</span>
-                <label for="floatingPassword1">Password </label>
-              </div>
-			  <div class="form-floating mb-3">
-                <input type="password" autocomplete="current-password" class="form-control rounded-3" id="floatingPassword2" placeholder="Password" required minlength="8" maxlength="20">
-                <label for="floatingPassword2">Confirm password</label>
-				<span id="show-password2">
-					<i class="bi bi-eye-slash" id="eye2"></i>
-				</span>
-				
-              </div>
-              <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit" id="signInButton">Sign up</button>
-              <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use. Or you can continue as guest:</small>
-              <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="button" id="signOutBtn">                
-                Continue as guest
-              </button>
-              <hr class="my-4">
-              <h2 class="fs-5 fw-bold mb-3">Or use a third-party</h2>
-              <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="submit">
-              <i class="bi bi-google"></i>
-                Sign up with Google
-              </button>
-              <button class="w-100 py-2 mb-2 btn btn-outline-primary rounded-3" type="submit" id="signInFacebook">
-               <i class="bi bi-facebook"></i>
-                Sign up with Facebook
-              </button>
-              
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  `;
-    containerMain.appendChild(formDiv);
     const userInput = document.getElementById("userName");
     const emailInput = document.getElementById("floatingInput");
     const passwordInput1 = document.getElementById("floatingPassword1");
     const passwordInput2 = document.getElementById("floatingPassword2");
     const signInBtn = document.getElementById("signInButton");
     const signOutBtn = document.getElementById("signOutBtn");
+    const container = document.createElement("div");
     const showPassBtn = document.getElementById("eye1");
     const showPassBtn1 = document.getElementById("eye2");
     const errorUser = createErrorMessage("This field should be complete");
@@ -123,7 +68,12 @@ export function logIn() {
         const isEmailValid = validateEmail(email);
         const isPasswordValid = validatePassword(password);
         const doPasswordsMatch = password === passwordConfirm;
-        signInBtn.disabled = !(isUserNameValid && isEmailValid && isPasswordValid && doPasswordsMatch);
+        if (isUserNameValid && isEmailValid && isPasswordValid && doPasswordsMatch) {
+            signInBtn.classList.remove("disabled");
+        }
+        else {
+            signInBtn.classList.add("disabled");
+        }
         updateErrorMessage(isUserNameValid, boxItem, errorUser);
         updateErrorMessage(isEmailValid, boxItemEmail, errorEmail);
         updateErrorMessage(isPasswordValid, boxItemPass, errorPass);
@@ -144,6 +94,7 @@ export function logIn() {
         const password = passwordInput1.value;
         const passwordConfirm = passwordInput2.value;
         if (password !== passwordConfirm) {
+            alert("Passwords do not match");
             return;
         }
         localStorage.setItem("userName", userName);
@@ -189,6 +140,6 @@ export function logIn() {
             passwordInput2.type = "password";
         }
     }
-    console.log(userInput.value, emailInput.value, passwordInput1.value);
+    console.log(userInput.value, emailInput.value);
 }
 //# sourceMappingURL=signIn.js.map
