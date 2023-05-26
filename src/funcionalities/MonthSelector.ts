@@ -67,7 +67,6 @@ export function initializeCalendar() {
         addButtonSpan.textContent = "+";
         addButton.appendChild(addButtonSpan);
 
-        //
         //	const dayEvent = document.createElement("div");
         //	dayEvent.setAttribute("class","row d-flex justify-content-center bg-info bg-gradient mb-1");
         //	dayEvent.setAttribute("style","font-size: 10px; color: black;");
@@ -79,11 +78,19 @@ export function initializeCalendar() {
         if (i === currentDay && month === actualMonth && todayYear === targetYear) {
           dayElement.classList.add("today");
         }
+            daysContainer.appendChild(dayElement);
+        }
+        // PRINT THE NEXT DAYS AT THE END OF THE CALENDAR
+        const remainingNextDays = 7 -(startDayIndex + currentMonthdaysContainer) % 7;
 
-        daysContainer.appendChild(dayElement);
+        for(let i= 1; i <= remainingNextDays; i++) {
+          const dayElement = document.createElement("div");
+  dayElement.classList.add("day", "next-month");
+  dayElement.textContent = i.toString();
+  daysContainer.appendChild(dayElement);
+        }
       }
     }
-  }
 
   function getTotaldaysContainer(month: number): number {
     if (month === -1) month = 11;
@@ -136,9 +143,10 @@ export function initializeCalendar() {
   }
 
   function setNewDate(): void {
+    const userNavigatorLanguage = navigator.language;
     currentDate = new Date(currentYear, monthNumber, currentDay);
     if (month) {
-      month.textContent = new Intl.DateTimeFormat("en-US", { month: "long" }).format(currentDate);
+      month.textContent = new Intl.DateTimeFormat(navigator.language, { month: "long" }).format(currentDate);
     }
     if (year) {
       year.textContent = currentYear.toString();

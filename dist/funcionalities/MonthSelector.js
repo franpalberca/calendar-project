@@ -58,6 +58,13 @@ export function initializeCalendar() {
                 }
                 daysContainer.appendChild(dayElement);
             }
+            const remainingNextDays = 7 - (startDayIndex + currentMonthdaysContainer) % 7;
+            for (let i = 1; i <= remainingNextDays; i++) {
+                const dayElement = document.createElement("div");
+                dayElement.classList.add("day", "next-month");
+                dayElement.textContent = i.toString();
+                daysContainer.appendChild(dayElement);
+            }
         }
     }
     function getTotaldaysContainer(month) {
@@ -109,9 +116,10 @@ export function initializeCalendar() {
         }, 600);
     }
     function setNewDate() {
+        const userNavigatorLanguage = navigator.language;
         currentDate = new Date(currentYear, monthNumber, currentDay);
         if (month) {
-            month.textContent = new Intl.DateTimeFormat("en-US", { month: "long" }).format(currentDate);
+            month.textContent = new Intl.DateTimeFormat(navigator.language, { month: "long" }).format(currentDate);
         }
         if (year) {
             year.textContent = currentYear.toString();

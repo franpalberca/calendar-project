@@ -19,44 +19,36 @@
   <!--EVERYONE WILL HAVE TO WORK ON THEIR OWN FILE(S).TS IN ORDER TO CREATE MODULES. AFTER THAT WE WILL UPLOAD THEM INTO A UNIQUE SCRIPT EXECUTION FILE. COMMENT YOUR CODE EVERYTIME YOU CAN-->
   <body id="bodyContainer" class="body-container">
     <!-- SOMEBODY NEEDS TO MODIFY THE HEADER CHECKING THE REQUIREMENTS, DEVELOP THE FUNCTIONS AND CREATE A DIV OR SECTION THAT REPLACE <div class="general-container">-->
-    <header class="d-flex container flex-wrap justify-content-center align-items-center py-3 mb-4 border-bottom header-css">
-      <nav class="navbar navbar-expand-md">
-        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto navbar-brand link-body-emphasis text-decoration-none link-calendar-btn">
-          <h1 class="title-page mr-3">Calendar</h1>
-        </a>
-        <button
-          id="navbarToggleBtn"
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navBarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navBarNav">
-          <ul class="nav nav-pills header-btn" data-toggle="buttons">
-            <li class="nav-item">
-              <button class="nav-link btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#eventModal" data-toggle="button" aria-pressed="false" autocomplete="off">+ Add event</button>
-            </li>
-            <li class="nav-item">
-              <button data-bs-target="#todaySearch" class="nav-link btn btn-outline-primary" aria-current="page">Today</button>
-            </li>
-            <li class="nav-item">
-              <button class="nav-link btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target=".btn-help">Help</button>
-              <ul class="btn-help collapse">
-                <li class="event-item"><button class="btn btn-outline-secondary" id="createEvents">Create and Manage Events</button></li>
-                <li class="event-item"><button class="btn btn-outline-secondary" id="deleteEvents">Delete Events</button></li>
-                <li class="event-item"><button class="btn btn-outline-secondary" id="searchEvents">Search an Event</button></li>
-              </ul>
-            </li>
-            <li class="nav-item"><button id="testingBtn" class="nav-link">About</button></li>
-            <li class="nav-item" id="signInOutLi"></li>
-          </ul>
-        </div>
-      </nav>
-    </header>
+		<header class="d-flex container flex-wrap justify-content-center align-items-center py-3 mb-4 border-bottom header-css">
+			<nav class="navbar navbar-expand-md">
+			  <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto navbar-brand link-body-emphasis text-decoration-none link-calendar-btn">
+				<h1 class="title-page mr-3">Calendar</h1>
+			  </a>
+			  <button id="navbarToggleBtn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			  </button>
+			  <div class="collapse navbar-collapse" id="navBarNav">
+				<ul class="nav nav-pills header-btn" data-toggle="buttons">
+				  <li class="nav-item">
+					<button class="nav-link btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#eventModal" data-toggle="button" aria-pressed="false" autocomplete="off">+ Add event</button>
+				  </li>
+				  <li class="nav-item">
+					<button data-bs-target="#todaySearch" class="nav-link btn btn-outline-primary" aria-current="page">Today</button>
+				  </li>
+				  <li class="nav-item">
+					<button class="nav-link btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target=".btn-help">Help</button>
+					<ul class="btn-help collapse">
+					  <li class="event-item"><button class="btn btn-outline-secondary" id="createEvents">Create and Manage Events</button></li>
+					  <li class="event-item"><button class="btn btn-outline-secondary" id="deleteEvents">Delete Events</button></li>
+					  <li class="event-item"><button class="btn btn-outline-secondary" id="searchEvents">Search an Event</button></li>
+					</ul>
+				  </li>
+				  <li class="nav-item"><button id="testingBtn" class="nav-link">About</button></li>
+				  <li class="nav-item" id="signInOutLi"></li>
+				</ul>
+			  </div>
+			</nav>
+		  </header>
 
     <!-- Modal -->
     <!--SOMEBODY NEEDS TO MODIFY THE MODAL CHECKING THE GENERAL REQUERIMENTS. tO ACTIVATE THE MODAL, THE BUTTON SHOULD HAVE THE PROPIERTIES data-bs-toggle="modal" AND data-bs-target="#eventModal"-->

@@ -29,10 +29,13 @@ export function setEvent() {
             dayEvent.setAttribute("class", `row d-flex justify-content-center ${eventColor} bg-gradient mb-1 day-event-dropdown`);
             dayEvent.setAttribute("style", "font-size: 12px; color: black;");
             dayEvent.innerText = `${eventData.name}`;
+            dayEvent.setAttribute("data-day", eventDate);
+            dayEvent.setAttribute("data-name", eventData.name);
             dayEvent.setAttribute("data-startHour", `${eventData.eventHour}:${eventData.eventMinutes}`);
             dayEvent.setAttribute("data-endHour", `${eventData.eventHourF}:${eventData.eventMinutesF}`);
             dayEvent.setAttribute("data-description", `${eventData.description}`);
             dayEvent.setAttribute("data-eventType", `${eventData.eventType}`);
+            dayEvent.setAttribute("data-reminder", `${eventData.reminder}`);
             targetDay.appendChild(dayEvent);
         }
     }
@@ -44,10 +47,13 @@ export function setEvent() {
                 dayEvent.setAttribute("class", `row d-flex justify-content-center ${eventColor} bg-gradient mb-1 day-event-dropdown`);
                 dayEvent.setAttribute("style", "font-size: 12px; color: black;");
                 dayEvent.innerText = `${eventData.name}`;
+                dayEvent.setAttribute("data-day", eventDate);
+                dayEvent.setAttribute("data-name", eventData.name);
                 dayEvent.setAttribute("data-startHour", `${eventData.eventHour}:${eventData.eventMinutes}`);
                 dayEvent.setAttribute("data-endHour", `${eventData.eventHourF}:${eventData.eventMinutesF}`);
                 dayEvent.setAttribute("data-description", `${eventData.description}`);
                 dayEvent.setAttribute("data-eventType", `${eventData.eventType}`);
+                dayEvent.setAttribute("data-reminder", `${eventData.reminder}`);
                 targetDay.appendChild(dayEvent);
             }
         });
