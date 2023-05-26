@@ -3,7 +3,7 @@ import { getDatesInRange } from "./createEvent.js";
 export function recreateEvents() {
     const eventsData = retrieveLocalStorage();
     eventsData.forEach((element) => {
-        const eventDate = new Date(`${element.eventYear}-${element.eventMonth}-${element.eventDay}`).toISOString().slice(0, 10);
+        const eventDate = (`${element.eventYear}-0${element.eventMonth}-${element.eventDay}`);
         const eventDateFinish = `${element.eventYearF}-${element.eventMonthF}-${element.eventDayF}`;
         const dateArray = getDatesInRange(eventDate, eventDateFinish);
         let eventColor = "";

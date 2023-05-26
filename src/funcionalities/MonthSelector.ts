@@ -1,3 +1,5 @@
+import { EventData } from "../types/eventData.js";
+
 export function initializeCalendar() {
   let currentDate = new Date();
   let currentDay = currentDate.getDate();
@@ -38,7 +40,6 @@ export function initializeCalendar() {
       for (let i = 1; i <= currentMonthdaysContainer; i++) {
         const dayElement = document.createElement("div");
         dayElement.classList.add("day", "overflow-auto");
-        
         dayElement.setAttribute("id", "day");
 
         let paddedMonth = monthNumber + 1;
@@ -59,6 +60,17 @@ export function initializeCalendar() {
 
         const addButton = document.createElement("button");
         addButton.classList.add("hover-button");
+        addButton.setAttribute("data-today", toISODate);
+        addButton.addEventListener("click", (event: MouseEvent) => {
+          if (event.target) {
+          const targetDay = event.currentTarget as HTMLElement;
+          const dayData = targetDay.getAttribute('data-today') as string;
+          const startDate = document.querySelector('#startDate') as HTMLInputElement;
+          if (startDate){
+          startDate.value = `${dayData}T12:00`;
+        }
+          }
+        })
         addButtonDiv.appendChild(addButton);
 
         const addButtonSpan = document.createElement("span");
@@ -83,7 +95,19 @@ export function initializeCalendar() {
       }
       // PRINT THE NEXT DAYS AT THE END OF THE CALENDAR
       const remainingNextDays = 7 - ((startDayIndex + currentMonthdaysContainer) % 7);
+        daysContainer.appendChild(dayElement);
+      }
+      // PRINT THE NEXT DAYS AT THE END OF THE CALENDAR
+      const remainingNextDays = 7 - ((startDayIndex + currentMonthdaysContainer) % 7);
 
+      for (let i = 1; i <= remainingNextDays; i++) {
+        const dayElement = document.createElement("div");
+        dayElement.classList.add("day", "next-month");
+        dayElement.textContent = i.toString();
+        daysContainer.appendChild(dayElement);
+      }
+    }
+  }
       for (let i = 1; i <= remainingNextDays; i++) {
         const dayElement = document.createElement("div");
         dayElement.classList.add("day", "next-month");

@@ -6,7 +6,7 @@ import { retrieveEventData } from "./retrieveEventData.js";
 export function recreateEvents(): void {
   const eventsData: EventData[] = retrieveLocalStorage() as EventData[];
   eventsData.forEach((element: EventData) => {
-    const eventDate = new Date(`${element.eventYear}-${element.eventMonth}-${element.eventDay}`).toISOString().slice(0, 10);
+    const eventDate = (`${element.eventYear}-0${element.eventMonth}-${element.eventDay}`)
     const eventDateFinish = `${element.eventYearF}-${element.eventMonthF}-${element.eventDayF}`;
 
     const dateArray = getDatesInRange(eventDate, eventDateFinish);
