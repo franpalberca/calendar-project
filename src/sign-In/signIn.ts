@@ -172,7 +172,9 @@ export function logIn(): void {
     const passwordConfirm = passwordInput2.value;
 
     if (password !== passwordConfirm) {
-      // Passwords do not match, you can show an error message here if you want
+      // Passwords do not match, you can show an error message here
+      alert("Passwords do not match")
+
       return;
     }
     localStorage.setItem("userName", userName);
@@ -227,5 +229,5 @@ export function logIn(): void {
       passwordInput2.type = "password";
     }
   }
-  console.log(userInput.value, emailInput.value, passwordInput1.value)
+  console.log(userInput.value, emailInput.value, )
 }
