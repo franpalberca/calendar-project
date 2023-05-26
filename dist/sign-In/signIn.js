@@ -34,19 +34,15 @@ export function logIn() {
     const container = document.createElement("div");
     const showPassBtn = document.getElementById("eye1");
     const showPassBtn1 = document.getElementById("eye2");
-    const errorUser = createErrorMessage("This field should be complete");
-    const errorEmail = createErrorMessage("This field is not properly formatted");
-    const errorPass = createErrorMessage("This field is not properly formatted");
-    const errorPass1 = createErrorMessage("These fields don't match");
-    const boxItem = document.getElementById("user");
-    const boxItemEmail = document.getElementById("email");
-    const boxItemPass = document.getElementById("password");
-    const boxItemPass1 = document.getElementById("confirmPass");
     function createErrorMessage(message) {
-        const errorDiv = document.createElement("div");
-        errorDiv.textContent = message;
-        errorDiv.className = "error-input";
-        return errorDiv;
+        const alertMessage = document.createElement('div');
+        alertMessage.innerHTML = `<div class="z-3 position-fixed bottom-0 end-0 alert alert-info alert-dismissible fade show z-5" role="alert">
+    <strong><i class="fa-regular fa-bell"></i> Hey!</strong> ${message}.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>`;
+        const mainContainer = document.querySelector('#modalSignIn');
+        mainContainer === null || mainContainer === void 0 ? void 0 : mainContainer.prepend(alertMessage);
+        return alertMessage;
     }
     function isFieldValid(value, minLength, maxLength, regex) {
         return value.trim().length >= minLength && value.trim().length <= maxLength && regex.test(value);
@@ -68,6 +64,14 @@ export function logIn() {
         const isEmailValid = validateEmail(email);
         const isPasswordValid = validatePassword(password);
         const doPasswordsMatch = password === passwordConfirm;
+        const boxItem = document.getElementById("userName");
+        const boxItemEmail = document.getElementById("floatingInput");
+        const boxItemPass = document.getElementById("floatingPassword1");
+        const boxItemPass1 = document.getElementById("floatingPassword2");
+        const errorUser = createErrorMessage("This field should be complete");
+        const errorEmail = createErrorMessage("This field is not properly formatted");
+        const errorPass = createErrorMessage("This field is not properly formatted");
+        const errorPass1 = createErrorMessage("These fields don't match");
         if (isUserNameValid && isEmailValid && isPasswordValid && doPasswordsMatch) {
             signInBtn.classList.remove("disabled");
         }
