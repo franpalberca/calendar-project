@@ -8,6 +8,9 @@ export function recreateEvents() {
         const dateArray = getDatesInRange(eventDate, eventDateFinish);
         let eventColor = "";
         switch (element.eventType) {
+            case "default":
+                eventColor = "bg-primary";
+                break;
             case "work":
                 eventColor = "bg-danger";
                 break;
