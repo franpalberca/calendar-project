@@ -14,6 +14,9 @@ export function recreateEvents(): void {
 
     let eventColor = "";
     switch (element.eventType) {
+      case "default":
+        eventColor = "bg-primary";
+        break;
       case "work":
         eventColor = "bg-danger";
         break;
