@@ -1,7 +1,12 @@
 export function logInBtnClick() {
-    const signInOutLi = document.getElementById('signInOutLi');
+    const navbarToggleBtn = document.getElementById("navbarToggleBtn");
+    navbarToggleBtn.addEventListener("click", function () {
+        const navBarNav = document.getElementById("navBarNav");
+        navBarNav.classList.toggle("show");
+    });
+    const signInOutLi = document.getElementById("signInOutLi");
     const signInButton = document.createElement("button");
-    signInButton.id = "signInBtn";
+    signInButton.id = "signInButtonNavBar";
     signInButton.innerText = "Sign In";
     signInButton.setAttribute("type", "button");
     signInButton.setAttribute("class", " nav-link btn btn-outline-primary btn-sm");
@@ -10,18 +15,15 @@ export function logInBtnClick() {
     signInOutLi.appendChild(signInButton);
     const signOutButton = document.createElement("button");
     signOutButton.id = "signOutBtn";
+    signOutButton.innerText = "Sign Out";
     signOutButton.setAttribute("type", "button");
     signOutButton.setAttribute("class", " nav-link btn btn-outline-primary btn-sm");
-    signOutButton.setAttribute("data-bs-toggle", "modal");
-    signOutButton.setAttribute("data-bs-target", "#modalSignOut");
-    signInOutLi.appendChild(signOutButton);
-    const signInBtn = document.getElementById("signInBtn");
-    signInBtn.addEventListener("click", logIn);
+    signInOutLi.insertAdjacentElement("afterend", signOutButton);
+    signInButton.addEventListener("click", logIn);
 }
 export function logIn() {
     console.log("sign-in process");
-    const containerMain = document.getElementById("generalContainer");
-    containerMain.setAttribute("class", "container d-flex justify-content-center align-items-center");
+    const containerMain = document.getElementById("bodyContainer");
     const formDiv = document.createElement("div");
     formDiv.innerHTML = `
   <div class="modal fade" tabindex="-1" role="dialog" id="modalSignIn" aria-hidden="true">
@@ -56,22 +58,22 @@ export function logIn() {
 				</span>
 				
               </div>
-              <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Sign up</button>
-              <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small>
+              <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit" id="signInButton">Sign up</button>
+              <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use. Or you can continue as guest:</small>
+              <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="button" id="signOutBtn">                
+                Continue as guest
+              </button>
               <hr class="my-4">
               <h2 class="fs-5 fw-bold mb-3">Or use a third-party</h2>
               <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="submit">
-                <svg class="bi me-1" width="16" height="16"><use xlink:href="#google"></use></svg>
-                Sign up with Twitter
+              <i class="bi bi-google"></i>
+                Sign up with Google
               </button>
-              <button class="w-100 py-2 mb-2 btn btn-outline-primary rounded-3" type="submit">
-                <svg class="bi me-1" width="16" height="16"><use xlink:href="#facebook"></use></svg>
+              <button class="w-100 py-2 mb-2 btn btn-outline-primary rounded-3" type="submit" id="signInFacebook">
+               <i class="bi bi-facebook"></i>
                 Sign up with Facebook
               </button>
-              <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="submit">
-                <svg class="bi me-1" width="16" height="16"><use xlink:href="#github"></use></svg>
-                Sign up with GitHub
-              </button>
+              
             </form>
           </div>
         </div>
@@ -83,9 +85,8 @@ export function logIn() {
     const emailInput = document.getElementById("floatingInput");
     const passwordInput1 = document.getElementById("floatingPassword1");
     const passwordInput2 = document.getElementById("floatingPassword2");
-    const signInBtn = document.getElementById("signInBtn");
+    const signInBtn = document.getElementById("signInButton");
     const signOutBtn = document.getElementById("signOutBtn");
-    const formSignInDiv = document.getElementById("formSignInDiv");
     const showPassBtn = document.getElementById("eye1");
     const showPassBtn1 = document.getElementById("eye2");
     const errorUser = createErrorMessage("This field should be complete");
@@ -154,14 +155,16 @@ export function logIn() {
     }
     function handleLogout() {
     }
-    signInBtn.addEventListener("click", handleLogin);
-    signOutBtn.addEventListener("click", handleLogout);
-    showPassBtn.addEventListener("click", togglePasswordVisibility1);
-    showPassBtn1.addEventListener("click", togglePasswordVisibility2);
-    userInput.addEventListener("input", validateForm);
-    emailInput.addEventListener("input", validateForm);
-    passwordInput1.addEventListener("input", validateForm);
-    passwordInput2.addEventListener("input", validateForm);
+    if (signInBtn && signOutBtn && showPassBtn && showPassBtn1 && userInput && emailInput && passwordInput1 && passwordInput2) {
+        signInBtn.addEventListener("click", handleLogin);
+        signOutBtn.addEventListener("click", handleLogout);
+        showPassBtn.addEventListener("click", togglePasswordVisibility1);
+        showPassBtn1.addEventListener("click", togglePasswordVisibility2);
+        userInput.addEventListener("input", validateForm);
+        emailInput.addEventListener("input", validateForm);
+        passwordInput1.addEventListener("input", validateForm);
+        passwordInput2.addEventListener("input", validateForm);
+    }
     function togglePasswordVisibility1() {
         if (passwordInput1.type === "password") {
             showPassBtn.classList.remove("bi-eye-slash");
@@ -186,5 +189,6 @@ export function logIn() {
             passwordInput2.type = "password";
         }
     }
+    console.log(userInput.value, emailInput.value, passwordInput1.value);
 }
 //# sourceMappingURL=signIn.js.map

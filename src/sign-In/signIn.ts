@@ -1,34 +1,37 @@
 export function logInBtnClick() {
-  const signInOutLi = document.getElementById('signInOutLi') as HTMLLIElement;
+  const navbarToggleBtn = document.getElementById("navbarToggleBtn") as HTMLButtonElement;
+  navbarToggleBtn.addEventListener("click", function () {
+    const navBarNav = document.getElementById("navBarNav") as HTMLDivElement;
+    navBarNav.classList.toggle("show");
+  });
+  const signInOutLi = document.getElementById("signInOutLi") as HTMLLIElement;
 
   const signInButton = document.createElement("button") as HTMLButtonElement;
-  signInButton.id = "signInBtn";
+  signInButton.id = "signInButtonNavBar";
   signInButton.innerText = "Sign In";
   signInButton.setAttribute("type", "button");
   signInButton.setAttribute("class", " nav-link btn btn-outline-primary btn-sm");
-  signInButton.setAttribute("data-bs-toggle", "modal")
+  signInButton.setAttribute("data-bs-toggle", "modal");
   signInButton.setAttribute("data-bs-target", "#modalSignIn");
   signInOutLi.appendChild(signInButton);
   const signOutButton = document.createElement("button") as HTMLButtonElement;
   signOutButton.id = "signOutBtn";
+  signOutButton.innerText = "Sign Out";
   signOutButton.setAttribute("type", "button");
   signOutButton.setAttribute("class", " nav-link btn btn-outline-primary btn-sm");
-  signOutButton.setAttribute("data-bs-toggle", "modal")
-  signOutButton.setAttribute("data-bs-target", "#modalSignOut");
-  signInOutLi.appendChild(signOutButton);
+  signInOutLi.insertAdjacentElement("afterend", signOutButton);
 
-  
-  const signInBtn = document.getElementById("signInBtn") as HTMLButtonElement;
-  signInBtn.addEventListener("click", logIn);
+  signInButton.addEventListener("click", logIn);
 }
 
 export function logIn(): void {
   console.log("sign-in process");
 
-  const containerMain = document.getElementById("generalContainer") as HTMLDivElement;
-  containerMain.setAttribute("class", "container d-flex justify-content-center align-items-center");
+  const containerMain = document.getElementById("bodyContainer") as HTMLDivElement;
+
   const formDiv = document.createElement("div") as HTMLDivElement;
-  formDiv.innerHTML=`
+
+  formDiv.innerHTML = `
   <div class="modal fade" tabindex="-1" role="dialog" id="modalSignIn" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content rounded-4 shadow">
@@ -61,38 +64,38 @@ export function logIn(): void {
 				</span>
 				
               </div>
-              <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Sign up</button>
-              <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small>
+              <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit" id="signInButton">Sign up</button>
+              <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use. Or you can continue as guest:</small>
+              <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="button" id="signOutBtn">                
+                Continue as guest
+              </button>
               <hr class="my-4">
               <h2 class="fs-5 fw-bold mb-3">Or use a third-party</h2>
               <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="submit">
-                <svg class="bi me-1" width="16" height="16"><use xlink:href="#google"></use></svg>
-                Sign up with Twitter
+              <i class="bi bi-google"></i>
+                Sign up with Google
               </button>
-              <button class="w-100 py-2 mb-2 btn btn-outline-primary rounded-3" type="submit">
-                <svg class="bi me-1" width="16" height="16"><use xlink:href="#facebook"></use></svg>
+              <button class="w-100 py-2 mb-2 btn btn-outline-primary rounded-3" type="submit" id="signInFacebook">
+               <i class="bi bi-facebook"></i>
                 Sign up with Facebook
               </button>
-              <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="submit">
-                <svg class="bi me-1" width="16" height="16"><use xlink:href="#github"></use></svg>
-                Sign up with GitHub
-              </button>
+              
             </form>
           </div>
         </div>
       </div>
     </div>
   `;
-  
-  containerMain.appendChild(formDiv);  
+
+  containerMain.appendChild(formDiv);
 
   const userInput = document.getElementById("userName") as HTMLInputElement;
   const emailInput = document.getElementById("floatingInput") as HTMLInputElement;
   const passwordInput1 = document.getElementById("floatingPassword1") as HTMLInputElement;
   const passwordInput2 = document.getElementById("floatingPassword2") as HTMLInputElement;
-  const signInBtn = document.getElementById("signInBtn") as HTMLButtonElement;
+  const signInBtn = document.getElementById("signInButton") as HTMLButtonElement;
   const signOutBtn = document.getElementById("signOutBtn") as HTMLButtonElement;
-  const formSignInDiv = document.getElementById("formSignInDiv") as HTMLDivElement;
+  //const formSignInDiv = document.getElementById("formSignInDiv") as HTMLDivElement;
   const showPassBtn = document.getElementById("eye1") as HTMLElement;
   const showPassBtn1 = document.getElementById("eye2") as HTMLElement;
 
@@ -190,15 +193,17 @@ export function logIn(): void {
   }
 
   // AddeventListeners
-  signInBtn.addEventListener("click", handleLogin);
-  signOutBtn.addEventListener("click", handleLogout);
-  showPassBtn.addEventListener("click", togglePasswordVisibility1);
-  showPassBtn1.addEventListener("click", togglePasswordVisibility2);
+  if (signInBtn && signOutBtn && showPassBtn && showPassBtn1 && userInput && emailInput && passwordInput1 && passwordInput2) {
+    signInBtn.addEventListener("click", handleLogin);
+    signOutBtn.addEventListener("click", handleLogout);
+    showPassBtn.addEventListener("click", togglePasswordVisibility1);
+    showPassBtn1.addEventListener("click", togglePasswordVisibility2);
 
-  userInput.addEventListener("input", validateForm);
-  emailInput.addEventListener("input", validateForm);
-  passwordInput1.addEventListener("input", validateForm);
-  passwordInput2.addEventListener("input", validateForm);
+    userInput.addEventListener("input", validateForm);
+    emailInput.addEventListener("input", validateForm);
+    passwordInput1.addEventListener("input", validateForm);
+    passwordInput2.addEventListener("input", validateForm);
+  }
 
   function togglePasswordVisibility1(): void {
     if (passwordInput1.type === "password") {
@@ -223,4 +228,5 @@ export function logIn(): void {
       passwordInput2.type = "password";
     }
   }
+  console.log(userInput.value, emailInput.value, passwordInput1.value)
 }
