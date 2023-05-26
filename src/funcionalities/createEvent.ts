@@ -36,10 +36,13 @@ export function setEvent(){
             dayEvent.innerText = `${eventData.name}`;
 
             // DATA ATTRIBUTES (WE CAN USE THIS TO CREATE THE MODAL OR HOVER AS AN EXTRA)
+            dayEvent.setAttribute("data-day", eventDate);
+            dayEvent.setAttribute("data-name", eventData.name);
             dayEvent.setAttribute("data-startHour",`${eventData.eventHour}:${eventData.eventMinutes}`);
             dayEvent.setAttribute("data-endHour",`${eventData.eventHourF}:${eventData.eventMinutesF}`);
             dayEvent.setAttribute("data-description", `${eventData.description}`);
             dayEvent.setAttribute("data-eventType", `${eventData.eventType}`);
+            dayEvent.setAttribute("data-reminder",`${eventData.reminder}`);
 
             targetDay.appendChild(dayEvent);
         }
@@ -53,10 +56,13 @@ export function setEvent(){
                 dayEvent.innerText = `${eventData.name}`;
 
                 // DATA ATTRIBUTES (WE CAN USE THIS TO CREATE THE MODAL OR HOVER AS AN EXTRA)
+                dayEvent.setAttribute("data-day", eventDate);
+                dayEvent.setAttribute("data-name", eventData.name);
                 dayEvent.setAttribute("data-startHour",`${eventData.eventHour}:${eventData.eventMinutes}`);
                 dayEvent.setAttribute("data-endHour",`${eventData.eventHourF}:${eventData.eventMinutesF}`);
                 dayEvent.setAttribute("data-description", `${eventData.description}`);
                 dayEvent.setAttribute("data-eventType", `${eventData.eventType}`);
+                dayEvent.setAttribute("data-reminder",`${eventData.reminder}`);
 
                 targetDay.appendChild(dayEvent);
             }

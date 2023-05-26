@@ -1,8 +1,8 @@
 export function retrieveEventData() {
     const eventTitle = document.querySelector('#modalTitle');
-    const eventName = eventTitle === null || eventTitle === void 0 ? void 0 : eventTitle.value;
+    const eventName = eventTitle.value;
     const startDate = document.querySelector('#startDate');
-    const dateString = startDate === null || startDate === void 0 ? void 0 : startDate.value;
+    const dateString = startDate.value;
     const parts = dateString.split(/[-T:]/);
     const eventYear = parseInt(parts[0]);
     const eventMonth = parseInt(parts[1]);

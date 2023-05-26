@@ -6,7 +6,6 @@ export function recreateEvents() {
         const eventDate = new Date(`${element.eventYear}-${element.eventMonth}-${element.eventDay}`).toISOString().slice(0, 10);
         const eventDateFinish = `${element.eventYearF}-${element.eventMonthF}-${element.eventDayF}`;
         const dateArray = getDatesInRange(eventDate, eventDateFinish);
-        console.log(dateArray);
         let eventColor = "";
         switch (element.eventType) {
             case "work":
@@ -28,26 +27,35 @@ export function recreateEvents() {
         if (dateArray.length === 0) {
             const targetDate = document.querySelector(`[data-daynumber="${eventDate}"]`);
             if (targetDate) {
-                const dayEvent = createDayEvent(element, eventColor, targetDate);
+                const dayEvent = createDayEvent(element, eventColor, targetDate, eventDate);
                 showContentDetailsHover(dayEvent, element);
+                dayEvent.setAttribute("id", "dayEvent");
+                dayEvent.setAttribute("class", `row d-flex justify-content-center ${eventColor} bg-gradient mb-1 day-event-dropdown overflow-hidden`);
+                dayEvent.setAttribute("style", "font-size: 12px; color: black;");
+                dayEvent.innerText = `${element.name}`;
+                dayEvent.setAttribute("data-startHour", `${element.eventHour}:${element.eventMinutes}`);
+                dayEvent.setAttribute("data-endHour", `${element.eventHourF}:${element.eventMinutesF}`);
+                dayEvent.setAttribute("data-description", `${element.description}`);
+                dayEvent.setAttribute("data-eventType", `${element.eventType}`);
+                targetDate.appendChild(dayEvent);
             }
         }
         else if (dateArray.length > 0) {
             dateArray.forEach((day) => {
                 const targetDay = document.querySelector(`[data-daynumber="${day}"]`);
                 if (targetDay) {
-                    const dayEvent = createDayEvent(element, eventColor, targetDay);
+                    const dayEvent = createDayEvent(element, eventColor, targetDay, eventDate);
                     showContentDetailsHover(dayEvent, element);
                 }
             });
         }
     });
     const prevMonth = document.querySelector("#prevMonth");
-    prevMonth === null || prevMonth === void 0 ? void 0 : prevMonth.addEventListener("click", recreateEvents);
+    prevMonth.addEventListener("click", recreateEvents);
     const nextMonth = document.querySelector("#nextMonth");
-    nextMonth === null || nextMonth === void 0 ? void 0 : nextMonth.addEventListener("click", recreateEvents);
+    nextMonth.addEventListener("click", recreateEvents);
 }
-function createDayEvent(element, eventColor, targetDay) {
+function createDayEvent(element, eventColor, targetDay, date) {
     const dayEvent = document.createElement("div");
     dayEvent.setAttribute("id", "dayEvent");
     dayEvent.setAttribute("class", `row d-flex justify-content-center ${eventColor} bg-gradient mb-1 day-event-dropdown`);
@@ -57,11 +65,13 @@ function createDayEvent(element, eventColor, targetDay) {
     dayEvent.setAttribute("data-endHour", `${element.eventHourF}:${element.eventMinutesF}`);
     dayEvent.setAttribute("data-description", `${element.description}`);
     dayEvent.setAttribute("data-eventType", `${element.eventType}`);
+    dayEvent.setAttribute("data-day", date);
+    dayEvent.setAttribute("data-name", element.name);
+    dayEvent.setAttribute("data-reminder", `${element.reminder}`);
     targetDay.appendChild(dayEvent);
     return dayEvent;
 }
 function showContentDetailsHover(dayEvent, element) {
-    console.log(dayEvent, element);
     const eventHoverDetails = document.createElement("div");
     eventHoverDetails.setAttribute("class", "d-flex flex-column justify-content-start align-items-between");
     dayEvent.appendChild(eventHoverDetails);
