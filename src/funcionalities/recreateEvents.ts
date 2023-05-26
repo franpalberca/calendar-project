@@ -33,7 +33,7 @@ export function recreateEvents(): void {
     if (dateArray.length === 0) {
       const targetDate = document.querySelector(`[data-daynumber="${eventDate}"]`) as HTMLDivElement;
       if (targetDate) {
-        const dayEvent = createDayEvent(element, eventColor, targetDate);
+        const dayEvent = createDayEvent(element, eventColor, targetDate, eventDate);
         showContentDetailsHover(dayEvent, element);
         dayEvent.setAttribute("id", "dayEvent");
         dayEvent.setAttribute("class", `row d-flex justify-content-center ${eventColor} bg-gradient mb-1 day-event-dropdown overflow-hidden`);
@@ -53,7 +53,7 @@ export function recreateEvents(): void {
       dateArray.forEach((day: string) => {
         const targetDay = document.querySelector(`[data-daynumber="${day}"]`) as HTMLDivElement;
         if (targetDay) {
-           const dayEvent = createDayEvent(element, eventColor, targetDay);
+           const dayEvent = createDayEvent(element, eventColor, targetDay, eventDate);
            showContentDetailsHover(dayEvent, element);
         }
       });
@@ -65,7 +65,7 @@ export function recreateEvents(): void {
   nextMonth.addEventListener("click", recreateEvents);
 }
 
-function createDayEvent(element: EventData, eventColor: string, targetDay: HTMLDivElement): HTMLDivElement {
+function createDayEvent(element: EventData, eventColor: string, targetDay: HTMLDivElement, date: string): HTMLDivElement {
     const dayEvent = document.createElement("div");
           dayEvent.setAttribute("id", "dayEvent");
           dayEvent.setAttribute("class", `row d-flex justify-content-center ${eventColor} bg-gradient mb-1 day-event-dropdown`);
@@ -77,6 +77,9 @@ function createDayEvent(element: EventData, eventColor: string, targetDay: HTMLD
           dayEvent.setAttribute("data-endHour", `${element.eventHourF}:${element.eventMinutesF}`);
           dayEvent.setAttribute("data-description", `${element.description}`);
           dayEvent.setAttribute("data-eventType", `${element.eventType}`);
+          dayEvent.setAttribute("data-day", date);
+          dayEvent.setAttribute("data-name", element.name);
+          dayEvent.setAttribute("data-reminder",`${element.reminder}`);
 
           targetDay.appendChild(dayEvent);
           return dayEvent

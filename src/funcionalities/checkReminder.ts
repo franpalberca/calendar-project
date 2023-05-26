@@ -10,7 +10,7 @@ export function checkReminders(){
     const currentMonth = currentDate.getMonth() + 1;
     const currentYear = currentDate.getFullYear();
 
-    const currentTime = `${currentHour}:${currentMinute}`;
+    const currentTime = ("0" + currentHour).slice(-2) + ":" + ("0" + currentMinute).slice(-2);;
 
     const todaysDate = new Date(`${currentYear}-${currentMonth}-${currentDay}`).toISOString().slice(0, 10);
 
@@ -44,8 +44,8 @@ events.forEach(element => {
 
     const timeOfReminder = getHour(eventHour, minus);
 
-    if (timeOfReminder === currentTime && todaysDate === dataDay) {
-        createPopUp(eventName, minus)
+    if (timeOfReminder == currentTime && todaysDate == dataDay) {
+        createPopUp(eventName, minus);
     }
 
 })
