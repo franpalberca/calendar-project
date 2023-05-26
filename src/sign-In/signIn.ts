@@ -39,7 +39,7 @@ export function logIn(): void {
   //           <h1 class="fw-bold mb-0 fs-2">Sign up for free</h1>
   //           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
   //         </div>
-    
+
   //         <div class="modal-body p-5 pt-0">
   //           <form class="">
 	// 			<div class="form-floating mb-3">
@@ -62,11 +62,11 @@ export function logIn(): void {
 	// 			<span id="show-password2">
 	// 				<i class="bi bi-eye-slash" id="eye2"></i>
 	// 			</span>
-				
+
   //             </div>
   //             <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit" id="signInButton">Sign up</button>
   //             <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use. Or you can continue as guest:</small>
-  //             <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="button" id="signOutBtn">                
+  //             <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="button" id="signOutBtn">
   //               Continue as guest
   //             </button>
   //             <hr class="my-4">
@@ -78,7 +78,7 @@ export function logIn(): void {
   //             <button class="w-100 py-2 mb-2 btn btn-outline-primary rounded-3" type="submit" id="signInFacebook">
   //              <i class="bi bi-facebook"></i>
   //               Sign up with Facebook
-  //             </button>              
+  //             </button>
   //           </form>
   //         </div>
   //       </div>
@@ -98,22 +98,16 @@ export function logIn(): void {
   const showPassBtn = document.getElementById("eye1") as HTMLElement;
   const showPassBtn1 = document.getElementById("eye2") as HTMLElement;
 
-  const errorUser = createErrorMessage("This field should be complete");
-  const errorEmail = createErrorMessage("This field is not properly formatted");
-  const errorPass = createErrorMessage("This field is not properly formatted");
-  const errorPass1 = createErrorMessage("These fields don't match");
-
-  const boxItem = document.getElementById("user") as HTMLDivElement;
-  const boxItemEmail = document.getElementById("email") as HTMLDivElement;
-  const boxItemPass = document.getElementById("password") as HTMLDivElement;
-  const boxItemPass1 = document.getElementById("confirmPass") as HTMLDivElement;
-
   // Function to create an error message element
   function createErrorMessage(message: string): HTMLDivElement {
-    const errorDiv = document.createElement("div");
-    errorDiv.textContent = message;
-    errorDiv.className = "error-input";
-    return errorDiv;
+    const alertMessage = document.createElement('div');
+    alertMessage.innerHTML = `<div class="z-3 position-fixed bottom-0 end-0 alert alert-info alert-dismissible fade show z-5" role="alert">
+    <strong><i class="fa-regular fa-bell"></i> Hey!</strong> ${message}.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>`;
+    const mainContainer = document.querySelector('#modalSignIn');
+    mainContainer?.prepend(alertMessage);
+    return alertMessage;
   }
 
   // Function to check if a field value is valid
@@ -145,8 +139,21 @@ export function logIn(): void {
     const isPasswordValid = validatePassword(password);
     const doPasswordsMatch = password === passwordConfirm;
 
-    signInBtn.disabled = !(isUserNameValid && isEmailValid && isPasswordValid && doPasswordsMatch);
+    const boxItem = document.getElementById("userName") as HTMLInputElement;
+    const boxItemEmail = document.getElementById("floatingInput") as HTMLInputElement;
+    const boxItemPass = document.getElementById("floatingPassword1") as HTMLInputElement;
+    const boxItemPass1 = document.getElementById("floatingPassword2") as HTMLInputElement;
+    const errorUser = createErrorMessage("This field should be complete");
+    const errorEmail = createErrorMessage("This field is not properly formatted");
+    const errorPass = createErrorMessage("This field is not properly formatted");
+    const errorPass1 = createErrorMessage("These fields don't match");
 
+    if(isUserNameValid && isEmailValid && isPasswordValid && doPasswordsMatch){
+      signInBtn.classList.remove("disabled");
+    } else {
+      signInBtn.classList.add("disabled");
+    }
+    //signInBtn.disabled = !(isUserNameValid && isEmailValid && isPasswordValid && doPasswordsMatch);
     // Update error messages
     updateErrorMessage(isUserNameValid, boxItem, errorUser);
     updateErrorMessage(isEmailValid, boxItemEmail, errorEmail);
@@ -155,7 +162,7 @@ export function logIn(): void {
   }
 
   // Function to update the error message display
-  function updateErrorMessage(isValid: boolean, container: HTMLDivElement, errorMessage: HTMLDivElement): void {
+  function updateErrorMessage(isValid: boolean, container: HTMLInputElement, errorMessage: HTMLDivElement): void {
     if (!isValid) {
       container.appendChild(errorMessage);
     } else if (errorMessage.parentNode === container) {

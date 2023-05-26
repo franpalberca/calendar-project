@@ -49,7 +49,6 @@ export function initializeCalendar() {
                     if (event.target) {
                         const targetDay = event.currentTarget;
                         const dayData = targetDay.getAttribute('data-today');
-                        console.log(dayData);
                         const startDate = document.querySelector('#startDate');
                         if (startDate) {
                             startDate.value = `${dayData}T12:00`;
