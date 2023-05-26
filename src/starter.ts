@@ -7,7 +7,8 @@ import { recreateEvents } from './funcionalities/recreateEvents.js';
 import { changeThemeAddEvent} from './changesTheme/changeTheme.js';
 import { checkReminders } from './funcionalities/checkReminder.js';
 
-import{logInBtnClick} from './sign-In/signIn.js'
+import{logInBtnClick, logIn} from './sign-In/signIn.js'
+
 window.onload = () => {
     setClimate();
     setInterval(setClimate, 300000);
@@ -15,8 +16,11 @@ window.onload = () => {
     setCheckers();
     setEventBtn();
     restartEventForm();
-    recreateEvents();
+    logInBtnClick();
     changeThemeAddEvent();
     setInterval(checkReminders, 10000);
-    logInBtnClick();
+    recreateEvents();
+
+
+
 };

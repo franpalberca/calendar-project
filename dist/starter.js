@@ -14,9 +14,9 @@ window.onload = () => {
     setCheckers();
     setEventBtn();
     restartEventForm();
-    recreateEvents();
+    logInBtnClick();
     changeThemeAddEvent();
     setInterval(checkReminders, 10000);
-    logInBtnClick();
+    recreateEvents();
 };
 //# sourceMappingURL=starter.js.map

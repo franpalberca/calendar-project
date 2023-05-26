@@ -1,273 +1,282 @@
-/* - - - M A I N   S E L E C T O R  - - - - */
-.main-container {
-	min-height: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background: linear-gradient(transparent, rgba(0, 0, 255, 0.493) 50%, transparent);
-}
-.main-container.dark {
-	background: linear-gradient(transparent, rgba(5, 5, 133, 0.493) 50%, transparent);
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,900&display=swap');
+
+/*- - - - - - R	E S E T - - - - - - - - - - - */
+*{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-family: 'Poppins', sans-serif;
 }
 
 /*  - - - - - - - H E A D E R  - - - - - - -  */
 .btn-help {
-	position: absolute;
-	display: none;
-	background-color: #f9f9f9;
-	padding: 20px;
-	list-style: none;
-	z-index: 1;
+  position: absolute;
+  display: none;
+  background-color: #f9f9f9;
+  padding: 20px;
+  list-style: none;
+  z-index: 1;
 }
 
 .nav-item:hover .btn-help {
-	display: block;
+  display: block;
 }
 
 .btn-help li {
-	padding: 8px;
+  padding: 8px;
 }
 
 .btn-help li:hover {
-	background-color: #e5e5ff;
-	border-radius: 5px;
+  background-color: #e5e5ff;
+  border-radius: 5px;
 }
 /*  */
 .popup {
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	background-color: white;
-	padding: 20px;
-	border: 1px solid #ccc;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-	z-index: 9999;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
 }
 
 .popup-close {
-	position: absolute;
-	top: 10px;
-	right: 10px;
-	cursor: pointer;
-	font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-weight: bold;
 }
 
-/*  */ /* - - - M A I N   S E L E C T O R S  C A L E N D A R - - - - */
+/* - - - M A I N   S E L E C T O R  - - - - */
+.body-container {
+  background: linear-gradient(transparent, rgba(0, 0, 255, 0.493) 50%, transparent);
+}
+.body-container.dark {
+  background: linear-gradient(transparent, rgba(5, 5, 133, 0.493) 50%, transparent);
+}
+
+/*  - - - G E N E R A L   S E L E C T O R S  C A L E N D A R - - - - */
 .general-container {
-	position: relative;
-	width: 90%;
-	height: 100%;
-	margin: auto;
-	padding: 15px;
-	color: slateblue;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	border-radius: 10px;
-	background-color: white;
-	box-shadow: 45px 31px 15px -14px rgba(8, 0, 0, 0.2);
+  position: relative;
+  width: 90%;
+  height: 100%;
+  margin: auto;
+  padding: 15px;
+  color: slateblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 10px;
+  background: white;
+  box-shadow: 45px 31px 15px -14px rgba(8, 0, 0, 0.4);
+}
+.general-container.dark {
+  color: #c0d3c2;
+  background: rgb(2, 0, 36);
+  background: radial-gradient(circle, rgba(2, 0, 36, 1) 0%, rgba(0, 212, 255, 1) 0%, rgba(64, 64, 101, 1) 89%);
+  box-shadow: 45px 31px 15px -14px rgba(119, 117, 117, 0.699);
 }
 
 .general-container .month {
-	width: 100%;
-	height: 50px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin: auto;
-	padding: 0 5px;
-	font-size: 1.5rem;
-	font-weight: 500;
-	text-transform: capitalize;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  padding: 0 5px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-transform: capitalize;
 }
 .general-container .month .prev,
 .general-container .month .next {
-	cursor: pointer;
-	margin: 0 15px 0 15px;
+  cursor: pointer;
+  margin: 0 15px 0 15px;
 }
 .general-container .month .prev:hover,
 .general-container .month .next:hover {
-	color: black;
+  color: black;
 }
 .general-container .week {
-	width: 100%;
-	height: 60px;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	padding: 0 15px;
-	font-size: 1rem;
-	font-weight: 500;
-	text-transform: capitalize;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: capitalize;
 }
 
 .general-container .week .div-text-week {
-	flex: 1; /* IT ALLOWS EVERY DAY OF THE WEEK TO EXPAND SO THEY CAN FILL THE AVAILABLE SPACE */
-	text-align: center;
+  flex: 1; /* IT ALLOWS EVERY DAY OF THE WEEK TO EXPAND SO THEY CAN FILL THE AVAILABLE SPACE */
+  text-align: center;
 }
 .general-container .week .div-text-week p {
-	font-size: clamp(0.5rem, 5px + 1vw, 1rem);
-	margin: 0;
-	font-weight: 500;
-	text-transform: capitalize;
+  font-size: clamp(0.5rem, 5px + 1vw, 1rem);
+  margin: 0;
+  font-weight: 500;
+  text-transform: capitalize;
 }
 
 .days {
-	width: 100%;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: flex-start;
-	padding: 0 10px;
-	font-size: 1rem;
-	font-weight: 400;
-	cursor: pointer;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 0 10px;
+  font-size: 1rem;
+  font-weight: 400;
+  cursor: pointer;
 }
 .today {
-	background-color: rgb(169, 91, 241);
-	color: rgb(28, 28, 28);
+  background-color: rgb(169, 91, 241);
+  color: rgb(28, 28, 28);
 }
 .previous-month {
-	background-color: rgb(234, 245, 255);
-	color: rgba(232, 83, 83, 0.861);
+  background-color: rgb(234, 245, 255);
+  color: rgba(232, 83, 83, 0.861);
 }
 .days .day {
-	border: 1px solid gainsboro;
-	width: calc(100% / 7);
-	height: clamp(1rem, 10px + 15vh, 110px);
+  border: 1px solid gainsboro;
+  width: calc(100% / 7);
+  height: clamp(1rem, 10px + 15vh, 110px);
 }
 .days .day:hover {
-	border: 1px solid lightgray;
-	background-color: rgba(241, 231, 254, 1);
+  border: 1px solid lightgray;
+  background-color: rgba(241, 231, 254, 1);
 }
 
 .days .day:hover {
-	border: 1px solid lightgray;
-	background-color: rgba(241, 231, 254, 1);
+  border: 1px solid lightgray;
+  background-color: rgba(241, 231, 254, 1);
 }
-.day-event-dropdown{
-    display: flex;
-    height: 18px;
-    overflow: hidden;
-    transition: 0.3s ease;
-
+.day-event-dropdown {
+  display: flex;
+  height: 18px;
+  overflow: hidden;
+  transition: 0.3s ease;
 }
-.day-event-dropdown:hover{
-    position: absolute;
-    width: 20vw;
-    height: 20vh;
-    border-radius: 15px;
-    color: rgb(216, 216, 219);
-    z-index: 10000;
-    transform: scale(1.1);
-
+.day-event-dropdown:hover {
+  position: absolute;
+  width: 20vw;
+  height: 20vh;
+  border-radius: 15px;
+  color: rgb(216, 216, 219);
+  z-index: 10000;
+  transform: scale(1.1);
 }
-.event-hover-details{
-    color: #ccc;
+.event-hover-details {
+  color: #ccc;
 }
-
 
 .work-event {
-	background-color: rgb(233, 93, 93);
+  background-color: rgb(233, 93, 93);
 }
 
 .family-event {
-	background-color: lightblue;
+  background-color: lightblue;
 }
 
 .friends-event {
-	background-color: yellow;
-	cursor: pointer;
+  background-color: yellow;
+  cursor: pointer;
 }
 
 .doctor-event {
-	background-color: orange;
-	cursor: pointer;
+  background-color: orange;
+  cursor: pointer;
 }
 
 .private-event {
-	background-color: lightgreen;
-	cursor: pointer;
+  background-color: lightgreen;
+  cursor: pointer;
 }
 
 .minute-list {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .add-button-container {
-	position: relative;
-	width: 20px;
-	height: 20px;
+  position: relative;
+  width: 20px;
+  height: 20px;
 }
 
 .hover-button {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	background-color: transparent;
-	border: none;
-	outline: none;
-	cursor: pointer;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 
 .plus-icon {
-	font-size: 40px;
-	color: transparent;
-	transition: color 0.5s;
+  font-size: 40px;
+  color: transparent;
+  transition: color 0.5s;
 }
 
 .hover-button:hover .plus-icon {
-	color: grey;
+  color: grey;
 }
 
 @keyframes tearing-effect-nextMonth {
-	0% {
-		transform: rotateZ(0deg) scale(1) skewX(0deg);
-		transform-origin: top left;
-	}
-	50% {
-		transform: rotateZ(20deg) scale(0.8, 1.2) skewX(10deg);
-		transform-origin: top bottom;
-	}
-	100% {
-		transform: rotateZ(0deg) scale(1) skewX(0deg);
-		transform-origin: top right;
-	}
+  0% {
+    transform: rotateZ(0deg) scale(1) skewX(0deg);
+    transform-origin: top left;
+  }
+  50% {
+    transform: rotateZ(20deg) scale(0.8, 1.2) skewX(10deg);
+    transform-origin: top bottom;
+  }
+  100% {
+    transform: rotateZ(0deg) scale(1) skewX(0deg);
+    transform-origin: top right;
+  }
 }
 
 @keyframes tearing-effect-lastMont {
-	0% {
-		transform: rotateZ(0deg) scale(1) skewX(0deg);
-		transform-origin: top right;
-	}
-	50% {
-		transform: rotateZ(-20deg) scale(0.8, 1.2) skewX(-10deg);
-		transform-origin: top bottom;
-	}
-	100% {
-		transform: rotateZ(0deg) scale(1) skewX(0deg);
-		transform-origin: top left;
-	}
+  0% {
+    transform: rotateZ(0deg) scale(1) skewX(0deg);
+    transform-origin: top right;
+  }
+  50% {
+    transform: rotateZ(-20deg) scale(0.8, 1.2) skewX(-10deg);
+    transform-origin: top bottom;
+  }
+  100% {
+    transform: rotateZ(0deg) scale(1) skewX(0deg);
+    transform-origin: top left;
+  }
 }
 
 .tearing-effect-nextMonth {
-	animation: tearing-effect-nextMonth 0.6s ease-in-out;
+  animation: tearing-effect-nextMonth 0.6s ease-in-out;
 }
 .tearing-effect-lastMont {
-	animation: tearing-effect-lastMont 0.6s ease-in-out;
+  animation: tearing-effect-lastMont 0.6s ease-in-out;
 }
 
 @media only screen and (max-width: 480px) {
-	/* SPECIFIC STYLES FOR MOBILE DEVICES */
-	.general-container .month {
-		width: 70%;
-		font-size: 1.3rem;
-		color: #431a7bfb;
-	}
-	.days .day {
-		height: 3rem;
-		font-size: 0.7rem;
-	}
+  /* SPECIFIC STYLES FOR MOBILE DEVICES */
+  .general-container .month {
+    width: 70%;
+    font-size: 1.3rem;
+    color: #431a7bfb;
+  }
+  .days .day {
+    height: 3rem;
+    font-size: 0.7rem;
+  }
 }
 
 /* @media only screen and (max-device-width: 768px) {
@@ -277,3 +286,24 @@
 	}
   }
    */
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 8px;
+  background-color: #c0d3c2;
+}
+::-webkit-scrollbar-button {
+  width: 5px;
+  height: 8px;
+  background-color: #4946d4;
+}
+::-webkit-scrollbar-thumb {
+  width: 5px;
+  height: 8px;
+  background-color: #4946d4;
+}
+::-webkit-scrollbar-track {
+  width: 5px;
+  height: 8px;
+  background-color: #d44688;
+}
