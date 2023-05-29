@@ -8,6 +8,9 @@ export function setEvent() {
     const eventFinishDate = `${eventData.eventYearF}-${eventData.eventMonthF}-${eventData.eventDayF}`;
     const dateArray = getDatesInRange(eventDate, eventFinishDate);
     switch (eventData.eventType) {
+        case 'default':
+            eventColor = "bg-primary";
+            break;
         case 'work':
             eventColor = "bg-danger";
             break;
