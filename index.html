@@ -47,6 +47,27 @@
 				</div>
 			</nav>
 		</header>
+    <!--Modal for checking details on events-->
+    <div class="modal fade" id="eventDetailsModal" tabindex="-1" aria-labelledby="eventDetailsModal" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="eventModalName"></h1>
+            <button id="closeEventModal" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>You event starts at: <span id="eventStartHModal"></span></p>
+            <p id="eventFinishHModal"></p>
+            <p id="eventDescriptionModal"></p>
+            <p id="eventReminderModal"></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="deleteEventModal">Delete event</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
 		<!-- Modal -->
 		<!--SOMEBODY NEEDS TO MODIFY THE MODAL CHECKING THE GENERAL REQUERIMENTS. tO ACTIVATE THE MODAL, THE BUTTON SHOULD HAVE THE PROPIERTIES data-bs-toggle="modal" AND data-bs-target="#eventModal"-->
 		<div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">

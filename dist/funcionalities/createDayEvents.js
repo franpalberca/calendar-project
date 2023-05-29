@@ -1,3 +1,4 @@
+import { loadEventModal } from "./loadEventModal.js";
 export function createDayEvent(element, eventColor, targetDay, date) {
     const dayEvent = document.createElement("div");
     dayEvent.setAttribute("id", "dayEvent");
@@ -11,6 +12,9 @@ export function createDayEvent(element, eventColor, targetDay, date) {
     dayEvent.setAttribute("data-day", date);
     dayEvent.setAttribute("data-name", element.name);
     dayEvent.setAttribute("data-reminder", `${element.reminder}`);
+    dayEvent.setAttribute("data-bs-toggle", "modal");
+    dayEvent.setAttribute("data-bs-target", "#eventDetailsModal");
+    dayEvent.addEventListener("click", loadEventModal);
     targetDay.appendChild(dayEvent);
     const eventHoverDetails = document.createElement("div");
     eventHoverDetails.setAttribute("class", "d-flex flex-column justify-content-start align-items-between");
@@ -26,7 +30,7 @@ export function createDayEvent(element, eventColor, targetDay, date) {
         eventHoverDetails.appendChild(eventDetailsEventFinish);
     }
     const eventDetailsDescription = document.createElement("p");
-    eventDetailsDescription.textContent = `Description: ${element.description}`;
+    eventDetailsDescription.textContent = `Open to see description`;
     eventDetailsDescription.setAttribute("class", "d-flex event-hover-details");
     eventHoverDetails.appendChild(eventDetailsDescription);
 }
