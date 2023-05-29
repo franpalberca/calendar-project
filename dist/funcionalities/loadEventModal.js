@@ -19,10 +19,13 @@ export function loadEventModal(event) {
         eventReminderModal.innerText = (eventReminder === 'default') ? `No time of reminder was provided for this event` : `You will be reminded about this event at ${eventReminder}`;
         const deleteEventModal = document.querySelector('#deleteEventModal');
         deleteEventModal.addEventListener('click', () => {
-            target.remove();
-            localStorage.removeItem(`Event: ${eventName}`);
-            const closeEventModal = document.querySelector('#closeEventModal');
-            closeEventModal.click();
+            const response = confirm('¿Are you sure you want to delete this event?');
+            if (response) {
+                target.remove();
+                localStorage.removeItem(`Event: ${eventName}`);
+                const closeEventModal = document.querySelector('#closeEventModal');
+                closeEventModal.click();
+            }
         });
     }
 }

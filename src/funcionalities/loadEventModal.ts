@@ -25,10 +25,13 @@ export function loadEventModal(event: MouseEvent){
 
         const deleteEventModal = document.querySelector('#deleteEventModal') as HTMLButtonElement;
         deleteEventModal.addEventListener('click',() => {
+            const response = confirm('¿Are you sure you want to delete this event?');
+            if(response){
             target.remove();
             localStorage.removeItem(`Event: ${eventName}`);
             const closeEventModal = document.querySelector('#closeEventModal') as HTMLButtonElement;
             closeEventModal.click();
+            }
         })
     }
 }
