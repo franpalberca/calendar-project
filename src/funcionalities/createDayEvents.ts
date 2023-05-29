@@ -4,7 +4,7 @@ import { loadEventModal } from "./loadEventModal.js";
 export function createDayEvent(element: EventData, eventColor: string, targetDay: HTMLDivElement, date: string) {
   const dayEvent = document.createElement("div");
   dayEvent.setAttribute("id", `dayEvent${element.eventHour}:${element.eventMinutes}`);
-  dayEvent.setAttribute("class", `row d-flex justify-content-center ${eventColor} bg-gradient mb-1 day-event-dropdown`);
+  dayEvent.setAttribute("class", `row d-flex justify-content-center ${eventColor}  mb-1 day-event-dropdown`);
   dayEvent.setAttribute("style", "font-size: 12px; color: black;");
   dayEvent.innerText = `${element.name}`;
   // DATA ATTRIBUTES (WE CAN USE THIS TO CREATE THE MODAL OR HOVER AS AN EXTRA)
