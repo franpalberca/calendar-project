@@ -15,7 +15,7 @@ export function logInBtnClick() {
     signInOutLi.appendChild(signInButton);
     signInButton.addEventListener("click", logIn);
 }
-export function logIn() {
+function logIn() {
     console.log("sign-in process");
     const userInput = document.getElementById("userName");
     const emailInput = document.getElementById("floatingInput");
