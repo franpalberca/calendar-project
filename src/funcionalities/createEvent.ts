@@ -13,6 +13,9 @@ export function setEvent(){
 
     //Color selectors
     switch (eventData.eventType) {
+        case 'default':
+            eventColor = "bg-primary";
+            break;
         case 'work':
             eventColor = "bg-danger";
             break;
