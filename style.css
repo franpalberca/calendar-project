@@ -163,13 +163,15 @@
   background-color: rgba(241, 231, 254, 1);
 }
 .day-event-dropdown {
+  position: relative;
   display: flex;
   height: 18px;
-  overflow: hidden;
+  overflow: clip;
   transition: 0.3s ease;
 }
 .day-event-dropdown:hover {
   position: absolute;
+  text-overflow: ellipsis;
   width: 20vw;
   height: 20vh;
   border-radius: 15px;
