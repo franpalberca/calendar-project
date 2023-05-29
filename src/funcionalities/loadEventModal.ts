@@ -36,6 +36,8 @@ export function loadEventModal(event: MouseEvent) {
     const modifyEventModal = document.querySelector("#modifyEventModal") as HTMLButtonElement;
     modifyEventModal.addEventListener("click", () => {
       console.log("modifiyng event");
+        
     });
   }
 }
+

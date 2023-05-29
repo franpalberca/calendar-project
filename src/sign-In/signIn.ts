@@ -59,13 +59,13 @@ export function logInBtnClick() {
   }
   // Function to validate the email format
   function validateEmail(email: string): boolean {
-    const emailRegex = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+    const emailRegex = /^\S+@\S+\.\S+$/;
     return emailRegex.test(email);
   }
 
   // Function to validate the password format
   function validatePassword(password: string): boolean {
-    const passwordRegex = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/;
+    const passwordRegex = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{6,}$/;
     return passwordRegex.test(password);
   }
 
@@ -76,7 +76,7 @@ export function logInBtnClick() {
     const password = passwordInput1.value;
     const passwordConfirm = passwordInput2.value;
 
-    const isUserNameValid = isFieldValid(userName, 5, 20, /\s/);
+    const isUserNameValid = isFieldValid(userName, 5, 20, /^\S+$/);
     const isEmailValid = validateEmail(email);
     const isPasswordValid = validatePassword(password);
     const doPasswordsMatch = password === passwordConfirm;
@@ -91,8 +91,10 @@ export function logInBtnClick() {
     const errorPass1 = createErrorMessage("Please fill in the verify password field with your password to verify it");
 
     if(isUserNameValid && isEmailValid && isPasswordValid && doPasswordsMatch){
+      const signInBtn = document.getElementById("signInButton") as HTMLButtonElement;
       signInBtn.classList.remove("disabled");
     } else {
+      const signInBtn = document.getElementById("signInButton") as HTMLButtonElement;
       signInBtn.classList.add("disabled");
     }
     //signInBtn.disabled = !(isUserNameValid && isEmailValid && isPasswordValid && doPasswordsMatch);
@@ -149,12 +151,12 @@ export function logInBtnClick() {
     showPassBtn.addEventListener("click", togglePasswordVisibility1);
     showPassBtn1.addEventListener("click", togglePasswordVisibility2);
 
-    userInput.addEventListener("input", validateForm);
-    emailInput.addEventListener("input", validateForm);
-    passwordInput1.addEventListener("input", validateForm);
-    passwordInput2.addEventListener("input", validateForm);
+    userInput.addEventListener("blur", validateForm);
+    emailInput.addEventListener("blur", validateForm);
+    passwordInput1.addEventListener("blur", validateForm);
+    passwordInput2.addEventListener("blur", validateForm);
   }
-
+  //function to show the password Input
   function togglePasswordVisibility1(): void {
     if (passwordInput1.type === "password") {
       showPassBtn.classList.remove("bi-eye-slash");
@@ -166,7 +168,7 @@ export function logInBtnClick() {
       passwordInput1.type = "password";
     }
   }
-
+  //function to show verify password Input 
   function togglePasswordVisibility2(): void {
     if (passwordInput2.type === "password") {
       showPassBtn1.classList.remove("bi-eye-slash");

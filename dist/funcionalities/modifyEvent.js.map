@@ -1,0 +1,1 @@
+{"version":3,"file":"modifyEvent.js","sourceRoot":"","sources":["../../src/funcionalities/modifyEvent.ts"],"names":[],"mappings":"AAAA,MAAM,UAAU,kBAAkB;IACjC,MAAM,cAAc,GAAG,QAAQ,CAAC,cAAc,CAAC,kBAAkB,CAAsB,CAAC;IACxF,cAAc,CAAC,gBAAgB,CAAC,OAAO,EAAE,CAAC,KAAK,EAAC,EAAE;IAyBlD,CAAC,CAAE,CAAC;AACL,CAAC"}

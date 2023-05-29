@@ -152,30 +152,37 @@
   border: 1px solid gainsboro;
   width: calc(100% / 7);
   height: clamp(1rem, 10px + 15vh, 110px);
-}
-.days .day:hover {
-  border: 1px solid lightgray;
-  background-color: rgba(241, 231, 254, 1);
+  transition: overflow 8s ease;
+  overflow: hidden;
 }
 
 .days .day:hover {
   border: 1px solid lightgray;
   background-color: rgba(241, 231, 254, 1);
 }
+/* .day{
+  transition: 8s ease;
+}
+.day:hover{
+  background-color: #2e2e2e;
+  overflow: visible;
+  transition: 6s ease;
+
+} */
+
 .day-event-dropdown {
   position: relative;
   display: flex;
   height: 18px;
-  overflow: clip;
+  overflow: hidden;
   transition: 0.3s ease;
 }
 .day-event-dropdown:hover {
-  position: absolute;
-  text-overflow: ellipsis;
+  position: absolute;  
   width: 20vw;
   height: 20vh;
   border-radius: 15px;
-  color: rgb(216, 216, 219);
+  
   z-index: 10000;
   transform: scale(1.1);
 }
