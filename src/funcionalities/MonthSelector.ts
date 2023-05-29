@@ -1,5 +1,3 @@
-import { EventData } from "../types/eventData.js";
-
 export function initializeCalendar() {
   let currentDate = new Date();
   let currentDay = currentDate.getDate();
