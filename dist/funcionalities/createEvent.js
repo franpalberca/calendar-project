@@ -1,24 +1,27 @@
 import { retrieveEventData } from "./retrieveEventData.js";
 export function setEvent() {
     const eventData = retrieveEventData();
-    let eventColor = '';
+    let eventColor = "";
     const eventDate = new Date(`${eventData.eventYear}-${eventData.eventMonth}-${eventData.eventDay}`).toISOString().slice(0, 10);
     const eventFinishDate = `${eventData.eventYearF}-${eventData.eventMonthF}-${eventData.eventDayF}`;
     const dateArray = getDatesInRange(eventDate, eventFinishDate);
     switch (eventData.eventType) {
-        case 'work':
+        case "default":
+            eventColor = "bg-primary";
+            break;
+        case "work":
             eventColor = "bg-danger";
             break;
-        case 'family':
+        case "family":
             eventColor = "bg-secondary";
             break;
-        case 'friends':
+        case "friends":
             eventColor = "bg-warning";
             break;
-        case 'doctor':
+        case "doctor":
             eventColor = "bg-info";
             break;
-        case 'private':
+        case "private":
             eventColor = "bg-success";
             break;
     }
@@ -58,7 +61,7 @@ export function setEvent() {
             }
         });
     }
-    const closeBtn = document.querySelector('#closeBtn');
+    const closeBtn = document.querySelector("#closeBtn");
     if (closeBtn) {
         closeBtn.click();
     }

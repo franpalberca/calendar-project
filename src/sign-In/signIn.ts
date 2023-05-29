@@ -6,14 +6,14 @@ export function logInBtnClick() {
   });
   const signInOutLi = document.getElementById("signInOutLi") as HTMLLIElement;
 
-  const signInButton = document.createElement("button") as HTMLButtonElement;
-  signInButton.id = "signInButtonNavBar";
-  signInButton.innerText = "Sign In";
-  signInButton.setAttribute("type", "button");
-  signInButton.setAttribute("class", " nav-link btn btn-outline-primary btn-sm");
-  signInButton.setAttribute("data-bs-toggle", "modal");
-  signInButton.setAttribute("data-bs-target", "#modalSignIn");
-  signInOutLi.appendChild(signInButton);
+  const signInButtonNavBar = document.createElement("button") as HTMLButtonElement;
+  signInButtonNavBar.id = "signInButtonNavBar";
+  signInButtonNavBar.innerText = "Sign In";
+  signInButtonNavBar.setAttribute("type", "button");
+  signInButtonNavBar.setAttribute("class", " nav-link btn btn-outline-primary btn-sm");
+  signInButtonNavBar.setAttribute("data-bs-toggle", "modal");
+  signInButtonNavBar.setAttribute("data-bs-target", "#modalSignIn");
+  signInOutLi.appendChild(signInButtonNavBar);
   const signOutButton = document.createElement("button") as HTMLButtonElement;
   signOutButton.id = "signOutBtn";
   signOutButton.innerText = "Sign Out";
@@ -21,18 +21,11 @@ export function logInBtnClick() {
   signOutButton.setAttribute("class", " nav-link btn btn-outline-primary btn-sm");
   signInOutLi.insertAdjacentElement("afterend", signOutButton);
 
-  signInButton.addEventListener("click", logIn);
+  signInButtonNavBar.addEventListener("click", logIn);
 }
 
 export function logIn(): void {
   console.log("sign-in process");
-
-  const containerMain = document.getElementById("bodyContainer") as HTMLDivElement;
-
-  const formDiv = document.createElement("div") as HTMLDivElement;
-  
-
-  // containerMain.appendChild(formDiv);
 
   const userInput = document.getElementById("userName") as HTMLInputElement;
   const emailInput = document.getElementById("floatingInput") as HTMLInputElement;
@@ -40,8 +33,6 @@ export function logIn(): void {
   const passwordInput2 = document.getElementById("floatingPassword2") as HTMLInputElement;
   const signInBtn = document.getElementById("signInButton") as HTMLButtonElement;
   const signOutBtn = document.getElementById("signOutBtn") as HTMLButtonElement;
-  const container = document.createElement("div") as HTMLDivElement;
-  //const formSignInDiv = document.getElementById("formSignInDiv") as HTMLDivElement;
   const showPassBtn = document.getElementById("eye1") as HTMLElement;
   const showPassBtn1 = document.getElementById("eye2") as HTMLElement;
 
@@ -52,8 +43,9 @@ export function logIn(): void {
     <strong><i class="fa-regular fa-bell"></i> Hey!</strong> ${message}.
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>`;
-    const mainContainer = document.querySelector('#modalSignIn');
-    mainContainer?.prepend(alertMessage);
+    const mainContainer = document.querySelector('#modalSignIn') as HTMLDivElement;
+    mainContainer.prepend(alertMessage);
+    console.log(message)
     return alertMessage;
   }
 
@@ -90,35 +82,21 @@ export function logIn(): void {
     const boxItemEmail = document.getElementById("floatingInput") as HTMLInputElement;
     const boxItemPass = document.getElementById("floatingPassword1") as HTMLInputElement;
     const boxItemPass1 = document.getElementById("floatingPassword2") as HTMLInputElement;
-    const errorUser = createErrorMessage("This field should be complete");
-    const errorEmail = createErrorMessage("This field is not properly formatted");
-    const errorPass = createErrorMessage("This field is not properly formatted");
+    const errorUser = createErrorMessage("This user name should be complete");
+    const errorEmail = createErrorMessage("The email is not properly formatted");
+    const errorPass = createErrorMessage("This password is not properly formatted");
     const errorPass1 = createErrorMessage("These fields don't match");
 
-    if(isUserNameValid && isEmailValid && isPasswordValid && doPasswordsMatch){
-      signInBtn.classList.remove("disabled");
+    if (isUserNameValid && isEmailValid && isPasswordValid && doPasswordsMatch) {
+      signInBtn.disabled = true;
     } else {
-      signInBtn.classList.add("disabled");
-    }
-    //signInBtn.disabled = !(isUserNameValid && isEmailValid && isPasswordValid && doPasswordsMatch);
-    // Update error messages
-    updateErrorMessage(isUserNameValid, boxItem, errorUser);
-    updateErrorMessage(isEmailValid, boxItemEmail, errorEmail);
-    updateErrorMessage(isPasswordValid, boxItemPass, errorPass);
-    updateErrorMessage(doPasswordsMatch, boxItemPass1, errorPass1);
-  }
-
-  // Function to update the error message display
-  function updateErrorMessage(isValid: boolean, container: HTMLInputElement, errorMessage: HTMLDivElement): void {
-    if (!isValid) {
-      container.appendChild(errorMessage);
-    } else if (errorMessage.parentNode === container) {
-      container.removeChild(errorMessage);
+      signInBtn.disabled = false;
     }
   }
 
   // Function to handle the login event
   function handleLogin(event: Event): void {
+    validateForm();
     event.preventDefault();
     const userName = userInput.value;
     const email = emailInput.value;
@@ -127,24 +105,16 @@ export function logIn(): void {
 
     if (password !== passwordConfirm) {
       // Passwords do not match, you can show an error message here
-      alert("Passwords do not match")
-
+      alert("Passwords do not match");
       return;
     }
     localStorage.setItem("userName", userName);
     localStorage.setItem("email", email);
-    // const userButton = document.getElementById("User") as HTMLButtonElement;
-    // if (userButton) {
-    //   userButton.textContent = userName;
-    // }
-
-    // showMainContent();
   }
 
   // Function to handle the logout event
   function handleLogout(): void {
     // Show login form after logoff
-    // showLoginForm();
   }
 
   // AddeventListeners
@@ -183,5 +153,4 @@ export function logIn(): void {
       passwordInput2.type = "password";
     }
   }
-  console.log(userInput.value, emailInput.value, )
 }

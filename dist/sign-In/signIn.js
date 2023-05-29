@@ -5,33 +5,30 @@ export function logInBtnClick() {
         navBarNav.classList.toggle("show");
     });
     const signInOutLi = document.getElementById("signInOutLi");
-    const signInButton = document.createElement("button");
-    signInButton.id = "signInButtonNavBar";
-    signInButton.innerText = "Sign In";
-    signInButton.setAttribute("type", "button");
-    signInButton.setAttribute("class", " nav-link btn btn-outline-primary btn-sm");
-    signInButton.setAttribute("data-bs-toggle", "modal");
-    signInButton.setAttribute("data-bs-target", "#modalSignIn");
-    signInOutLi.appendChild(signInButton);
+    const signInButtonNavBar = document.createElement("button");
+    signInButtonNavBar.id = "signInButtonNavBar";
+    signInButtonNavBar.innerText = "Sign In";
+    signInButtonNavBar.setAttribute("type", "button");
+    signInButtonNavBar.setAttribute("class", " nav-link btn btn-outline-primary btn-sm");
+    signInButtonNavBar.setAttribute("data-bs-toggle", "modal");
+    signInButtonNavBar.setAttribute("data-bs-target", "#modalSignIn");
+    signInOutLi.appendChild(signInButtonNavBar);
     const signOutButton = document.createElement("button");
     signOutButton.id = "signOutBtn";
     signOutButton.innerText = "Sign Out";
     signOutButton.setAttribute("type", "button");
     signOutButton.setAttribute("class", " nav-link btn btn-outline-primary btn-sm");
     signInOutLi.insertAdjacentElement("afterend", signOutButton);
-    signInButton.addEventListener("click", logIn);
+    signInButtonNavBar.addEventListener("click", logIn);
 }
 export function logIn() {
     console.log("sign-in process");
-    const containerMain = document.getElementById("bodyContainer");
-    const formDiv = document.createElement("div");
     const userInput = document.getElementById("userName");
     const emailInput = document.getElementById("floatingInput");
     const passwordInput1 = document.getElementById("floatingPassword1");
     const passwordInput2 = document.getElementById("floatingPassword2");
     const signInBtn = document.getElementById("signInButton");
     const signOutBtn = document.getElementById("signOutBtn");
-    const container = document.createElement("div");
     const showPassBtn = document.getElementById("eye1");
     const showPassBtn1 = document.getElementById("eye2");
     function createErrorMessage(message) {
@@ -41,7 +38,8 @@ export function logIn() {
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>`;
         const mainContainer = document.querySelector('#modalSignIn');
-        mainContainer === null || mainContainer === void 0 ? void 0 : mainContainer.prepend(alertMessage);
+        mainContainer.prepend(alertMessage);
+        console.log(message);
         return alertMessage;
     }
     function isFieldValid(value, minLength, maxLength, regex) {
@@ -68,30 +66,19 @@ export function logIn() {
         const boxItemEmail = document.getElementById("floatingInput");
         const boxItemPass = document.getElementById("floatingPassword1");
         const boxItemPass1 = document.getElementById("floatingPassword2");
-        const errorUser = createErrorMessage("This field should be complete");
-        const errorEmail = createErrorMessage("This field is not properly formatted");
-        const errorPass = createErrorMessage("This field is not properly formatted");
+        const errorUser = createErrorMessage("This user name should be complete");
+        const errorEmail = createErrorMessage("The email is not properly formatted");
+        const errorPass = createErrorMessage("This password is not properly formatted");
         const errorPass1 = createErrorMessage("These fields don't match");
         if (isUserNameValid && isEmailValid && isPasswordValid && doPasswordsMatch) {
-            signInBtn.classList.remove("disabled");
+            signInBtn.disabled = true;
         }
         else {
-            signInBtn.classList.add("disabled");
-        }
-        updateErrorMessage(isUserNameValid, boxItem, errorUser);
-        updateErrorMessage(isEmailValid, boxItemEmail, errorEmail);
-        updateErrorMessage(isPasswordValid, boxItemPass, errorPass);
-        updateErrorMessage(doPasswordsMatch, boxItemPass1, errorPass1);
-    }
-    function updateErrorMessage(isValid, container, errorMessage) {
-        if (!isValid) {
-            container.appendChild(errorMessage);
-        }
-        else if (errorMessage.parentNode === container) {
-            container.removeChild(errorMessage);
+            signInBtn.disabled = false;
         }
     }
     function handleLogin(event) {
+        validateForm();
         event.preventDefault();
         const userName = userInput.value;
         const email = emailInput.value;
@@ -140,6 +127,5 @@ export function logIn() {
             passwordInput2.type = "password";
         }
     }
-    console.log(userInput.value, emailInput.value);
 }
 //# sourceMappingURL=signIn.js.map
