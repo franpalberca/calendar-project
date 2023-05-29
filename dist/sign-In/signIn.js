@@ -31,6 +31,7 @@ export function logIn() {
     const passwordInput2 = document.getElementById("floatingPassword2");
     const signInBtn = document.getElementById("signInButton");
     const signOutBtn = document.getElementById("signOutBtn");
+    const container = document.createElement("div");
     const showPassBtn = document.getElementById("eye1");
     const showPassBtn1 = document.getElementById("eye2");
     function createErrorMessage(message) {

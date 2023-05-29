@@ -94,6 +94,7 @@ export function logIn(): void {
   const passwordInput2 = document.getElementById("floatingPassword2") as HTMLInputElement;
   const signInBtn = document.getElementById("signInButton") as HTMLButtonElement;
   const signOutBtn = document.getElementById("signOutBtn") as HTMLButtonElement;
+  const container = document.createElement("div") as HTMLDivElement;
   //const formSignInDiv = document.getElementById("formSignInDiv") as HTMLDivElement;
   const showPassBtn = document.getElementById("eye1") as HTMLElement;
   const showPassBtn1 = document.getElementById("eye2") as HTMLElement;

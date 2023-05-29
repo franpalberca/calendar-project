@@ -29,7 +29,7 @@ export function initializeCalendar() {
             }
             for (let i = 1; i <= currentMonthdaysContainer; i++) {
                 const dayElement = document.createElement("div");
-                dayElement.classList.add("day");
+                dayElement.classList.add("day", "overflow-auto");
                 dayElement.setAttribute("id", "day");
                 let paddedMonth = monthNumber + 1;
                 let dateAttribute = `${currentYear}-${paddedMonth}-${i}`;
@@ -69,7 +69,7 @@ export function initializeCalendar() {
                 }
                 daysContainer.appendChild(dayElement);
             }
-            const remainingNextDays = 7 - (startDayIndex + currentMonthdaysContainer) % 7;
+            const remainingNextDays = 7 - ((startDayIndex + currentMonthdaysContainer) % 7);
             for (let i = 1; i <= remainingNextDays; i++) {
                 const dayElement = document.createElement("div");
                 dayElement.classList.add("day", "next-month");
