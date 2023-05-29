@@ -4,6 +4,6 @@ export function createPopUp(name: string, reminder: number){
     <strong><i class="fa-regular fa-bell"></i> Hey!</strong> Your event ${name} is in ${reminder} minutes.
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>`;
-    const mainContainer = document.querySelector('#mainContainer');
-    mainContainer?.prepend(alertMessage);
+    const mainContainer = document.querySelector('#mainContainer') as HTMLElement;
+    mainContainer.prepend(alertMessage);
 }

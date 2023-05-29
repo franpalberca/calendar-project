@@ -18,6 +18,9 @@ export function checkReminders() {
         const eventHour = element.getAttribute('data-starthour');
         let minus = 0;
         switch (eventReminder) {
+            case 'default':
+                minus = 1;
+                break;
             case '5min':
                 minus = 5;
                 break;

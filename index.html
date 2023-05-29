@@ -121,77 +121,7 @@
         </div>
       </div>
     </div>
-  <!--    2ND MODAL  MODIFIED EVENT -->
-    <div class="modal fade" id="modsEventModal" tabindex="-1" aria-labelledby="Modal" aria-hidden="false">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="modifiedModalEvent">Create Event</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form class="container" id="createEventForm">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="mb-3">
-                    <label for="modalTitleMods" class="form-label">Title</label>
-                    <input type="text" id="modalTitleMods" name="title" maxlength="60" class="form-control" />
-                  </div>
-                  <div class="mb-3">
-                    <label for="startDateMods" class="form-label">Start date</label>
-                    <input type="datetime-local" id="startDateMods" name="date-start" class="form-control" />
-                  </div>
-                  <div class="mb-3 form-check">
-                    <input type="checkbox" name="End date" id="dateEndCheckMods" class="form-check-input" />
-                    <label for="dateEndCheckMods" class="form-check-label">Finish</label>
-                  </div>
-                  <div class="mb-3 d-none" id="reminderBox">
-                    <label for="finishDateMods" class="form-label">End date</label>
-                    <input type="datetime-local" id="finishDateMods" name="date-finish" class="form-control" />
-                  </div>
-                  <div class="mb-3 form-check">
-                    <input type="checkbox" name="Remind me when this event expires" id="reminderCheckMods" class="form-check-input" />
-                    <label for="reminderCheckMods" class="form-check-label">Remind me when this event expires</label>
-                  </div>
-                  <div class="input-group mb-3 d-none" id="rememberWhen">
-                    <select class="form-select" id="remindMeOpt">
-                      <option value="default" selected>Remind me in...</option>
-                      <option value="1min">1 minute</option>
-                      <option value="5min">5 minutes</option>
-                      <option value="10min">10 minutes</option>
-                      <option value="15min">15 minutes</option>
-                      <option value="30min">30 minutes</option>
-                      <option value="45min">45 minutes</option>
-                      <option value="60min">1 hour</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="mb-3">
-                    <label for="descriptionMods" class="form-label">Description</label>
-                    <textarea id="descriptionMods" placeholder="Write something here" name="textarea" rows="10" cols="40" maxlength="500" class="form-control"></textarea>
-                  </div>
-                  <div class="input-group mb-3">
-                    <select class="form-select" id="eventTypeOpt">
-                      <option value="default" selected>Select event type...</option>
-                      <option value="work" class="work-event">Work</option>
-                      <option value="family" class="family-event">Family</option>
-                      <option value="friends" class="friends-event">Friends</option>
-                      <option value="doctor" class="doctor-event">Doctor</option>
-                      <option value="private" class="private-event">Private</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeBtnMods">Close</button>
-                <button type="submit" class="btn btn-primary">Save changes</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+  
     <!-- Climate Modal -->
     <div class="modal fade" id="climateModal" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog">

@@ -22,6 +22,9 @@ events.forEach(element => {
     let minus = 0;
 
     switch (eventReminder) {
+        case 'default':
+            minus = 1;
+            break;
         case '5min':
             minus = 5;
             break;

@@ -6,7 +6,7 @@ export function initializeCalendar() {
   let currentYear = currentDate.getFullYear();
   let actualYear = currentDate.getFullYear();
 
-  const daysContainer = document.querySelector("#daysContainer") as HTMLElement;
+  const daysContainer = document.querySelector("#daysContainer") as HTMLDivElement;
   const month = document.querySelector("#month") as HTMLTimeElement;
   const year = document.querySelector("#year") as HTMLTimeElement;
   const prevMonthDom = document.querySelector("#prevMonth") as HTMLButtonElement;
@@ -61,14 +61,14 @@ export function initializeCalendar() {
         addButton.setAttribute("data-today", toISODate);
         addButton.addEventListener("click", (event: MouseEvent) => {
           if (event.target) {
-          const targetDay = event.currentTarget as HTMLElement;
-          const dayData = targetDay.getAttribute('data-today') as string;
-          const startDate = document.querySelector('#startDate') as HTMLInputElement;
-          if (startDate){
-          startDate.value = `${dayData}T12:00`;
-        }
+            const targetDay = event.currentTarget as HTMLElement;
+            const dayData = targetDay.getAttribute("data-today") as string;
+            const startDate = document.querySelector("#startDate") as HTMLInputElement;
+            if (startDate) {
+              startDate.value = `${dayData}T12:00`;
+            }
           }
-        })
+        });
         addButtonDiv.appendChild(addButton);
 
         const addButtonSpan = document.createElement("span");
@@ -89,19 +89,19 @@ export function initializeCalendar() {
         if (i === currentDay && month === actualMonth && todayYear === targetYear) {
           dayElement.classList.add("today");
         }
-            daysContainer.appendChild(dayElement);
-        }
-        // PRINT THE NEXT DAYS AT THE END OF THE CALENDAR
-        const remainingNextDays = 7 -(startDayIndex + currentMonthdaysContainer) % 7;
+        daysContainer.appendChild(dayElement);
+      }
+      // PRINT THE NEXT DAYS AT THE END OF THE CALENDAR
+      const remainingNextDays = 7 - ((startDayIndex + currentMonthdaysContainer) % 7);
 
-        for(let i= 1; i <= remainingNextDays; i++) {
-          const dayElement = document.createElement("div");
-  dayElement.classList.add("day", "next-month");
-  dayElement.textContent = i.toString();
-  daysContainer.appendChild(dayElement);
-        }
+      for (let i = 1; i <= remainingNextDays; i++) {
+        const dayElement = document.createElement("div");
+        dayElement.classList.add("day", "next-month");
+        dayElement.textContent = i.toString();
+        daysContainer.appendChild(dayElement);
       }
     }
+  }
 
   function getTotaldaysContainer(month: number): number {
     if (month === -1) month = 11;

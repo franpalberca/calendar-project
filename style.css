@@ -158,6 +158,7 @@
 .days .day:hover {
   border: 1px solid lightgray;
   background-color: rgba(241, 231, 254, 1);
+  overflow: auto;
   
 }
 .day-event-dropdown {

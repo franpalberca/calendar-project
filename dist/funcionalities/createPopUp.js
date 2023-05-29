@@ -5,6 +5,6 @@ export function createPopUp(name, reminder) {
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>`;
     const mainContainer = document.querySelector('#mainContainer');
-    mainContainer === null || mainContainer === void 0 ? void 0 : mainContainer.prepend(alertMessage);
+    mainContainer.prepend(alertMessage);
 }
 //# sourceMappingURL=createPopUp.js.map

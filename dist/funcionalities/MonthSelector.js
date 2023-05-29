@@ -48,8 +48,8 @@ export function initializeCalendar() {
                 addButton.addEventListener("click", (event) => {
                     if (event.target) {
                         const targetDay = event.currentTarget;
-                        const dayData = targetDay.getAttribute('data-today');
-                        const startDate = document.querySelector('#startDate');
+                        const dayData = targetDay.getAttribute("data-today");
+                        const startDate = document.querySelector("#startDate");
                         if (startDate) {
                             startDate.value = `${dayData}T12:00`;
                         }
@@ -69,7 +69,7 @@ export function initializeCalendar() {
                 }
                 daysContainer.appendChild(dayElement);
             }
-            const remainingNextDays = 7 - (startDayIndex + currentMonthdaysContainer) % 7;
+            const remainingNextDays = 7 - ((startDayIndex + currentMonthdaysContainer) % 7);
             for (let i = 1; i <= remainingNextDays; i++) {
                 const dayElement = document.createElement("div");
                 dayElement.classList.add("day", "next-month");
