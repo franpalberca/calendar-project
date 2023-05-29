@@ -13,18 +13,10 @@ export function logInBtnClick() {
     signInButton.setAttribute("data-bs-toggle", "modal");
     signInButton.setAttribute("data-bs-target", "#modalSignIn");
     signInOutLi.appendChild(signInButton);
-    const signOutButton = document.createElement("button");
-    signOutButton.id = "signOutBtn";
-    signOutButton.innerText = "Sign Out";
-    signOutButton.setAttribute("type", "button");
-    signOutButton.setAttribute("class", " nav-link btn btn-outline-primary btn-sm");
-    signInOutLi.insertAdjacentElement("afterend", signOutButton);
     signInButton.addEventListener("click", logIn);
 }
 export function logIn() {
     console.log("sign-in process");
-    const containerMain = document.getElementById("bodyContainer");
-    const formDiv = document.createElement("div");
     const userInput = document.getElementById("userName");
     const emailInput = document.getElementById("floatingInput");
     const passwordInput1 = document.getElementById("floatingPassword1");
@@ -68,10 +60,10 @@ export function logIn() {
         const boxItemEmail = document.getElementById("floatingInput");
         const boxItemPass = document.getElementById("floatingPassword1");
         const boxItemPass1 = document.getElementById("floatingPassword2");
-        const errorUser = createErrorMessage("This field should be complete");
-        const errorEmail = createErrorMessage("This field is not properly formatted");
-        const errorPass = createErrorMessage("This field is not properly formatted");
-        const errorPass1 = createErrorMessage("These fields don't match");
+        const errorUser = createErrorMessage("Please fill in the User Name field with your name.");
+        const errorEmail = createErrorMessage("Please fill in the email field with your valid email.");
+        const errorPass = createErrorMessage("Please fill in the password field with your password.");
+        const errorPass1 = createErrorMessage("Please fill in the verify password field with your password to verify it");
         if (isUserNameValid && isEmailValid && isPasswordValid && doPasswordsMatch) {
             signInBtn.classList.remove("disabled");
         }

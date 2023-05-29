@@ -14,78 +14,21 @@ export function logInBtnClick() {
   signInButton.setAttribute("data-bs-toggle", "modal");
   signInButton.setAttribute("data-bs-target", "#modalSignIn");
   signInOutLi.appendChild(signInButton);
-  const signOutButton = document.createElement("button") as HTMLButtonElement;
-  signOutButton.id = "signOutBtn";
-  signOutButton.innerText = "Sign Out";
-  signOutButton.setAttribute("type", "button");
-  signOutButton.setAttribute("class", " nav-link btn btn-outline-primary btn-sm");
-  signInOutLi.insertAdjacentElement("afterend", signOutButton);
+  // const signOutButton = document.createElement("button") as HTMLButtonElement;
+  // signOutButton.id = "signOutBtn";
+  // signOutButton.innerText = "Sign Out";
+  // signOutButton.setAttribute("type", "button");
+  // signOutButton.setAttribute("class", " nav-link btn btn-outline-primary btn-sm");
+  // signInOutLi.insertAdjacentElement("afterend", signOutButton);
 
   signInButton.addEventListener("click", logIn);
 }
 
-export function logIn(): void {
+ function logIn(): void {
   console.log("sign-in process");
 
-  const containerMain = document.getElementById("bodyContainer") as HTMLDivElement;
-
-  const formDiv = document.createElement("div") as HTMLDivElement;
-
-  // formDiv.innerHTML = `
-  // <div class="modal fade" tabindex="-1" role="dialog" id="modalSignIn" aria-hidden="true">
-  //     <div class="modal-dialog" role="document">
-  //       <div class="modal-content rounded-4 shadow">
-  //         <div class="modal-header p-5 pb-4 border-bottom-0">
-  //           <h1 class="fw-bold mb-0 fs-2">Sign up for free</h1>
-  //           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-  //         </div>
-
-  //         <div class="modal-body p-5 pt-0">
-  //           <form class="">
-	// 			<div class="form-floating mb-3">
-	// 				<input type="text" autocomplete="username" class="form-control rounded-3" id="userName" placeholder="Assembler" required minlength="5" maxlength="20" >
-	// 				<label for="userName">User</label>
-	// 			  </div>
-  //             <div class="form-floating mb-3">
-  //               <input type="email" autocomplete="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com" required minlength="8" maxlength="50">
-  //               <label for="floatingInput">Email address</label>
-  //             </div>
-  //             <div class="form-floating mb-3">
-  //               <input type="password" autocomplete="new-password" class="form-control rounded-3" id="floatingPassword1" placeholder="Password" required minlength="8" maxlength="20">
-	// 			<span id="show-password1"><i class="bi bi-eye-slash" id="eye1"></i>
-	// 			</span>
-  //               <label for="floatingPassword1">Password </label>
-  //             </div>
-	// 		  <div class="form-floating mb-3">
-  //               <input type="password" autocomplete="current-password" class="form-control rounded-3" id="floatingPassword2" placeholder="Password" required minlength="8" maxlength="20">
-  //               <label for="floatingPassword2">Confirm password</label>
-	// 			<span id="show-password2">
-	// 				<i class="bi bi-eye-slash" id="eye2"></i>
-	// 			</span>
-
-  //             </div>
-  //             <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit" id="signInButton">Sign up</button>
-  //             <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use. Or you can continue as guest:</small>
-  //             <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="button" id="signOutBtn">
-  //               Continue as guest
-  //             </button>
-  //             <hr class="my-4">
-  //             <h2 class="fs-5 fw-bold mb-3">Or use a third-party</h2>
-  //             <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="submit">
-  //             <i class="bi bi-google"></i>
-  //               Sign up with Google
-  //             </button>
-  //             <button class="w-100 py-2 mb-2 btn btn-outline-primary rounded-3" type="submit" id="signInFacebook">
-  //              <i class="bi bi-facebook"></i>
-  //               Sign up with Facebook
-  //             </button>
-  //           </form>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   </div>
-  // `;
-
+  // const containerMain = document.getElementById("bodyContainer") as HTMLDivElement;
+  // const formDiv = document.createElement("div") as HTMLDivElement;
   // containerMain.appendChild(formDiv);
 
   const userInput = document.getElementById("userName") as HTMLInputElement;
@@ -110,12 +53,10 @@ export function logIn(): void {
     mainContainer?.prepend(alertMessage);
     return alertMessage;
   }
-
   // Function to check if a field value is valid
   function isFieldValid(value: string, minLength: number, maxLength: number, regex: RegExp): boolean {
     return value.trim().length >= minLength && value.trim().length <= maxLength && regex.test(value);
   }
-
   // Function to validate the email format
   function validateEmail(email: string): boolean {
     const emailRegex = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
@@ -144,10 +85,10 @@ export function logIn(): void {
     const boxItemEmail = document.getElementById("floatingInput") as HTMLInputElement;
     const boxItemPass = document.getElementById("floatingPassword1") as HTMLInputElement;
     const boxItemPass1 = document.getElementById("floatingPassword2") as HTMLInputElement;
-    const errorUser = createErrorMessage("This field should be complete");
-    const errorEmail = createErrorMessage("This field is not properly formatted");
-    const errorPass = createErrorMessage("This field is not properly formatted");
-    const errorPass1 = createErrorMessage("These fields don't match");
+    const errorUser = createErrorMessage("Please fill in the User Name field with your name.");
+    const errorEmail = createErrorMessage("Please fill in the email field with your valid email.");
+    const errorPass = createErrorMessage("Please fill in the password field with your password.");
+    const errorPass1 = createErrorMessage("Please fill in the verify password field with your password to verify it");
 
     if(isUserNameValid && isEmailValid && isPasswordValid && doPasswordsMatch){
       signInBtn.classList.remove("disabled");
