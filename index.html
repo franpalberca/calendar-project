@@ -41,7 +41,6 @@
 								<li class="event-item"><button class="btn btn-outline-secondary" id="searchEvents">Search an Event</button></li>
 							</ul>
 						</li>
-						<li class="nav-item"><button id="testingBtn" class="nav-link">About</button></li>
 						<li class="nav-item" id="signInOutLi"></li>
 					</ul>
 				</div>
@@ -245,7 +244,7 @@
 			</div>
 		</main>
 		<!--HERE SOMEONE HAVE TO MODIFY THE FOOTER WITH THE GENERAL REQUERIMENTS (AND EXTRAS IF WANTS TO) -->
-		<footer class="d-flex container flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+		<footer class="d-flex container flex-wrap justify-content-between  py-3 my-4 border-top">
 			<svg xmlns="http://www.w3.org/2000/svg" style="display: none">
 				<symbol id="check2" viewBox="0 0 16 16">
 					<path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"></path>
@@ -307,26 +306,36 @@
 					</li>
 				</ul>
 			</div>
-			<p class="col-md-4 mb-0 text-body-secondary">
-				<a class="navbar-brand" href="https://assemblerinstitute.com" target="_blank"> <img src="./resources/A-Logo.png" alt="Bootstrap" width="30" height="30" /> 2023 Lovelace Squad </a>
-			</p>
+			<div class="d-grid">
+				<p class="col-md-4 mb-0 text-body-secondary">
+					<a class="navbar-brand" href="https://assemblerinstitute.com" target="_blank">
+						<img src="./resources/A-Logo.png" alt="Bootstrap" width="30" height="30" />
+						2023 Lovelace Squad
+					</a>
+				</p>
+				<ul class="nav col-md-6">
+					<li class="btn-group dropup py-3 z-2">
+						<button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Members of the Squad</button>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="https://github.com/franpalberca" target="_blank">Fran P.A.</a></li>
+							<li><a class="dropdown-item" href="https://github.com/JorgeMunarriz" target="_blank">Jorge M.G</a></li>
+							<li><a class="dropdown-item" href="https://github.com/HoracioMartinez17" target="_blank">Horacio J.M.</a></li>
+							<li><a class="dropdown-item" href="https://github.com/Madpug2022" target="_blank">Matias A.C.</a></li>
+							<li><a class="dropdown-item" href="https://github.com/kevinPolania" target="_blank">Kevin P.N.</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			
+			
 			<ul class="nav col-md-6 justify-content-end">
 				<li class="nav-item">
-					<a href="#" class="nav-link px-2 text-body-secondary">Top of the Page</a>
+					<a href="#" class="nav-link text-body-secondary">Top of the Page</a>
 				</li>
-				<li class="nav-item ms-3">
+				<li class="nav-item ">
 					<button class="nav-link px-2 text-body-secondary" id="weatherBtn" data-bs-toggle="modal" data-bs-target="#climateModal">Today's weather</button>
 				</li>
-				<li class="btn-group dropup ms-5 z-2">
-					<button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Members of the Squad</button>
-					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="https://github.com/franpalberca" target="_blank">Fran P.A.</a></li>
-						<li><a class="dropdown-item" href="https://github.com/JorgeMunarriz" target="_blank">Jorge M.G</a></li>
-						<li><a class="dropdown-item" href="https://github.com/HoracioMartinez17" target="_blank">Horacio J.M.</a></li>
-						<li><a class="dropdown-item" href="https://github.com/Madpug2022" target="_blank">Matias A.C.</a></li>
-						<li><a class="dropdown-item" href="https://github.com/kevinPolania" target="_blank">Kevin P.N.</a></li>
-					</ul>
-				</li>
+				
 			</ul>
 		</footer>
 	</body>

@@ -73,7 +73,7 @@
   justify-content: center;
   color: #0962ea;
   border-radius: 10px;
-  background: #fffdfb;
+  background: linear-gradient(67.6deg, rgb(225, 242, 254) -2.8%, rgb(193, 224, 250) 44.6%, rgb(19, 116, 197) 102.4%);
   box-shadow: 45px 31px 15px -14px rgba(8, 0, 0, 0.4);
 }
 .general-container.dark {
@@ -114,6 +114,7 @@
   font-size: 1rem;
   font-weight: 500;
   text-transform: capitalize;
+  color: #062d92;
 }
 
 .general-container .week .div-text-week {
@@ -125,6 +126,7 @@
   margin: 0;
   font-weight: 500;
   text-transform: capitalize;
+  padding: .1rem;
 }
 
 .days {
@@ -140,25 +142,25 @@
 }
 .today {
   background-color: #a1d9ff;
-  color: #ff80b0;
+  color: #a64452;
 }
 .previous-month {
-  background-color:#fffdef;
+  background-color: #83cee0;
   color: #e70000;
 }
 .next-month {
-	background-color: #f6f5f5;
+	background-color: #1f8ea3;
 	color:#9dda52;
 	font-weight: 470;
 }
 .days .day {
-  border: 1px solid #eeeeee;
+  border: 1px solid #d1d1d1;
   width: calc(100% / 7);
   height: clamp(1rem, 10px + 15vh, 110px);
 }
 .days .day:hover {
-  border: 1px solid #9effa9;
-  background-color:#f9fce1;
+  border: 1px solid #cdeeaa;
+  background-color:#a1eafb;
   color: #ff6a38;
 }
 
@@ -273,10 +275,13 @@
 
 @media only screen and (max-width: 480px) {
   /* SPECIFIC STYLES FOR MOBILE DEVICES */
+  .general-container {
+    background: linear-gradient(to top, #209cff 0%, #68e0cf 100%);
+  }
   .general-container .month {
     width: 70%;
     font-size: 1.3rem;
-    color: #431a7bfb;
+    color: #005792;
   }
   .days .day {
     height: 3rem;
