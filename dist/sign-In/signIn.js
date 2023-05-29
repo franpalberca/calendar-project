@@ -35,7 +35,7 @@ export function logIn() {
     const showPassBtn1 = document.getElementById("eye2");
     function createErrorMessage(message) {
         const alertMessage = document.createElement('div');
-        alertMessage.innerHTML = `<div class="z-3 position-fixed bottom-0 end-0 alert alert-warning alert-dismissible fade show z-5" role="alert">
+        alertMessage.innerHTML = `<div class="z-3 position-fixed bottom-0 end-0 alert alert-info alert-dismissible fade show z-5" role="alert">
     <strong><i class="fa-regular fa-bell"></i> Hey!</strong> ${message}.
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>`;

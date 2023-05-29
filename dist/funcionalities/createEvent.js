@@ -1,4 +1,6 @@
 import { retrieveEventData } from "./retrieveEventData.js";
+import { restartEventForm } from "./restartEventForm.js";
+import { createDayEvent } from "./createDayEvents.js";
 export function setEvent() {
     const eventData = retrieveEventData();
     let eventColor = '';
@@ -25,42 +27,21 @@ export function setEvent() {
     if (dateArray.length === 0) {
         const targetDay = document.querySelector(`[data-daynumber="${eventDate}"]`);
         if (targetDay) {
-            const dayEvent = document.createElement("div");
-            dayEvent.setAttribute("class", `row d-flex justify-content-center ${eventColor} bg-gradient mb-1 day-event-dropdown`);
-            dayEvent.setAttribute("style", "font-size: 12px; color: black;");
-            dayEvent.innerText = `${eventData.name}`;
-            dayEvent.setAttribute("data-day", eventDate);
-            dayEvent.setAttribute("data-name", eventData.name);
-            dayEvent.setAttribute("data-startHour", `${eventData.eventHour}:${eventData.eventMinutes}`);
-            dayEvent.setAttribute("data-endHour", `${eventData.eventHourF}:${eventData.eventMinutesF}`);
-            dayEvent.setAttribute("data-description", `${eventData.description}`);
-            dayEvent.setAttribute("data-eventType", `${eventData.eventType}`);
-            dayEvent.setAttribute("data-reminder", `${eventData.reminder}`);
-            targetDay.appendChild(dayEvent);
+            createDayEvent(eventData, eventColor, targetDay, eventDate);
         }
     }
     else if (dateArray.length > 0) {
         dateArray.forEach((day) => {
             const targetDay = document.querySelector(`[data-daynumber="${day}"]`);
             if (targetDay) {
-                const dayEvent = document.createElement("div");
-                dayEvent.setAttribute("class", `row d-flex justify-content-center ${eventColor} bg-gradient mb-1 day-event-dropdown`);
-                dayEvent.setAttribute("style", "font-size: 12px; color: black;");
-                dayEvent.innerText = `${eventData.name}`;
-                dayEvent.setAttribute("data-day", eventDate);
-                dayEvent.setAttribute("data-name", eventData.name);
-                dayEvent.setAttribute("data-startHour", `${eventData.eventHour}:${eventData.eventMinutes}`);
-                dayEvent.setAttribute("data-endHour", `${eventData.eventHourF}:${eventData.eventMinutesF}`);
-                dayEvent.setAttribute("data-description", `${eventData.description}`);
-                dayEvent.setAttribute("data-eventType", `${eventData.eventType}`);
-                dayEvent.setAttribute("data-reminder", `${eventData.reminder}`);
-                targetDay.appendChild(dayEvent);
+                createDayEvent(eventData, eventColor, targetDay, eventDate);
             }
         });
     }
     const closeBtn = document.querySelector('#closeBtn');
     if (closeBtn) {
         closeBtn.click();
+        restartEventForm();
     }
 }
 export function getDatesInRange(startDate, endDate) {
