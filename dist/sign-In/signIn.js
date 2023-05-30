@@ -24,6 +24,7 @@ function logIn() {
     const signInBtn = document.getElementById("signInButton");
     const signOutBtn = document.getElementById("signOutBtn");
     const container = document.createElement("div");
+    const modalSignIn = document.getElementById("modalSignIn");
     const showPassBtn = document.getElementById("eye1");
     const showPassBtn1 = document.getElementById("eye2");
     function createErrorMessage(message) {
@@ -91,15 +92,20 @@ function logIn() {
         const email = emailInput.value;
         const password = passwordInput1.value;
         const passwordConfirm = passwordInput2.value;
+        const modalSignIn = document.getElementById("modalSignIn");
         if (password !== passwordConfirm) {
             alert("Passwords do not match");
             return;
         }
         localStorage.setItem("userName", userName);
-        localStorage.setItem("email", email);
+        modalSignIn.classList.add("modal");
+        console.log(userInput.value, emailInput.value);
+        const signInOutLi = document.getElementById("signInOutLi");
         const userButton = document.getElementById("User");
         if (userButton) {
+            userButton.setAttribute("class", "btn btn-primary");
             userButton.textContent = userName;
+            signInOutLi.insertAdjacentElement("afterend", userButton);
         }
     }
     function handleLogout() {
@@ -138,6 +144,5 @@ function logIn() {
             passwordInput2.type = "password";
         }
     }
-    console.log(userInput.value, emailInput.value);
 }
 //# sourceMappingURL=signIn.js.map

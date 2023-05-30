@@ -29,36 +29,45 @@ export function initializeCalendar() {
       // PRINT THE PREVIOUS DAYS INTO THE FIRST DAY OF CURRENT MONTH
       for (let i = previousMonthdaysContainer - startDayIndex + 1; i <= previousMonthdaysContainer; i++) {
         const dayElement = document.createElement("div");
-        dayElement.classList.add("day", "previous-month", );
-        
-        dayElement.textContent = i.toString();
+        dayElement.classList.add("day", "previous-month");
+        dayElement.setAttribute("id", `day${i}`);
+        dayElement.addEventListener("click", () => {
+          dayElement.style.overflow = "visible";
+          setTimeout(() => {
+            dayElement.style.overflow = "hidden";
+          }, 10000);
+        });
+      
+
         daysContainer.appendChild(dayElement);
+        const numberDay = document.createElement("p");
+        numberDay.setAttribute("class", "ms-2 mb-0");
+        numberDay.textContent = i.toString();
+        dayElement.appendChild(numberDay);
       }
 
       // PRINT EVERY DAY OF CURRENT MONTH
       for (let i = 1; i <= currentMonthdaysContainer; i++) {
         const dayElement = document.createElement("div");
-        dayElement.classList.add("day" );
-        dayElement.setAttribute("id", `day${i}`);
-        dayElement.addEventListener("click", () => {
-          dayElement.style.overflow = "visible";
-          setTimeout(()=>{
-            dayElement.style.overflow = "";
-          }, 10000)
-        });
+        dayElement.classList.add("day");
+          dayElement.setAttribute("id", `day${i}`);
+          dayElement.addEventListener("click", () => {
+            dayElement.style.overflow = "visible";
+            setTimeout(() => {
+              dayElement.style.overflow = "hidden";
+            }, 10000);
+          });
         
-
         let paddedMonth = monthNumber + 1;
 
         let dateAttribute = `${currentYear}-${paddedMonth}-${i}`;
         const toISODate: string = new Date(dateAttribute).toISOString().slice(0, 10);
 
-        const numberDay = document.createElement("p")
-        numberDay.setAttribute("class", "ms-2 mb-0")
+        const numberDay = document.createElement("p");
+        numberDay.setAttribute("class", "ms-2 mb-0");
         numberDay.textContent = i.toString();
         dayElement.appendChild(numberDay);
 
-        
         const dayEventContainer = document.createElement("div");
         dayEventContainer.setAttribute("class", "container overflow-auto mh-75");
         dayEventContainer.setAttribute("data-dayNumber", toISODate);
@@ -74,14 +83,14 @@ export function initializeCalendar() {
         addButton.setAttribute("data-today", toISODate);
         addButton.addEventListener("click", (event: MouseEvent) => {
           if (event.target) {
-          const targetDay = event.currentTarget as HTMLElement;
-          const dayData = targetDay.getAttribute('data-today') as string;
-          const startDate = document.querySelector('#startDate') as HTMLInputElement;
-          if (startDate){
-          startDate.value = `${dayData}T12:00`;
-        }
+            const targetDay = event.currentTarget as HTMLElement;
+            const dayData = targetDay.getAttribute("data-today") as string;
+            const startDate = document.querySelector("#startDate") as HTMLInputElement;
+            if (startDate) {
+              startDate.value = `${dayData}T12:00`;
+            }
           }
-        })
+        });
         addButtonDiv.appendChild(addButton);
 
         const addButtonSpan = document.createElement("span");
@@ -110,8 +119,18 @@ export function initializeCalendar() {
       for (let i = 1; i <= remainingNextDays; i++) {
         const dayElement = document.createElement("div");
         dayElement.classList.add("day", "next-month");
-        dayElement.textContent = i.toString();
         daysContainer.appendChild(dayElement);
+          dayElement.setAttribute("id", `day${i}`);
+          dayElement.addEventListener("click", () => {
+            dayElement.style.overflow = "visible";
+            setTimeout(() => {
+              dayElement.style.overflow = "hidden";
+            }, 10000);
+          });
+        const numberDay = document.createElement("p");
+        numberDay.setAttribute("class", "ms-2 mb-0");
+        numberDay.textContent = i.toString();
+        dayElement.appendChild(numberDay);
       }
     }
   }

@@ -24,8 +24,18 @@ export function initializeCalendar() {
             for (let i = previousMonthdaysContainer - startDayIndex + 1; i <= previousMonthdaysContainer; i++) {
                 const dayElement = document.createElement("div");
                 dayElement.classList.add("day", "previous-month");
-                dayElement.textContent = i.toString();
+                dayElement.setAttribute("id", `day${i}`);
+                dayElement.addEventListener("click", () => {
+                    dayElement.style.overflow = "visible";
+                    setTimeout(() => {
+                        dayElement.style.overflow = "hidden";
+                    }, 10000);
+                });
                 daysContainer.appendChild(dayElement);
+                const numberDay = document.createElement("p");
+                numberDay.setAttribute("class", "ms-2 mb-0");
+                numberDay.textContent = i.toString();
+                dayElement.appendChild(numberDay);
             }
             for (let i = 1; i <= currentMonthdaysContainer; i++) {
                 const dayElement = document.createElement("div");
@@ -34,7 +44,7 @@ export function initializeCalendar() {
                 dayElement.addEventListener("click", () => {
                     dayElement.style.overflow = "visible";
                     setTimeout(() => {
-                        dayElement.style.overflow = "";
+                        dayElement.style.overflow = "hidden";
                     }, 10000);
                 });
                 let paddedMonth = monthNumber + 1;
@@ -57,8 +67,8 @@ export function initializeCalendar() {
                 addButton.addEventListener("click", (event) => {
                     if (event.target) {
                         const targetDay = event.currentTarget;
-                        const dayData = targetDay.getAttribute('data-today');
-                        const startDate = document.querySelector('#startDate');
+                        const dayData = targetDay.getAttribute("data-today");
+                        const startDate = document.querySelector("#startDate");
                         if (startDate) {
                             startDate.value = `${dayData}T12:00`;
                         }
@@ -82,8 +92,18 @@ export function initializeCalendar() {
             for (let i = 1; i <= remainingNextDays; i++) {
                 const dayElement = document.createElement("div");
                 dayElement.classList.add("day", "next-month");
-                dayElement.textContent = i.toString();
                 daysContainer.appendChild(dayElement);
+                dayElement.setAttribute("id", `day${i}`);
+                dayElement.addEventListener("click", () => {
+                    dayElement.style.overflow = "visible";
+                    setTimeout(() => {
+                        dayElement.style.overflow = "hidden";
+                    }, 10000);
+                });
+                const numberDay = document.createElement("p");
+                numberDay.setAttribute("class", "ms-2 mb-0");
+                numberDay.textContent = i.toString();
+                dayElement.appendChild(numberDay);
             }
         }
     }
