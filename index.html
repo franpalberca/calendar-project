@@ -13,10 +13,9 @@
 		<script src="./js/bootstrap.js" defer></script>
 		<script src="https://kit.fontawesome.com/d9005a0d59.js" crossorigin="anonymous" defer></script>
 		<title>Lovelace Calendar</title>
-	</head>
-	<!--EVERYONE WILL HAVE TO WORK ON THEIR OWN FILE(S).TS IN ORDER TO CREATE MODULES. AFTER THAT WE WILL UPLOAD THEM INTO A UNIQUE SCRIPT EXECUTION FILE. COMMENT YOUR CODE EVERYTIME YOU CAN-->
+	</head>	
 	<body id="bodyContainer" class="body-container">
-		<!-- SOMEBODY NEEDS TO MODIFY THE HEADER CHECKING THE REQUIREMENTS, DEVELOP THE FUNCTIONS AND CREATE A DIV OR SECTION THAT REPLACE <div class="general-container">-->
+		<!-- - - - - - H E A D E R  - - - - - - -  -->
 		<header class="d-flex container flex-wrap justify-content-center align-items-center py-3 mb-4 border-bottom header-css">
 			<nav class="navbar navbar-expand-md">
 				<a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto navbar-brand link-body-emphasis text-decoration-none link-calendar-btn">
@@ -45,7 +44,7 @@
 				</div>
 			</nav>
 		</header>
-    <!--Modal for checking details on events-->
+    <!--M O D A L   F O R   C H E C K I N G    D E T A I L S  ON  E V E NT S - - - - - --->
     <div class="modal fade" id="eventDetailsModal" tabindex="-1" aria-labelledby="eventDetailsModal" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -68,8 +67,8 @@
       </div>
     </div>
 
-		<!-- Modal -->
-		<!--SOMEBODY NEEDS TO MODIFY THE MODAL CHECKING THE GENERAL REQUERIMENTS. tO ACTIVATE THE MODAL, THE BUTTON SHOULD HAVE THE PROPIERTIES data-bs-toggle="modal" AND data-bs-target="#eventModal"-->
+		<!-- C R E A T E    M O D A L   E V E N T - - - - - - - - - - - - - - - --->
+		
 		<div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModal" aria-hidden="false">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -139,7 +138,7 @@
 				</div>
 			</div>
 		</div>
-		<!-- C L I M A T E   M O D A L -->
+		<!-- C L I M A T E   M O D A L - - - - - - - - - - - - - - - - - - - - - -->
 		<div class="modal fade" id="climateModal" tabindex="-1" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -159,7 +158,7 @@
 				</div>
 			</div>
 		</div>
-		<!-- M O D A L   S I G N - I N    -->
+		<!-- M O D A L   S I G N - I N  - - - - - - - - - - - - - - - - - - - -  -->
 		<div class="modal fade" tabindex="-1" role="dialog" id="modalSignIn" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content rounded-4 shadow">
@@ -210,38 +209,37 @@
 		<main class="main-container" id="mainContainer">
 			<!--HERE WE MUST CREATE NEW DIVS OR SECTION WITH DISPLAY:NONE SO AFTER THAT WE WILL SHOW THEM -->
 			<div id="generalContainer" class="general-container">
-				<div class="month">
+				<!-- <div class="month">
 					<i id="prevMonth" class="fa fa-angle-left prev"></i>
 					<span id="month" class="date">MONTH</span>
 					<span id="year"></span>
 					<i id="nextMonth" class="fa fa-angle-right next"></i>
-				</div>
-				<div class="week">
+				</div> -->
+				<!-- <div class="week">
 					<div class="div-text-week">
-						<p>Monday</p>
+						<p class="week-days">Monday</p>
 					</div>
 					<div class="div-text-week">
-						<p>Tuesday</p>
+						<p class="week-days">Tuesday</p>
 					</div>
 					<div class="div-text-week">
-						<p>Wednesday</p>
+						<p class="week-days">Wednesday</p>
 					</div>
 					<div class="div-text-week">
-						<p>Thursday</p>
+						<p class="week-days">Thursday</p>
 					</div>
 					<div class="div-text-week">
-						<p>Friday</p>
+						<p class="week-days">Friday</p>
 					</div>
 					<div class="div-text-week">
-						<p>Saturday</p>
+						<p class="week-days">Saturday</p>
 					</div>
 					<div class="div-text-week">
-						<p>Sunday</p>
+						<p class="week-days">Sunday</p>
 					</div>
-				</div>
-				<div class="days" id="daysContainer">
-					<!-- <div class="day">1</div> -->
-				</div>
+				</div> -->
+				<!-- <div class="days" id="daysContainer">
+				</div>  -->
 			</div>
       <!-- MODAL FOR HELP SECTION, HOW TO CREATE AN EVENT -->
       <div class="modal fade" id="createModalInfo" tabindex="-1" aria-labelledby="createModalInfo" aria-hidden="true">

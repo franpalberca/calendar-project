@@ -1,224 +1,271 @@
-import {recreateEvents} from './recreateEvents.js';
+import { recreateEvents } from "./recreateEvents.js";
 export function initializeCalendar() {
-	let currentDate = new Date();
-	let currentDay = currentDate.getDate();
-	let monthNumber = currentDate.getMonth();
-	let actualMonth = currentDate.getMonth();
-	let currentYear = currentDate.getFullYear();
-	let actualYear = currentDate.getFullYear();
+  let currentDate = new Date();
+  let currentDay = currentDate.getDate();
+  let monthNumber = currentDate.getMonth();
+  let actualMonth = currentDate.getMonth();
+  let currentYear = currentDate.getFullYear();
+  let actualYear = currentDate.getFullYear();
 
-	const daysContainer = document.querySelector('#daysContainer') as HTMLElement;
-	const month = document.querySelector('#month') as HTMLTimeElement;
-	const year = document.querySelector('#year') as HTMLTimeElement;
-	const prevMonthDom = document.querySelector('#prevMonth') as HTMLButtonElement;
-	const nextMonthDom = document.querySelector('#nextMonth') as HTMLButtonElement;
-	const btnToday = document.querySelector('#btnToday') as HTMLButtonElement;
-	const calendar = document.querySelector('#generalContainer') as HTMLDivElement;
+  const month = document.querySelector("#month") as HTMLTimeElement;
+  const year = document.querySelector("#year") as HTMLTimeElement;
+  const prevMonthDom = document.querySelector("#prevMonth") as HTMLButtonElement;
+  const nextMonthDom = document.querySelector("#nextMonth") as HTMLButtonElement;
+  const btnToday = document.querySelector("#btnToday") as HTMLButtonElement;
+  const calendar = document.querySelector("#generalContainer") as HTMLDivElement;
 
-	setNewDate();
+  
+  // Create the div element with class "month"
+  if (calendar) {
+    const monthDiv = document.createElement("div");
+    monthDiv.classList.add("month");
+    calendar.appendChild(monthDiv);
+    // Create child elements of div with class "month"
+    const prevMonthIcon = document.createElement("i");
+    prevMonthIcon.id = "prevMonth";
+    prevMonthIcon.classList.add("fa", "fa-angle-left", "prev");
+    monthDiv.appendChild(prevMonthIcon);
 
-	function writeMonth(month: number) {
-		if (daysContainer) {
-			while (daysContainer.firstChild) {
-				daysContainer.firstChild.remove(); // TO ELIMINATE EXISTING DAYS
-			}
+    const monthSpan = document.createElement("span");
+    monthSpan.id = "month";
+    monthSpan.classList.add("date");
+    monthSpan.textContent = "MONTH";
+    monthDiv.appendChild(monthSpan);
 
-			const previousMonthdaysContainer = getTotaldaysContainer(monthNumber - 1);
-			const currentMonthdaysContainer = getTotaldaysContainer(month);
-			const startDayIndex = startDay();
+    const yearSpan = document.createElement("span");
+    yearSpan.id = "year";
+    monthDiv.appendChild(yearSpan);
 
-			// PRINT THE PREVIOUS DAYS INTO THE FIRST DAY OF CURRENT MONTH
-			for (let i = previousMonthdaysContainer - startDayIndex + 1; i <= previousMonthdaysContainer; i++) {
-				const dayElement = document.createElement('div');
-				dayElement.classList.add('day', 'previous-month');
-				dayElement.setAttribute('id', `day${i}`);
-				dayElement.addEventListener('click', () => {
-					dayElement.style.overflow = 'visible';
-					setTimeout(() => {
-						dayElement.style.overflow = 'hidden';
-					}, 10000);
-				});
+    const nextMonthIcon = document.createElement("i");
+    nextMonthIcon.id = "nextMonth";
+    nextMonthIcon.classList.add("fa", "fa-angle-right", "next");
+    monthDiv.appendChild(nextMonthIcon);
 
-				daysContainer.appendChild(dayElement);
-				const numberDay = document.createElement('p');
-				numberDay.setAttribute('class', 'ms-2 mb-0');
-				numberDay.textContent = i.toString();
-				dayElement.appendChild(numberDay);
-			}
+    const weekTotalDays: string[] = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
+    const weekDivContainer = document.createElement("div");
+    weekDivContainer.classList.add("week");
+    calendar.appendChild(weekDivContainer);
 
-			// PRINT EVERY DAY OF CURRENT MONTH
-			for (let i = 1; i <= currentMonthdaysContainer; i++) {
-				const dayElement = document.createElement('div');
-				dayElement.classList.add('day');
-				dayElement.setAttribute('id', `day${i}`);
-				dayElement.addEventListener('click', () => {
-					dayElement.style.overflow = 'visible';
-					setTimeout(() => {
-						dayElement.style.overflow = 'hidden';
-					}, 10000);
-				});
+    weekTotalDays.forEach((element) => {
+      const divTextWeek = document.createElement("div");
+      divTextWeek.classList.add("div-text-week");
+      weekDivContainer.appendChild(divTextWeek);
+      const weekDay = document.createElement("p");
+      weekDay.classList.add("week-days");
+      weekDay.textContent = element;
+      divTextWeek.appendChild(weekDay);
+    });
+    const daysDivContainer = document.createElement("div");
+    daysDivContainer.classList.add("days");
+    daysDivContainer.setAttribute("id", "daysContainer");
+    calendar.appendChild(daysDivContainer);
+  
 
-				let paddedMonth = monthNumber + 1;
+  function writeMonth(month: number) {
+    const daysContainer = document.querySelector("#daysContainer") as HTMLDivElement;
+    if (daysContainer) {
+      while (daysContainer.firstChild) {
+        daysContainer.firstChild.remove(); // TO ELIMINATE EXISTING DAYS
+      }
 
-				let dateAttribute = `${currentYear}-${paddedMonth}-${i}`;
-				const toISODate: string = new Date(dateAttribute).toISOString().slice(0, 10);
+      const previousMonthdaysContainer = getTotaldaysContainer(monthNumber - 1);
+      const currentMonthdaysContainer = getTotaldaysContainer(month);
+      const startDayIndex = startDay();
 
-				const numberDay = document.createElement('p');
-				numberDay.setAttribute('class', 'd-flex ms-2 mb-0 align-items-center');
-				numberDay.textContent = i.toString();
-				dayElement.appendChild(numberDay);
+      // PRINT THE PREVIOUS DAYS INTO THE FIRST DAY OF CURRENT MONTH
+      for (let i = previousMonthdaysContainer - startDayIndex + 1; i <= previousMonthdaysContainer; i++) {
+        const dayElement = document.createElement("div");
+        dayElement.classList.add("day", "previous-month");
+        dayElement.setAttribute("id", `day${i}`);
+        dayElement.addEventListener("click", () => {
+          dayElement.style.overflow = "visible";
+          setTimeout(() => {
+            dayElement.style.overflow = "hidden";
+          }, 10000);
+        });
 
-				const dayEventContainer = document.createElement('div');
-				dayEventContainer.setAttribute('class', 'container overflow-auto mh-75');
-				dayEventContainer.setAttribute('data-dayNumber', toISODate);
+        daysContainer.appendChild(dayElement);
+        const numberDay = document.createElement("p");
+        numberDay.setAttribute("class", "ms-2 mb-0");
+        numberDay.textContent = i.toString();
+        dayElement.appendChild(numberDay);
+      }
 
-				dayElement.appendChild(dayEventContainer);
+      // PRINT EVERY DAY OF CURRENT MONTH
+      for (let i = 1; i <= currentMonthdaysContainer; i++) {
+        const dayElement = document.createElement("div");
+        dayElement.classList.add("day");
+        dayElement.setAttribute("id", `day${i}`);
+        //dayElement.setAttribute("class", "rounded-1");
+        dayElement.addEventListener("click", () => {
+          dayElement.style.overflow = "visible";
+          setTimeout(() => {
+            dayElement.style.overflow = "hidden";
+          }, 10000);
+        });
 
-				const addButtonDiv = document.createElement('div');
-				addButtonDiv.classList.add('add-button-container');
-				numberDay.appendChild(addButtonDiv);
+        let paddedMonth = monthNumber + 1;
 
-				const addButton = document.createElement('button');
-				addButton.classList.add('hover-button');
-				addButton.setAttribute('data-today', toISODate);
-				addButton.addEventListener('click', (event: MouseEvent) => {
-					if (event.target) {
-						const targetDay = event.currentTarget as HTMLElement;
-						const dayData = targetDay.getAttribute('data-today') as string;
-						const startDate = document.querySelector('#startDate') as HTMLInputElement;
-						if (startDate) {
-							startDate.value = `${dayData}T12:00`;
-						}
-					}
-				});
-				addButtonDiv.appendChild(addButton);
+        let dateAttribute = `${currentYear}-${paddedMonth}-${i}`;
+        const toISODate: string = new Date(dateAttribute).toISOString().slice(0, 10);
 
-				const addButtonSpan = document.createElement('span');
-				addButtonSpan.classList.add('plus-icon');
-				addButtonSpan.setAttribute('data-bs-toggle', 'modal');
-				addButtonSpan.setAttribute('data-bs-target', '#eventModal');
-				addButtonSpan.textContent = '+';
-				addButton.appendChild(addButtonSpan);
+        const numberDay = document.createElement("p");
+        numberDay.setAttribute("class", "d-flex ms-2 mb-0 align-items-center");
+        numberDay.textContent = i.toString();
+        dayElement.appendChild(numberDay);
 
-				//	const dayEvent = document.createElement("div");
-				//	dayEvent.setAttribute("class","row d-flex justify-content-center bg-info bg-gradient mb-1");
-				//	dayEvent.setAttribute("style","font-size: 10px; color: black;");
-				//	dayEvent.innerText = "testing";
-				//
-				//	dayEventContainer.appendChild(dayEvent);
-				const targetYear = year.innerText;
-				const todayYear = actualYear.toString();
-				if (i === currentDay && month === actualMonth && todayYear === targetYear) {
-					dayElement.classList.add('today');
-				}
-				daysContainer.appendChild(dayElement);
-			}
-			// PRINT THE NEXT DAYS AT THE END OF THE CALENDAR
-			const remainingNextDays = 7 - ((startDayIndex + currentMonthdaysContainer) % 7);
+        const dayEventContainer = document.createElement("div");
+        dayEventContainer.setAttribute("class", "container overflow-auto mh-75");
+        dayEventContainer.setAttribute("data-dayNumber", toISODate);
 
-			for (let i = 1; i <= remainingNextDays; i++) {
-				const dayElement = document.createElement('div');
-				dayElement.classList.add('day', 'next-month');
-				daysContainer.appendChild(dayElement);
-				dayElement.setAttribute('id', `day${i}`);
-				dayElement.addEventListener('click', () => {
-					dayElement.style.overflow = 'visible';
-					setTimeout(() => {
-						dayElement.style.overflow = 'hidden';
-					}, 10000);
-				});
-				const numberDay = document.createElement('p');
-				numberDay.setAttribute('class', 'ms-2 mb-0');
-				numberDay.textContent = i.toString();
-				dayElement.appendChild(numberDay);
-			}
-		}
-	}
+        dayElement.appendChild(dayEventContainer);
 
-	function getTotaldaysContainer(month: number): number {
-		if (month === -1) month = 11;
+        const addButtonDiv = document.createElement("div");
+        addButtonDiv.classList.add("add-button-container");
+        numberDay.appendChild(addButtonDiv);
 
-		if (month == 0 || month == 2 || month == 4 || month == 6 || month == 7 || month == 9 || month == 11) {
-			return 31;
-		} else if (month == 3 || month == 5 || month == 8 || month == 10) {
-			return 30;
-		} else {
-			return isLeap() ? 29 : 28;
-		}
-	}
-	function isLeap(): boolean {
-		return (currentYear % 100 !== 0 && currentYear % 4 === 0) || currentYear % 400 === 0;
-	}
+        const addButton = document.createElement("button");
+        addButton.classList.add("hover-button");
+        addButton.setAttribute("data-today", toISODate);
+        addButton.addEventListener("click", (event: MouseEvent) => {
+          if (event.target) {
+            const targetDay = event.currentTarget as HTMLElement;
+            const dayData = targetDay.getAttribute("data-today") as string;
+            const startDate = document.querySelector("#startDate") as HTMLInputElement;
+            if (startDate) {
+              startDate.value = `${dayData}T12:00`;
+            }
+          }
+        });
+        addButtonDiv.appendChild(addButton);
 
-	function startDay(): number {
-		const start = new Date(currentYear, monthNumber, 1);
-		return start.getDay() === 0 ? 6 : start.getDay() - 1;
-	}
+        const addButtonSpan = document.createElement("span");
+        addButtonSpan.classList.add("plus-icon");
+        addButtonSpan.setAttribute("data-bs-toggle", "modal");
+        addButtonSpan.setAttribute("data-bs-target", "#eventModal");
+        addButtonSpan.textContent = "+";
+        addButton.appendChild(addButtonSpan);
 
-	function lastMonth() {
-		if (monthNumber !== 0) {
-			monthNumber--;
-		} else {
-			monthNumber = 11;
-			currentYear--;
-		}
-		setNewDate();
-		calendar.classList.add('tearing-effect-lastMont');
+        //	const dayEvent = document.createElement("div");
+        //	dayEvent.setAttribute("class","row d-flex justify-content-center bg-info bg-gradient mb-1");
+        //	dayEvent.setAttribute("style","font-size: 10px; color: black;");
+        //	dayEvent.innerText = "testing";
+        //
+        //	dayEventContainer.appendChild(dayEvent);
+        const targetYear = year.innerText;
+        const todayYear = actualYear.toString();
+        if (i === currentDay && month === actualMonth && todayYear === targetYear) {
+          dayElement.classList.add("today");
+        }
+        daysContainer.appendChild(dayElement);
+      }
+      // PRINT THE NEXT DAYS AT THE END OF THE CALENDAR
+      const remainingNextDays = 7 - ((startDayIndex + currentMonthdaysContainer) % 7);
 
-		setTimeout(() => {
-			calendar.classList.remove('tearing-effect-lastMont');
-		}, 600);
-	}
+      for (let i = 1; i <= remainingNextDays; i++) {
+        const dayElement = document.createElement("div");
+        dayElement.classList.add("day", "next-month");
+        daysContainer.appendChild(dayElement);
+        dayElement.setAttribute("id", `day${i}`);
+        dayElement.addEventListener("click", () => {
+          dayElement.style.overflow = "visible";
+          setTimeout(() => {
+            dayElement.style.overflow = "hidden";
+          }, 10000);
+        });
+        const numberDay = document.createElement("p");
+        numberDay.setAttribute("class", "ms-2 mb-0");
+        numberDay.textContent = i.toString();
+        dayElement.appendChild(numberDay);
+      }
+    }
+  }
+  writeMonth(monthNumber);
 
-	function nextMonth() {
-		if (monthNumber !== 11) {
-			monthNumber++;
-		} else {
-			monthNumber = 0;
-			currentYear++;
-		}
-		setNewDate();
-		calendar.classList.add('tearing-effect-nextMonth');
+  function getTotaldaysContainer(month: number): number {
+    if (month === -1) month = 11;
 
-		setTimeout(() => {
-			calendar.classList.remove('tearing-effect-nextMonth');
-		}, 600);
-	}
+    if (month == 0 || month == 2 || month == 4 || month == 6 || month == 7 || month == 9 || month == 11) {
+      return 31;
+    } else if (month == 3 || month == 5 || month == 8 || month == 10) {
+      return 30;
+    } else {
+      return isLeap() ? 29 : 28;
+    }
+  }
+  function isLeap(): boolean {
+    return (currentYear % 100 !== 0 && currentYear % 4 === 0) || currentYear % 400 === 0;
+  }
 
-	function setNewDate(): void {
-		const userLanguage = navigator.language;
-		const actualMonthDate = new Date(currentYear, monthNumber, 1); // Utiliza el primer día del mes
-		const actualMonth = new Intl.DateTimeFormat(userLanguage, {month: 'long'}).format(actualMonthDate);
+  function startDay(): number {
+    const start = new Date(currentYear, monthNumber, 1);
+    return start.getDay() === 0 ? 6 : start.getDay() - 1;
+  }
 
-		if (month) {
-			month.textContent = actualMonth;
-		}
+  function lastMonth() {
+    if (monthNumber !== 0) {
+      monthNumber--;
+    } else {
+      monthNumber = 11;
+      currentYear--;
+    }
+    setNewDate();
+    calendar.classList.add("tearing-effect-lastMont");
 
-		if (year) {
-			year.textContent = currentYear.toString();
-		}
+    setTimeout(() => {
+      calendar.classList.remove("tearing-effect-lastMont");
+    }, 600);
+  }
 
-		writeMonth(monthNumber);
-	}
+  function nextMonth() {
+    if (monthNumber !== 11) {
+      monthNumber++;
+    } else {
+      monthNumber = 0;
+      currentYear++;
+    }
+    setNewDate();
+    calendar.classList.add("tearing-effect-nextMonth");
 
-	prevMonthDom.addEventListener('click', lastMonth);
-	nextMonthDom.addEventListener('click', nextMonth);
-	btnToday.addEventListener('click', () => {
-		const today = new Date();
-		const todayMonth = today.getMonth();
-		const todayYear = today.getFullYear();
+    setTimeout(() => {
+      calendar.classList.remove("tearing-effect-nextMonth");
+    }, 600);
+  }
 
-		if (monthNumber !== todayMonth || currentYear !== todayYear) {
-			currentYear = todayYear;
-			monthNumber = todayMonth;
+  function setNewDate(): void {
+    const actualMonthDate = new Date(currentYear, monthNumber, 1); // Use the first day of the month
 
-			if (month && year) {
-				month.textContent = new Intl.DateTimeFormat(navigator.language, {month: 'long'}).format(today);
-				year.textContent = currentYear.toString();
-			}
+    if (month) {
+      month.textContent = new Intl.DateTimeFormat(navigator.language, { month: "long" }).format(actualMonthDate);
+    }
 
-			writeMonth(monthNumber);
-			recreateEvents();
-		}
-	});
+    if (year) {
+      year.textContent = currentYear.toString();
+    }
+
+    writeMonth(monthNumber);
+  }
+  setNewDate();
+
+  prevMonthDom.addEventListener("click", lastMonth);
+  nextMonthDom.addEventListener("click", nextMonth);
+  btnToday.addEventListener("click", () => {
+    const today = new Date();
+    const todayMonth = today.getMonth();
+    const todayYear = today.getFullYear();
+
+    if (monthNumber !== todayMonth || currentYear !== todayYear) {
+      currentYear = todayYear;
+      monthNumber = todayMonth;
+
+      if (month && year) {
+        month.textContent = new Intl.DateTimeFormat(navigator.language, { month: "long" }).format(today);
+        year.textContent = currentYear.toString();
+      }
+
+      writeMonth(monthNumber);
+      recreateEvents();
+    }
+  });
+}
 }
