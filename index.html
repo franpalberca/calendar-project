@@ -61,7 +61,7 @@
             <p id="eventReminderModal"></p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" id="modifyEventModal">Modify event</button>
+            <button type="button" class="btn btn-secondary" id="modifyEventModal" data-bs-toggle="modal" data-bs-target="#eventModal">Modify event</button>
             <button type="button" class="btn btn-primary" id="deleteEventModal">Delete event</button>
           </div>
         </div>
@@ -74,7 +74,7 @@
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h1 class="modal-title fs-5">Create Event</h1>
+						<h1 class="modal-title fs-5" id="createEventModalTittle">Create Event</h1>
 						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
 					<div class="modal-body">
@@ -363,8 +363,8 @@
 					</li>
 				</ul>
 			</div>
-			
-			
+
+
 			<ul class="nav col-md-6 justify-content-end">
 				<li class="nav-item">
 					<a href="#" class="nav-link text-body-secondary">Top of the Page</a>
@@ -372,7 +372,7 @@
 				<li class="nav-item ">
 					<button class="nav-link px-2 text-body-secondary" id="weatherBtn" data-bs-toggle="modal" data-bs-target="#climateModal">Today's weather</button>
 				</li>
-				
+
 			</ul>
 		</footer>
 	</body>
