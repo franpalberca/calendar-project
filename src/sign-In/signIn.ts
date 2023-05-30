@@ -131,6 +131,7 @@ export function logInBtnClick() {
       return;
     }
     localStorage.setItem("userName", userName);
+    localStorage.setItem("email", email);
     // modalSignIn.classList.remove("show");
     modalSignIn.classList.add("modal")
     

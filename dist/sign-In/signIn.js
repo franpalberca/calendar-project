@@ -98,6 +98,7 @@ function logIn() {
             return;
         }
         localStorage.setItem("userName", userName);
+        localStorage.setItem("email", email);
         modalSignIn.classList.add("modal");
         console.log(userInput.value, emailInput.value);
         const signInOutLi = document.getElementById("signInOutLi");

@@ -1,9 +1,9 @@
-// import {modal} '../../css/b'
+// //import {modal} '../../css/b'
 // const howToDeleteEventsBtn = document.querySelector("#deleteEventsBtn") as HTMLButtonElement;
 // const modalEventHowToCreate = document.querySelector("#createModalInfo") as HTMLDivElement;
 // const modalEventHowToDetete = document.querySelector("#deleteModalInfo") as HTMLDivElement;
 // const bodyContainer = document.querySelector("#bodyContainer") as HTMLBodyElement;
-//const modalEventHowToCreate = new bootstrap.Modal('#createModalInfo',{
+// const modalEventHowToCreate = new bootstrap.Modal('#createModalInfo',{
 //   keyboard: true,
 //   backdrop:'static'
 // })
