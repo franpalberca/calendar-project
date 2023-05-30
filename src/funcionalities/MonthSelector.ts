@@ -5,42 +5,44 @@ export function initializeCalendar() {
   let monthNumber = currentDate.getMonth();
   let actualMonth = currentDate.getMonth();
   let currentYear = currentDate.getFullYear();
-  let actualYear = currentDate.getFullYear();
-
-  const month = document.querySelector("#month") as HTMLTimeElement;
-  const year = document.querySelector("#year") as HTMLTimeElement;
-  const prevMonthDom = document.querySelector("#prevMonth") as HTMLButtonElement;
-  const nextMonthDom = document.querySelector("#nextMonth") as HTMLButtonElement;
-  const btnToday = document.querySelector("#btnToday") as HTMLButtonElement;
-  const calendar = document.querySelector("#generalContainer") as HTMLDivElement;
-
+  let actualYear = currentDate.getFullYear();  
   
+  // Global variables
+  const btnToday = document.querySelector("#btnToday") as HTMLButtonElement;  
+  const mainContainer = document.querySelector("#mainContainer") as HTMLDivElement;
+  const calendar = document.createElement("div") as HTMLDivElement;
+  calendar.classList.add("general-container");
+  calendar.id = "generalContainer";
+  mainContainer.appendChild(calendar)
+
   // Create the div element with class "month"
-  if (calendar) {
+  
     const monthDiv = document.createElement("div");
     monthDiv.classList.add("month");
     calendar.appendChild(monthDiv);
     // Create child elements of div with class "month"
-    const prevMonthIcon = document.createElement("i");
-    prevMonthIcon.id = "prevMonth";
-    prevMonthIcon.classList.add("fa", "fa-angle-left", "prev");
-    monthDiv.appendChild(prevMonthIcon);
+    const prevMonthDom = document.createElement("i");
+    prevMonthDom.id = "prevMonth";
+    prevMonthDom.setAttribute("class", "bi bi-chevron-left") ;
+    monthDiv.appendChild(prevMonthDom);
 
-    const monthSpan = document.createElement("span");
-    monthSpan.id = "month";
-    monthSpan.classList.add("date");
-    monthSpan.textContent = "MONTH";
-    monthDiv.appendChild(monthSpan);
+    const month = document.createElement("span");
+    month.id = "month";
+    month.classList.add("date");
+    month.textContent = "MONTH";
+    monthDiv.appendChild(month);
 
-    const yearSpan = document.createElement("span");
-    yearSpan.id = "year";
-    monthDiv.appendChild(yearSpan);
+    const year = document.createElement("span");
+    year.id = "year";
+    monthDiv.appendChild(year);
 
-    const nextMonthIcon = document.createElement("i");
-    nextMonthIcon.id = "nextMonth";
-    nextMonthIcon.classList.add("fa", "fa-angle-right", "next");
-    monthDiv.appendChild(nextMonthIcon);
+    const nextMonthDom = document.createElement("i");
+    nextMonthDom.id = "nextMonth";
+    nextMonthDom.setAttribute("class", "bi bi-chevron-right");
+    monthDiv.appendChild(nextMonthDom);
+  
 
+  function createWeekDays() {
     const weekTotalDays: string[] = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
     const weekDivContainer = document.createElement("div");
     weekDivContainer.classList.add("week");
@@ -59,11 +61,14 @@ export function initializeCalendar() {
     daysDivContainer.classList.add("days");
     daysDivContainer.setAttribute("id", "daysContainer");
     calendar.appendChild(daysDivContainer);
-  
+  }
+  createWeekDays();
+  const daysContainer = document.querySelector("#daysContainer") as HTMLDivElement;
 
   function writeMonth(month: number) {
-    const daysContainer = document.querySelector("#daysContainer") as HTMLDivElement;
+
     if (daysContainer) {
+      console.log("probando");
       while (daysContainer.firstChild) {
         daysContainer.firstChild.remove(); // TO ELIMINATE EXISTING DAYS
       }
@@ -110,7 +115,7 @@ export function initializeCalendar() {
         const toISODate: string = new Date(dateAttribute).toISOString().slice(0, 10);
 
         const numberDay = document.createElement("p");
-        numberDay.setAttribute("class", "d-flex ms-2 mb-0 align-items-center");
+        numberDay.setAttribute("class", "d-flex px-2 mb-0 align-items-center justify-content-between");
         numberDay.textContent = i.toString();
         dayElement.appendChild(numberDay);
 
@@ -146,12 +151,7 @@ export function initializeCalendar() {
         addButtonSpan.textContent = "+";
         addButton.appendChild(addButtonSpan);
 
-        //	const dayEvent = document.createElement("div");
-        //	dayEvent.setAttribute("class","row d-flex justify-content-center bg-info bg-gradient mb-1");
-        //	dayEvent.setAttribute("style","font-size: 10px; color: black;");
-        //	dayEvent.innerText = "testing";
-        //
-        //	dayEventContainer.appendChild(dayEvent);
+        
         const targetYear = year.innerText;
         const todayYear = actualYear.toString();
         if (i === currentDay && month === actualMonth && todayYear === targetYear) {
@@ -267,5 +267,4 @@ export function initializeCalendar() {
       recreateEvents();
     }
   });
-}
 }

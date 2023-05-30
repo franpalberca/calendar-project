@@ -1,50 +1,58 @@
 <!DOCTYPE html>
 <html lang="en" id="htmlTheme">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="./css/bootstrap.css" />
-		<link rel="stylesheet" href="style.css" />
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
-		<link rel="shortcut icon" href="img/icons/calendar-icon.png" type="image/x-icon" />
-		<script type="module" src="./dist/starter.js"></script>
-		<script src="https://unpkg.com/@popperjs/core@2" defer></script>
-		<script src="./js/bootstrap.js" defer></script>
-		<script src="https://kit.fontawesome.com/d9005a0d59.js" crossorigin="anonymous" defer></script>
-		<title>Lovelace Calendar</title>
-	</head>	
-	<body id="bodyContainer" class="body-container">
-		<!-- - - - - - H E A D E R  - - - - - - -  -->
-		<header class="d-flex container flex-wrap justify-content-center align-items-center py-3 mb-4 border-bottom header-css">
-			<nav class="navbar navbar-expand-md">
-				<a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto navbar-brand link-body-emphasis text-decoration-none link-calendar-btn">
-					<h1 class="title-page mr-3">Calendar</h1>
-				</a>
-				<button id="navbarToggleBtn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navBarNav">
-					<ul class="nav nav-pills header-btn" data-toggle="buttons">
-						<li class="nav-item">
-							<button class="nav-link btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#eventModal" data-toggle="button" aria-pressed="false" autocomplete="off">+ Add event</button>
-						</li>
-						<li class="nav-item">
-							<button id="btnToday" data-bs-target="#todaySearch" class="nav-link btn btn-outline-primary" aria-current="page">Today</button>
-						</li>
-						<li class="nav-item">
-							<button class="nav-link btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target=".btn-help">Help</button>
-							<ul class="btn-help collapse">
-								<li class="event-item"><button class="btn btn-outline-secondary" id="createEventsBtn" data-bs-toggle="modal" data-bs-target="#createModalInfo">Create and Manage Events</button></li> 
-								<li class="event-item"><button class="btn btn-outline-secondary" id="deleteEventsBtn" data-bs-toggle="modal" data-bs-target="#deleteModalInfo">Delete Events</button></li>
-							</ul>
-						</li>
-						<li class="nav-item" id="signInOutLi"></li>
-					</ul>
-				</div>
-			</nav>
-		</header>
-    <!--M O D A L   F O R   C H E C K I N G    D E T A I L S  ON  E V E NT S - - - - - --->
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+    <link rel="shortcut icon" href="img/icons/calendar-icon.png" type="image/x-icon" />
+    <script type="module" src="./dist/starter.js"></script>
+    <script src="https://unpkg.com/@popperjs/core@2" defer></script>
+    <script src="./js/bootstrap.js" defer></script>
+    <!-- <script src="https://kit.fontawesome.com/d9005a0d59.js" crossorigin="anonymous" defer></script> -->
+    <title>Lovelace Calendar</title>
+  </head>
+  <body id="bodyContainer" class="body-container">
+ <!-- - - - - - H E A D E R  - - - - - - - - - - - - - - - - - - - - - - - - - - -  --->
+    <header class="d-flex container flex-wrap justify-content-center align-items-center py-3 mb-4 border-bottom header-css">
+      <nav class="navbar navbar-expand-md">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto navbar-brand link-body-emphasis text-decoration-none link-calendar-btn">
+          <h1 class="title-page mr-3">Calendar</h1>
+        </a>
+        <button
+          id="navbarToggleBtn"
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navBarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navBarNav">
+          <ul class="nav nav-pills header-btn" data-toggle="buttons">
+            <li class="nav-item">
+              <button class="nav-link btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#eventModal" data-toggle="button" aria-pressed="false" autocomplete="off">+ Add event</button>
+            </li>
+            <li class="nav-item">
+              <button id="btnToday" data-bs-target="#todaySearch" class="nav-link btn btn-outline-primary" aria-current="page">Today</button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target=".btn-help">Help</button>
+              <ul class="btn-help collapse">
+                <li class="event-item"><button class="btn btn-outline-secondary" id="createEventsBtn" data-bs-toggle="modal" data-bs-target="#createModalInfo">Create and Manage Events</button></li>
+                <li class="event-item"><button class="btn btn-outline-secondary" id="deleteEventsBtn" data-bs-toggle="modal" data-bs-target="#deleteModalInfo">Delete Events</button></li>
+              </ul>
+            </li>
+            <li class="nav-item" id="signInOutLi"></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+ <!--M O D A L   F O R   C H E C K I N G    D E T A I L S  ON  E V E NT S - - - - - ---->
     <div class="modal fade" id="eventDetailsModal" tabindex="-1" aria-labelledby="eventDetailsModal" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -66,200 +74,169 @@
         </div>
       </div>
     </div>
-
-		<!-- C R E A T E    M O D A L   E V E N T - - - - - - - - - - - - - - - --->
-		
-		<div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModal" aria-hidden="false">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h1 class="modal-title fs-5" id="createEventModalTittle">Create Event</h1>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-						<form class="container" id="createEventForm">
-							<div class="row">
-								<div class="col-md-6">
-									<div class="mb-3">
-										<label for="modalTitle" class="form-label">Title</label>
-										<input type="text" id="modalTitle" name="title" maxlength="60" class="form-control" />
-									</div>
-									<div class="mb-3">
-										<label for="startDate" class="form-label">Start date</label>
-										<input type="datetime-local" id="startDate" name="date-start" class="form-control" />
-									</div>
-									<div class="mb-3 form-check">
-										<input type="checkbox" name="End date" id="dateEndCheck" class="form-check-input" />
-										<label for="dateEndCheck" class="form-check-label">Finish</label>
-									</div>
-									<div class="mb-3 d-none" id="reminderBox">
-										<label for="finishDate" class="form-label">End date</label>
-										<input type="datetime-local" id="finishDate" name="date-finish" class="form-control" />
-									</div>
-									<div class="mb-3 form-check">
-										<input type="checkbox" name="Remind me when this event expires" id="reminderCheck" class="form-check-input" />
-										<label for="reminderCheck" class="form-check-label">Remind me when this event expires</label>
-									</div>
-									<div class="input-group mb-3 d-none" id="rememberWhen">
-										<select class="form-select" id="remindMeOpt">
-											<option value="default" selected>Remind me in...</option>
-											<option value="5min">5 minutes</option>
-											<option value="10min">10 minutes</option>
-											<option value="15min">15 minutes</option>
-											<option value="30min">30 minutes</option>
-											<option value="45min">45 minutes</option>
-											<option value="60min">1 hour</option>
-										</select>
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="mb-3">
-										<label for="description" class="form-label">Description</label>
-										<textarea id="description" placeholder="Write something here" name="textarea" rows="10" cols="40" maxlength="500" class="form-control"></textarea>
-									</div>
-									<div class="input-group mb-3">
-										<select class="form-select" id="eventTypeOpt">
-											<option value="default" selected>Select event type...</option>
-											<option value="work" class="work-event">Work</option>
-											<option value="family" class="family-event">Family</option>
-											<option value="friends" class="friends-event">Friends</option>
-											<option value="doctor" class="doctor-event">Doctor</option>
-											<option value="private" class="private-event">Private</option>
-										</select>
-									</div>
-								</div>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeBtn">Close</button>
-								<button type="submit" class="btn btn-primary">Save changes</button>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- C L I M A T E   M O D A L - - - - - - - - - - - - - - - - - - - - - -->
-		<div class="modal fade" id="climateModal" tabindex="-1" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h1 class="modal-title fs-5" id="climateModalLabel">Today's Weather</h1>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-						<h4 class="mb-4 fw-semibold">Location: <span class="fw-light" id="fLocation"></span></h4>
-						<p class="fw-semibold">Temperature: <span class="fw-light" id="fTemperature"></span></p>
-						<p class="fw-semibold">Termic Sensation: <span class="fw-light" id="fTermicSensation"></span></p>
-						<p class="fw-semibold">Preassure: <span class="fw-light" id="fPreasure"></span></p>
-						<p class="fw-semibold">Humidity: <span class="fw-light" id="fHumidity"></span></p>
-						<p class="fw-semibold">Precipitation Chance: <span class="fw-light" id="fPChance"></span></p>
-						<p class="fw-light" style="font-size: 9px">This data updates every 5 minutes.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- M O D A L   S I G N - I N  - - - - - - - - - - - - - - - - - - - -  -->
-		<div class="modal fade" tabindex="-1" role="dialog" id="modalSignIn" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content rounded-4 shadow">
-					<div class="modal-header p-5 pb-4 border-bottom-0">
-						<h1 class="fw-bold mb-0 fs-2">Sign up for free</h1>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body p-5 pt-0">
-						<form class="">
-							<div class="form-floating mb-3">
-								<input type="text" autocomplete="username" class="form-control rounded-3" id="userName" placeholder="Assembler" required minlength="5" maxlength="20" />
-								<label for="userName">User</label>
-							</div>
-							<div class="form-floating mb-3">
-								<input type="email" autocomplete="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com" required />
-								<label for="floatingInput">Email address</label>
-							</div>
-							<div class="form-floating mb-3">
-								<input type="password" autocomplete="new-password" class="form-control rounded-3" id="floatingPassword1" placeholder="Password" required />
-								<span id="show-password1"><i class="bi bi-eye-slash" id="eye1"></i> </span>
-								<label for="floatingPassword1">Password </label>
-							</div>
-							<div class="form-floating mb-3">
-								<input type="password" autocomplete="current-password" class="form-control rounded-3" id="floatingPassword2" placeholder="Password" required />
-								<label for="floatingPassword2">Confirm password</label>
-								<span id="show-password2">
-									<i class="bi bi-eye-slash" id="eye2"></i>
-								</span>
-							</div>
-							<button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary disabled" type="submit" id="signInButton" data-bs-dismiss="modal" >Sign up</button>
-							<small class="text-body-secondary">By clicking Sign up, you agree to the terms of use. Or you can continue as guest:</small>
-							<button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="submit" id="signOutBtn">Continue as guest</button>
-							<hr class="my-4" />
-							<h2 class="fs-5 fw-bold mb-3">Or use a third-party</h2>
-							<button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="submit">
-								<i class="bi bi-google"></i>
-								Sign up with Google
-							</button>
-							<button class="w-100 py-2 mb-2 btn btn-outline-primary rounded-3" type="submit" id="signInFacebook">
-								<i class="bi bi-facebook"></i>
-								Sign up with Facebook
-							</button>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-		<main class="main-container" id="mainContainer">
-			<!--HERE WE MUST CREATE NEW DIVS OR SECTION WITH DISPLAY:NONE SO AFTER THAT WE WILL SHOW THEM -->
-			<div id="generalContainer" class="general-container">
-				<!-- <div class="month">
-					<i id="prevMonth" class="fa fa-angle-left prev"></i>
-					<span id="month" class="date">MONTH</span>
-					<span id="year"></span>
-					<i id="nextMonth" class="fa fa-angle-right next"></i>
-				</div> -->
-				<!-- <div class="week">
-					<div class="div-text-week">
-						<p class="week-days">Monday</p>
-					</div>
-					<div class="div-text-week">
-						<p class="week-days">Tuesday</p>
-					</div>
-					<div class="div-text-week">
-						<p class="week-days">Wednesday</p>
-					</div>
-					<div class="div-text-week">
-						<p class="week-days">Thursday</p>
-					</div>
-					<div class="div-text-week">
-						<p class="week-days">Friday</p>
-					</div>
-					<div class="div-text-week">
-						<p class="week-days">Saturday</p>
-					</div>
-					<div class="div-text-week">
-						<p class="week-days">Sunday</p>
-					</div>
-				</div> -->
-				<!-- <div class="days" id="daysContainer">
-				</div>  -->
-			</div>
-      <!-- MODAL FOR HELP SECTION, HOW TO CREATE AN EVENT -->
-      <div class="modal fade" id="createModalInfo" tabindex="-1" aria-labelledby="createModalInfo" aria-hidden="true">
-        <div class="modal-dialog"> 
-           <div class="modal-content">
+ <!-- C R E A T E    M O D A L   E V E N T  - - - - - - - - - - - - - - - - - - - - ---->
+    <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModal" aria-hidden="false">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="createEventModalTittle">Create Event</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form class="container" id="createEventForm">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label for="modalTitle" class="form-label">Title</label>
+                    <input type="text" id="modalTitle" name="title" maxlength="60" class="form-control" />
+                  </div>
+                  <div class="mb-3">
+                    <label for="startDate" class="form-label">Start date</label>
+                    <input type="datetime-local" id="startDate" name="date-start" class="form-control" />
+                  </div>
+                  <div class="mb-3 form-check">
+                    <input type="checkbox" name="End date" id="dateEndCheck" class="form-check-input" />
+                    <label for="dateEndCheck" class="form-check-label">Finish</label>
+                  </div>
+                  <div class="mb-3 d-none" id="reminderBox">
+                    <label for="finishDate" class="form-label">End date</label>
+                    <input type="datetime-local" id="finishDate" name="date-finish" class="form-control" />
+                  </div>
+                  <div class="mb-3 form-check">
+                    <input type="checkbox" name="Remind me when this event expires" id="reminderCheck" class="form-check-input" />
+                    <label for="reminderCheck" class="form-check-label">Remind me when this event expires</label>
+                  </div>
+                  <div class="input-group mb-3 d-none" id="rememberWhen">
+                    <select class="form-select" id="remindMeOpt">
+                      <option value="default" selected>Remind me in...</option>
+                      <option value="5min">5 minutes</option>
+                      <option value="10min">10 minutes</option>
+                      <option value="15min">15 minutes</option>
+                      <option value="30min">30 minutes</option>
+                      <option value="45min">45 minutes</option>
+                      <option value="60min">1 hour</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea id="description" placeholder="Write something here" name="textarea" rows="10" cols="40" maxlength="500" class="form-control"></textarea>
+                  </div>
+                  <div class="input-group mb-3">
+                    <select class="form-select" id="eventTypeOpt">
+                      <option value="default" selected>Select event type...</option>
+                      <option value="work" class="work-event">Work</option>
+                      <option value="family" class="family-event">Family</option>
+                      <option value="friends" class="friends-event">Friends</option>
+                      <option value="doctor" class="doctor-event">Doctor</option>
+                      <option value="private" class="private-event">Private</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeBtn">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+ <!-- C L I M A T E   M O D A L - - - - - - - - - - - - - - - - - - - - - - - - - --->
+    <div class="modal fade" id="climateModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="climateModalLabel">Today's Weather</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <h4 class="mb-4 fw-semibold">Location: <span class="fw-light" id="fLocation"></span></h4>
+            <p class="fw-semibold">Temperature: <span class="fw-light" id="fTemperature"></span></p>
+            <p class="fw-semibold">Termic Sensation: <span class="fw-light" id="fTermicSensation"></span></p>
+            <p class="fw-semibold">Preassure: <span class="fw-light" id="fPreasure"></span></p>
+            <p class="fw-semibold">Humidity: <span class="fw-light" id="fHumidity"></span></p>
+            <p class="fw-semibold">Precipitation Chance: <span class="fw-light" id="fPChance"></span></p>
+            <p class="fw-light" style="font-size: 9px">This data updates every 5 minutes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+ <!-- M O D A L   S I G N - I N  - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="modalSignIn" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content rounded-4 shadow">
+          <div class="modal-header p-5 pb-4 border-bottom-0">
+            <h1 class="fw-bold mb-0 fs-2">Sign up for free</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body p-5 pt-0">
+            <form class="">
+              <div class="form-floating mb-3">
+                <input type="text" autocomplete="username" class="form-control rounded-3" id="userName" placeholder="Assembler" required minlength="5" maxlength="20" />
+                <label for="userName">User</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="email" autocomplete="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com" required />
+                <label for="floatingInput">Email address</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="password" autocomplete="new-password" class="form-control rounded-3" id="floatingPassword1" placeholder="Password" required />
+                <span id="show-password1"><i class="bi bi-eye-slash" id="eye1"></i> </span>
+                <label for="floatingPassword1">Password </label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="password" autocomplete="current-password" class="form-control rounded-3" id="floatingPassword2" placeholder="Password" required />
+                <label for="floatingPassword2">Confirm password</label>
+                <span id="show-password2">
+                  <i class="bi bi-eye-slash" id="eye2"></i>
+                </span>
+              </div>
+              <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary disabled" type="submit" id="signInButton" data-bs-dismiss="modal">Sign up</button>
+              <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use. Or you can continue as guest:</small>
+              <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="submit" id="signOutBtn">Continue as guest</button>
+              <hr class="my-4" />
+              <h2 class="fs-5 fw-bold mb-3">Or use a third-party</h2>
+              <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="submit">
+                <i class="bi bi-google"></i>
+                Sign up with Google
+              </button>
+              <button class="w-100 py-2 mb-2 btn btn-outline-primary rounded-3" type="submit" id="signInFacebook">
+                <i class="bi bi-facebook"></i>
+                Sign up with Facebook
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+ <!-- M O D A L  F O R  H E L P, H O W  T O  C R E A T E  A N   E V E N T- - - - - - -->
+	<div class="modal fade" id="createModalInfo" tabindex="-1" aria-labelledby="createModalInfo" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title">How to create an event</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <p>If you want to create an event, you have two different options. On one hand, you can click on the "+ Add Event" button and a modal will open to introduce all the information. On the other hand, in each calendar grid you will find a "+" button, which will open the same modal with the default start date of the event you want to add.</p>
-              <p>In addition, you must enter a title and a description for the event, as well as the option to enter an end date and a reminder. Finally, don't forget to select the type of event you are creating. By clicking the "Save changes" button you can save this event to your calendar.</p>
+              <p>
+                If you want to create an event, you have two different options. On one hand, you can click on the "+ Add Event" button and a modal will open to introduce all the information. On the
+                other hand, in each calendar grid you will find a "+" button, which will open the same modal with the default start date of the event you want to add.
+              </p>
+              <p>
+                In addition, you must enter a title and a description for the event, as well as the option to enter an end date and a reminder. Finally, don't forget to select the type of event you
+                are creating. By clicking the "Save changes" button you can save this event to your calendar.
+              </p>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
             </div>
           </div>
         </div>
-      </div> 
-      <!-- MODAL FOR HELP SECTION, HOW TO DELETE AN EVENT -->
+      </div>
+ <!-- M O D A L  F O R  H E L P, H O W  T O   D E L E T E  A N E V E N T - - - - - - -->
       <div class="modal fade" id="deleteModalInfo" tabindex="-1" aria-labelledby="deleteModalInfo" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -269,7 +246,10 @@
             </div>
             <div class="modal-body">
               <p>Do you want to delete an event? Don't worry, it's easy! Just search for your event and once you have found it, hover your mouse over it.</p>
-              <p>Once there, click on the event and a modal will open with all the information. Here you have the option to click on the "Delete Event" button, which will delete the event from your calendar (and also from your Local Storage).</p>
+              <p>
+                Once there, click on the event and a modal will open with all the information. Here you have the option to click on the "Delete Event" button, which will delete the event from your
+                calendar (and also from your Local Storage).
+              </p>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
@@ -277,101 +257,68 @@
           </div>
         </div>
       </div>
-		</main>
-		<!--HERE SOMEONE HAVE TO MODIFY THE FOOTER WITH THE GENERAL REQUERIMENTS (AND EXTRAS IF WANTS TO) -->
-		<footer class="d-flex container flex-wrap justify-content-between  py-3 my-4 border-top">
-			<svg xmlns="http://www.w3.org/2000/svg" style="display: none">
-				<symbol id="check2" viewBox="0 0 16 16">
-					<path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"></path>
-				</symbol>
-				<symbol id="circle-half" viewBox="0 0 16 16">
-					<path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"></path>
-				</symbol>
-				<symbol id="moon-stars-fill" viewBox="0 0 16 16">
-					<path
-						d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"></path>
-					<path
-						d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"></path>
-				</symbol>
-				<symbol id="sun-fill" viewBox="0 0 16 16">
-					<path
-						d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"></path>
-				</symbol>
-			</svg>
-			<div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
-				<button class="btn btn-primary py-2 dropdown-toggle d-flex align-items-center" id="autoBtnActive" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
-					<svg class="bi my-1 theme-icon-dark" width="1em" height="1em">
-						<use href="#circle-half"></use>
-					</svg>
-					<span class="visually" id="bd-theme-text">Theme</span>
-				</button>
-				<ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
-					<li>
-						<button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false" id="lightBtnActive">
-							<svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em">
-								<use href="#sun-fill"></use>
-							</svg>
-							Light
-							<svg class="bi ms-auto d-none" width="1em" height="1em">
-								<use href="#check2"></use>
-							</svg>
-						</button>
-					</li>
-					<li>
-						<button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false" id="darkBtnActive">
-							<svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em">
-								<use href="#moon-stars-fill"></use>
-							</svg>
-							Dark
-							<svg class="bi ms-auto d-none" width="1em" height="1em">
-								<use href="#check2"></use>
-							</svg>
-						</button>
-					</li>
-					<li>
-						<button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
-							<svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em">
-								<use href="#circle-half"></use>
-							</svg>
-							Auto
-							<svg class="bi ms-auto d-none" width="1em" height="1em">
-								<use href="#check2"></use>
-							</svg>
-						</button>
-					</li>
-				</ul>
-			</div>
-			<div class="d-grid">
-				<p class="col-md-4 mb-0 text-body-secondary">
-					<a class="navbar-brand" href="https://assemblerinstitute.com" target="_blank">
-						<img src="./resources/A-Logo.png" alt="Bootstrap" width="30" height="30" />
-						2023 Lovelace Squad
-					</a>
-				</p>
-				<ul class="nav col-md-6">
-					<li class="btn-group dropup py-3 z-2">
-						<button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Members of the Squad</button>
-						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="https://github.com/franpalberca" target="_blank">Fran P.A.</a></li>
-							<li><a class="dropdown-item" href="https://github.com/JorgeMunarriz" target="_blank">Jorge M.G</a></li>
-							<li><a class="dropdown-item" href="https://github.com/HoracioMartinez17" target="_blank">Horacio J.M.</a></li>
-							<li><a class="dropdown-item" href="https://github.com/Madpug2022" target="_blank">Matias A.C.</a></li>
-							<li><a class="dropdown-item" href="https://github.com/kevinPolania" target="_blank">Kevin P.N.</a></li>
-						</ul>
-					</li>
-				</ul>
-			</div>
-
-
-			<ul class="nav col-md-6 justify-content-end">
-				<li class="nav-item">
-					<a href="#" class="nav-link text-body-secondary">Top of the Page</a>
-				</li>
-				<li class="nav-item ">
-					<button class="nav-link px-2 text-body-secondary" id="weatherBtn" data-bs-toggle="modal" data-bs-target="#climateModal">Today's weather</button>
-				</li>
-
-			</ul>
-		</footer>
-	</body>
+ <!-- M A I N - - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - -->
+    <main class="main-container" id="mainContainer">      
+    </main>
+ <!--  F O O T E R - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - -  -->
+    <footer class="d-flex container flex-wrap justify-content-between py-3 my-4 border-top">  
+ <!--  C H A N G E  T H E M E  - - - - - - - -- - - - - - - - - - - - - - - - - - -  -->	   
+      <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+        <button class="btn btn-primary py-2 dropdown-toggle d-flex align-items-center" id="autoBtnActive" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
+          <i class="bi bi-circle-half"></i>
+          <span class="visually ms-1" id="bd-theme-text"> Theme</span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
+          <li>
+            <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false" id="lightBtnActive">
+              <i class="bi bi-sun-fill"></i>
+              <span class="ms-1">Light</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false" id="darkBtnActive">
+              <i class="bi bi-moon-stars-fill"></i>
+              <span class="ms-1">Dark</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+              <i class="bi bi-circle-half"></i>
+              <span class="ms-1">Auto</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+ <!--  C O N T R I B U I T O R S - - - - - -- - - - - - - - - - - - - - - - - - - -  -->
+      <div class="d-grid">
+        <p class="col-md-4 mb-0 text-body-secondary">
+          <a class="navbar-brand" href="https://assemblerinstitute.com" target="_blank">
+            <img src="./resources/A-Logo.png" alt="Bootstrap" width="30" height="30" />
+            2023 Lovelace Squad
+          </a>
+        </p>
+        <ul class="nav col-md-6">
+          <li class="btn-group dropup py-3 z-2">
+            <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Members of the Squad</button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="https://github.com/franpalberca" target="_blank">Fran P.A.</a></li>
+              <li><a class="dropdown-item" href="https://github.com/JorgeMunarriz" target="_blank">Jorge M.G</a></li>
+              <li><a class="dropdown-item" href="https://github.com/HoracioMartinez17" target="_blank">Horacio J.M.</a></li>
+              <li><a class="dropdown-item" href="https://github.com/Madpug2022" target="_blank">Matias A.C.</a></li>
+              <li><a class="dropdown-item" href="https://github.com/kevinPolania" target="_blank">Kevin P.N.</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+ <!--  T O P    B U T T O N   A N D    B U T T O N- - - - - - - - - - - - - - - - -  -->
+      <ul class="nav col-md-6 justify-content-end">
+        <li class="nav-item">
+          <a href="#" class="nav-link text-body-secondary">Top of the Page</a>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link px-2 text-body-secondary" id="weatherBtn" data-bs-toggle="modal" data-bs-target="#climateModal">Today's weather</button>
+        </li>
+      </ul>
+    </footer>
+  </body>
 </html>
