@@ -38,12 +38,12 @@ export function createDayEvent(element, eventColor, targetDay, date) {
     eventHoverDetails.setAttribute("class", "d-flex flex-column justify-content-start align-items-between");
     dayEvent.appendChild(eventHoverDetails);
     const eventDetailsEventStart = document.createElement("p");
-    eventDetailsEventStart.innerText = `Starts on ${element.eventDay}, ${element.eventHour}:${element.eventMinutes}`;
+    eventDetailsEventStart.innerText = `Starts on ${element.eventDay}, ${element.eventHour}:${element.eventMinutes}0`;
     eventDetailsEventStart.setAttribute("class", "d-flex event-hover-hour-start");
     eventHoverDetails.appendChild(eventDetailsEventStart);
     if (element.eventDayF !== null) {
         const eventDetailsEventFinish = document.createElement("p");
-        eventDetailsEventFinish.textContent = `Finish on: ${element.eventDayF || "Today"}, ${element.eventHourF || " "}:${element.eventMinutesF || " "}`;
+        eventDetailsEventFinish.textContent = `Finish on: ${element.eventDayF || "Today"}, ${element.eventHourF || " "}:${element.eventMinutesF}0`;
         eventDetailsEventFinish.setAttribute("class", "d-flex event-hover-hour-finish");
         eventHoverDetails.appendChild(eventDetailsEventFinish);
     }

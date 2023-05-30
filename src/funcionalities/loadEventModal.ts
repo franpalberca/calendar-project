@@ -10,6 +10,7 @@ export function loadEventModal(event: MouseEvent) {
     const eventDescription = target.getAttribute("data-description") as string;
     const eventReminder = target.getAttribute("data-reminder") as string;
     const eventDay = target.getAttribute("data-day") as string;
+    const multitarget = document.querySelectorAll(`[data-name="${eventName}"]`);
 
     const eventModalName = document.querySelector("#eventModalName") as HTMLElement;
     eventModalName.innerText = eventName;
@@ -32,7 +33,9 @@ export function loadEventModal(event: MouseEvent) {
     deleteEventModal.addEventListener("click", () => {
             const response = confirm('¿Are you sure you want to delete this event?');
             if(response){
+      multitarget.forEach(target => {
       target.remove();
+    })
       localStorage.removeItem(`Event: ${eventName}`);
       const closeEventModal = document.querySelector("#closeEventModal") as HTMLButtonElement;
       closeEventModal.click();
@@ -40,7 +43,7 @@ export function loadEventModal(event: MouseEvent) {
     });
     const modifyEventModal = document.querySelector("#modifyEventModal") as HTMLButtonElement;
     modifyEventModal.addEventListener("click", () => {
-      modifyCreatedEvent(eventName, eventType, eventStartHour, eventFinishHour, eventDescription, eventReminder, eventDay, target);
+      modifyCreatedEvent(eventName, eventType, eventStartHour, eventFinishHour, eventDescription, eventReminder, eventDay, multitarget);
     });
   }
 }

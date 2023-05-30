@@ -1,7 +1,7 @@
 import { submitListener } from './setEventBtn.js'
 import { setEvent } from './createEvent.js'
 
-export function modifyCreatedEvent(eventName: string, eventType: string, eventStartHour: string, eventFinishHour:string, eventDescription: string, eventReminder:string, eventDay:string, target: HTMLElement): void {
+export function modifyCreatedEvent(eventName: string, eventType: string, eventStartHour: string, eventFinishHour:string, eventDescription: string, eventReminder:string, eventDay:string, multitarget: NodeList) {
    const modalTitle = document.querySelector("#modalTitle") as HTMLInputElement;
    const startDate = document.querySelector("#startDate") as HTMLInputElement;
    const finishDate = document.querySelector("#finishDate") as HTMLInputElement;
@@ -21,7 +21,6 @@ export function modifyCreatedEvent(eventName: string, eventType: string, eventSt
    startDate.value = (eventStartHour.length === 4) ? `${eventDay}T${eventStartHour}0` : `${eventDay}T${eventStartHour}`;
 
    description.value = `${eventDescription}`;
-
    if(eventFinishHour !== 'null:null') {
       dateEndCheck.checked = true;
       finishDate.value = `${eventDay}T${eventFinishHour}`;
@@ -34,7 +33,9 @@ export function modifyCreatedEvent(eventName: string, eventType: string, eventSt
    createEventForm.removeEventListener('submit', submitListener);
    const editListener = (event: Event) => {
       event.preventDefault();
-      target.remove();
+      multitarget.forEach((target) => {
+         (target as HTMLElement).remove();
+       })
       localStorage.removeItem(`Event: ${eventName}`);
       setEvent();
       createEventModalTittle.innerText = "Create Event";
