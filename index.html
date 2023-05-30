@@ -36,9 +36,8 @@
 						<li class="nav-item">
 							<button class="nav-link btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target=".btn-help">Help</button>
 							<ul class="btn-help collapse">
-								<li class="event-item"><button class="btn btn-outline-secondary" id="createEvents">Create and Manage Events</button></li>
-								<li class="event-item"><button class="btn btn-outline-secondary" id="deleteEvents">Delete Events</button></li>
-								<li class="event-item"><button class="btn btn-outline-secondary" id="searchEvents">Search an Event</button></li>
+								<li class="event-item"><button class="btn btn-outline-secondary" id="createEventsBtn">Create and Manage Events</button></li>
+								<li class="event-item"><button class="btn btn-outline-secondary" id="deleteEventsBtn">Delete Events</button></li>
 							</ul>
 						</li>
 						<li class="nav-item" id="signInOutLi"></li>
@@ -140,7 +139,7 @@
 				</div>
 			</div>
 		</div>
-		<!-- C L I M  A T E   M O D A L -->
+		<!-- C L I M A T E   M O D A L -->
 		<div class="modal fade" id="climateModal" tabindex="-1" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -244,6 +243,42 @@
 					<!-- <div class="day">1</div> -->
 				</div>
 			</div>
+      <!-- MODAL FOR HELP SECTION, HOW TO CREATE AN EVENT -->
+      <div class="modal fade" id="createModalInfo" tabindex="-1" aria-labelledby="createModalInfo" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">How to create an event</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>If you want to create an event, you have two different options. On one hand, you can click on the "+ Add Event" button and a modal will open to introduce all the information. On the other hand, in each calendar grid you will find a "+" button, which will open the same modal with the default start date of the event you want to add.</p>
+              <p>In addition, you must enter a title and a description for the event, as well as the option to enter an end date and a reminder. Finally, don't forget to select the type of event you are creating. By clicking the "Save changes" button you can save this event to your calendar.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- MODAL FOR HELP SECTION, HOW TO DELETE AN EVENT -->
+      <div class="modal fade" id="deleteModalInfo" tabindex="-1" aria-labelledby="deleteModalInfo" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">How to delete an event</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>Do you want to delete an event? Don't worry, it's easy! Just search for your event and once you have found it, hover your mouse over it.</p>
+              <p>Once there, click on the event and a modal will open with all the information. Here you have the option to click on the "Delete Event" button, which will delete the event from your calendar (and also from your Local Storage).</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
 		</main>
 		<!--HERE SOMEONE HAVE TO MODIFY THE FOOTER WITH THE GENERAL REQUERIMENTS (AND EXTRAS IF WANTS TO) -->
 		<footer class="d-flex container flex-wrap justify-content-between  py-3 my-4 border-top">

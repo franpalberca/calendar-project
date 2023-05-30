@@ -6,7 +6,8 @@ import { restartEventForm } from './funcionalities/restartEventForm.js';
 import { recreateEvents } from './funcionalities/recreateEvents.js';
 import { changeThemeAddEvent} from './changesTheme/changeTheme.js';
 import { checkReminders } from './funcionalities/checkReminder.js';
-
+import { createEvents } from './funcionalities/howTo.js';
+import { deleteEvents } from './funcionalities/howTo.js';
 import{logInBtnClick} from './sign-In/signIn.js'
 
 window.onload = () => {
@@ -20,6 +21,8 @@ window.onload = () => {
     changeThemeAddEvent();
     setInterval(checkReminders, 10000);
     recreateEvents();
+    createEvents();
+    deleteEvents();
 
 
 
