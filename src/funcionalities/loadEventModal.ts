@@ -1,13 +1,15 @@
+import {modifyCreatedEvent} from "./modifyEvent.js";
+
 export function loadEventModal(event: MouseEvent) {
   const target = event.currentTarget as HTMLElement;
   if (target) {
-    console.log(target);
-    const eventName = target.getAttribute("data-name") as string;
+    const eventName: string = target.getAttribute("data-name") as string;
     const eventType = target.getAttribute("data-eventtype") as string;
     const eventStartHour = target.getAttribute("data-starthour") as string;
     const eventFinishHour = target.getAttribute("data-endhour") as string;
     const eventDescription = target.getAttribute("data-description") as string;
     const eventReminder = target.getAttribute("data-reminder") as string;
+    const eventDay = target.getAttribute("data-day") as string;
 
     const eventModalName = document.querySelector("#eventModalName") as HTMLElement;
     eventModalName.innerText = eventName;
@@ -38,8 +40,7 @@ export function loadEventModal(event: MouseEvent) {
     });
     const modifyEventModal = document.querySelector("#modifyEventModal") as HTMLButtonElement;
     modifyEventModal.addEventListener("click", () => {
-      console.log("modifiyng event");
-
+      modifyCreatedEvent(eventName, eventType, eventStartHour, eventFinishHour, eventDescription, eventReminder, eventDay, target);
     });
   }
 }

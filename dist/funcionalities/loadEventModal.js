@@ -1,13 +1,14 @@
+import { modifyCreatedEvent } from "./modifyEvent.js";
 export function loadEventModal(event) {
     const target = event.currentTarget;
     if (target) {
-        console.log(target);
         const eventName = target.getAttribute("data-name");
         const eventType = target.getAttribute("data-eventtype");
         const eventStartHour = target.getAttribute("data-starthour");
         const eventFinishHour = target.getAttribute("data-endhour");
         const eventDescription = target.getAttribute("data-description");
         const eventReminder = target.getAttribute("data-reminder");
+        const eventDay = target.getAttribute("data-day");
         const eventModalName = document.querySelector("#eventModalName");
         eventModalName.innerText = eventName;
         const eventModalType = document.querySelector("#eventModalType");
@@ -32,7 +33,7 @@ export function loadEventModal(event) {
         });
         const modifyEventModal = document.querySelector("#modifyEventModal");
         modifyEventModal.addEventListener("click", () => {
-            console.log("modifiyng event");
+            modifyCreatedEvent(eventName, eventType, eventStartHour, eventFinishHour, eventDescription, eventReminder, eventDay, target);
         });
     }
 }
