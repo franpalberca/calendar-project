@@ -1,3 +1,4 @@
+import { recreateEvents } from "./recreateEvents.js";
 export function initializeCalendar() {
     let currentDate = new Date();
     let currentDay = currentDate.getDate();
@@ -12,7 +13,6 @@ export function initializeCalendar() {
     const nextMonthDom = document.querySelector("#nextMonth");
     const btnToday = document.querySelector("#btnToday");
     const calendar = document.querySelector("#generalContainer");
-    writeMonth(monthNumber);
     setNewDate();
     function writeMonth(month) {
         if (daysContainer) {
@@ -157,30 +157,32 @@ export function initializeCalendar() {
         }, 600);
     }
     function setNewDate() {
-        currentDate = new Date(currentYear, monthNumber, currentDay);
+        const userLanguage = navigator.language;
+        const actualMonthDate = new Date(currentYear, monthNumber, 1);
+        const actualMonth = new Intl.DateTimeFormat(userLanguage, { month: "long" }).format(actualMonthDate);
         if (month) {
-            month.textContent = new Intl.DateTimeFormat(navigator.language, { month: "long" }).format(currentDate);
+            month.textContent = actualMonth;
         }
         if (year) {
             year.textContent = currentYear.toString();
         }
         writeMonth(monthNumber);
     }
-    prevMonthDom.addEventListener("click", () => lastMonth());
-    nextMonthDom.addEventListener("click", () => nextMonth());
+    prevMonthDom.addEventListener("click", lastMonth);
+    nextMonthDom.addEventListener("click", nextMonth);
     btnToday.addEventListener("click", () => {
-        currentDate = new Date();
-        const actualMonth = new Intl.DateTimeFormat(navigator.language, { month: "long" }).format(currentDate);
-        const actualYear = currentYear.toString();
-        ;
-        if (year.textContent !== actualYear || month.textContent !== actualMonth) {
-            currentYear = currentDate.getFullYear();
-            monthNumber = currentDate.getMonth();
+        const today = new Date();
+        const todayMonth = today.getMonth();
+        const todayYear = today.getFullYear();
+        if (monthNumber !== todayMonth || currentYear !== todayYear) {
+            currentYear = todayYear;
+            monthNumber = todayMonth;
             if (month && year) {
-                month.textContent = actualMonth;
-                year.textContent = actualYear;
+                month.textContent = new Intl.DateTimeFormat(navigator.language, { month: "long" }).format(today);
+                year.textContent = currentYear.toString();
             }
             writeMonth(monthNumber);
+            recreateEvents();
         }
     });
 }
