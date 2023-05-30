@@ -1,3 +1,4 @@
+import { recreateEvents } from "./recreateEvents.js";
 export function initializeCalendar() {
   let currentDate = new Date();
   let currentDay = currentDate.getDate();
@@ -14,7 +15,6 @@ export function initializeCalendar() {
   const btnToday  = document.querySelector("#btnToday") as HTMLButtonElement;
   const calendar = document.querySelector("#generalContainer") as HTMLDivElement;
 
-  writeMonth(monthNumber);
   setNewDate();
 
   function writeMonth(month: number) {
@@ -134,6 +134,7 @@ export function initializeCalendar() {
         dayElement.appendChild(numberDay);
       }
     }
+  
   }
 
   function getTotaldaysContainer(month: number): number {
@@ -169,6 +170,7 @@ export function initializeCalendar() {
     setTimeout(() => {
       calendar.classList.remove("tearing-effect-lastMont");
     }, 600);
+   
   }
 
   function nextMonth() {
@@ -184,22 +186,28 @@ export function initializeCalendar() {
     setTimeout(() => {
       calendar.classList.remove("tearing-effect-nextMonth");
     }, 600);
+   
   }
 
   function setNewDate(): void {
-    currentDate = new Date(currentYear, monthNumber, currentDay);
+    const userLanguage = navigator.language;
+    const actualMonthDate = new Date(currentYear, monthNumber, 1); // Utiliza el primer día del mes
+    const actualMonth = new Intl.DateTimeFormat(userLanguage, { month: "long" }).format(actualMonthDate);
+  
     if (month) {
-      month.textContent = new Intl.DateTimeFormat(navigator.language, { month: "long" }).format(currentDate);
+      month.textContent = actualMonth;
     }
+    
     if (year) {
       year.textContent = currentYear.toString();
     }
-
+    
     writeMonth(monthNumber);
   }
-
-  prevMonthDom.addEventListener("click", () => lastMonth());
-  nextMonthDom.addEventListener("click", () => nextMonth());
+  
+  
+  prevMonthDom.addEventListener("click", lastMonth);
+  nextMonthDom.addEventListener("click", nextMonth);
   btnToday.addEventListener("click", () => {
     currentDate = new Date(); 
 
@@ -215,6 +223,7 @@ export function initializeCalendar() {
         year.textContent = actualYear;
       }
       writeMonth(monthNumber);
+      recreateEvents()
     }
   });
 
