@@ -10,6 +10,7 @@ export function initializeCalendar() {
     const year = document.querySelector("#year");
     const prevMonthDom = document.querySelector("#prevMonth");
     const nextMonthDom = document.querySelector("#nextMonth");
+    const btnToday = document.querySelector("#btnToday");
     const calendar = document.querySelector("#generalContainer");
     writeMonth(monthNumber);
     setNewDate();
@@ -156,7 +157,6 @@ export function initializeCalendar() {
         }, 600);
     }
     function setNewDate() {
-        const userNavigatorLanguage = navigator.language;
         currentDate = new Date(currentYear, monthNumber, currentDay);
         if (month) {
             month.textContent = new Intl.DateTimeFormat(navigator.language, { month: "long" }).format(currentDate);
@@ -168,5 +168,20 @@ export function initializeCalendar() {
     }
     prevMonthDom.addEventListener("click", () => lastMonth());
     nextMonthDom.addEventListener("click", () => nextMonth());
+    btnToday.addEventListener("click", () => {
+        currentDate = new Date();
+        const actualMonth = new Intl.DateTimeFormat(navigator.language, { month: "long" }).format(currentDate);
+        const actualYear = currentYear.toString();
+        ;
+        if (year.textContent !== actualYear || month.textContent !== actualMonth) {
+            currentYear = currentDate.getFullYear();
+            monthNumber = currentDate.getMonth();
+            if (month && year) {
+                month.textContent = actualMonth;
+                year.textContent = actualYear;
+            }
+            writeMonth(monthNumber);
+        }
+    });
 }
 //# sourceMappingURL=MonthSelector.js.map

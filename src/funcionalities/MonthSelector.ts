@@ -11,6 +11,7 @@ export function initializeCalendar() {
   const year = document.querySelector("#year") as HTMLTimeElement;
   const prevMonthDom = document.querySelector("#prevMonth") as HTMLButtonElement;
   const nextMonthDom = document.querySelector("#nextMonth") as HTMLButtonElement;
+  const btnToday  = document.querySelector("#btnToday") as HTMLButtonElement;
   const calendar = document.querySelector("#generalContainer") as HTMLDivElement;
 
   writeMonth(monthNumber);
@@ -186,7 +187,6 @@ export function initializeCalendar() {
   }
 
   function setNewDate(): void {
-    const userNavigatorLanguage = navigator.language;
     currentDate = new Date(currentYear, monthNumber, currentDay);
     if (month) {
       month.textContent = new Intl.DateTimeFormat(navigator.language, { month: "long" }).format(currentDate);
@@ -200,4 +200,24 @@ export function initializeCalendar() {
 
   prevMonthDom.addEventListener("click", () => lastMonth());
   nextMonthDom.addEventListener("click", () => nextMonth());
+  btnToday.addEventListener("click", () => {
+    currentDate = new Date(); 
+
+    const actualMonth = new Intl.DateTimeFormat(navigator.language, { month: "long" }).format(currentDate);
+    const actualYear = currentYear.toString();;
+
+    if (year.textContent !== actualYear || month.textContent !== actualMonth) {
+      currentYear = currentDate.getFullYear();
+      monthNumber = currentDate.getMonth();
+
+      if (month && year) {
+        month.textContent = actualMonth;
+        year.textContent = actualYear;
+      }
+      writeMonth(monthNumber);
+    }
+  });
+
 }
+  
+
