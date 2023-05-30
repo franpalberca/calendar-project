@@ -1,8 +1,6 @@
 import { submitListener } from './setEventBtn.js';
 import { setEvent } from './createEvent.js';
 export function modifyCreatedEvent(eventName, eventType, eventStartHour, eventFinishHour, eventDescription, eventReminder, eventDay, target) {
-    console.log("I like pugs");
-    console.log(eventType, eventStartHour, eventFinishHour, eventDescription, eventReminder);
     const modalTitle = document.querySelector("#modalTitle");
     const startDate = document.querySelector("#startDate");
     const finishDate = document.querySelector("#finishDate");

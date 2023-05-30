@@ -189,44 +189,43 @@ export function initializeCalendar() {
    
   }
 
-  function setNewDate(): void {
-    const userLanguage = navigator.language;
-    const actualMonthDate = new Date(currentYear, monthNumber, 1); // Utiliza el primer día del mes
-    const actualMonth = new Intl.DateTimeFormat(userLanguage, { month: "long" }).format(actualMonthDate);
-  
-    if (month) {
-      month.textContent = actualMonth;
-    }
-    
-    if (year) {
-      year.textContent = currentYear.toString();
-    }
-    
-    writeMonth(monthNumber);
+ function setNewDate(): void {
+  const userLanguage = navigator.language;
+  const actualMonthDate = new Date(currentYear, monthNumber, 1); // Utiliza el primer día del mes
+  const actualMonth = new Intl.DateTimeFormat(userLanguage, { month: "long" }).format(actualMonthDate);
+
+  if (month) {
+    month.textContent = actualMonth;
   }
   
+  if (year) {
+    year.textContent = currentYear.toString();
+  }
+  
+  writeMonth(monthNumber);
+}
+
   
   prevMonthDom.addEventListener("click", lastMonth);
   nextMonthDom.addEventListener("click", nextMonth);
   btnToday.addEventListener("click", () => {
-    currentDate = new Date(); 
-
-    const actualMonth = new Intl.DateTimeFormat(navigator.language, { month: "long" }).format(currentDate);
-    const actualYear = currentYear.toString();;
-
-    if (year.textContent !== actualYear || month.textContent !== actualMonth) {
-      currentYear = currentDate.getFullYear();
-      monthNumber = currentDate.getMonth();
-
+    const today = new Date();
+    const todayMonth = today.getMonth();
+    const todayYear = today.getFullYear();
+  
+    if (monthNumber !== todayMonth || currentYear !== todayYear) {
+      currentYear = todayYear;
+      monthNumber = todayMonth;
+  
       if (month && year) {
-        month.textContent = actualMonth;
-        year.textContent = actualYear;
+        month.textContent = new Intl.DateTimeFormat(navigator.language, { month: "long" }).format(today);
+        year.textContent = currentYear.toString();
       }
+  
       writeMonth(monthNumber);
-      recreateEvents()
+      recreateEvents();
     }
   });
-
-}
   
-
+  
+}
