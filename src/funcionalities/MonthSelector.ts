@@ -206,7 +206,7 @@ export function initializeCalendar() {
     const actualMonth = new Intl.DateTimeFormat(navigator.language, { month: "long" }).format(currentDate);
     const actualYear = currentYear.toString();;
 
-    if (year && month && (year.textContent !== actualYear || month.textContent !== actualMonth)) {
+    if (year.textContent !== actualYear || month.textContent !== actualMonth) {
       currentYear = currentDate.getFullYear();
       monthNumber = currentDate.getMonth();
 

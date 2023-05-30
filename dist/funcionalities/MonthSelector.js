@@ -171,15 +171,13 @@ export function initializeCalendar() {
     btnToday.addEventListener("click", () => {
         currentDate = new Date();
         const actualMonth = new Intl.DateTimeFormat(navigator.language, { month: "long" }).format(currentDate);
-        const actualYear = year.textContent = currentYear.toString();
+        const actualYear = currentYear.toString();
         ;
-        if (year && month && (year.textContent !== actualYear || month.textContent !== actualMonth)) {
+        if (year.textContent !== actualYear || month.textContent !== actualMonth) {
             currentYear = currentDate.getFullYear();
             monthNumber = currentDate.getMonth();
-            if (month) {
+            if (month && year) {
                 month.textContent = actualMonth;
-            }
-            if (year) {
                 year.textContent = actualYear;
             }
             writeMonth(monthNumber);
