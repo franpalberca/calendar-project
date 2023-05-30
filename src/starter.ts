@@ -7,7 +7,7 @@ import { recreateEvents } from './funcionalities/recreateEvents.js';
 import { changeThemeAddEvent} from './changesTheme/changeTheme.js';
 import { checkReminders } from './funcionalities/checkReminder.js';
 
-import{logInBtnClick, logIn} from './sign-In/signIn.js'
+import{logInBtnClick} from './sign-In/signIn.js'
 
 window.onload = () => {
     setClimate();

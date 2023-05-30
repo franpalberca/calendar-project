@@ -12,7 +12,7 @@
 		<script src="https://unpkg.com/@popperjs/core@2" defer></script>
 		<script src="./js/bootstrap.js" defer></script>
 		<script src="https://kit.fontawesome.com/d9005a0d59.js" crossorigin="anonymous" defer></script>
-		<title>Google Calendar</title>
+		<title>Lovelace Calendar</title>
 	</head>
 	<!--EVERYONE WILL HAVE TO WORK ON THEIR OWN FILE(S).TS IN ORDER TO CREATE MODULES. AFTER THAT WE WILL UPLOAD THEM INTO A UNIQUE SCRIPT EXECUTION FILE. COMMENT YOUR CODE EVERYTIME YOU CAN-->
 	<body id="bodyContainer" class="body-container">
@@ -56,11 +56,13 @@
           </div>
           <div class="modal-body">
             <p>You event starts at: <span id="eventStartHModal"></span></p>
+            <p>Your event type is: <span id="eventModalType"></span></p>
             <p id="eventFinishHModal"></p>
             <p id="eventDescriptionModal"></p>
             <p id="eventReminderModal"></p>
           </div>
           <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" id="modifyEventModal">Modify event</button>
             <button type="button" class="btn btn-primary" id="deleteEventModal">Delete event</button>
           </div>
         </div>
@@ -69,11 +71,11 @@
 
 		<!-- Modal -->
 		<!--SOMEBODY NEEDS TO MODIFY THE MODAL CHECKING THE GENERAL REQUERIMENTS. tO ACTIVATE THE MODAL, THE BUTTON SHOULD HAVE THE PROPIERTIES data-bs-toggle="modal" AND data-bs-target="#eventModal"-->
-		<div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
+		<div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModal" aria-hidden="false">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h1 class="modal-title fs-5" id="exampleModalLabel">Create Event</h1>
+						<h1 class="modal-title fs-5">Create Event</h1>
 						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
 					<div class="modal-body">
@@ -138,7 +140,7 @@
 				</div>
 			</div>
 		</div>
-		<!-- Climate Modal -->
+		<!-- C L I M  A T E   M O D A L -->
 		<div class="modal fade" id="climateModal" tabindex="-1" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -158,7 +160,7 @@
 				</div>
 			</div>
 		</div>
-		<!-- M O D A L  -->
+		<!-- M O D A L   S I G N - I N    -->
 		<div class="modal fade" tabindex="-1" role="dialog" id="modalSignIn" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content rounded-4 shadow">
@@ -173,22 +175,22 @@
 								<label for="userName">User</label>
 							</div>
 							<div class="form-floating mb-3">
-								<input type="email" autocomplete="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com" required minlength="8" maxlength="50" />
+								<input type="email" autocomplete="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com" required />
 								<label for="floatingInput">Email address</label>
 							</div>
 							<div class="form-floating mb-3">
-								<input type="password" autocomplete="new-password" class="form-control rounded-3" id="floatingPassword1" placeholder="Password" required minlength="8" maxlength="20" />
+								<input type="password" autocomplete="new-password" class="form-control rounded-3" id="floatingPassword1" placeholder="Password" required />
 								<span id="show-password1"><i class="bi bi-eye-slash" id="eye1"></i> </span>
 								<label for="floatingPassword1">Password </label>
 							</div>
 							<div class="form-floating mb-3">
-								<input type="password" autocomplete="current-password" class="form-control rounded-3" id="floatingPassword2" placeholder="Password" required minlength="8" maxlength="20" />
+								<input type="password" autocomplete="current-password" class="form-control rounded-3" id="floatingPassword2" placeholder="Password" required />
 								<label for="floatingPassword2">Confirm password</label>
 								<span id="show-password2">
 									<i class="bi bi-eye-slash" id="eye2"></i>
 								</span>
 							</div>
-							<button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary disabled" type="submit" id="signInButton">Sign up</button>
+							<button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="button" id="signInButton">Sign up</button>
 							<small class="text-body-secondary">By clicking Sign up, you agree to the terms of use. Or you can continue as guest:</small>
 							<button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="button" id="signOutBtn">Continue as guest</button>
 							<hr class="my-4" />
