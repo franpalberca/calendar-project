@@ -10,6 +10,7 @@ export function initializeCalendar() {
     const year = document.querySelector("#year");
     const prevMonthDom = document.querySelector("#prevMonth");
     const nextMonthDom = document.querySelector("#nextMonth");
+    const btnToday = document.querySelector("#btnToday");
     const calendar = document.querySelector("#generalContainer");
     writeMonth(monthNumber);
     setNewDate();
@@ -24,8 +25,18 @@ export function initializeCalendar() {
             for (let i = previousMonthdaysContainer - startDayIndex + 1; i <= previousMonthdaysContainer; i++) {
                 const dayElement = document.createElement("div");
                 dayElement.classList.add("day", "previous-month");
-                dayElement.textContent = i.toString();
+                dayElement.setAttribute("id", `day${i}`);
+                dayElement.addEventListener("click", () => {
+                    dayElement.style.overflow = "visible";
+                    setTimeout(() => {
+                        dayElement.style.overflow = "hidden";
+                    }, 10000);
+                });
                 daysContainer.appendChild(dayElement);
+                const numberDay = document.createElement("p");
+                numberDay.setAttribute("class", "ms-2 mb-0");
+                numberDay.textContent = i.toString();
+                dayElement.appendChild(numberDay);
             }
             for (let i = 1; i <= currentMonthdaysContainer; i++) {
                 const dayElement = document.createElement("div");
@@ -34,7 +45,7 @@ export function initializeCalendar() {
                 dayElement.addEventListener("click", () => {
                     dayElement.style.overflow = "visible";
                     setTimeout(() => {
-                        dayElement.style.overflow = "";
+                        dayElement.style.overflow = "hidden";
                     }, 10000);
                 });
                 let paddedMonth = monthNumber + 1;
@@ -57,8 +68,8 @@ export function initializeCalendar() {
                 addButton.addEventListener("click", (event) => {
                     if (event.target) {
                         const targetDay = event.currentTarget;
-                        const dayData = targetDay.getAttribute('data-today');
-                        const startDate = document.querySelector('#startDate');
+                        const dayData = targetDay.getAttribute("data-today");
+                        const startDate = document.querySelector("#startDate");
                         if (startDate) {
                             startDate.value = `${dayData}T12:00`;
                         }
@@ -82,8 +93,18 @@ export function initializeCalendar() {
             for (let i = 1; i <= remainingNextDays; i++) {
                 const dayElement = document.createElement("div");
                 dayElement.classList.add("day", "next-month");
-                dayElement.textContent = i.toString();
                 daysContainer.appendChild(dayElement);
+                dayElement.setAttribute("id", `day${i}`);
+                dayElement.addEventListener("click", () => {
+                    dayElement.style.overflow = "visible";
+                    setTimeout(() => {
+                        dayElement.style.overflow = "hidden";
+                    }, 10000);
+                });
+                const numberDay = document.createElement("p");
+                numberDay.setAttribute("class", "ms-2 mb-0");
+                numberDay.textContent = i.toString();
+                dayElement.appendChild(numberDay);
             }
         }
     }
@@ -136,7 +157,6 @@ export function initializeCalendar() {
         }, 600);
     }
     function setNewDate() {
-        const userNavigatorLanguage = navigator.language;
         currentDate = new Date(currentYear, monthNumber, currentDay);
         if (month) {
             month.textContent = new Intl.DateTimeFormat(navigator.language, { month: "long" }).format(currentDate);
@@ -148,5 +168,20 @@ export function initializeCalendar() {
     }
     prevMonthDom.addEventListener("click", () => lastMonth());
     nextMonthDom.addEventListener("click", () => nextMonth());
+    btnToday.addEventListener("click", () => {
+        currentDate = new Date();
+        const actualMonth = new Intl.DateTimeFormat(navigator.language, { month: "long" }).format(currentDate);
+        const actualYear = currentYear.toString();
+        ;
+        if (year.textContent !== actualYear || month.textContent !== actualMonth) {
+            currentYear = currentDate.getFullYear();
+            monthNumber = currentDate.getMonth();
+            if (month && year) {
+                month.textContent = actualMonth;
+                year.textContent = actualYear;
+            }
+            writeMonth(monthNumber);
+        }
+    });
 }
 //# sourceMappingURL=MonthSelector.js.map

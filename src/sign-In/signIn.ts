@@ -38,7 +38,7 @@ export function logInBtnClick() {
   const signInBtn = document.getElementById("signInButton") as HTMLButtonElement;
   const signOutBtn = document.getElementById("signOutBtn") as HTMLButtonElement;
   const container = document.createElement("div") as HTMLDivElement;
-  //const formSignInDiv = document.getElementById("formSignInDiv") as HTMLDivElement;
+  const modalSignIn = document.getElementById("modalSignIn") as HTMLDivElement;
   const showPassBtn = document.getElementById("eye1") as HTMLElement;
   const showPassBtn1 = document.getElementById("eye2") as HTMLElement;
 
@@ -117,10 +117,12 @@ export function logInBtnClick() {
   // Function to handle the login event
   function handleLogin(event: Event): void {
     event.preventDefault();
+
     const userName = userInput.value;
     const email = emailInput.value;
     const password = passwordInput1.value;
     const passwordConfirm = passwordInput2.value;
+    const modalSignIn = document.getElementById("modalSignIn") as HTMLDivElement;
 
     if (password !== passwordConfirm) {
       // Passwords do not match, you can show an error message here
@@ -129,10 +131,17 @@ export function logInBtnClick() {
       return;
     }
     localStorage.setItem("userName", userName);
-    localStorage.setItem("email", email);
+    // modalSignIn.classList.remove("show");
+    modalSignIn.classList.add("modal")
+    
+    console.log(userInput.value, emailInput.value, )
+    const signInOutLi = document.getElementById("signInOutLi") as HTMLLIElement;
     const userButton = document.getElementById("User") as HTMLButtonElement;
     if (userButton) {
+      userButton.setAttribute("class", "btn btn-primary");
       userButton.textContent = userName;
+      signInOutLi.insertAdjacentElement("afterend", userButton);
+
     }
 
     // showMainContent();
@@ -180,5 +189,5 @@ export function logInBtnClick() {
       passwordInput2.type = "password";
     }
   }
-  console.log(userInput.value, emailInput.value, )
+  
 }
