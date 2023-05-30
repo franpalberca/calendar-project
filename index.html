@@ -12,7 +12,7 @@
 		<script src="https://unpkg.com/@popperjs/core@2" defer></script>
 		<script src="./js/bootstrap.js" defer></script>
 		<script src="https://kit.fontawesome.com/d9005a0d59.js" crossorigin="anonymous" defer></script>
-		<title>Google Calendar</title>
+		<title>Lovelace Calendar</title>
 	</head>
 	<!--EVERYONE WILL HAVE TO WORK ON THEIR OWN FILE(S).TS IN ORDER TO CREATE MODULES. AFTER THAT WE WILL UPLOAD THEM INTO A UNIQUE SCRIPT EXECUTION FILE. COMMENT YOUR CODE EVERYTIME YOU CAN-->
 	<body id="bodyContainer" class="body-container">
@@ -41,7 +41,6 @@
 								<li class="event-item"><button class="btn btn-outline-secondary" id="searchEvents">Search an Event</button></li>
 							</ul>
 						</li>
-						<li class="nav-item"><button id="testingBtn" class="nav-link">About</button></li>
 						<li class="nav-item" id="signInOutLi"></li>
 					</ul>
 				</div>
@@ -57,11 +56,13 @@
           </div>
           <div class="modal-body">
             <p>You event starts at: <span id="eventStartHModal"></span></p>
+            <p>Your event type is: <span id="eventModalType"></span></p>
             <p id="eventFinishHModal"></p>
             <p id="eventDescriptionModal"></p>
             <p id="eventReminderModal"></p>
           </div>
           <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" id="modifyEventModal">Modify event</button>
             <button type="button" class="btn btn-primary" id="deleteEventModal">Delete event</button>
           </div>
         </div>
@@ -70,11 +71,11 @@
 
 		<!-- Modal -->
 		<!--SOMEBODY NEEDS TO MODIFY THE MODAL CHECKING THE GENERAL REQUERIMENTS. tO ACTIVATE THE MODAL, THE BUTTON SHOULD HAVE THE PROPIERTIES data-bs-toggle="modal" AND data-bs-target="#eventModal"-->
-		<div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
+		<div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModal" aria-hidden="false">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h1 class="modal-title fs-5" id="exampleModalLabel">Create Event</h1>
+						<h1 class="modal-title fs-5">Create Event</h1>
 						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
 					<div class="modal-body">
@@ -139,7 +140,7 @@
 				</div>
 			</div>
 		</div>
-		<!-- Climate Modal -->
+		<!-- C L I M  A T E   M O D A L -->
 		<div class="modal fade" id="climateModal" tabindex="-1" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -159,7 +160,7 @@
 				</div>
 			</div>
 		</div>
-		<!-- M O D A L  -->
+		<!-- M O D A L   S I G N - I N    -->
 		<div class="modal fade" tabindex="-1" role="dialog" id="modalSignIn" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content rounded-4 shadow">
@@ -174,22 +175,22 @@
 								<label for="userName">User</label>
 							</div>
 							<div class="form-floating mb-3">
-								<input type="email" autocomplete="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com" required minlength="8" maxlength="50" />
+								<input type="email" autocomplete="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com" required />
 								<label for="floatingInput">Email address</label>
 							</div>
 							<div class="form-floating mb-3">
-								<input type="password" autocomplete="new-password" class="form-control rounded-3" id="floatingPassword1" placeholder="Password" required minlength="8" maxlength="20" />
+								<input type="password" autocomplete="new-password" class="form-control rounded-3" id="floatingPassword1" placeholder="Password" required />
 								<span id="show-password1"><i class="bi bi-eye-slash" id="eye1"></i> </span>
 								<label for="floatingPassword1">Password </label>
 							</div>
 							<div class="form-floating mb-3">
-								<input type="password" autocomplete="current-password" class="form-control rounded-3" id="floatingPassword2" placeholder="Password" required minlength="8" maxlength="20" />
+								<input type="password" autocomplete="current-password" class="form-control rounded-3" id="floatingPassword2" placeholder="Password" required />
 								<label for="floatingPassword2">Confirm password</label>
 								<span id="show-password2">
 									<i class="bi bi-eye-slash" id="eye2"></i>
 								</span>
 							</div>
-							<button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary disabled" type="submit" id="signInButton">Sign up</button>
+							<button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="button" id="signInButton">Sign up</button>
 							<small class="text-body-secondary">By clicking Sign up, you agree to the terms of use. Or you can continue as guest:</small>
 							<button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="button" id="signOutBtn">Continue as guest</button>
 							<hr class="my-4" />
@@ -245,7 +246,7 @@
 			</div>
 		</main>
 		<!--HERE SOMEONE HAVE TO MODIFY THE FOOTER WITH THE GENERAL REQUERIMENTS (AND EXTRAS IF WANTS TO) -->
-		<footer class="d-flex container flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+		<footer class="d-flex container flex-wrap justify-content-between  py-3 my-4 border-top">
 			<svg xmlns="http://www.w3.org/2000/svg" style="display: none">
 				<symbol id="check2" viewBox="0 0 16 16">
 					<path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"></path>
@@ -307,26 +308,36 @@
 					</li>
 				</ul>
 			</div>
-			<p class="col-md-4 mb-0 text-body-secondary">
-				<a class="navbar-brand" href="https://assemblerinstitute.com" target="_blank"> <img src="./resources/A-Logo.png" alt="Bootstrap" width="30" height="30" /> 2023 Lovelace Squad </a>
-			</p>
+			<div class="d-grid">
+				<p class="col-md-4 mb-0 text-body-secondary">
+					<a class="navbar-brand" href="https://assemblerinstitute.com" target="_blank">
+						<img src="./resources/A-Logo.png" alt="Bootstrap" width="30" height="30" />
+						2023 Lovelace Squad
+					</a>
+				</p>
+				<ul class="nav col-md-6">
+					<li class="btn-group dropup py-3 z-2">
+						<button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Members of the Squad</button>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="https://github.com/franpalberca" target="_blank">Fran P.A.</a></li>
+							<li><a class="dropdown-item" href="https://github.com/JorgeMunarriz" target="_blank">Jorge M.G</a></li>
+							<li><a class="dropdown-item" href="https://github.com/HoracioMartinez17" target="_blank">Horacio J.M.</a></li>
+							<li><a class="dropdown-item" href="https://github.com/Madpug2022" target="_blank">Matias A.C.</a></li>
+							<li><a class="dropdown-item" href="https://github.com/kevinPolania" target="_blank">Kevin P.N.</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			
+			
 			<ul class="nav col-md-6 justify-content-end">
 				<li class="nav-item">
-					<a href="#" class="nav-link px-2 text-body-secondary">Top of the Page</a>
+					<a href="#" class="nav-link text-body-secondary">Top of the Page</a>
 				</li>
-				<li class="nav-item ms-3">
+				<li class="nav-item ">
 					<button class="nav-link px-2 text-body-secondary" id="weatherBtn" data-bs-toggle="modal" data-bs-target="#climateModal">Today's weather</button>
 				</li>
-				<li class="btn-group dropup ms-5 z-2">
-					<button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Members of the Squad</button>
-					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="https://github.com/franpalberca" target="_blank">Fran P.A.</a></li>
-						<li><a class="dropdown-item" href="https://github.com/JorgeMunarriz" target="_blank">Jorge M.G</a></li>
-						<li><a class="dropdown-item" href="https://github.com/HoracioMartinez17" target="_blank">Horacio J.M.</a></li>
-						<li><a class="dropdown-item" href="https://github.com/Madpug2022" target="_blank">Matias A.C.</a></li>
-						<li><a class="dropdown-item" href="https://github.com/kevinPolania" target="_blank">Kevin P.N.</a></li>
-					</ul>
-				</li>
+				
 			</ul>
 		</footer>
 	</body>

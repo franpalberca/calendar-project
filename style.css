@@ -27,8 +27,10 @@
 }
 
 .btn-help li:hover {
+  display: inline-block;
   background-color: #e5e5ff;
   border-radius: 5px;
+  color: #c1eaf2;
 }
 /*  */
 .popup {
@@ -66,12 +68,12 @@
   height: 100%;
   margin: auto;
   padding: 15px;
-  color: slateblue;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  color: #0962ea;
   border-radius: 10px;
-  background: white;
+  background: linear-gradient(67.6deg, rgb(225, 242, 254) -2.8%, rgb(193, 224, 250) 44.6%, rgb(19, 116, 197) 102.4%);
   box-shadow: 45px 31px 15px -14px rgba(8, 0, 0, 0.4);
 }
 .general-container.dark {
@@ -112,6 +114,7 @@
   font-size: 1rem;
   font-weight: 500;
   text-transform: capitalize;
+  color: #062d92;
 }
 
 .general-container .week .div-text-week {
@@ -123,6 +126,7 @@
   margin: 0;
   font-weight: 500;
   text-transform: capitalize;
+  padding: .1rem;
 }
 
 .days {
@@ -134,46 +138,61 @@
   font-size: 1rem;
   font-weight: 400;
   cursor: pointer;
+  color: #2d4059;
 }
 .today {
-  background-color: rgb(169, 91, 241);
-  color: rgb(28, 28, 28);
+  background-color: #a1d9ff;
+  color: #a64452;
 }
 .previous-month {
-  background-color: rgb(234, 245, 255);
-  color: rgba(232, 83, 83, 0.861);
+  background-color: #83cee0;
+  color: #e70000;
 }
 .next-month {
-	background-color: rgba(183, 239, 250, 0.662);
-	color: rgba(33, 209, 6, 0.897);
+	background-color: #1f8ea3;
+	color:#9dda52;
 	font-weight: 470;
 }
 .days .day {
-  border: 1px solid gainsboro;
+  border: 1px solid #d1d1d1;
   width: calc(100% / 7);
   height: clamp(1rem, 10px + 15vh, 110px);
 }
 .days .day:hover {
-  border: 1px solid lightgray;
-  background-color: rgba(241, 231, 254, 1);
+  border: 1px solid #cdeeaa;
+  background-color:#a1eafb;
+  color: #ff6a38;
 }
 
-.days .day:hover {
-  border: 1px solid lightgray;
-  background-color: rgba(241, 231, 254, 1);
+
+  /* transition: overflow 8s ease;
+  overflow: hidden;
+} */
+
+/* .day{
+  transition: 8s ease;
 }
+.day:hover{
+  background-color: #2e2e2e;
+  overflow: visible;
+  transition: 6s ease;
+
+} */
+
+
 .day-event-dropdown {
+  position: relative;
   display: flex;
   height: 18px;
   overflow: hidden;
   transition: 0.3s ease;
 }
 .day-event-dropdown:hover {
-  position: absolute;
+  position: absolute;  
   width: 20vw;
   height: 20vh;
   border-radius: 15px;
-  color: rgb(216, 216, 219);
+  
   z-index: 10000;
   transform: scale(1.1);
 }
@@ -273,10 +292,13 @@
 
 @media only screen and (max-width: 480px) {
   /* SPECIFIC STYLES FOR MOBILE DEVICES */
+  .general-container {
+    background: linear-gradient(to top, #209cff 0%, #68e0cf 100%);
+  }
   .general-container .month {
     width: 70%;
     font-size: 1.3rem;
-    color: #431a7bfb;
+    color: #005792;
   }
   .days .day {
     height: 3rem;

@@ -4,11 +4,14 @@ import { createDayEvent } from "./createDayEvents.js";
 export function recreateEvents() {
     const eventsData = retrieveLocalStorage();
     eventsData.forEach((element) => {
-        const eventDate = (`${element.eventYear}-0${element.eventMonth}-${element.eventDay}`);
+        const eventDate = `${element.eventYear}-0${element.eventMonth}-${element.eventDay}`;
         const eventDateFinish = `${element.eventYearF}-${element.eventMonthF}-${element.eventDayF}`;
         const dateArray = getDatesInRange(eventDate, eventDateFinish);
         let eventColor = "";
         switch (element.eventType) {
+            case "default":
+                eventColor = "bg-primary";
+                break;
             case "work":
                 eventColor = "bg-danger";
                 break;

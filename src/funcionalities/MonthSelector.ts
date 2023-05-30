@@ -29,7 +29,8 @@ export function initializeCalendar() {
       // PRINT THE PREVIOUS DAYS INTO THE FIRST DAY OF CURRENT MONTH
       for (let i = previousMonthdaysContainer - startDayIndex + 1; i <= previousMonthdaysContainer; i++) {
         const dayElement = document.createElement("div");
-        dayElement.classList.add("day", "previous-month");
+        dayElement.classList.add("day", "previous-month", );
+        
         dayElement.textContent = i.toString();
         daysContainer.appendChild(dayElement);
       }
@@ -37,17 +38,29 @@ export function initializeCalendar() {
       // PRINT EVERY DAY OF CURRENT MONTH
       for (let i = 1; i <= currentMonthdaysContainer; i++) {
         const dayElement = document.createElement("div");
-        dayElement.classList.add("day", "overflow-auto");
-        dayElement.setAttribute("id", "day");
+        dayElement.classList.add("day" );
+        dayElement.setAttribute("id", `day${i}`);
+        dayElement.addEventListener("click", () => {
+          dayElement.style.overflow = "visible";
+          setTimeout(()=>{
+            dayElement.style.overflow = "";
+          }, 10000)
+        });
+        
 
         let paddedMonth = monthNumber + 1;
 
         let dateAttribute = `${currentYear}-${paddedMonth}-${i}`;
         const toISODate: string = new Date(dateAttribute).toISOString().slice(0, 10);
 
-        dayElement.textContent = i.toString();
+        const numberDay = document.createElement("p")
+        numberDay.setAttribute("class", "ms-2 mb-0")
+        numberDay.textContent = i.toString();
+        dayElement.appendChild(numberDay);
+
+        
         const dayEventContainer = document.createElement("div");
-        dayEventContainer.classList.add("container");
+        dayEventContainer.setAttribute("class", "container overflow-auto mh-75");
         dayEventContainer.setAttribute("data-dayNumber", toISODate);
 
         dayElement.appendChild(dayEventContainer);

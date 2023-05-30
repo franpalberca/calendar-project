@@ -1,34 +1,34 @@
-import { WeatherData } from '../types/WeatherData.js'
+import { WeatherData } from "../types/WeatherData.js";
 export function setClimate() {
-    getLocation()
+  getLocation()
     .then((data: WeatherData) => {
-        const fLocation = document.querySelector('#fLocation') as HTMLElement;
-        fLocation.innerText = `${data.city}, ${data.region}, ${data.country}`;
+      const fLocation = document.querySelector("#fLocation") as HTMLElement;
+      fLocation.innerText = `${data.city}, ${data.region}, ${data.country}`;
 
-        const fTemperature = document.querySelector('#fTemperature') as HTMLElement;
-        fTemperature.innerText = `${data.temperature} °C`;
+      const fTemperature = document.querySelector("#fTemperature") as HTMLElement;
+      fTemperature.innerText = `${data.temperature} °C`;
 
-        const fTermicSensation = document.querySelector('#fTermicSensation') as HTMLElement;
-        fTermicSensation.innerText = `${data.termicSensation} °C`;
+      const fTermicSensation = document.querySelector("#fTermicSensation") as HTMLElement;
+      fTermicSensation.innerText = `${data.termicSensation} °C`;
 
-        const fPreasure = document.querySelector('#fPreasure') as HTMLElement;
-        fPreasure.innerText = `${data.pressure} hPa`;
+      const fPreasure = document.querySelector("#fPreasure") as HTMLElement;
+      fPreasure.innerText = `${data.pressure} hPa`;
 
-        const fHumidity = document.querySelector('#fHumidity') as HTMLElement;
-        fHumidity.innerText = `${data.humidity} %`;
+      const fHumidity = document.querySelector("#fHumidity") as HTMLElement;
+      fHumidity.innerText = `${data.humidity} %`;
 
-        const fPChance = document.querySelector('#fPChance') as HTMLElement;
-        fPChance.innerText = `${data.precipitationChance} %`;
+      const fPChance = document.querySelector("#fPChance") as HTMLElement;
+      fPChance.innerText = `${data.precipitationChance} %`;
     })
     .catch((error: Error) => {
-        console.error(error);
+      console.error(error);
     });
-};
+}
 
 function getLocation(): Promise<WeatherData> {
-    return new Promise<WeatherData>(async (resolve, reject) => {
+  return new Promise<WeatherData>(async (resolve, reject) => {
     if (navigator.geolocation) {
-        try {
+      try {
         const position = await getCurrentPosition();
         const { latitude, longitude } = position.coords;
 
@@ -38,9 +38,9 @@ function getLocation(): Promise<WeatherData> {
         const weather = data.current;
         const temperature = weather.temp_c;
         const termicSensation = weather.feelslike_c;
-        const pressure = weather.pressure_in;
+        const pressure = weather.pressure_mb;
         const humidity = weather.humidity;
-        const precipitationChance = weather.precip_in;
+        const precipitationChance = weather.precip_mm;
 
         const location = data.location;
         const city = location.name;
@@ -48,26 +48,26 @@ function getLocation(): Promise<WeatherData> {
         const country = location.country;
 
         resolve({
-            temperature,
-            termicSensation,
-            pressure,
-            humidity,
-            precipitationChance,
-            city,
-            region,
-            country
+          temperature,
+          termicSensation,
+          pressure,
+          humidity,
+          precipitationChance,
+          city,
+          region,
+          country,
         });
-        } catch (error) {
+      } catch (error) {
         reject(error);
-        }
+      }
     } else {
-        reject(new Error("Geolocation is not supported"));
+      reject(new Error("Geolocation is not supported"));
     }
-    });
+  });
 }
 
 function getCurrentPosition(): Promise<GeolocationPosition> {
-    return new Promise<GeolocationPosition>((resolve, reject) => {
+  return new Promise<GeolocationPosition>((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(resolve, reject);
-    });
+  });
 }
