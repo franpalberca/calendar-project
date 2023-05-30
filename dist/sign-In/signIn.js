@@ -16,15 +16,12 @@ export function logInBtnClick() {
     signInButton.addEventListener("click", logIn);
 }
 function logIn() {
-    console.log("sign-in process");
     const userInput = document.getElementById("userName");
     const emailInput = document.getElementById("floatingInput");
     const passwordInput1 = document.getElementById("floatingPassword1");
     const passwordInput2 = document.getElementById("floatingPassword2");
     const signInBtn = document.getElementById("signInButton");
     const signOutBtn = document.getElementById("signOutBtn");
-    const container = document.createElement("div");
-    const modalSignIn = document.getElementById("modalSignIn");
     const showPassBtn = document.getElementById("eye1");
     const showPassBtn1 = document.getElementById("eye2");
     function createErrorMessage(message) {

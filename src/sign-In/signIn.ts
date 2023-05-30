@@ -24,21 +24,16 @@ export function logInBtnClick() {
   signInButton.addEventListener("click", logIn);
 }
 
- function logIn(): void {
-  console.log("sign-in process");
+ function logIn(): void {  
 
-  // const containerMain = document.getElementById("bodyContainer") as HTMLDivElement;
-  // const formDiv = document.createElement("div") as HTMLDivElement;
-  // containerMain.appendChild(formDiv);
+  
 
   const userInput = document.getElementById("userName") as HTMLInputElement;
   const emailInput = document.getElementById("floatingInput") as HTMLInputElement;
   const passwordInput1 = document.getElementById("floatingPassword1") as HTMLInputElement;
   const passwordInput2 = document.getElementById("floatingPassword2") as HTMLInputElement;
   const signInBtn = document.getElementById("signInButton") as HTMLButtonElement;
-  const signOutBtn = document.getElementById("signOutBtn") as HTMLButtonElement;
-  const container = document.createElement("div") as HTMLDivElement;
-  const modalSignIn = document.getElementById("modalSignIn") as HTMLDivElement;
+  const signOutBtn = document.getElementById("signOutBtn") as HTMLButtonElement;  
   const showPassBtn = document.getElementById("eye1") as HTMLElement;
   const showPassBtn1 = document.getElementById("eye2") as HTMLElement;
 
@@ -97,7 +92,7 @@ export function logInBtnClick() {
       const signInBtn = document.getElementById("signInButton") as HTMLButtonElement;
       signInBtn.classList.add("disabled");
     }
-    //signInBtn.disabled = !(isUserNameValid && isEmailValid && isPasswordValid && doPasswordsMatch);
+   
     // Update error messages
     updateErrorMessage(isUserNameValid, boxItem, errorUser);
     updateErrorMessage(isEmailValid, boxItemEmail, errorEmail);
@@ -145,7 +140,7 @@ export function logInBtnClick() {
 
     }
 
-    // showMainContent();
+    
   }
 
   // Function to handle the logout event
