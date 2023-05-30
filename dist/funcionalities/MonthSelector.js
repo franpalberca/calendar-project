@@ -1,3 +1,4 @@
+import { recreateEvents } from "./recreateEvents.js";
 export function initializeCalendar() {
     let currentDate = new Date();
     let currentDay = currentDate.getDate();
@@ -5,16 +6,55 @@ export function initializeCalendar() {
     let actualMonth = currentDate.getMonth();
     let currentYear = currentDate.getFullYear();
     let actualYear = currentDate.getFullYear();
+    const btnToday = document.querySelector("#btnToday");
+    const mainContainer = document.querySelector("#mainContainer");
+    const calendar = document.createElement("div");
+    calendar.classList.add("general-container");
+    calendar.id = "generalContainer";
+    mainContainer.appendChild(calendar);
+    const monthDiv = document.createElement("div");
+    monthDiv.classList.add("month");
+    calendar.appendChild(monthDiv);
+    const prevMonthDom = document.createElement("i");
+    prevMonthDom.id = "prevMonth";
+    prevMonthDom.setAttribute("class", "bi bi-chevron-left");
+    monthDiv.appendChild(prevMonthDom);
+    const month = document.createElement("span");
+    month.id = "month";
+    month.classList.add("date");
+    month.textContent = "MONTH";
+    monthDiv.appendChild(month);
+    const year = document.createElement("span");
+    year.id = "year";
+    monthDiv.appendChild(year);
+    const nextMonthDom = document.createElement("i");
+    nextMonthDom.id = "nextMonth";
+    nextMonthDom.setAttribute("class", "bi bi-chevron-right");
+    monthDiv.appendChild(nextMonthDom);
+    function createWeekDays() {
+        const weekTotalDays = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
+        const weekDivContainer = document.createElement("div");
+        weekDivContainer.classList.add("week");
+        calendar.appendChild(weekDivContainer);
+        weekTotalDays.forEach((element) => {
+            const divTextWeek = document.createElement("div");
+            divTextWeek.classList.add("div-text-week");
+            weekDivContainer.appendChild(divTextWeek);
+            const weekDay = document.createElement("p");
+            weekDay.classList.add("week-days");
+            weekDay.textContent = element;
+            divTextWeek.appendChild(weekDay);
+        });
+        const daysDivContainer = document.createElement("div");
+        daysDivContainer.classList.add("days");
+        daysDivContainer.setAttribute("id", "daysContainer");
+        calendar.appendChild(daysDivContainer);
+    }
+    createWeekDays();
     const daysContainer = document.querySelector("#daysContainer");
-    const month = document.querySelector("#month");
-    const year = document.querySelector("#year");
-    const prevMonthDom = document.querySelector("#prevMonth");
-    const nextMonthDom = document.querySelector("#nextMonth");
-    const calendar = document.querySelector("#generalContainer");
-    writeMonth(monthNumber);
-    setNewDate();
     function writeMonth(month) {
         if (daysContainer) {
+            console.log("probando");
             while (daysContainer.firstChild) {
                 daysContainer.firstChild.remove();
             }
@@ -24,32 +64,51 @@ export function initializeCalendar() {
             for (let i = previousMonthdaysContainer - startDayIndex + 1; i <= previousMonthdaysContainer; i++) {
                 const dayElement = document.createElement("div");
                 dayElement.classList.add("day", "previous-month");
-                dayElement.textContent = i.toString();
+                dayElement.setAttribute("id", `day${i}`);
+                dayElement.addEventListener("click", () => {
+                    dayElement.style.overflow = "visible";
+                    setTimeout(() => {
+                        dayElement.style.overflow = "hidden";
+                    }, 10000);
+                });
                 daysContainer.appendChild(dayElement);
+                const numberDay = document.createElement("p");
+                numberDay.setAttribute("class", "ms-2 mb-0");
+                numberDay.textContent = i.toString();
+                dayElement.appendChild(numberDay);
             }
             for (let i = 1; i <= currentMonthdaysContainer; i++) {
                 const dayElement = document.createElement("div");
-                dayElement.classList.add("day", "overflow-auto");
-                dayElement.setAttribute("id", "day");
+                dayElement.classList.add("day");
+                dayElement.setAttribute("id", `day${i}`);
+                dayElement.addEventListener("click", () => {
+                    dayElement.style.overflow = "visible";
+                    setTimeout(() => {
+                        dayElement.style.overflow = "hidden";
+                    }, 10000);
+                });
                 let paddedMonth = monthNumber + 1;
                 let dateAttribute = `${currentYear}-${paddedMonth}-${i}`;
                 const toISODate = new Date(dateAttribute).toISOString().slice(0, 10);
-                dayElement.textContent = i.toString();
+                const numberDay = document.createElement("p");
+                numberDay.setAttribute("class", "d-flex px-2 mb-0 align-items-center justify-content-between");
+                numberDay.textContent = i.toString();
+                dayElement.appendChild(numberDay);
                 const dayEventContainer = document.createElement("div");
-                dayEventContainer.classList.add("container");
+                dayEventContainer.setAttribute("class", "container overflow-auto mh-75");
                 dayEventContainer.setAttribute("data-dayNumber", toISODate);
                 dayElement.appendChild(dayEventContainer);
                 const addButtonDiv = document.createElement("div");
                 addButtonDiv.classList.add("add-button-container");
-                dayElement.appendChild(addButtonDiv);
+                numberDay.appendChild(addButtonDiv);
                 const addButton = document.createElement("button");
                 addButton.classList.add("hover-button");
                 addButton.setAttribute("data-today", toISODate);
                 addButton.addEventListener("click", (event) => {
                     if (event.target) {
                         const targetDay = event.currentTarget;
-                        const dayData = targetDay.getAttribute('data-today');
-                        const startDate = document.querySelector('#startDate');
+                        const dayData = targetDay.getAttribute("data-today");
+                        const startDate = document.querySelector("#startDate");
                         if (startDate) {
                             startDate.value = `${dayData}T12:00`;
                         }
@@ -73,11 +132,22 @@ export function initializeCalendar() {
             for (let i = 1; i <= remainingNextDays; i++) {
                 const dayElement = document.createElement("div");
                 dayElement.classList.add("day", "next-month");
-                dayElement.textContent = i.toString();
                 daysContainer.appendChild(dayElement);
+                dayElement.setAttribute("id", `day${i}`);
+                dayElement.addEventListener("click", () => {
+                    dayElement.style.overflow = "visible";
+                    setTimeout(() => {
+                        dayElement.style.overflow = "hidden";
+                    }, 10000);
+                });
+                const numberDay = document.createElement("p");
+                numberDay.setAttribute("class", "ms-2 mb-0");
+                numberDay.textContent = i.toString();
+                dayElement.appendChild(numberDay);
             }
         }
     }
+    writeMonth(monthNumber);
     function getTotaldaysContainer(month) {
         if (month === -1)
             month = 11;
@@ -127,17 +197,32 @@ export function initializeCalendar() {
         }, 600);
     }
     function setNewDate() {
-        const userNavigatorLanguage = navigator.language;
-        currentDate = new Date(currentYear, monthNumber, currentDay);
+        const actualMonthDate = new Date(currentYear, monthNumber, 1);
         if (month) {
-            month.textContent = new Intl.DateTimeFormat(navigator.language, { month: "long" }).format(currentDate);
+            month.textContent = new Intl.DateTimeFormat(navigator.language, { month: "long" }).format(actualMonthDate);
         }
         if (year) {
             year.textContent = currentYear.toString();
         }
         writeMonth(monthNumber);
     }
-    prevMonthDom.addEventListener("click", () => lastMonth());
-    nextMonthDom.addEventListener("click", () => nextMonth());
+    setNewDate();
+    prevMonthDom.addEventListener("click", lastMonth);
+    nextMonthDom.addEventListener("click", nextMonth);
+    btnToday.addEventListener("click", () => {
+        const today = new Date();
+        const todayMonth = today.getMonth();
+        const todayYear = today.getFullYear();
+        if (monthNumber !== todayMonth || currentYear !== todayYear) {
+            currentYear = todayYear;
+            monthNumber = todayMonth;
+            if (month && year) {
+                month.textContent = new Intl.DateTimeFormat(navigator.language, { month: "long" }).format(today);
+                year.textContent = currentYear.toString();
+            }
+            writeMonth(monthNumber);
+            recreateEvents();
+        }
+    });
 }
 //# sourceMappingURL=MonthSelector.js.map

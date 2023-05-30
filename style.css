@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Creepster&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Creepster&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,900&display=swap");
 
 /*- - - - - - R	E S E T - - - - - - - - - - - */
-*{
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-family: 'Poppins', sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: "Poppins", sans-serif;
 }
 
 /*  - - - - - - - H E A D E R  - - - - - - -  */
@@ -27,10 +27,12 @@
 }
 
 .btn-help li:hover {
+  display: inline-block;
   background-color: #e5e5ff;
   border-radius: 5px;
+  color: #c1eaf2;
 }
-/*  */
+/*- - - - S H O W  R E M I N D E R- - - - - - - - - - - */
 .popup {
   position: fixed;
   top: 50%;
@@ -51,35 +53,27 @@
   font-weight: bold;
 }
 
-/* - - - M A I N   S E L E C T O R  - - - - */
+/* - - - L I G H T   B O D Y     T H E M E  - - - - - - - - - - */
 .body-container {
   background: linear-gradient(transparent, rgba(0, 0, 255, 0.493) 50%, transparent);
 }
-.body-container.dark {
-  background: linear-gradient(transparent, rgba(5, 5, 133, 0.493) 50%, transparent);
-}
 
-/*  - - - G E N E R A L   S E L E C T O R S  C A L E N D A R - - - - */
+/*  - - G E N E R A L   S E L E C T O R S  C A L E N D A R - - - - */
 .general-container {
   position: relative;
   width: 90%;
   height: 100%;
   margin: auto;
   padding: 15px;
-  color: slateblue;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  color: #0962ea;
   border-radius: 10px;
-  background: white;
+  background: linear-gradient(67.6deg, rgb(225, 242, 254) -2.8%, rgb(193, 224, 250) 44.6%, rgb(19, 116, 197) 102.4%);
   box-shadow: 45px 31px 15px -14px rgba(8, 0, 0, 0.4);
 }
-.general-container.dark {
-  color: #c0d3c2;
-  background: rgb(2, 0, 36);
-  background: radial-gradient(circle, rgba(2, 0, 36, 1) 0%, rgba(0, 212, 255, 1) 0%, rgba(64, 64, 101, 1) 89%);
-  box-shadow: 45px 31px 15px -14px rgba(119, 117, 117, 0.699);
-}
+
 
 .general-container .month {
   width: 100%;
@@ -112,21 +106,26 @@
   font-size: 1rem;
   font-weight: 500;
   text-transform: capitalize;
+  color: #062d92;
 }
 
 .general-container .week .div-text-week {
-  flex: 1; /* IT ALLOWS EVERY DAY OF THE WEEK TO EXPAND SO THEY CAN FILL THE AVAILABLE SPACE */
+  display: flex;
+  justify-content: center;
+  flex: 5; /* IT ALLOWS EVERY DAY OF THE WEEK TO EXPAND SO THEY CAN FILL THE AVAILABLE SPACE */
   text-align: center;
 }
-.general-container .week .div-text-week p {
+.week-days {
   font-size: clamp(0.5rem, 5px + 1vw, 1rem);
   margin: 0;
   font-weight: 500;
   text-transform: capitalize;
+  padding: 0.1rem;
 }
 
 .days {
   width: 100%;
+  
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -134,35 +133,53 @@
   font-size: 1rem;
   font-weight: 400;
   cursor: pointer;
+  color: #2d4059;
 }
 .today {
-  background-color: rgb(169, 91, 241);
-  color: rgb(28, 28, 28);
+  background-color: #a1d9ff;
+  color: #a64452;
 }
 .previous-month {
-  background-color: rgb(234, 245, 255);
-  color: rgba(232, 83, 83, 0.861);
+  background-color: #83cee0;
+  color: #e70000;
 }
 .next-month {
-	background-color: rgba(183, 239, 250, 0.662);
-	color: rgba(33, 209, 6, 0.897);
-	font-weight: 470;
+  background-color: #1f8ea3;
+  color: #9dda52;
+  font-weight: 470;
+}
+.tearing-effect-nextMonth {
+  animation: tearing-effect-nextMonth 0.6s ease-in-out;
+}
+.tearing-effect-lastMont {
+  animation: tearing-effect-lastMont 0.6s ease-in-out;
 }
 .days .day {
-  border: 1px solid gainsboro;
+  border: 1px solid #d1d1d1;
   width: calc(100% / 7);
   height: clamp(1rem, 10px + 15vh, 110px);
+  overflow: hidden;
+  
 }
 .days .day:hover {
-  border: 1px solid lightgray;
-  background-color: rgba(241, 231, 254, 1);
+  border: 1px solid #cdeeaa;
+  background-color: #a1eafb;
+  color: #ff6a38;  
+  
 }
 
-.days .day:hover {
-  border: 1px solid lightgray;
-  background-color: rgba(241, 231, 254, 1);
+.day{
+  border-radius: 5px;
 }
+
+.day:hover {
+  background-color: #2e2e2e;
+  
+  
+}
+
 .day-event-dropdown {
+  position: relative;
   display: flex;
   height: 18px;
   overflow: hidden;
@@ -170,15 +187,15 @@
 }
 .day-event-dropdown:hover {
   position: absolute;
-  width: 20vw;
+  width: 15vw;
   height: 20vh;
   border-radius: 15px;
-  color: rgb(216, 216, 219);
+  padding-top: 5px;
   z-index: 10000;
   transform: scale(1.1);
 }
 .event-hover-details {
-  color: #ccc;
+  color: #2e2e2e;
 }
 
 .work-event {
@@ -207,15 +224,17 @@
 .minute-list {
   cursor: pointer;
 }
-
+/* B U T T O N   M O D A L   D A Y   E V E N T */
 .add-button-container {
   position: relative;
-  width: 20px;
-  height: 20px;
+  
+  margin-left: 5px;
+  width: 16px;
+  height: 16px;
 }
 
 .hover-button {
-  position: absolute;
+  position: relative;
   width: 100%;
   height: 100%;
   background-color: transparent;
@@ -225,7 +244,13 @@
 }
 
 .plus-icon {
-  font-size: 40px;
+  position: relative;
+  display: flex;
+  font-size: 30px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
   color: transparent;
   transition: color 0.5s;
 }
@@ -234,6 +259,94 @@
   color: grey;
 }
 
+/* - - - D A R K    T H E M E */
+.body-container.dark {
+  background: linear-gradient(transparent, rgba(5, 5, 133, 0.493) 50%, transparent);
+}
+.general-container.dark {
+  color: #c0d3c2;
+  background: rgb(2, 0, 36);
+  background: radial-gradient(circle, rgba(2, 0, 36, 1) 0%, rgba(0, 212, 255, 1) 0%, rgba(64, 64, 101, 1) 89%);
+  box-shadow: 45px 31px 15px -14px rgba(119, 117, 117, 0.699);
+}
+
+
+
+
+/* - - - - - - - - - - M E D I A    Q U E R I E S - - - - - - - - - - */
+@media only screen and (max-width: 480px) {
+  /* SPECIFIC STYLES FOR MOBILE DEVICES */
+  .general-container {
+    background: linear-gradient(to top, #209cff 0%, #68e0cf 100%);
+  }
+  .general-container .month {
+    width: 70%;
+    font-size: 1.3rem;
+    color: #005792;
+  }
+  .div-text-week { 
+    
+    overflow: hidden;
+   
+  }
+  .days .day {
+    height: 3rem;
+    font-size: 0.7rem;
+  }
+  .add-button-container {
+    position: relative;
+    width: 20px;
+    height: 20px;
+  }
+
+  .hover-button {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .plus-icon {
+    font-size: 20px;
+    color: transparent;
+    transition: color 0.5s;
+  }
+}
+
+/* @media only screen and (max-device-width: 768px) {
+	.days .day{
+	  height: 3.5rem;
+	  background-color: aqua;
+	}
+  }
+   */
+
+/* - - - - - - -   S C R O L L B A R  S T Y L E S      - - - - - - - - - -  */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 8px;
+  background-color: #c0d3c2;
+}
+::-webkit-scrollbar-button {
+  width: 5px;
+  height: 8px;
+  background-color: #4946d4;
+}
+::-webkit-scrollbar-thumb {
+  width: 5px;
+  height: 8px;
+  background-color: #4946d4;
+}
+::-webkit-scrollbar-track {
+  width: 5px;
+  height: 8px;
+  background-color: #d44688;
+}
+
+/*- - - - -  Change of month animation - - - - - - - */
 @keyframes tearing-effect-nextMonth {
   0% {
     transform: rotateZ(0deg) scale(1) skewX(0deg);
@@ -262,53 +375,4 @@
     transform: rotateZ(0deg) scale(1) skewX(0deg);
     transform-origin: top left;
   }
-}
-
-.tearing-effect-nextMonth {
-  animation: tearing-effect-nextMonth 0.6s ease-in-out;
-}
-.tearing-effect-lastMont {
-  animation: tearing-effect-lastMont 0.6s ease-in-out;
-}
-
-@media only screen and (max-width: 480px) {
-  /* SPECIFIC STYLES FOR MOBILE DEVICES */
-  .general-container .month {
-    width: 70%;
-    font-size: 1.3rem;
-    color: #431a7bfb;
-  }
-  .days .day {
-    height: 3rem;
-    font-size: 0.7rem;
-  }
-}
-
-/* @media only screen and (max-device-width: 768px) {
-	.days .day{
-	  height: 3.5rem;
-	  background-color: aqua;
-	}
-  }
-   */
-
-::-webkit-scrollbar {
-  width: 5px;
-  height: 8px;
-  background-color: #c0d3c2;
-}
-::-webkit-scrollbar-button {
-  width: 5px;
-  height: 8px;
-  background-color: #4946d4;
-}
-::-webkit-scrollbar-thumb {
-  width: 5px;
-  height: 8px;
-  background-color: #4946d4;
-}
-::-webkit-scrollbar-track {
-  width: 5px;
-  height: 8px;
-  background-color: #d44688;
 }
