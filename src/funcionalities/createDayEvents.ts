@@ -1,5 +1,6 @@
 import { EventData } from "../types/eventData";
 import { loadEventModal } from "./loadEventModal.js";
+import { transformTime } from "./transformTime.js";
 
 export function createDayEvent(element: EventData, eventColor: string, targetDay: HTMLDivElement, date: string) {
   const dayEvent = document.createElement("div");
@@ -48,12 +49,14 @@ export function createDayEvent(element: EventData, eventColor: string, targetDay
   dayEvent.appendChild(eventHoverDetails);
 
   const eventDetailsEventStart = document.createElement("p") as HTMLElement;
-  eventDetailsEventStart.innerText = `Starts on ${element.eventDay}, ${element.eventHour}:${element.eventMinutes}0`;
+  const startingHour = transformTime(`${element.eventHour}:${element.eventMinutes}`)
+  eventDetailsEventStart.innerText = `Starts on ${element.eventDay}, ${startingHour}`;
   eventDetailsEventStart.setAttribute("class", "d-flex event-hover-hour-start");
   eventHoverDetails.appendChild(eventDetailsEventStart);
   if (element.eventDayF !== null) {
     const eventDetailsEventFinish = document.createElement("p") as HTMLParagraphElement;
-    eventDetailsEventFinish.textContent = `Finish on: ${element.eventDayF || "Today"}, ${element.eventHourF || " "}:${element.eventMinutesF}0`;
+    const finishingHour = transformTime(`${element.eventHourF}:${element.eventMinutesF}`)
+    eventDetailsEventFinish.textContent = `Finish on: ${element.eventDayF || "Today"}, ${finishingHour}`;
     eventDetailsEventFinish.setAttribute("class", "d-flex event-hover-hour-finish");
     eventHoverDetails.appendChild(eventDetailsEventFinish);
   }

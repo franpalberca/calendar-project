@@ -1,4 +1,5 @@
 import {modifyCreatedEvent} from "./modifyEvent.js";
+import { transformTime } from "./transformTime.js";
 
 export function loadEventModal(event: MouseEvent) {
   const target = event.currentTarget as HTMLElement;
@@ -18,10 +19,10 @@ export function loadEventModal(event: MouseEvent) {
     eventModalType.innerText = eventType;
 
     const eventStartHModal = document.querySelector("#eventStartHModal") as HTMLElement;
-    eventStartHModal.innerText = eventStartHour.length === 4 ? `${eventStartHour}0` : eventStartHour;
+    eventStartHModal.innerText = transformTime(eventStartHour);
 
     const eventFinishHModal = document.querySelector("#eventFinishHModal") as HTMLElement;
-    eventFinishHModal.innerText = eventFinishHour === "null:null" ? `Your event finishes today` : `Your event finishes at ${eventFinishHour}`;
+    eventFinishHModal.innerText = eventFinishHour === "null:null" ? `Your event finishes today` : `Your event finishes at ${transformTime(eventFinishHour)}`;
 
     const eventDescriptionModal = document.querySelector("#eventDescriptionModal") as HTMLElement;
     eventDescriptionModal.innerText = eventDescription === "" ? `No description was provided for this event` : `${eventDescription}`;
