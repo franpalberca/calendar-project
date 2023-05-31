@@ -35,7 +35,7 @@ export function initializeCalendar() {
         const weekTotalDays = [];
         for (let i = 0; i < 7; i++) {
             const date = new Date(currentYear, monthNumber, i + 1);
-            const weekday = new Intl.DateTimeFormat(navigator.language, { weekday: "long" }).format(date);
+            const weekday = new Intl.DateTimeFormat(navigator.language, { weekday: "short" }).format(date);
             weekTotalDays.push(weekday);
         }
         const weekDivContainer = document.createElement("div");
