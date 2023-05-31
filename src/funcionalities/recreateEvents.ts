@@ -13,24 +13,24 @@ export function recreateEvents(): void {
 
     let eventColor = "";
     switch (element.eventType) {
-      case "default":
-        eventColor = "bg-primary";
-        break;
-      case "work":
-        eventColor = "bg-danger";
-        break;
-      case "family":
-        eventColor = "bg-secondary";
-        break;
-      case "friends":
-        eventColor = "bg-warning";
-        break;
-      case "doctor":
-        eventColor = "bg-info";
-        break;
-      case "private":
-        eventColor = "bg-success";
-        break;
+      case 'default':
+            eventColor = "bg-primary";
+            break;
+        case 'work':
+            eventColor = "work-event";
+            break;
+        case 'family':
+            eventColor = "family-event";
+            break;
+        case 'friends':
+            eventColor = "friends-event";
+            break;
+        case 'doctor':
+            eventColor = "doctor-event";
+            break;
+        case 'private':
+            eventColor = "private-event";
+            break;
     }
     if (dateArray.length === 0) {
       const targetDate = document.querySelector(`[data-daynumber="${eventDate}"]`) as HTMLDivElement;

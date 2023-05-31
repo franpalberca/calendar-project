@@ -17,19 +17,19 @@ export function setEvent(){
             eventColor = "bg-primary";
             break;
         case 'work':
-            eventColor = "bg-danger";
+            eventColor = "work-event";
             break;
         case 'family':
-            eventColor = "bg-secondary";
+            eventColor = "family-event";
             break;
         case 'friends':
-            eventColor = "bg-warning";
+            eventColor = "friends-event";
             break;
         case 'doctor':
-            eventColor = "bg-info";
+            eventColor = "doctor-event";
             break;
         case 'private':
-            eventColor = "bg-success";
+            eventColor = "private-event";
             break;
     }
     if (dateArray.length === 0) {
