@@ -68,7 +68,7 @@ export function initializeCalendar() {
   function writeMonth(month: number) {
 
     if (daysContainer) {
-      console.log("probando");
+      
       while (daysContainer.firstChild) {
         daysContainer.firstChild.remove(); // TO ELIMINATE EXISTING DAYS
       }

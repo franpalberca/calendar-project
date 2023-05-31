@@ -54,7 +54,6 @@ export function initializeCalendar() {
     const daysContainer = document.querySelector("#daysContainer");
     function writeMonth(month) {
         if (daysContainer) {
-            console.log("probando");
             while (daysContainer.firstChild) {
                 daysContainer.firstChild.remove();
             }

@@ -126,8 +126,7 @@
 }
 
 .days {
-  width: 100%;
-  
+  width: 100%;  
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -137,37 +136,42 @@
   cursor: pointer;
   color: #2d4059;
 }
+
 .today {
   background-color: #a1d9ff;
   color: #a64452;
 }
+
 .previous-month {
   background-color: #83cee0;
   color: #e70000;
 }
+
 .next-month {
   background-color: #1f8ea3;
   color: #9dda52;
   font-weight: 470;
 }
+
 .tearing-effect-nextMonth {
   animation: tearing-effect-nextMonth 0.6s ease-in-out;
 }
+
 .tearing-effect-lastMont {
   animation: tearing-effect-lastMont 0.6s ease-in-out;
 }
+
 .days .day {
   border: 1px solid #d1d1d1;
   width: calc(100% / 7);
   height: clamp(1rem, 10px + 15vh, 110px);
-  overflow: hidden;
-  
+  overflow: hidden;  
 }
+
 .days .day:hover {
   border: 1px solid #cdeeaa;
   background-color: #a1eafb;
-  color: #ff6a38;  
-  
+  color: #ff6a38;   
 }
 
 .day{
@@ -175,9 +179,7 @@
 }
 
 .day:hover {
-  background-color: #2e2e2e;
-  
-  
+  background-color: #2e2e2e;  
 }
 
 .day-event-dropdown {
@@ -196,6 +198,7 @@
   z-index: 10000;
   transform: scale(1.1);
 }
+
 .event-hover-details {
   color: #2e2e2e;
 }
@@ -226,6 +229,7 @@
 .minute-list {
   cursor: pointer;
 }
+
 /* B U T T O N   M O D A L   D A Y   E V E N T */
 .add-button-container {
   position: relative;
@@ -263,6 +267,7 @@
 .body-container.dark {
   background: linear-gradient(transparent, rgba(5, 5, 133, 0.493) 50%, transparent);
 }
+
 .general-container.dark {
   color: #c0d3c2;
   background: rgb(2, 0, 36);
@@ -270,29 +275,28 @@
   box-shadow: 45px 31px 15px -14px rgba(119, 117, 117, 0.699);
 }
 
-
-
-
 /* - - - - - - - - - - M E D I A    Q U E R I E S - - - - - - - - - - */
 @media only screen and (max-width: 480px) {
   /* SPECIFIC STYLES FOR MOBILE DEVICES */
   .general-container {
     background: linear-gradient(to top, #209cff 0%, #68e0cf 100%);
   }
+
   .general-container .month {
     width: 70%;
     font-size: 1.3rem;
     color: #005792;
   }
-  .div-text-week { 
-    
-    overflow: hidden;
-   
+
+  .div-text-week {     
+    overflow: hidden;   
   }
+
   .days .day {
     height: 3rem;
     font-size: 0.7rem;
   }
+
   .add-button-container {
     position: relative;
     width: 20px;
@@ -315,14 +319,6 @@
     transition: color 0.5s;
   }
 }
-
-/* @media only screen and (max-device-width: 768px) {
-	.days .day{
-	  height: 3.5rem;
-	  background-color: aqua;
-	}
-  }
-   */
 
 /* - - - - - - -   S C R O L L B A R  S T Y L E S      - - - - - - - - - -  */
 ::-webkit-scrollbar {
@@ -354,7 +350,7 @@
   }
   50% {
     transform: rotateZ(20deg) scale(0.8, 1.2) skewX(10deg);
-    transform-origin: top bottom;
+    transform-origin: top;
   }
   100% {
     transform: rotateZ(0deg) scale(1) skewX(0deg);
@@ -369,7 +365,7 @@
   }
   50% {
     transform: rotateZ(-20deg) scale(0.8, 1.2) skewX(-10deg);
-    transform-origin: top bottom;
+    transform-origin: top;
   }
   100% {
     transform: rotateZ(0deg) scale(1) skewX(0deg);
