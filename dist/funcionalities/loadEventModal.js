@@ -21,13 +21,14 @@ export function loadEventModal(event) {
         eventFinishHModal.innerText = eventFinishHour === "null:null" ? `Your event finishes today` : `Your event finishes at ${transformTime(eventFinishHour)}`;
         const eventDescriptionModal = document.querySelector("#eventDescriptionModal");
         eventDescriptionModal.innerText = eventDescription === "" ? `No description was provided for this event` : `${eventDescription}`;
+        eventDescriptionModal.setAttribute("class", "text-wrap");
         const eventReminderModal = document.querySelector("#eventReminderModal");
         eventReminderModal.innerText = eventReminder === "default" ? `No time of reminder was provided for this event` : `You will be reminded about this event at ${eventReminder}`;
         const deleteEventModal = document.querySelector("#deleteEventModal");
         deleteEventModal.addEventListener("click", () => {
-            const response = confirm('¿Are you sure you want to delete this event?');
+            const response = confirm("¿Are you sure you want to delete this event?");
             if (response) {
-                multitarget.forEach(target => {
+                multitarget.forEach((target) => {
                     target.remove();
                 });
                 localStorage.removeItem(`Event: ${eventName}`);
