@@ -4,7 +4,7 @@ export function createDayEvent(element, eventColor, targetDay, date) {
     const dayEvent = document.createElement("div");
     dayEvent.setAttribute("id", `dayEvent${element.eventHour}:${element.eventMinutes}`);
     dayEvent.setAttribute("class", `row d-flex justify-content-center ${eventColor}  mb-1 day-event-dropdown`);
-    dayEvent.setAttribute("style", "font-size: 12px; color: black;");
+    dayEvent.setAttribute("style", "font-size: min(max(0.6rem, 1vh), 15px); color: black;");
     dayEvent.innerText = `${element.name}`;
     dayEvent.setAttribute("data-startHour", `${element.eventHour}:${element.eventMinutes}`);
     dayEvent.setAttribute("data-endHour", `${element.eventHourF}:${element.eventMinutesF}`);

@@ -32,24 +32,20 @@ export function initializeCalendar() {
     nextMonthDom.setAttribute("class", "bi bi-chevron-right next");
     monthDiv.appendChild(nextMonthDom);
     function createWeekDays() {
-        const weekTotalDays = [];
-        for (let i = 0; i < 7; i++) {
-            const date = new Date(currentYear, monthNumber, i + 1);
-            const weekday = new Intl.DateTimeFormat(navigator.language, { weekday: "short" }).format(date);
-            weekTotalDays.push(weekday);
-        }
         const weekDivContainer = document.createElement("div");
         weekDivContainer.classList.add("week");
         calendar.appendChild(weekDivContainer);
-        weekTotalDays.forEach((element) => {
+        for (let i = 0; i < 7; i++) {
+            const date = new Date(currentYear, monthNumber, i + 1);
+            const weekday = new Intl.DateTimeFormat(navigator.language, { weekday: "short", }).format(date);
             const divTextWeek = document.createElement("div");
             divTextWeek.classList.add("div-text-week");
             weekDivContainer.appendChild(divTextWeek);
             const weekDay = document.createElement("p");
             weekDay.classList.add("week-days");
-            weekDay.textContent = element;
+            weekDay.textContent = weekday;
             divTextWeek.appendChild(weekDay);
-        });
+        }
         const daysDivContainer = document.createElement("div");
         daysDivContainer.classList.add("days");
         daysDivContainer.setAttribute("id", "daysContainer");
@@ -59,7 +55,6 @@ export function initializeCalendar() {
     const daysContainer = document.querySelector("#daysContainer");
     function writeMonth(month) {
         if (daysContainer) {
-            console.log("probando");
             while (daysContainer.firstChild) {
                 daysContainer.firstChild.remove();
             }
@@ -94,7 +89,9 @@ export function initializeCalendar() {
                 });
                 let paddedMonth = monthNumber + 1;
                 let dateAttribute = `${currentYear}-${paddedMonth}-${i}`;
-                const toISODate = new Date(dateAttribute).toISOString().slice(0, 10);
+                const toISODate = new Date(dateAttribute)
+                    .toISOString()
+                    .slice(0, 10);
                 const numberDay = document.createElement("p");
                 numberDay.setAttribute("class", "d-flex px-2 mb-0 align-items-center justify-content-between");
                 numberDay.textContent = i.toString();
@@ -156,7 +153,13 @@ export function initializeCalendar() {
     function getTotaldaysContainer(month) {
         if (month === -1)
             month = 11;
-        if (month == 0 || month == 2 || month == 4 || month == 6 || month == 7 || month == 9 || month == 11) {
+        if (month == 0 ||
+            month == 2 ||
+            month == 4 ||
+            month == 6 ||
+            month == 7 ||
+            month == 9 ||
+            month == 11) {
             return 31;
         }
         else if (month == 3 || month == 5 || month == 8 || month == 10) {
@@ -167,7 +170,7 @@ export function initializeCalendar() {
         }
     }
     function isLeap() {
-        return (currentYear % 100 !== 0 && currentYear % 4 === 0) || currentYear % 400 === 0;
+        return ((currentYear % 100 !== 0 && currentYear % 4 === 0) || currentYear % 400 === 0);
     }
     function startDay() {
         const start = new Date(currentYear, monthNumber, 1);
@@ -204,7 +207,9 @@ export function initializeCalendar() {
     function setNewDate() {
         const actualMonthDate = new Date(currentYear, monthNumber, 1);
         if (month) {
-            month.textContent = new Intl.DateTimeFormat(navigator.language, { month: "long" }).format(actualMonthDate);
+            month.textContent = new Intl.DateTimeFormat(navigator.language, {
+                month: "long",
+            }).format(actualMonthDate);
         }
         if (year) {
             year.textContent = currentYear.toString();
