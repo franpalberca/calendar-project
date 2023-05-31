@@ -18,7 +18,7 @@ export function retrieveEventData() {
     const eventHourF = parseInt(fparts[3]);
     const eventMinutesF = parseInt(fparts[4]);
     const remindMeOpt = document.querySelector('#remindMeOpt');
-    const reminder = remindMeOpt === null || remindMeOpt === void 0 ? void 0 : remindMeOpt.value;
+    const reminder = remindMeOpt.value;
     const eventDescription = document.querySelector('#description');
     const description = eventDescription.value;
     const eventTypeOpt = document.querySelector('#eventTypeOpt');
@@ -39,7 +39,6 @@ export function retrieveEventData() {
         description: description,
         eventType: eventType,
     };
-    console.log(eventObject);
     const eventObjectJSON = JSON.stringify(eventObject);
     localStorage.setItem(`Event: ${eventName}`, eventObjectJSON);
     return eventObject;

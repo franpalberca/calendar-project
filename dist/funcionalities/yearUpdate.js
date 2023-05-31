@@ -1,10 +1,10 @@
 "use strict";
 function updateYear() {
     const currentYear = new Date().getFullYear();
-    const yearElement = document.getElementById('yearUpdateFooter');
+    const yearElement = document.getElementById("yearUpdateFooter");
     if (yearElement) {
         yearElement.textContent = currentYear.toString();
     }
 }
-window.addEventListener('DOMContentLoaded', updateYear);
+window.addEventListener("DOMContentLoaded", updateYear);
 //# sourceMappingURL=yearUpdate.js.map

@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" id="htmlTheme">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/bootstrap.css" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
-    <link rel="shortcut icon" href="img/icons/calendar-icon.png" type="image/x-icon" />
+    <meta charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <link rel="stylesheet" href="./css/bootstrap.css" >
+    <link rel="stylesheet" href="style.css" >
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" >
+    <link rel="shortcut icon" href="img/icons/calendar-icon.png" type="image/x-icon" >
     <script type="module" src="./dist/starter.js"></script>
     <script src="https://unpkg.com/@popperjs/core@2" defer></script>
     <script src="./js/bootstrap.js" defer></script>
     <title>Lovelace Calendar</title>
   </head>
   <body id="bodyContainer" class="body-container">
- <!-- - - - - - H E A D E R  - - - - - - - - - - - - - - - - - - - - - - - - - - -  --->
+ <!-- - - - - - H E A D E R  - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <header class="d-flex container flex-wrap justify-content-center align-items-center py-3 mb-4 border-bottom header-css">
       <nav class="navbar navbar-expand-md">
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto navbar-brand link-body-emphasis text-decoration-none link-calendar-btn">
@@ -34,7 +34,7 @@
         <div class="collapse navbar-collapse" id="navBarNav">
           <ul class="nav nav-pills header-btn" data-toggle="buttons">
             <li class="nav-item">
-              <button class="nav-link btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#eventModal" data-toggle="button" aria-pressed="false" autocomplete="off">+ Add event</button>
+              <button class="nav-link btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#eventModal" data-toggle="button" aria-pressed="false">+ Add event</button>
             </li>
             <li class="nav-item">
               <button id="btnToday" data-bs-target="#todaySearch" class="nav-link btn btn-outline-primary" aria-current="page">Today</button>
@@ -51,12 +51,12 @@
         </div>
       </nav>
     </header>
- <!--M O D A L   F O R   C H E C K I N G    D E T A I L S  ON  E V E NT S - - - - - ---->
+ <!--M O D A L   F O R   C H E C K I N G    D E T A I L S  ON  E V E NT S - - - - - - -->
     <div class="modal fade" id="eventDetailsModal" tabindex="-1" aria-labelledby="eventDetailsModal" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="eventModalName"></h1>
+            <h2 class="modal-title fs-5" id="eventModalName"></h2>
             <button id="closeEventModal" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
@@ -73,12 +73,12 @@
         </div>
       </div>
     </div>
- <!-- C R E A T E    M O D A L   E V E N T  - - - - - - - - - - - - - - - - - - - - ---->
+ <!-- C R E A T E    M O D A L   E V E N T  - - - - - - - - - - - - - - - - - - - -  -->
     <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModal" aria-hidden="false">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="createEventModalTittle">Create Event</h1>
+            <h2 class="modal-title fs-5" id="createEventModalTittle">Create Event</h2>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
@@ -87,22 +87,22 @@
                 <div class="col-md-6">
                   <div class="mb-3">
                     <label for="modalTitle" class="form-label">Title</label>
-                    <input type="text" id="modalTitle" name="title" maxlength="60" class="form-control" />
+                    <input type="text" id="modalTitle" name="title" maxlength="60" class="form-control" >
                   </div>
                   <div class="mb-3">
                     <label for="startDate" class="form-label">Start date</label>
-                    <input type="datetime-local" id="startDate" name="date-start" class="form-control" />
+                    <input type="datetime-local" id="startDate" name="date-start" class="form-control" >
                   </div>
                   <div class="mb-3 form-check">
-                    <input type="checkbox" name="End date" id="dateEndCheck" class="form-check-input" />
+                    <input type="checkbox" name="End date" id="dateEndCheck" class="form-check-input" >
                     <label for="dateEndCheck" class="form-check-label">Finish</label>
                   </div>
                   <div class="mb-3 d-none" id="reminderBox">
                     <label for="finishDate" class="form-label">End date</label>
-                    <input type="datetime-local" id="finishDate" name="date-finish" class="form-control" />
+                    <input type="datetime-local" id="finishDate" name="date-finish" class="form-control" >
                   </div>
                   <div class="mb-3 form-check">
-                    <input type="checkbox" name="Remind me when this event expires" id="reminderCheck" class="form-check-input" />
+                    <input type="checkbox" name="Remind me when this event expires" id="reminderCheck" class="form-check-input" >
                     <label for="reminderCheck" class="form-check-label">Remind me when this event expires</label>
                   </div>
                   <div class="input-group mb-3 d-none" id="rememberWhen">
@@ -143,12 +143,12 @@
         </div>
       </div>
     </div>
- <!-- C L I M A T E   M O D A L - - - - - - - - - - - - - - - - - - - - - - - - - --->
+ <!-- C L I M A T E   M O D A L - - - - - - - - - - - - - - - - - - - - - - - - -  -->
     <div class="modal fade" id="climateModal" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="climateModalLabel">Today's Weather</h1>
+            <h2 class="modal-title fs-5" id="climateModalLabel">Today's Weather</h2>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
@@ -168,26 +168,26 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content rounded-4 shadow">
           <div class="modal-header p-5 pb-4 border-bottom-0">
-            <h1 class="fw-bold mb-0 fs-2">Sign up for free</h1>
+            <h2 class="fw-bold mb-0 fs-2">Sign up for free</h2>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body p-5 pt-0">
             <form class="">
               <div class="form-floating mb-3">
-                <input type="text" autocomplete="username" class="form-control rounded-3" id="userName" placeholder="Assembler" required minlength="5" maxlength="20" />
+                <input type="text" autocomplete="username" class="form-control rounded-3" id="userName" placeholder="Assembler" required minlength="5" maxlength="20" >
                 <label for="userName">User</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="email" autocomplete="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com" required />
+                <input type="email" autocomplete="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com" required >
                 <label for="floatingInput">Email address</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="password" autocomplete="new-password" class="form-control rounded-3" id="floatingPassword1" placeholder="Password" required />
+                <input type="password" autocomplete="new-password" class="form-control rounded-3" id="floatingPassword1" placeholder="Password" required >
                 <span id="show-password1"><i class="bi bi-eye-slash" id="eye1"></i> </span>
                 <label for="floatingPassword1">Password </label>
               </div>
               <div class="form-floating mb-3">
-                <input type="password" autocomplete="current-password" class="form-control rounded-3" id="floatingPassword2" placeholder="Password" required />
+                <input type="password" autocomplete="current-password" class="form-control rounded-3" id="floatingPassword2" placeholder="Password" required >
                 <label for="floatingPassword2">Confirm password</label>
                 <span id="show-password2">
                   <i class="bi bi-eye-slash" id="eye2"></i>
@@ -196,7 +196,7 @@
               <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary disabled" type="submit" id="signInButton" data-bs-dismiss="modal">Sign up</button>
               <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use. Or you can continue as guest:</small>
               <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="submit" id="signOutBtn">Continue as guest</button>
-              <hr class="my-4" />
+              <hr class="my-4">
               <h2 class="fs-5 fw-bold mb-3">Or use a third-party</h2>
               <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="submit">
                 <i class="bi bi-google"></i>
@@ -256,12 +256,12 @@
           </div>
         </div>
     </div>
- <!-- M A I N - - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - -->
+ <!-- M A I N - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <main class="main-container" id="mainContainer">      
     </main>
- <!--  F O O T E R - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - -  -->
+ <!--  F O O T E R - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
     <footer class="d-flex container flex-wrap justify-content-between py-3 my-4 border-top">  
- <!--  C H A N G E  T H E M E  - - - - - - - -- - - - - - - - - - - - - - - - - - -  -->	   
+ <!--  C H A N G E  T H E M E  - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->	   
       <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
         <button class="btn btn-primary py-2 dropdown-toggle d-flex align-items-center" id="autoBtnActive" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
           <i class="bi bi-circle-half"></i>
@@ -288,11 +288,11 @@
           </li>
         </ul>
       </div>
- <!--  C O N T R I B U I T O R S - - - - - -- - - - - - - - - - - - - - - - - - - -  -->
+ <!--  C O N T R I B U I T O R S - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
       <div class="d-grid">
         <p class="col-md-4 mb-0 text-body-secondary">
           <a class="navbar-brand" href="https://assemblerinstitute.com" target="_blank">
-            <img src="./resources/A-Logo.png" alt="Bootstrap" width="30" height="30" />
+            <img src="./resources/A-Logo.png" alt="Bootstrap" width="30" height="30" >
             2023 Lovelace Squad
           </a>
         </p>

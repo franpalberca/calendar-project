@@ -21,7 +21,6 @@ function logIn() {
     const passwordInput1 = document.getElementById("floatingPassword1");
     const passwordInput2 = document.getElementById("floatingPassword2");
     const signInBtn = document.getElementById("signInButton");
-    const signOutBtn = document.getElementById("signOutBtn");
     const showPassBtn = document.getElementById("eye1");
     const showPassBtn1 = document.getElementById("eye2");
     function createErrorMessage(message) {
@@ -31,7 +30,7 @@ function logIn() {
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>`;
         const mainContainer = document.querySelector('#modalSignIn');
-        mainContainer === null || mainContainer === void 0 ? void 0 : mainContainer.prepend(alertMessage);
+        mainContainer.prepend(alertMessage);
         return alertMessage;
     }
     function isFieldValid(value, minLength, maxLength, regex) {
@@ -106,11 +105,8 @@ function logIn() {
             signInOutLi.insertAdjacentElement("afterend", userButton);
         }
     }
-    function handleLogout() {
-    }
-    if (signInBtn && signOutBtn && showPassBtn && showPassBtn1 && userInput && emailInput && passwordInput1 && passwordInput2) {
+    if (signInBtn && showPassBtn && showPassBtn1 && userInput && emailInput && passwordInput1 && passwordInput2) {
         signInBtn.addEventListener("click", handleLogin);
-        signOutBtn.addEventListener("click", handleLogout);
         showPassBtn.addEventListener("click", togglePasswordVisibility1);
         showPassBtn1.addEventListener("click", togglePasswordVisibility2);
         userInput.addEventListener("blur", validateForm);
