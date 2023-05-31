@@ -7,6 +7,7 @@ import { recreateEvents } from './funcionalities/recreateEvents.js';
 import { changeThemeAddEvent } from './changesTheme/changeTheme.js';
 import { checkReminders } from './funcionalities/checkReminder.js';
 import { logInBtnClick } from './sign-In/signIn.js';
+import { reorderEvents } from "./funcionalities/reoderEvents.js";
 window.onload = () => {
     setClimate();
     setInterval(setClimate, 300000);
@@ -18,5 +19,6 @@ window.onload = () => {
     changeThemeAddEvent();
     setInterval(checkReminders, 10000);
     recreateEvents();
+    reorderEvents();
 };
 //# sourceMappingURL=starter.js.map
