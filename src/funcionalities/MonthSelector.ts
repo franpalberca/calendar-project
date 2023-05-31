@@ -5,10 +5,10 @@ export function initializeCalendar() {
   let monthNumber = currentDate.getMonth();
   let actualMonth = currentDate.getMonth();
   let currentYear = currentDate.getFullYear();
-  let actualYear = currentDate.getFullYear();  
-  
+  let actualYear = currentDate.getFullYear();
+
   // Global variables
-  const btnToday = document.querySelector("#btnToday") as HTMLButtonElement;  
+  const btnToday = document.querySelector("#btnToday") as HTMLButtonElement;
   const mainContainer = document.querySelector("#mainContainer") as HTMLDivElement;
   const calendar = document.createElement("div") as HTMLDivElement;
   calendar.classList.add("general-container");
@@ -16,34 +16,41 @@ export function initializeCalendar() {
   mainContainer.appendChild(calendar)
 
   // Create the div element with class "month"
-  
-    const monthDiv = document.createElement("div");
-    monthDiv.classList.add("month");
-    calendar.appendChild(monthDiv);
-    // Create child elements of div with class "month"
-    const prevMonthDom = document.createElement("i");
-    prevMonthDom.id = "prevMonth";
-    prevMonthDom.setAttribute("class", "bi bi-chevron-left") ;
-    monthDiv.appendChild(prevMonthDom);
 
-    const month = document.createElement("span");
-    month.id = "month";
-    month.classList.add("date");
-    month.textContent = "MONTH";
-    monthDiv.appendChild(month);
+  const monthDiv = document.createElement("div");
+  monthDiv.classList.add("month");
+  calendar.appendChild(monthDiv);
+  // Create child elements of div with class "month"
+  const prevMonthDom = document.createElement("i");
+  prevMonthDom.id = "prevMonth";
+  prevMonthDom.setAttribute("class", "bi bi-chevron-left prev");
+  monthDiv.appendChild(prevMonthDom);
 
-    const year = document.createElement("span");
-    year.id = "year";
-    monthDiv.appendChild(year);
+  const month = document.createElement("span");
+  month.id = "month";
+  month.classList.add("date");
+  month.textContent = "MONTH";
+  monthDiv.appendChild(month);
 
-    const nextMonthDom = document.createElement("i");
-    nextMonthDom.id = "nextMonth";
-    nextMonthDom.setAttribute("class", "bi bi-chevron-right");
-    monthDiv.appendChild(nextMonthDom);
-  
+  const year = document.createElement("span");
+  year.id = "year";
+  monthDiv.appendChild(year);
+
+  const nextMonthDom = document.createElement("i");
+  nextMonthDom.id = "nextMonth";
+  nextMonthDom.setAttribute("class", "bi bi-chevron-right next");
+  monthDiv.appendChild(nextMonthDom);
+
 
   function createWeekDays() {
-    const weekTotalDays: string[] = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
+    const weekTotalDays: string[] = [];
+
+    for (let i = 0; i < 7; i++) {
+      const date = new Date(currentYear, monthNumber, i + 1);
+      const weekday = new Intl.DateTimeFormat(navigator.language, { weekday: "long" }).format(date);
+      weekTotalDays.push(weekday);
+    }
+
     const weekDivContainer = document.createElement("div");
     weekDivContainer.classList.add("week");
     calendar.appendChild(weekDivContainer);
@@ -57,12 +64,15 @@ export function initializeCalendar() {
       weekDay.textContent = element;
       divTextWeek.appendChild(weekDay);
     });
+
     const daysDivContainer = document.createElement("div");
     daysDivContainer.classList.add("days");
     daysDivContainer.setAttribute("id", "daysContainer");
     calendar.appendChild(daysDivContainer);
   }
+
   createWeekDays();
+
   const daysContainer = document.querySelector("#daysContainer") as HTMLDivElement;
 
   function writeMonth(month: number) {
@@ -150,7 +160,7 @@ export function initializeCalendar() {
         addButtonSpan.textContent = "+";
         addButton.appendChild(addButtonSpan);
 
-        
+
         const targetYear = year.innerText;
         const todayYear = actualYear.toString();
         if (i === currentDay && month === actualMonth && todayYear === targetYear) {

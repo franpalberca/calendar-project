@@ -91,6 +91,8 @@
 .general-container .month .next {
   cursor: pointer;
   margin: 0 15px 0 15px;
+  color: #3d19dd;
+  font-weight: 450;
 }
 .general-container .month .prev:hover,
 .general-container .month .next:hover {
@@ -227,8 +229,6 @@
 /* B U T T O N   M O D A L   D A Y   E V E N T */
 .add-button-container {
   position: relative;
-  
-  margin-left: 5px;
   width: 16px;
   height: 16px;
 }

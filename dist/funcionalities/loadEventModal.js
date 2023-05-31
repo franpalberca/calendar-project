@@ -1,4 +1,5 @@
 import { modifyCreatedEvent } from "./modifyEvent.js";
+import { transformTime } from "./transformTime.js";
 export function loadEventModal(event) {
     const target = event.currentTarget;
     if (target) {
@@ -15,9 +16,9 @@ export function loadEventModal(event) {
         const eventModalType = document.querySelector("#eventModalType");
         eventModalType.innerText = eventType;
         const eventStartHModal = document.querySelector("#eventStartHModal");
-        eventStartHModal.innerText = eventStartHour.length === 4 ? `${eventStartHour}0` : eventStartHour;
+        eventStartHModal.innerText = transformTime(eventStartHour);
         const eventFinishHModal = document.querySelector("#eventFinishHModal");
-        eventFinishHModal.innerText = eventFinishHour === "null:null" ? `Your event finishes today` : `Your event finishes at ${eventFinishHour}`;
+        eventFinishHModal.innerText = eventFinishHour === "null:null" ? `Your event finishes today` : `Your event finishes at ${transformTime(eventFinishHour)}`;
         const eventDescriptionModal = document.querySelector("#eventDescriptionModal");
         eventDescriptionModal.innerText = eventDescription === "" ? `No description was provided for this event` : `${eventDescription}`;
         const eventReminderModal = document.querySelector("#eventReminderModal");
