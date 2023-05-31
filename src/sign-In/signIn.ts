@@ -19,7 +19,6 @@ export function logInBtnClick() {
 }
 
 function logIn(): void {
-
   const userInput = document.getElementById("userName") as HTMLInputElement;
   const emailInput = document.getElementById("floatingInput") as HTMLInputElement;
   const passwordInput1 = document.getElementById("floatingPassword1") as HTMLInputElement;
@@ -31,13 +30,13 @@ function logIn(): void {
 
   // Function to create an error message element
   function createErrorMessage(message: string): HTMLDivElement {
-    const alertMessage = document.createElement('div');
+    const alertMessage = document.createElement("div");
     alertMessage.innerHTML = `<div class="z-3 position-fixed bottom-0 end-0 alert alert-info alert-dismissible fade show z-5" role="alert">
     <strong><i class="fa-regular fa-bell"></i> Hey!</strong> ${message}.
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>`;
-    const mainContainer = document.querySelector('#modalSignIn');
-    mainContainer?.prepend(alertMessage);
+    const mainContainer = document.querySelector("#modalSignIn") as HTMLElement;
+    mainContainer.prepend(alertMessage);
     return alertMessage;
   }
   // Function to check if a field value is valid
@@ -77,7 +76,7 @@ function logIn(): void {
     const errorPass = createErrorMessage("Please fill in the password field with your password.");
     const errorPass1 = createErrorMessage("Please fill in the verify password field with your password to verify it");
 
-    if(isUserNameValid && isEmailValid && isPasswordValid && doPasswordsMatch){
+    if (isUserNameValid && isEmailValid && isPasswordValid && doPasswordsMatch) {
       const signInBtn = document.getElementById("signInButton") as HTMLButtonElement;
       signInBtn.classList.remove("disabled");
     } else {
@@ -113,38 +112,35 @@ function logIn(): void {
 
     if (password !== passwordConfirm) {
       // Passwords do not match, you can show an error message here
-      alert("Passwords do not match")
+      alert("Passwords do not match");
 
       return;
     }
     localStorage.setItem("userName", userName);
     localStorage.setItem("email", email);
-    // modalSignIn.classList.remove("show");
-    modalSignIn.classList.add("modal")
+    modalSignIn.classList.add("modal");
 
-    console.log(userInput.value, emailInput.value, )
     const signInOutLi = document.getElementById("signInOutLi") as HTMLLIElement;
-    const userButton = document.getElementById("User") as HTMLButtonElement;
+    const userButton = document.createElement("button");
     if (userButton) {
+      userButton.id = "signOutButton";
       userButton.setAttribute("class", "btn btn-primary");
       userButton.textContent = userName;
       signInOutLi.insertAdjacentElement("afterend", userButton);
-
     }
-
   }
 
   // Function to handle the logout event
   function handleLogout(): void {
-    const modalSignIn = document.getElementById('modalSignIn') as HTMLDivElement;
-    const backdrop = document.querySelector('.modal-backdrop.fade.show');
+    const modalSignIn = document.getElementById("modalSignIn") as HTMLDivElement;
+    const backdrop = document.querySelector(".modal-backdrop.fade.show");
 
     if (modalSignIn) {
-    modalSignIn.style.display = 'none';
-    modalSignIn.setAttribute('aria-hidden', 'true');
-    modalSignIn.setAttribute('aria-modal', 'false');
-    modalSignIn.removeAttribute('aria-labelledby');
-    modalSignIn.removeAttribute('role');
+      modalSignIn.style.display = "none";
+      modalSignIn.setAttribute("aria-hidden", "true");
+      modalSignIn.setAttribute("aria-modal", "false");
+      modalSignIn.removeAttribute("aria-labelledby");
+      modalSignIn.removeAttribute("role");
     }
     if (backdrop) {
       backdrop.parentNode?.removeChild(backdrop);
@@ -187,5 +183,4 @@ function logIn(): void {
       passwordInput2.type = "password";
     }
   }
-
 }
