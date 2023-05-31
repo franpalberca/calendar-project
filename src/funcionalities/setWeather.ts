@@ -12,7 +12,7 @@ export function setClimate() {
       fTermicSensation.innerText = `${data.termicSensation} °C`;
 
       const fPreasure = document.querySelector("#fPreasure") as HTMLElement;
-      fPreasure.innerText = `${data.pressure} hPa`;
+      fPreasure.innerText = `${data.pressure} mb`;
 
       const fHumidity = document.querySelector("#fHumidity") as HTMLElement;
       fHumidity.innerText = `${data.humidity} %`;

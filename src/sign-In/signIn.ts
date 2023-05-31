@@ -14,12 +14,7 @@ export function logInBtnClick() {
   signInButton.setAttribute("data-bs-toggle", "modal");
   signInButton.setAttribute("data-bs-target", "#modalSignIn");
   signInOutLi.appendChild(signInButton);
-  // const signOutButton = document.createElement("button") as HTMLButtonElement;
-  // signOutButton.id = "signOutBtn";
-  // signOutButton.innerText = "Sign Out";
-  // signOutButton.setAttribute("type", "button");
-  // signOutButton.setAttribute("class", " nav-link btn btn-outline-primary btn-sm");
-  // signInOutLi.insertAdjacentElement("afterend", signOutButton);
+  
 
   signInButton.addEventListener("click", logIn);
 }
@@ -32,8 +27,7 @@ export function logInBtnClick() {
   const emailInput = document.getElementById("floatingInput") as HTMLInputElement;
   const passwordInput1 = document.getElementById("floatingPassword1") as HTMLInputElement;
   const passwordInput2 = document.getElementById("floatingPassword2") as HTMLInputElement;
-  const signInBtn = document.getElementById("signInButton") as HTMLButtonElement;
-  const signOutBtn = document.getElementById("signOutBtn") as HTMLButtonElement;  
+  const signInBtn = document.getElementById("signInButton") as HTMLButtonElement; 
   const showPassBtn = document.getElementById("eye1") as HTMLElement;
   const showPassBtn1 = document.getElementById("eye2") as HTMLElement;
 
@@ -44,8 +38,8 @@ export function logInBtnClick() {
     <strong><i class="fa-regular fa-bell"></i> Hey!</strong> ${message}.
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>`;
-    const mainContainer = document.querySelector('#modalSignIn');
-    mainContainer?.prepend(alertMessage);
+    const mainContainer = document.querySelector('#modalSignIn') as HTMLDivElement;
+    mainContainer.prepend(alertMessage);
     return alertMessage;
   }
   // Function to check if a field value is valid
@@ -127,7 +121,6 @@ export function logInBtnClick() {
     }
     localStorage.setItem("userName", userName);
     localStorage.setItem("email", email);
-    // modalSignIn.classList.remove("show");
     modalSignIn.classList.add("modal")
     
     console.log(userInput.value, emailInput.value, )
@@ -137,22 +130,12 @@ export function logInBtnClick() {
       userButton.setAttribute("class", "btn btn-primary");
       userButton.textContent = userName;
       signInOutLi.insertAdjacentElement("afterend", userButton);
-
-    }
-
-    
-  }
-
-  // Function to handle the logout event
-  function handleLogout(): void {
-    // Show login form after logoff
-    // showLoginForm();
-  }
+    }    
+  }  
 
   // AddeventListeners
-  if (signInBtn && signOutBtn && showPassBtn && showPassBtn1 && userInput && emailInput && passwordInput1 && passwordInput2) {
+  if (signInBtn  && showPassBtn && showPassBtn1 && userInput && emailInput && passwordInput1 && passwordInput2) {
     signInBtn.addEventListener("click", handleLogin);
-    signOutBtn.addEventListener("click", handleLogout);
     showPassBtn.addEventListener("click", togglePasswordVisibility1);
     showPassBtn1.addEventListener("click", togglePasswordVisibility2);
 

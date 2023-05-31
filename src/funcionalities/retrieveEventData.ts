@@ -27,7 +27,7 @@ export function retrieveEventData(): EventData {
     const eventMinutesF = parseInt(fparts[4]);
 
     const remindMeOpt = document.querySelector('#remindMeOpt') as HTMLInputElement;
-    const reminder = remindMeOpt?.value;
+    const reminder = remindMeOpt.value;
 
     const eventDescription = document.querySelector('#description') as HTMLTextAreaElement;
     const description = eventDescription.value;
@@ -50,8 +50,7 @@ export function retrieveEventData(): EventData {
         reminder: reminder,
         description: description,
         eventType: eventType,
-    };
-    console.log(eventObject);
+    };    
 
     const eventObjectJSON = JSON.stringify(eventObject);
     localStorage.setItem(`Event: ${eventName}`, eventObjectJSON);
