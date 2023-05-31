@@ -1,6 +1,7 @@
 import { retrieveEventData } from "./retrieveEventData.js";
 import { restartEventForm } from "./restartEventForm.js";
 import { createDayEvent } from "./createDayEvents.js";
+import { reorderEvents } from "./reoderEvents.js";
 export function setEvent() {
     const eventData = retrieveEventData();
     let eventColor = '';
@@ -45,6 +46,7 @@ export function setEvent() {
     if (closeBtn) {
         closeBtn.click();
         restartEventForm();
+        reorderEvents();
     }
 }
 export function getDatesInRange(startDate, endDate) {
