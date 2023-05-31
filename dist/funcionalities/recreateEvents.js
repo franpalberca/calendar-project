@@ -9,23 +9,23 @@ export function recreateEvents() {
         const dateArray = getDatesInRange(eventDate, eventDateFinish);
         let eventColor = "";
         switch (element.eventType) {
-            case "default":
+            case 'default':
                 eventColor = "bg-primary";
                 break;
-            case "work":
-                eventColor = "bg-danger";
+            case 'work':
+                eventColor = "work-event";
                 break;
-            case "family":
-                eventColor = "bg-secondary";
+            case 'family':
+                eventColor = "family-event";
                 break;
-            case "friends":
-                eventColor = "bg-warning";
+            case 'friends':
+                eventColor = "friends-event";
                 break;
-            case "doctor":
-                eventColor = "bg-info";
+            case 'doctor':
+                eventColor = "doctor-event";
                 break;
-            case "private":
-                eventColor = "bg-success";
+            case 'private':
+                eventColor = "private-event";
                 break;
         }
         if (dateArray.length === 0) {
