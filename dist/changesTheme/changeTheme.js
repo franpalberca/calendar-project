@@ -25,6 +25,8 @@ export function changeThemeAddEvent() {
         const isDayTime = currentHour >= 8 && currentHour < 18;
         const theme = isDayTime ? "light" : "dark";
         changeTheme(theme);
+        bodyTheme.classList.toggle("dark", theme === "dark");
+        generalContainer.classList.toggle("dark", theme === "dark");
         lightBtn.classList.remove("active");
         darkBtn.classList.remove("active");
         autoBtn.classList.add("active");
