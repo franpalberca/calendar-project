@@ -316,14 +316,6 @@
   }
 }
 
-/* @media only screen and (max-device-width: 768px) {
-	.days .day{
-	  height: 3.5rem;
-	  background-color: aqua;
-	}
-  }
-   */
-
 /* - - - - - - -   S C R O L L B A R  S T Y L E S      - - - - - - - - - -  */
 ::-webkit-scrollbar {
   width: 5px;

@@ -43,7 +43,10 @@ events.forEach(element => {
     }
 
     const timeOfReminder = getHour(eventHour, minus);
+<<<<<<< HEAD
  //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+=======
+>>>>>>> 22859e077c858df91983e9a31f4b1ee537363aca
 
     if (timeOfReminder == currentTime && todaysDate == dataDay) {
         createPopUp(eventName, minus);
