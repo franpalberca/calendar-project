@@ -136,8 +136,19 @@ function logIn(): void {
 
   // Function to handle the logout event
   function handleLogout(): void {
-    // Show login form after logoff
-    // showLoginForm();
+    const modalSignIn = document.getElementById('modalSignIn') as HTMLDivElement;
+    const backdrop = document.querySelector('.modal-backdrop.fade.show');
+
+    if (modalSignIn) {
+    modalSignIn.style.display = 'none';
+    modalSignIn.setAttribute('aria-hidden', 'true');
+    modalSignIn.setAttribute('aria-modal', 'false');
+    modalSignIn.removeAttribute('aria-labelledby');
+    modalSignIn.removeAttribute('role');
+    }
+    if (backdrop) {
+      backdrop.parentNode?.removeChild(backdrop);
+    }
   }
 
   // AddeventListeners

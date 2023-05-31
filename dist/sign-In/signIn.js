@@ -107,6 +107,19 @@ function logIn() {
         }
     }
     function handleLogout() {
+        var _a;
+        const modalSignIn = document.getElementById('modalSignIn');
+        const backdrop = document.querySelector('.modal-backdrop.fade.show');
+        if (modalSignIn) {
+            modalSignIn.style.display = 'none';
+            modalSignIn.setAttribute('aria-hidden', 'true');
+            modalSignIn.setAttribute('aria-modal', 'false');
+            modalSignIn.removeAttribute('aria-labelledby');
+            modalSignIn.removeAttribute('role');
+        }
+        if (backdrop) {
+            (_a = backdrop.parentNode) === null || _a === void 0 ? void 0 : _a.removeChild(backdrop);
+        }
     }
     if (signInBtn && signOutBtn && showPassBtn && showPassBtn1 && userInput && emailInput && passwordInput1 && passwordInput2) {
         signInBtn.addEventListener("click", handleLogin);
