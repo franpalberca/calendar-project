@@ -14,26 +14,18 @@ export function logInBtnClick() {
   signInButton.setAttribute("data-bs-toggle", "modal");
   signInButton.setAttribute("data-bs-target", "#modalSignIn");
   signInOutLi.appendChild(signInButton);
-  // const signOutButton = document.createElement("button") as HTMLButtonElement;
-  // signOutButton.id = "signOutBtn";
-  // signOutButton.innerText = "Sign Out";
-  // signOutButton.setAttribute("type", "button");
-  // signOutButton.setAttribute("class", " nav-link btn btn-outline-primary btn-sm");
-  // signInOutLi.insertAdjacentElement("afterend", signOutButton);
 
   signInButton.addEventListener("click", logIn);
 }
 
- function logIn(): void {  
-
-  
+function logIn(): void {
 
   const userInput = document.getElementById("userName") as HTMLInputElement;
   const emailInput = document.getElementById("floatingInput") as HTMLInputElement;
   const passwordInput1 = document.getElementById("floatingPassword1") as HTMLInputElement;
   const passwordInput2 = document.getElementById("floatingPassword2") as HTMLInputElement;
   const signInBtn = document.getElementById("signInButton") as HTMLButtonElement;
-  const signOutBtn = document.getElementById("signOutBtn") as HTMLButtonElement;  
+  const signOutBtn = document.getElementById("signOutBtn") as HTMLButtonElement;
   const showPassBtn = document.getElementById("eye1") as HTMLElement;
   const showPassBtn1 = document.getElementById("eye2") as HTMLElement;
 
@@ -92,7 +84,7 @@ export function logInBtnClick() {
       const signInBtn = document.getElementById("signInButton") as HTMLButtonElement;
       signInBtn.classList.add("disabled");
     }
-   
+
     // Update error messages
     updateErrorMessage(isUserNameValid, boxItem, errorUser);
     updateErrorMessage(isEmailValid, boxItemEmail, errorEmail);
@@ -129,7 +121,7 @@ export function logInBtnClick() {
     localStorage.setItem("email", email);
     // modalSignIn.classList.remove("show");
     modalSignIn.classList.add("modal")
-    
+
     console.log(userInput.value, emailInput.value, )
     const signInOutLi = document.getElementById("signInOutLi") as HTMLLIElement;
     const userButton = document.getElementById("User") as HTMLButtonElement;
@@ -140,7 +132,6 @@ export function logInBtnClick() {
 
     }
 
-    
   }
 
   // Function to handle the logout event
@@ -173,7 +164,7 @@ export function logInBtnClick() {
       passwordInput1.type = "password";
     }
   }
-  //function to show verify password Input 
+  //function to show verify password Input
   function togglePasswordVisibility2(): void {
     if (passwordInput2.type === "password") {
       showPassBtn1.classList.remove("bi-eye-slash");
@@ -185,5 +176,5 @@ export function logInBtnClick() {
       passwordInput2.type = "password";
     }
   }
-  
+
 }

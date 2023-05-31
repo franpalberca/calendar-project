@@ -101,7 +101,6 @@ export function initializeCalendar() {
         const dayElement = document.createElement("div");
         dayElement.classList.add("day");
         dayElement.setAttribute("id", `day${i}`);
-        //dayElement.setAttribute("class", "rounded-1");
         dayElement.addEventListener("click", () => {
           dayElement.style.overflow = "visible";
           setTimeout(() => {
