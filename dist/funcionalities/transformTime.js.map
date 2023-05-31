@@ -1,0 +1,1 @@
+{"version":3,"file":"transformTime.js","sourceRoot":"","sources":["../../src/funcionalities/transformTime.ts"],"names":[],"mappings":"AAAA,MAAM,UAAU,aAAa,CAAC,IAAY;IACtC,MAAM,CAAC,KAAK,EAAE,OAAO,CAAC,GAAG,IAAI,CAAC,KAAK,CAAC,GAAG,CAAC,CAAC;IACzC,MAAM,gBAAgB,GAAG,OAAO,CAAC,QAAQ,CAAC,CAAC,EAAE,GAAG,CAAC,CAAC;IAClD,OAAO,GAAG,KAAK,IAAI,gBAAgB,EAAE,CAAA;AACzC,CAAC"}
