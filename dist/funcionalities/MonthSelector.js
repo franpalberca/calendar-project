@@ -17,7 +17,7 @@ export function initializeCalendar() {
     calendar.appendChild(monthDiv);
     const prevMonthDom = document.createElement("i");
     prevMonthDom.id = "prevMonth";
-    prevMonthDom.setAttribute("class", "bi bi-chevron-left");
+    prevMonthDom.setAttribute("class", "bi bi-chevron-left prev");
     monthDiv.appendChild(prevMonthDom);
     const month = document.createElement("span");
     month.id = "month";
@@ -29,7 +29,7 @@ export function initializeCalendar() {
     monthDiv.appendChild(year);
     const nextMonthDom = document.createElement("i");
     nextMonthDom.id = "nextMonth";
-    nextMonthDom.setAttribute("class", "bi bi-chevron-right");
+    nextMonthDom.setAttribute("class", "bi bi-chevron-right next");
     monthDiv.appendChild(nextMonthDom);
     function createWeekDays() {
         const weekTotalDays = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
