@@ -36,8 +36,13 @@ export function initializeCalendar() {
         weekDivContainer.classList.add("week");
         calendar.appendChild(weekDivContainer);
         for (let i = 0; i < 7; i++) {
+<<<<<<< HEAD
             const date = new Date(currentYear, monthNumber, i - 2);
             const weekday = new Intl.DateTimeFormat(navigator.language, { weekday: "short", }).format(date);
+=======
+            const date = new Date(currentYear, monthNumber, i + 1);
+            const weekday = new Intl.DateTimeFormat(navigator.language, { weekday: "short" }).format(date);
+>>>>>>> b58bdbfbc6fbe103805cddb5373851eeac44330b
             const divTextWeek = document.createElement("div");
             divTextWeek.classList.add("div-text-week");
             weekDivContainer.appendChild(divTextWeek);
@@ -89,9 +94,7 @@ export function initializeCalendar() {
                 });
                 let paddedMonth = monthNumber + 1;
                 let dateAttribute = `${currentYear}-${paddedMonth}-${i}`;
-                const toISODate = new Date(dateAttribute)
-                    .toISOString()
-                    .slice(0, 10);
+                const toISODate = new Date(dateAttribute).toISOString().slice(0, 10);
                 const numberDay = document.createElement("p");
                 numberDay.setAttribute("class", "d-flex px-2 mb-0 align-items-center justify-content-between");
                 numberDay.textContent = i.toString();
@@ -164,7 +167,7 @@ export function initializeCalendar() {
         }
     }
     function isLeap() {
-        return ((currentYear % 100 !== 0 && currentYear % 4 === 0) || currentYear % 400 === 0);
+        return (currentYear % 100 !== 0 && currentYear % 4 === 0) || currentYear % 400 === 0;
     }
     function startDay() {
         const start = new Date(currentYear, monthNumber, 1);

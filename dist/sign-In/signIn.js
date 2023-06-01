@@ -25,13 +25,13 @@ function logIn() {
     const showPassBtn = document.getElementById("eye1");
     const showPassBtn1 = document.getElementById("eye2");
     function createErrorMessage(message) {
-        const alertMessage = document.createElement('div');
+        const alertMessage = document.createElement("div");
         alertMessage.innerHTML = `<div class="z-3 position-fixed bottom-0 end-0 alert alert-info alert-dismissible fade show z-5" role="alert">
     <strong><i class="fa-regular fa-bell"></i> Hey!</strong> ${message}.
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>`;
-        const mainContainer = document.querySelector('#modalSignIn');
-        mainContainer === null || mainContainer === void 0 ? void 0 : mainContainer.prepend(alertMessage);
+        const mainContainer = document.querySelector("#modalSignIn");
+        mainContainer.prepend(alertMessage);
         return alertMessage;
     }
     function isFieldValid(value, minLength, maxLength, regex) {
@@ -97,10 +97,10 @@ function logIn() {
         localStorage.setItem("userName", userName);
         localStorage.setItem("email", email);
         modalSignIn.classList.add("modal");
-        console.log(userInput.value, emailInput.value);
         const signInOutLi = document.getElementById("signInOutLi");
-        const userButton = document.getElementById("User");
+        const userButton = document.createElement("button");
         if (userButton) {
+            userButton.id = "signOutButton";
             userButton.setAttribute("class", "btn btn-primary");
             userButton.textContent = userName;
             signInOutLi.insertAdjacentElement("afterend", userButton);
@@ -108,14 +108,14 @@ function logIn() {
     }
     function handleLogout() {
         var _a;
-        const modalSignIn = document.getElementById('modalSignIn');
-        const backdrop = document.querySelector('.modal-backdrop.fade.show');
+        const modalSignIn = document.getElementById("modalSignIn");
+        const backdrop = document.querySelector(".modal-backdrop.fade.show");
         if (modalSignIn) {
-            modalSignIn.style.display = 'none';
-            modalSignIn.setAttribute('aria-hidden', 'true');
-            modalSignIn.setAttribute('aria-modal', 'false');
-            modalSignIn.removeAttribute('aria-labelledby');
-            modalSignIn.removeAttribute('role');
+            modalSignIn.style.display = "none";
+            modalSignIn.setAttribute("aria-hidden", "true");
+            modalSignIn.setAttribute("aria-modal", "false");
+            modalSignIn.removeAttribute("aria-labelledby");
+            modalSignIn.removeAttribute("role");
         }
         if (backdrop) {
             (_a = backdrop.parentNode) === null || _a === void 0 ? void 0 : _a.removeChild(backdrop);

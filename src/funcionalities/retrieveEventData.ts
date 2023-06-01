@@ -51,7 +51,7 @@ export function retrieveEventData(): EventData {
         description: description,
         eventType: eventType,
     };
-    console.log(eventObject);
+    
 
     const eventObjectJSON = JSON.stringify(eventObject);
     localStorage.setItem(`Event: ${eventName}`, eventObjectJSON);
