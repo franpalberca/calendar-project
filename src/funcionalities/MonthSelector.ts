@@ -49,7 +49,7 @@ export function initializeCalendar() {
 		calendar.appendChild(weekDivContainer);
 
 		for (let i = 0; i < 7; i++) {
-			const date = new Date(currentYear, monthNumber, i + 1);
+			const date = new Date(currentYear, monthNumber, i -2);
 			const weekday = new Intl.DateTimeFormat(navigator.language, {weekday: "short",}).format(date);
 
 			const divTextWeek = document.createElement("div");
@@ -80,18 +80,12 @@ export function initializeCalendar() {
 				daysContainer.firstChild.remove(); // TO ELIMINATE EXISTING DAYS
 			}
 
-			const previousMonthdaysContainer = getTotaldaysContainer(
-				monthNumber - 1
-			);
+			const previousMonthdaysContainer = getTotaldaysContainer(monthNumber - 1);
 			const currentMonthdaysContainer = getTotaldaysContainer(month);
 			const startDayIndex = startDay();
 
 			// PRINT THE PREVIOUS DAYS INTO THE FIRST DAY OF CURRENT MONTH
-			for (
-				let i = previousMonthdaysContainer - startDayIndex + 1;
-				i <= previousMonthdaysContainer;
-				i++
-			) {
+			for (let i = previousMonthdaysContainer - startDayIndex + 1; i <= previousMonthdaysContainer; i++) {
 				const dayElement = document.createElement("div");
 				dayElement.classList.add("day", "previous-month");
 				dayElement.setAttribute("id", `day${i}`);
@@ -177,9 +171,7 @@ export function initializeCalendar() {
 
 				const targetYear = year.innerText;
 				const todayYear = actualYear.toString();
-				if (
-					i === currentDay &&month === actualMonth &&todayYear === targetYear
-				) {
+				if (i === currentDay &&month === actualMonth &&todayYear === targetYear) {
 					dayElement.classList.add("today");
 				}
 				daysContainer.appendChild(dayElement);
@@ -211,15 +203,7 @@ export function initializeCalendar() {
 	function getTotaldaysContainer(month: number): number {
 		if (month === -1) month = 11;
 
-		if (
-			month == 0 ||
-			month == 2 ||
-			month == 4 ||
-			month == 6 ||
-			month == 7 ||
-			month == 9 ||
-			month == 11
-		) {
+		if (month == 0 || month == 2 || month == 4 || month == 6 || month == 7 || month == 9 ||month == 11) {
 			return 31;
 		} else if (month == 3 || month == 5 || month == 8 || month == 10) {
 			return 30;

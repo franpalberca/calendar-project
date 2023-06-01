@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Creepster&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,900&display=swap");
 
-/*- - - - - - R	E S E T - - - - - - - - - - - */
+/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -8,7 +8,7 @@
   font-family: "Poppins", sans-serif;
 }
 
-/*  - - - - - - - H E A D E R  - - - - - - -  */
+/* HEADER */
 .btn-help {
   position: absolute;
   display: none;
@@ -32,7 +32,8 @@
   border-radius: 5px;
   color: #c1eaf2;
 }
-/*- - - - S H O W  R E M I N D E R- - - - - - - - - - - */
+
+/* SHOW REMINDER */
 .popup {
   position: fixed;
   top: 50%;
@@ -53,12 +54,12 @@
   font-weight: bold;
 }
 
-/* - - - L I G H T   B O D Y     T H E M E  - - - - - - - - - - */
+/* LIGHT BODY THEME */
 .body-container {
   background: linear-gradient(transparent, rgba(0, 0, 255, 0.493) 50%, transparent);
 }
 
-/*  - - G E N E R A L   S E L E C T O R S  C A L E N D A R - - - - */
+/* GENERAL SELECTORS CALENDAR */
 .general-container {
   position: relative;
   width: 90%;
@@ -74,7 +75,6 @@
   box-shadow: 45px 31px 15px -14px rgba(8, 0, 0, 0.4);
 }
 
-
 .general-container .month {
   width: 100%;
   height: 50px;
@@ -86,17 +86,19 @@
   font-weight: 500;
   text-transform: capitalize;
 }
+
 .general-container .month .prev,
 .general-container .month .next {
   cursor: pointer;
   margin: 0 15px 0 15px;
   color: #3d19dd;
-  font-weight: 450;
 }
+
 .general-container .month .prev:hover,
 .general-container .month .next:hover {
   color: black;
 }
+
 .general-container .week {
   width: 100%;
   height: 60px;

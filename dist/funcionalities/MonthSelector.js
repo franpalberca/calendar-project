@@ -36,7 +36,7 @@ export function initializeCalendar() {
         weekDivContainer.classList.add("week");
         calendar.appendChild(weekDivContainer);
         for (let i = 0; i < 7; i++) {
-            const date = new Date(currentYear, monthNumber, i + 1);
+            const date = new Date(currentYear, monthNumber, i - 2);
             const weekday = new Intl.DateTimeFormat(navigator.language, { weekday: "short", }).format(date);
             const divTextWeek = document.createElement("div");
             divTextWeek.classList.add("div-text-week");
@@ -153,13 +153,7 @@ export function initializeCalendar() {
     function getTotaldaysContainer(month) {
         if (month === -1)
             month = 11;
-        if (month == 0 ||
-            month == 2 ||
-            month == 4 ||
-            month == 6 ||
-            month == 7 ||
-            month == 9 ||
-            month == 11) {
+        if (month == 0 || month == 2 || month == 4 || month == 6 || month == 7 || month == 9 || month == 11) {
             return 31;
         }
         else if (month == 3 || month == 5 || month == 8 || month == 10) {
