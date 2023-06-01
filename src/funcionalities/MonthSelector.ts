@@ -47,7 +47,7 @@ export function initializeCalendar() {
     calendar.appendChild(weekDivContainer);
 
 		for (let i = 0; i < 7; i++) {
-			const date = new Date(currentYear, monthNumber, i -2);
+			const date = new Date(currentYear, monthNumber, i - 2);
 			const weekday = new Intl.DateTimeFormat(navigator.language, {weekday: "short",}).format(date);
 
       const divTextWeek = document.createElement("div");
