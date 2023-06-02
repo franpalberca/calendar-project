@@ -4,7 +4,6 @@ import { createDayEvent } from "./createDayEvents.js";
 export function recreateEvents() {
     const eventsData = retrieveLocalStorage();
     eventsData.forEach((element) => {
-        console.log(element);
         const eventDate = `${element.eventYear}-${String(element.eventMonth).padStart(2, '0')}-${String(element.eventDay).padStart(2, '0')}`;
         const eventDateFinish = `${element.eventYearF}-${element.eventMonthF}-${element.eventDayF}`;
         const dateArray = getDatesInRange(eventDate, eventDateFinish);
@@ -31,7 +30,6 @@ export function recreateEvents() {
         }
         if (dateArray.length === 0) {
             const targetDate = document.querySelector(`[data-daynumber="${eventDate}"]`);
-            console.log(targetDate);
             if (targetDate) {
                 createDayEvent(element, eventColor, targetDate, eventDate);
             }
