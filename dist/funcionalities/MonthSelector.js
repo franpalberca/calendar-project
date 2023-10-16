@@ -32,12 +32,12 @@ export function initializeCalendar() {
     nextMonthDom.setAttribute("class", "bi bi-chevron-right next");
     monthDiv.appendChild(nextMonthDom);
     function createWeekDays() {
+        const weekDays = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"];
         const weekDivContainer = document.createElement("div");
         weekDivContainer.classList.add("week");
         calendar.appendChild(weekDivContainer);
         for (let i = 0; i < 7; i++) {
-            const date = new Date(currentYear, monthNumber, i - 2);
-            const weekday = new Intl.DateTimeFormat(navigator.language, { weekday: "short", }).format(date);
+            const weekday = weekDays[i];
             const divTextWeek = document.createElement("div");
             divTextWeek.classList.add("div-text-week");
             weekDivContainer.appendChild(divTextWeek);
